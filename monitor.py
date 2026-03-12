@@ -123,9 +123,15 @@ EMAIL_FROM = os.getenv("EMAIL_FROM", "")
 EMAIL_TO = os.getenv("EMAIL_TO", "")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD", "")
 
-# Google Gemini API key (free tier: 15 req/min, 1500 req/day)
+# GitHub Models API (free tier: 150 req/day with GPT-4o-mini)
+# Uses your GitHub PAT with "models:read" permission
 # Leave empty to use template-based responses (no API needed)
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
+
+# Output RSS feed — Power Automate reads this to post to Teams
+FEED_DIR = Path("docs")
+FEED_FILE = FEED_DIR / "feed.xml"
+MAX_FEED_ITEMS = 50  # Keep last 50 items in the feed
 
 # State file
 STATE_FILE = Path("seen_posts.json")
@@ -277,51 +283,97 @@ def is_relevant(post):
 # ============================================================
 
 def generate_response(post):
-    """Generate a suggested response, using Gemini if available."""
-    if GEMINI_API_KEY:
-        ai_response = _generate_gemini_response(post)
+    """Generate a suggested response, using GitHub Models + MS Learn if available."""
+    if GITHUB_TOKEN:
+        ai_response = _generate_llm_response(post)
         if ai_response:
             return ai_response
     return _generate_template_response(post)
 
 
-def _generate_gemini_response(post):
-    """Call Google Gemini free API for an expert response."""
+def _search_learn_docs(query):
+    """Search Microsoft Learn docs and return top results."""
     try:
+        encoded_query = urllib.parse.quote(query)
         url = (
-            "https://generativelanguage.googleapis.com/v1beta/"
-            "models/gemini-2.0-flash:generateContent"
-            f"?key={GEMINI_API_KEY}"
+            f"https://learn.microsoft.com/api/search?search={encoded_query}"
+            "&locale=en-us&$filter=(category%20eq%20%27Documentation%27)&$top=5"
         )
-        prompt = (
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        docs = []
+        for r in data.get("results", []):
+            docs.append({
+                "title": r.get("title", ""),
+                "url": r.get("url", ""),
+                "description": r.get("description", ""),
+            })
+        return docs
+    except Exception as e:
+        print(f"  MS Learn API error: {e}")
+        return []
+
+
+def _generate_llm_response(post):
+    """Call GitHub Models (GPT-4o-mini) with MS Learn context for a response."""
+    try:
+        # Step 1: Build search query from post keywords
+        search_terms = f"Azure storage migration {post['title'][:100]}"
+        learn_docs = _search_learn_docs(search_terms)
+
+        # Step 2: Format Learn docs as context
+        docs_context = ""
+        if learn_docs:
+            docs_context = "Relevant Microsoft Learn documentation:\n"
+            for i, doc in enumerate(learn_docs, 1):
+                docs_context += (
+                    f"{i}. {doc['title']}\n"
+                    f"   URL: {doc['url']}\n"
+                    f"   Summary: {doc['description'][:200]}\n\n"
+                )
+
+        # Step 3: Call GitHub Models API (OpenAI-compatible)
+        url = "https://models.inference.ai.azure.com/chat/completions"
+        system_prompt = (
             "You are a Microsoft Azure storage migration expert replying "
-            "on a community forum. A user posted this question:\n\n"
+            "on a community forum. Use the provided Microsoft Learn documentation "
+            "to give accurate, helpful answers. Always include relevant documentation "
+            "links from the context provided. Keep answers professional and under 300 words."
+        )
+        user_prompt = (
+            f"{docs_context}\n"
+            f"A user posted this question on a forum:\n\n"
             f"Title: {post['title']}\n"
             f"Body: {post['body'][:2000]}\n\n"
-            "Draft a helpful, accurate, professional response (under 300 words). "
-            "Cover relevant Azure tools:\n"
-            "- AzCopy (online blob/file transfers)\n"
-            "- Azure Storage Mover (managed migration service)\n"
-            "- Azure Data Box (large offline migrations)\n"
-            "- Azure File Sync (file server sync)\n"
-            "- Azure Migrate (VM/server discovery & migration)\n"
-            "Include specific steps and official Microsoft docs links."
+            "Draft a helpful response referencing the Microsoft Learn docs above. "
+            "Include specific steps and link to the relevant docs."
         )
 
         payload = json.dumps({
-            "contents": [{"parts": [{"text": prompt}]}]
+            "model": "gpt-4o-mini",
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            "temperature": 0.7,
+            "max_tokens": 800,
         }).encode("utf-8")
 
         req = urllib.request.Request(
             url, data=payload,
-            headers={"Content-Type": "application/json", "User-Agent": USER_AGENT},
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {GITHUB_TOKEN}",
+                "User-Agent": USER_AGENT,
+            },
         )
         with urllib.request.urlopen(req, timeout=30) as resp:
             result = json.loads(resp.read().decode("utf-8"))
-            return result["candidates"][0]["content"]["parts"][0]["text"]
+            return result["choices"][0]["message"]["content"]
 
     except Exception as e:
-        print(f"  Gemini API error: {e}. Falling back to template.")
+        print(f"  GitHub Models API error: {e}. Falling back to template.")
         return None
 
 
@@ -567,6 +619,92 @@ def _notify_email(post, response):
 
 
 # ============================================================
+# OUTPUT RSS FEED (for Power Automate → Teams)
+# ============================================================
+
+def _xml_escape(text):
+    """Escape text for safe XML embedding."""
+    return (text
+            .replace("&", "&amp;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
+            .replace('"', "&quot;")
+            .replace("'", "&apos;"))
+
+
+def load_existing_feed_items():
+    """Load existing items from feed.xml to preserve history."""
+    if not FEED_FILE.exists():
+        return []
+    try:
+        content = FEED_FILE.read_text(encoding="utf-8")
+        items = []
+        for match in re.finditer(r"<item>(.*?)</item>", content, re.DOTALL):
+            items.append(match.group(0))
+        return items
+    except Exception:
+        return []
+
+
+def write_feed(processed_posts):
+    """Write processed matches to docs/feed.xml as RSS 2.0."""
+    FEED_DIR.mkdir(exist_ok=True)
+
+    # Build new <item> entries
+    new_items = []
+    for post, response in processed_posts:
+        pub_date = post.get("published", datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S %z"))
+        description = (
+            f"Source: {_xml_escape(post['source'])}\n\n"
+            f"Question:\n{_xml_escape(post['title'])}\n\n"
+            f"{_xml_escape(post['body'][:1500])}\n\n"
+            f"---\n\n"
+            f"Suggested Response:\n{_xml_escape(response)}"
+        )
+        item = (
+            f"    <item>\n"
+            f"      <title>{_xml_escape(post['source'])}: {_xml_escape(post['title'][:150])}</title>\n"
+            f"      <link>{_xml_escape(post['link'])}</link>\n"
+            f"      <guid isPermaLink=\"false\">{_xml_escape(post['id'])}</guid>\n"
+            f"      <pubDate>{_xml_escape(pub_date)}</pubDate>\n"
+            f"      <description>{description}</description>\n"
+            f"    </item>"
+        )
+        new_items.append(item)
+
+    # Merge with existing items (new first), cap at MAX_FEED_ITEMS
+    existing_items = load_existing_feed_items()
+    all_items = new_items + existing_items
+
+    # Deduplicate by guid
+    seen_guids = set()
+    unique_items = []
+    for item in all_items:
+        guid_match = re.search(r"<guid[^>]*>(.*?)</guid>", item)
+        guid = guid_match.group(1) if guid_match else item
+        if guid not in seen_guids:
+            seen_guids.add(guid)
+            unique_items.append(item)
+    all_items = unique_items[:MAX_FEED_ITEMS]
+
+    now = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S %z")
+    feed_xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<rss version="2.0">\n'
+        '  <channel>\n'
+        '    <title>Azure Migration Monitor</title>\n'
+        '    <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>\n'
+        f'    <lastBuildDate>{now}</lastBuildDate>\n'
+        f'{chr(10).join(all_items)}\n'
+        '  </channel>\n'
+        '</rss>'
+    )
+
+    FEED_FILE.write_text(feed_xml, encoding="utf-8")
+    print(f"Feed updated: {len(new_items)} new + {len(all_items) - len(new_items)} existing = {len(all_items)} total items")
+
+
+# ============================================================
 # MAIN
 # ============================================================
 
@@ -597,11 +735,16 @@ def main():
     print(f"\nNew posts scanned: {len(seen) - initial_seen_count}")
     print(f"Relevant matches:  {len(new_relevant)}\n")
 
+    processed = []
     for post in new_relevant:
         print(f"Processing: {post['title'][:80]}")
         response = generate_response(post)
         send_notification(post, response)
+        processed.append((post, response))
         print()
+
+    # Always write feed (merges new + existing items)
+    write_feed(processed)
 
     save_seen_posts(seen)
     print("Done.")

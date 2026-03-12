@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Azure Migration Monitor</title>
+    <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
+    <lastBuildDate>Thu, 12 Mar 2026 13:00:34 +0000</lastBuildDate>
+<item>
+      <title>Reddit r/azure: Azure migrate agent</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1rqyn9s/azure_migrate_agent/</link>
+      <guid isPermaLink="false">t3_1rqyn9s</guid>
+      <pubDate>2026-03-11T16:32:37+00:00</pubDate>
+      <description>Source: Reddit r/azure
+
+Question:
+Azure migrate agent
+
+I am trying to run the DRappliance script to start migrating severs over to Azure and I am getting push back on the OS version. When did this change? I thought 2019 would work fine. &amp;#32; submitted by &amp;#32; /u/Brilliant-Benefit299 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+
+**AzCopy** - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
+    </item>
+<item>
+      <title>Reddit r/sysadmin: Active Directory migrate from VMware to Azure Local</title>
+      <link>https://www.reddit.com/r/sysadmin/comments/1rpup6e/active_directory_migrate_from_vmware_to_azure/</link>
+      <guid isPermaLink="false">t3_1rpup6e</guid>
+      <pubDate>2026-03-10T11:45:36+00:00</pubDate>
+      <description>Source: Reddit r/sysadmin
+
+Question:
+Active Directory migrate from VMware to Azure Local
+
+Hi Team, What is the best way to migrate AD vms to Azure Local? Create a new Azure Local VM and promote to a DC and migrate all the FSMO roles? &amp;#32; submitted by &amp;#32; /u/EducationAlert5209 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+
+**Azure Migrate** - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+**AzCopy** - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
+    </item>
+<item>
+      <title>Reddit r/sysadmin: VMware to Azure migration scenarios post Broadcom acquisition?</title>
+      <link>https://www.reddit.com/r/sysadmin/comments/1rpud6g/vmware_to_azure_migration_scenarios_post_broadcom/</link>
+      <guid isPermaLink="false">t3_1rpud6g</guid>
+      <pubDate>2026-03-10T11:28:18+00:00</pubDate>
+      <description>Source: Reddit r/sysadmin
+
+Question:
+VMware to Azure migration scenarios post Broadcom acquisition?
+
+Mid sized team here. Our vmware renewal post broadcom acquisition looks like a totally different cost scenario so I&apos;m looking at avs with hcx to get out of the renewal cycle. We’re sanity checking numbers in the azure pricing calculator . What’s the worst thing about the work to migrate vmware to azure? I also looked into this article and it talks about using avs as a faster way to move vmware into azure without rewriting apps right away.If you’ve been through a migration I’d appreciate your advice or gotcha scenarios &amp;#32; submitted by &amp;#32; /u/CryptographerStock81 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+
+**Azure Migrate** - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+**AzCopy** - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
+    </item>
+<item>
+      <title>Reddit r/cloudcomputing: VMware alternatives or migrate to cloud?</title>
+      <link>https://www.reddit.com/r/cloudcomputing/comments/1rqr1st/vmware_alternatives_or_migrate_to_cloud/</link>
+      <guid isPermaLink="false">t3_1rqr1st</guid>
+      <pubDate>2026-03-11T11:22:46+00:00</pubDate>
+      <description>Source: Reddit r/cloudcomputing
+
+Question:
+VMware alternatives or migrate to cloud?
+
+I’ve spent some time looking into alternatives to vmware like nutanix and hyperv. From what ive researched, vmware was once the go to for enterprise virtualization, but with costs climbing up the licensing changes (no thanks to Broadcom) are definitely making me rethink our strategy. I’m now looking into migrating to azure. I like the idea of moving away from on prem infrastructure especially when you look at Azure&apos;s scalability and cost benefits. Had a quick chat with a vendor about this as well. I was just wondering about anyone&apos;s experience here migrating from vmware to the cloud. Was the process smooth enough with no blockers? Love to hear what you guys encountered good or bad during the transition. &amp;#32; submitted by &amp;#32; /u/StageNo5980 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+
+**Azure Migrate** - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+**AzCopy** - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
+    </item>
+  </channel>
+</rss>

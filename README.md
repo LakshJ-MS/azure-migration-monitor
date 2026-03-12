@@ -216,17 +216,17 @@ Done! You'll get push notifications on your phone.
 
 Without this, you still get suggested responses — they're template-based with relevant Azure tools and Microsoft Learn links (like the example above).
 
-With this, you get **context-aware AI responses** from Google Gemini that understand the specific question and write a tailored reply.
+With this, you get **context-aware AI responses** powered by **GitHub Models (GPT-4o-mini)** that search **Microsoft Learn documentation** for relevant articles and then write a tailored, natural-language reply grounded in official Microsoft docs.
 
-**3a.** Go to https://aistudio.google.com/apikey
+**3a.** Go to https://github.com/settings/tokens?type=beta → click **Generate new token**
 
-**3b.** Sign in with your Google account → click **Create API Key** → copy it
+**3b.** Give it a name (e.g. `migration-monitor`), set expiration, and under **Permissions** check **"Models" → Read**. Click **Generate token** and copy it.
 
 **3c.** In GitHub repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**:
-   - Name: `GEMINI_API_KEY`
-   - Value: the API key you copied
+   - Name: `GH_MODELS_TOKEN`
+   - Value: the Personal Access Token you copied
 
-Free tier: 1500 requests/day (more than enough).
+Free tier: 150 requests/day for GPT-4o-mini (more than enough).
 
 ---
 
@@ -269,7 +269,7 @@ Every notification includes a **suggested response** you can use to reply to the
 - Includes **Microsoft Learn documentation links** for each tool
 - Links to the full migration overview guide
 
-If you add a Gemini API key (Step 3), responses are AI-generated and tailored to the specific question.
+If you add a GitHub Models token (Step 3), responses are AI-generated using Microsoft Learn docs and tailored to the specific question.
 
 ---
 
@@ -314,7 +314,7 @@ Edit `MIGRATION_KEYWORDS`, `STORAGE_KEYWORDS`, `AZURE_KEYWORDS` in `monitor.py` 
 | Email (Gmail SMTP) | Free |
 | ntfy.sh push notifications | Free (no account) |
 | Discord Webhook | Free |
-| Google Gemini AI (optional) | Free tier (1500 req/day) |
+| GitHub Models + MS Learn (optional) | Free tier (150 req/day) |
 | **Total** | **$0/month** |
 
 ---
