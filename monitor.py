@@ -50,7 +50,7 @@ RSS_FEEDS = [
 HIGH_CONFIDENCE_PHRASES = [
     # Azure storage migration tools (just mentioning these = relevant)
     "azcopy", "az copy", "storage mover", "azure storage mover",
-    "azure file sync", "data box", "azure data box",
+    "azure file sync", "data box", "databox", "azure data box",
     "azure migrate", "azure site recovery",
     # Strong migration phrases
     "on-prem to azure", "on-premises to azure", "on prem to azure",
