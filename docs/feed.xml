@@ -2,9 +2,9 @@
 <rss version="2.0">
   <channel>
     <title>Azure Migration Monitor</title>
-    <description>Azure storage migration queries with suggested responses.</description>
-    <lastBuildDate>Thu, 12 Mar 2026 14:20:16 +0000</lastBuildDate>
-    <item>
+    <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
+    <lastBuildDate>Thu, 12 Mar 2026 14:34:56 +0000</lastBuildDate>
+<item>
       <title>Reddit r/azure: How to migrate on-prem file server to Azure Files?</title>
       <link>https://www.reddit.com/r/azure/test_post_008</link>
       <guid isPermaLink="false">test-trigger-008</guid>
