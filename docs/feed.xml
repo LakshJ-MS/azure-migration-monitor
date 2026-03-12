@@ -3,7 +3,26 @@
   <channel>
     <title>Azure Migration Monitor</title>
     <description>Azure storage migration queries with suggested responses.</description>
-    <lastBuildDate>Thu, 12 Mar 2026 14:52:58 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 14:55:00 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Moving 50TB from on-prem NetApp to Azure Blob</title>
+      <link>https://www.reddit.com/r/azure/comments/test011/moving_netapp_to_azure</link>
+      <guid isPermaLink="false">test-trigger-011</guid>
+      <pubDate>Thu, 12 Mar 2026 14:55:00 +0000</pubDate>
+      <description>Source: Reddit r/azure
+
+Question:
+Moving 50TB from on-prem NetApp to Azure Blob
+
+We have a NetApp filer with about 50TB of data. Need to migrate everything to Azure Blob Storage. Is Data Box the right choice or can we do this over the network?
+
+---
+
+Suggested Response:
+For 50TB, Azure Data Box is recommended - it avoids network bandwidth limitations. Order a Data Box device, copy your data locally, ship it to Azure. For smaller datasets or ongoing sync, use AzCopy.
+Docs: https://learn.microsoft.com/azure/databox/
+AzCopy: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10</description>
+    </item>
     <item>
       <title>Reddit r/azure: Migrating NFS file shares to Azure - best tools?</title>
       <link>https://www.reddit.com/r/azure/comments/test010/migrating_nfs_shares</link>
