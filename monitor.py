@@ -365,7 +365,7 @@ def _generate_llm_response(post):
         )
 
         payload = json.dumps({
-            "model": "gpt-4o-mini",
+            "model": "gpt-4o",
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
