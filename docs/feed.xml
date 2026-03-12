@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 12 Mar 2026 16:25:44 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Thu, 12 Mar 2026 16:44:09 +0000</lastBuildDate>
+<item>
       <title>Reddit r/azure: Migrate SQL Server to Azure SQL - offline vs online?</title>
       <link>https://www.reddit.com/r/azure/comments/test014/sql_migration_offline_online</link>
       <guid isPermaLink="false">test-trigger-014</guid>
@@ -28,7 +28,7 @@ For offline, bacpac works but 500GB export/import may exceed your 2-hour window.
 Docs: https://learn.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql
 Migration guide: https://learn.microsoft.com/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-overview</description>
     </item>
-    <item>
+<item>
       <title>Reddit r/azure: How to use AzCopy to sync on-prem data daily?</title>
       <link>https://www.reddit.com/r/azure/comments/test013/azcopy_daily_sync</link>
       <guid isPermaLink="false">test-trigger-013</guid>
