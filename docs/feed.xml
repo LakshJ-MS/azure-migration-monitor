@@ -3,23 +3,8 @@
   <channel>
     <title>Azure Migration Monitor</title>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
-    <lastBuildDate>Thu, 12 Mar 2026 20:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 13:38:17 +0000</lastBuildDate>
     <item>
-      <title>TEST: Azure Storage Migration Monitor - Pipeline Test</title>
-      <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
-      <guid isPermaLink="false">test-item-pipeline-verification-001</guid>
-      <pubDate>Thu, 12 Mar 2026 20:00:00 +0000</pubDate>
-      <description>Source: Test
-
-Question:
-This is a test item to verify the Power Automate pipeline is working correctly.
-
----
-
-Suggested Response:
-If you see this message in your Teams channel, the full pipeline is working: GitHub Pages RSS feed → Power Automate → Teams. You can delete this test message. Real Azure storage migration alerts will appear here automatically.</description>
-    </item>
-<item>
       <title>Reddit r/azure: Azure migrate agent</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rqyn9s/azure_migrate_agent/</link>
       <guid isPermaLink="false">t3_1rqyn9s</guid>
@@ -43,7 +28,7 @@ Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
 
 Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
     </item>
-<item>
+    <item>
       <title>Reddit r/sysadmin: Active Directory migrate from VMware to Azure Local</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1rpup6e/active_directory_migrate_from_vmware_to_azure/</link>
       <guid isPermaLink="false">t3_1rpup6e</guid>
@@ -70,7 +55,7 @@ Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
 
 Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
     </item>
-<item>
+    <item>
       <title>Reddit r/sysadmin: VMware to Azure migration scenarios post Broadcom acquisition?</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1rpud6g/vmware_to_azure_migration_scenarios_post_broadcom/</link>
       <guid isPermaLink="false">t3_1rpud6g</guid>
@@ -97,7 +82,7 @@ Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
 
 Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
     </item>
-<item>
+    <item>
       <title>Reddit r/cloudcomputing: VMware alternatives or migrate to cloud?</title>
       <link>https://www.reddit.com/r/cloudcomputing/comments/1rqr1st/vmware_alternatives_or_migrate_to_cloud/</link>
       <guid isPermaLink="false">t3_1rqr1st</guid>
@@ -123,6 +108,48 @@ Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
 
 
 Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
+    </item>
+    <item>
+      <title>Reddit r/dataengineering: Considering using &quot;Export to Excel&quot; and drop it to Bucket as a Source. Need to bounce off ideas.</title>
+      <link>https://www.reddit.com/r/dataengineering/comments/1rrquk5/considering_using_export_to_excel_and_drop_it_to/</link>
+      <guid isPermaLink="false">t3_1rrquk5</guid>
+      <pubDate>2026-03-12T13:32:28+00:00</pubDate>
+      <description>Source: Reddit r/dataengineering
+
+Question:
+Considering using &quot;Export to Excel&quot; and drop it to Bucket as a Source. Need to bounce off ideas.
+
+Hi Everyone. Long time lurker and first time poster. I work as a one man data team for a manufacturing company. As a result, IT budgets are very limited. The Scenario I recently was able to migrate our on prem reporting solution to Snowflake + dbt+ Power BI. I use Hevo Data to ingest the rows from our ERP System (AX2012 via replicated db) to Snowflake. This has the interest from other departments and they now want to do financial reporting on PowerBI. The more I get into this project, the more I realize that the volume of data is larger than expected. The ask is to build financial reports from Trial Balance data. So far in my analysis, I&apos;ve identified two tables that have a combined of 85 million rows of ledger data from 2018. I&apos;ve been told that these two are the largest tables in our ERP database. Option 1 - Pipeline (MSSQL DB source to Snowflake sink, replicate ERP logic) If I go my traditional route, I would have to reverse engineer the logic used in AX to display the trial balance (which I&apos;m up for ). However its the increase in costs that has me a bit worried, especially as the usage is in bursts spiking at the end of the month and end of the year. Pros Standard Pipelines Can be used down the road for other requests Cons Potential Expense With these tables being the largest in the db, I fear that the number of rows added/modified every 2 hours will be pretty high This would require more spend in Ingestion and Transformation costs An event like a balance re-roll can lead
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+
+**Azure Data Box** - For large offline migrations (tens of TBs+). Microsoft ships a physical device to your site.
+Docs: https://learn.microsoft.com/azure/databox/
+
+**AzCopy** - Fast CLI tool for copying data to/from Azure Blob Storage. Supports direct S3-to-Azure copy.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
+    </item>
+<item>
+      <title>TEST: Azure Storage Migration Monitor - Pipeline Test</title>
+      <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
+      <guid isPermaLink="false">test-item-pipeline-verification-001</guid>
+      <pubDate>Thu, 12 Mar 2026 20:00:00 +0000</pubDate>
+      <description>Source: Test
+
+Question:
+This is a test item to verify the Power Automate pipeline is working correctly.
+
+---
+
+Suggested Response:
+If you see this message in your Teams channel, the full pipeline is working: GitHub Pages RSS feed → Power Automate → Teams. You can delete this test message. Real Azure storage migration alerts will appear here automatically.</description>
     </item>
   </channel>
 </rss>
