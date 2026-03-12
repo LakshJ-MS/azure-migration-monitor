@@ -3,7 +3,29 @@
   <channel>
     <title>Azure Migration Monitor</title>
     <description>Azure storage migration queries with suggested responses.</description>
-    <lastBuildDate>Thu, 12 Mar 2026 14:39:27 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 14:45:05 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Migrating NFS file shares to Azure using Storage Mover</title>
+      <link>https://www.reddit.com/r/azure/comments/test010/migrating_nfs_shares</link>
+      <guid isPermaLink="false">test-trigger-010</guid>
+      <pubDate>Thu, 12 Mar 2026 14:45:05 +0000</pubDate>
+      <description>Source: Reddit r/azure
+
+Question:
+Migrating NFS file shares to Azure using Storage Mover
+
+Has anyone used Azure Storage Mover for NFS shares? We have about 20TB across multiple NFS exports and need to move them to Azure Files NFS.
+
+---
+
+Suggested Response:
+Azure Storage Mover is designed for this. Steps:
+1. Deploy a Storage Mover agent on-prem
+2. Register with Azure Storage Mover service
+3. Define source (NFS) and target (Azure Files NFS) endpoints
+4. Create and run a migration job
+Docs: https://learn.microsoft.com/azure/storage-mover/</description>
+    </item>
     <item>
       <title>Reddit r/azure: Best way to migrate 10TB from AWS S3 to Azure Blob?</title>
       <link>https://www.reddit.com/r/azure/comments/test009/best_way_to_migrate_s3</link>
