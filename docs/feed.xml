@@ -3,7 +3,27 @@
   <channel>
     <title>Azure Migration Monitor</title>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
-    <lastBuildDate>Thu, 12 Mar 2026 23:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 04:15:00 +0000</lastBuildDate>
+    <item>
+      <title>TEST 4: Verifying Teams Notification Pipeline</title>
+      <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
+      <guid isPermaLink="false">test-item-pipeline-verification-004</guid>
+      <pubDate>Fri, 13 Mar 2026 04:15:00 +0000</pubDate>
+      <description>Source: Test
+
+Question:
+How do I migrate my on-premises file server to Azure Files using AzCopy?
+
+---
+
+Suggested Response:
+You can use AzCopy to migrate your on-premises file server to Azure Files. Here are the steps:
+1. Install AzCopy from https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+2. Create an Azure Files share in the Azure portal
+3. Generate a SAS token for authentication
+4. Run: azcopy copy "C:\FileServer\*" "https://youraccount.file.core.windows.net/yourshare?sv=..." --recursive
+For full guidance see: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
+    </item>
     <item>
       <title>TEST: Pipeline Verification - Azure Storage Migration Monitor</title>
       <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
