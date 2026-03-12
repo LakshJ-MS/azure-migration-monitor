@@ -5,7 +5,31 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 12 Mar 2026 15:02:02 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 15:13:58 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: How to use AzCopy to sync on-prem data daily?</title>
+      <link>https://www.reddit.com/r/azure/comments/test013/azcopy_daily_sync</link>
+      <guid isPermaLink="false">test-trigger-013</guid>
+      <pubDate>Thu, 12 Mar 2026 15:13:58 +0000</pubDate>
+      <description>Source: Reddit r/azure
+
+Question:
+How to use AzCopy to sync on-prem data daily?
+
+We want to set up a daily sync from our on-prem file server to Azure Blob Storage using AzCopy. Is there a way to do incremental sync so only changed files are transferred?
+
+---
+
+Suggested Response:
+Yes! AzCopy supports incremental sync with the sync command:
+
+azcopy sync "C:\MyData" "https://account.blob.core.windows.net/container?SAS" --recursive
+
+This only transfers new or modified files. Schedule it via Task Scheduler (Windows) or cron (Linux) for daily runs.
+
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+Sync reference: https://learn.microsoft.com/azure/storage/common/storage-ref-azcopy-sync</description>
+    </item>
     <item>
       <title>Reddit r/azure: Best approach for petabyte-scale migration to Azure?</title>
       <link>https://www.reddit.com/r/azure/comments/test012/petabyte_migration</link>
@@ -16,21 +40,11 @@
 Question:
 Best approach for petabyte-scale migration to Azure?
 
-Our org has about 1.5PB of archival data on-prem. We are evaluating Azure Data Box Heavy vs network transfer with AzCopy. Any recommendations from people who have done this scale of migration?
-
 ---
 
 Suggested Response:
-For petabyte-scale migrations, Azure Data Box Heavy is the recommended approach. Each device supports up to 1PB. For 1.5PB you would need two devices.
-
-Steps:
-1. Order Data Box Heavy from Azure portal
-2. Connect to your network and copy data
-3. Ship back to Azure datacenter
-4. Data is uploaded to your storage account
-
-Docs: https://learn.microsoft.com/azure/databox/data-box-heavy-overview
-Migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
+For petabyte-scale, use Azure Data Box Heavy.
+Docs: https://learn.microsoft.com/azure/databox/data-box-heavy-overview</description>
     </item>
     <item>
       <title>Reddit r/azure: Migrating NFS file shares to Azure - best tools?</title>
@@ -49,22 +63,6 @@ Use Azure Storage Mover.
 Docs: https://learn.microsoft.com/azure/storage-mover/</description>
     </item>
     <item>
-      <title>Reddit r/azure: Best way to migrate 10TB from AWS S3 to Azure Blob?</title>
-      <link>https://www.reddit.com/r/azure/comments/test009/best_way_to_migrate_s3</link>
-      <guid isPermaLink="false">test-trigger-009</guid>
-      <pubDate>Thu, 12 Mar 2026 14:39:27 +0000</pubDate>
-      <description>Source: Reddit r/azure
-
-Question:
-Best way to migrate 10TB from AWS S3 to Azure Blob?
-
----
-
-Suggested Response:
-Use AzCopy with S3 source support.
-Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10</description>
-    </item>
-    <item>
       <title>Reddit r/azure: Azure migrate agent</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rqyn9s/azure_migrate_agent/</link>
       <guid isPermaLink="false">t3_1rqyn9s</guid>
@@ -77,56 +75,8 @@ Azure migrate agent
 ---
 
 Suggested Response:
-Use AzCopy for Azure Storage data movement.
+Use AzCopy.
 Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10</description>
-    </item>
-    <item>
-      <title>Reddit r/sysadmin: Active Directory migrate from VMware to Azure Local</title>
-      <link>https://www.reddit.com/r/sysadmin/comments/1rpup6e/active_directory_migrate_from_vmware_to_azure/</link>
-      <guid isPermaLink="false">t3_1rpup6e</guid>
-      <pubDate>Tue, 10 Mar 2026 11:45:36 +0000</pubDate>
-      <description>Source: Reddit r/sysadmin
-
-Question:
-Active Directory migrate from VMware to Azure Local
-
----
-
-Suggested Response:
-Use Azure Migrate.
-Docs: https://learn.microsoft.com/azure/migrate/</description>
-    </item>
-    <item>
-      <title>Reddit r/sysadmin: VMware to Azure migration scenarios post Broadcom acquisition?</title>
-      <link>https://www.reddit.com/r/sysadmin/comments/1rpud6g/vmware_to_azure_migration_scenarios_post_broadcom/</link>
-      <guid isPermaLink="false">t3_1rpud6g</guid>
-      <pubDate>Tue, 10 Mar 2026 11:28:18 +0000</pubDate>
-      <description>Source: Reddit r/sysadmin
-
-Question:
-VMware to Azure migration scenarios post Broadcom acquisition?
-
----
-
-Suggested Response:
-Use Azure Migrate.
-Docs: https://learn.microsoft.com/azure/migrate/</description>
-    </item>
-    <item>
-      <title>Reddit r/cloudcomputing: VMware alternatives or migrate to cloud?</title>
-      <link>https://www.reddit.com/r/cloudcomputing/comments/1rqr1st/vmware_alternatives_or_migrate_to_cloud/</link>
-      <guid isPermaLink="false">t3_1rqr1st</guid>
-      <pubDate>Wed, 11 Mar 2026 11:22:46 +0000</pubDate>
-      <description>Source: Reddit r/cloudcomputing
-
-Question:
-VMware alternatives or migrate to cloud?
-
----
-
-Suggested Response:
-Use Azure Migrate.
-Docs: https://learn.microsoft.com/azure/migrate/</description>
     </item>
   </channel>
 </rss>
