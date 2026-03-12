@@ -1,0 +1,51 @@
+name: Azure Migration Monitor
+
+on:
+  schedule:
+    # Run every 15 minutes
+    - cron: "*/15 * * * *"
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore seen-posts state
+        uses: actions/cache/restore@v4
+        with:
+          path: seen_posts.json
+          key: seen-posts-
+          restore-keys: seen-posts-
+
+      - name: Run monitor
+        env:
+          NOTIFY_METHOD: ${{ vars.NOTIFY_METHOD }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python monitor.py
+
+      - name: Save seen-posts state
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: seen_posts.json
+          key: seen-posts-${{ github.run_id }}

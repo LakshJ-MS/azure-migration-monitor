@@ -1,0 +1,611 @@
+"""
+Azure Storage Migration Query Monitor
+--------------------------------------
+Monitors Reddit, Stack Overflow, and Microsoft community RSS feeds for
+questions about storage migrations to Azure. Sends notifications with
+the question and a suggested response.
+
+Fully free: RSS feeds + GitHub Actions + ntfy.sh notifications.
+"""
+
+import feedparser
+import json
+import os
+import re
+import smtplib
+import urllib.request
+import urllib.parse
+from datetime import datetime, timezone, timedelta
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from html import escape as html_escape
+from pathlib import Path
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
+
+RSS_FEEDS = [
+    # Reddit - Azure subreddit new posts
+    "https://www.reddit.com/r/azure/new/.rss",
+    # Reddit - targeted search: azure storage migration
+    "https://www.reddit.com/r/azure/search.rss?q=storage+migration&restrict_sr=1&sort=new&t=week",
+    # Reddit - sysadmin: azure storage migration
+    "https://www.reddit.com/r/sysadmin/search.rss?q=azure+storage+migration&restrict_sr=1&sort=new&t=week",
+    # Reddit - cloud computing
+    "https://www.reddit.com/r/cloudcomputing/search.rss?q=azure+migration&restrict_sr=1&sort=new&t=week",
+    # Reddit - dataengineering
+    "https://www.reddit.com/r/dataengineering/search.rss?q=azure+storage+migration&restrict_sr=1&sort=new&t=week",
+    # Stack Overflow - azure-storage tag
+    "https://stackoverflow.com/feeds/tag?tagnames=azure-storage&sort=newest",
+    # Stack Overflow - azure-migrate tag
+    "https://stackoverflow.com/feeds/tag?tagnames=azure-migrate&sort=newest",
+    # Microsoft Q&A (add your tag-specific RSS URLs here if available)
+    # "https://learn.microsoft.com/en-us/answers/feeds/tags/azure-storage",
+]
+
+# --- Keyword filters ---
+
+# Tier 1: High-confidence phrases — match alone, no other context needed
+HIGH_CONFIDENCE_PHRASES = [
+    # Azure storage migration tools (just mentioning these = relevant)
+    "azcopy", "az copy", "storage mover", "azure storage mover",
+    "azure file sync", "data box", "azure data box",
+    "azure migrate", "azure site recovery",
+    # Strong migration phrases
+    "on-prem to azure", "on-premises to azure", "on prem to azure",
+    "on-prem to cloud", "on-premises to cloud", "on prem to cloud",
+    "migrate to azure", "migration to azure", "moving to azure",
+    "move to azure", "transfer to azure", "copy to azure",
+    "aws to azure", "s3 to azure", "gcp to azure",
+    "offline migration", "online migration", "lift and shift",
+    "storage migration", "data migration to azure",
+    "migrate storage", "migrate file server",
+    "migrate blob", "migrate file share",
+]
+
+# Tier 2: Broader keywords — need ANY TWO of these three categories
+CATEGORY_A_MIGRATION = [
+    "migrate", "migration", "move data", "transfer data",
+    "copy data", "data movement", "data transfer",
+    "cutover", "replicate", "sync data", "move files",
+    "moving data", "moving files", "transferring",
+    "importing data", "exporting data",
+]
+
+CATEGORY_B_STORAGE = [
+    "storage", "blob", "file share", "file server", "azure files",
+    "data lake", "adls", "s3 bucket", "object storage", "block storage",
+    "managed disk", "nas ", " san ", "smb", "nfs", "cifs",
+    "backup", "archive", "netapp", "file system",
+    "terabyte", " tb ", "petabyte", " pb ",
+    "bucket", "container storage",
+]
+
+CATEGORY_C_INFRA = [
+    # Source/destination infra (NOT just "azure" — too generic)
+    "on-prem", "on-premises", "on premises",
+    "aws", " s3 ", "gcp", "google cloud",
+    "vmware", "hyper-v", "local storage",
+    "datacenter", "data center", "physical server",
+    "colocation", "netapp",
+    "azure storage", "azure blob", "azure files",
+    "azure data lake", "blob storage",
+]
+
+# Posts matching these are excluded (common false positives)
+EXCLUDE_KEYWORDS = [
+    "subscription migration", "migrate subscription",
+    "devops migration", "tfs migration", "migrate pipeline",
+    "migrate work item", "code migration", "sdk migration",
+    "api migration", "migrate project", "project migration",
+    "framework migration", ".net migration", "dotnet migration",
+    "identity migration", "user migration", "auth migration",
+    "jit migration", "jit provisioning",
+    "mobility service agent", "agentless discovery",
+]
+
+# --- Notification settings (set via env vars or GitHub Secrets) ---
+NOTIFY_METHOD = os.getenv("NOTIFY_METHOD", "ntfy")
+
+# ntfy.sh — completely free, no account needed
+# Install the ntfy app on your phone, subscribe to your topic name
+NTFY_TOPIC = os.getenv("NTFY_TOPIC", "azure-migration-monitor")
+
+# Microsoft Teams — Incoming Webhook (free, enterprise-ready)
+TEAMS_WEBHOOK_URL = os.getenv("TEAMS_WEBHOOK_URL", "")
+
+# Discord — free webhook
+DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL", "")
+
+# Email — Gmail SMTP (free with App Password)
+EMAIL_FROM = os.getenv("EMAIL_FROM", "")
+EMAIL_TO = os.getenv("EMAIL_TO", "")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD", "")
+
+# Google Gemini API key (free tier: 15 req/min, 1500 req/day)
+# Leave empty to use template-based responses (no API needed)
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+
+# State file
+STATE_FILE = Path("seen_posts.json")
+MAX_STATE_ENTRIES = 5000
+
+# Only notify about posts created within this many days
+MAX_POST_AGE_DAYS = int(os.getenv("MAX_POST_AGE_DAYS", "7"))
+
+USER_AGENT = "AzureMigrationMonitor/1.0 (GitHub Actions; +https://github.com)"
+
+
+# ============================================================
+# STATE MANAGEMENT
+# ============================================================
+
+def load_seen_posts():
+    """Load set of previously seen post IDs."""
+    if STATE_FILE.exists():
+        try:
+            with open(STATE_FILE, "r", encoding="utf-8") as f:
+                return set(json.load(f))
+        except (json.JSONDecodeError, TypeError):
+            return set()
+    return set()
+
+
+def save_seen_posts(seen):
+    """Save seen post IDs, keeping only the most recent entries."""
+    seen_list = list(seen)[-MAX_STATE_ENTRIES:]
+    with open(STATE_FILE, "w", encoding="utf-8") as f:
+        json.dump(seen_list, f)
+
+
+# ============================================================
+# RSS FEED FETCHING
+# ============================================================
+
+def fetch_feed(url):
+    """Fetch and parse an RSS feed, returning a list of post dicts."""
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            content = resp.read()
+
+        feed = feedparser.parse(content)
+        posts = []
+        for entry in feed.entries:
+            body = entry.get("summary", "")
+            if not body and entry.get("content"):
+                body = entry["content"][0].get("value", "")
+
+            # Strip HTML tags
+            body = re.sub(r"<[^>]+>", " ", body)
+            body = re.sub(r"\s+", " ", body).strip()
+
+            post = {
+                "id": entry.get("id", entry.get("link", "")),
+                "title": entry.get("title", "").strip(),
+                "body": body,
+                "link": entry.get("link", ""),
+                "published": entry.get("published", ""),
+                "source": _extract_source(url),
+            }
+            posts.append(post)
+        return posts
+
+    except Exception as e:
+        print(f"  Error fetching {url}: {e}")
+        return []
+
+
+def _extract_source(url):
+    """Get a human-readable source name from the feed URL."""
+    if "reddit.com" in url:
+        match = re.search(r"/r/(\w+)", url)
+        return f"Reddit r/{match.group(1)}" if match else "Reddit"
+    if "stackoverflow.com" in url:
+        return "Stack Overflow"
+    if "learn.microsoft.com" in url:
+        return "Microsoft Q&A"
+    return url.split("/")[2]
+
+
+def _parse_date(date_str):
+    """Parse various RSS date formats into a datetime."""
+    if not date_str:
+        return None
+    # feedparser provides parsed time tuples we can use as fallback
+    for fmt in [
+        "%Y-%m-%dT%H:%M:%S%z",       # ISO 8601 with tz
+        "%Y-%m-%dT%H:%M:%SZ",        # ISO 8601 UTC
+        "%Y-%m-%dT%H:%M:%S.%f%z",    # ISO 8601 with microseconds
+        "%a, %d %b %Y %H:%M:%S %z",  # RFC 2822
+        "%a, %d %b %Y %H:%M:%S %Z",  # RFC 2822 with tz name
+    ]:
+        try:
+            dt = datetime.strptime(date_str, fmt)
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt
+        except ValueError:
+            continue
+    return None
+
+
+def is_recent(post):
+    """Check if a post was published within MAX_POST_AGE_DAYS."""
+    pub_date = _parse_date(post.get("published", ""))
+    if pub_date is None:
+        # If we can't parse the date, include it (fail open)
+        return True
+    cutoff = datetime.now(timezone.utc) - timedelta(days=MAX_POST_AGE_DAYS)
+    return pub_date >= cutoff
+
+
+# ============================================================
+# KEYWORD FILTERING
+# ============================================================
+
+def is_relevant(post):
+    """Check if a post is about Azure storage migration."""
+    text = f" {post['title']} {post['body']} ".lower()
+    title = f" {post['title']} ".lower()
+
+    # Exclude common false positives first
+    if any(kw in text for kw in EXCLUDE_KEYWORDS):
+        return False
+
+    # Tier 1: High-confidence phrases — match alone
+    if any(phrase in text for phrase in HIGH_CONFIDENCE_PHRASES):
+        return True
+
+    # Tier 2: MIGRATION + (STORAGE or INFRA), but at least one keyword
+    # must appear in the TITLE (prevents matching random words in long posts)
+    has_migration = any(kw in text for kw in CATEGORY_A_MIGRATION)
+    has_storage = any(kw in text for kw in CATEGORY_B_STORAGE)
+    has_infra = any(kw in text for kw in CATEGORY_C_INFRA)
+
+    if has_migration and (has_storage or has_infra):
+        all_tier2 = CATEGORY_A_MIGRATION + CATEGORY_B_STORAGE + CATEGORY_C_INFRA
+        if any(kw in title for kw in all_tier2):
+            return True
+
+    return False
+
+
+# ============================================================
+# RESPONSE GENERATION
+# ============================================================
+
+def generate_response(post):
+    """Generate a suggested response, using Gemini if available."""
+    if GEMINI_API_KEY:
+        ai_response = _generate_gemini_response(post)
+        if ai_response:
+            return ai_response
+    return _generate_template_response(post)
+
+
+def _generate_gemini_response(post):
+    """Call Google Gemini free API for an expert response."""
+    try:
+        url = (
+            "https://generativelanguage.googleapis.com/v1beta/"
+            "models/gemini-2.0-flash:generateContent"
+            f"?key={GEMINI_API_KEY}"
+        )
+        prompt = (
+            "You are a Microsoft Azure storage migration expert replying "
+            "on a community forum. A user posted this question:\n\n"
+            f"Title: {post['title']}\n"
+            f"Body: {post['body'][:2000]}\n\n"
+            "Draft a helpful, accurate, professional response (under 300 words). "
+            "Cover relevant Azure tools:\n"
+            "- AzCopy (online blob/file transfers)\n"
+            "- Azure Storage Mover (managed migration service)\n"
+            "- Azure Data Box (large offline migrations)\n"
+            "- Azure File Sync (file server sync)\n"
+            "- Azure Migrate (VM/server discovery & migration)\n"
+            "Include specific steps and official Microsoft docs links."
+        )
+
+        payload = json.dumps({
+            "contents": [{"parts": [{"text": prompt}]}]
+        }).encode("utf-8")
+
+        req = urllib.request.Request(
+            url, data=payload,
+            headers={"Content-Type": "application/json", "User-Agent": USER_AGENT},
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+            return result["candidates"][0]["content"]["parts"][0]["text"]
+
+    except Exception as e:
+        print(f"  Gemini API error: {e}. Falling back to template.")
+        return None
+
+
+def _generate_template_response(post):
+    """Rule-based response when no LLM API is configured."""
+    text = f" {post['title']} {post['body']} ".lower()
+    lines = ["Here are Azure tools that can help with your migration:\n"]
+
+    if any(w in text for w in ["large", "terabyte", "tb", "petabyte", "pb", "offline", "data box", "ship"]):
+        lines.append(
+            "**Azure Data Box** - For large offline migrations (tens of TBs+). "
+            "Microsoft ships a physical device to your site.\n"
+            "Docs: https://learn.microsoft.com/azure/databox/"
+        )
+
+    if any(w in text for w in ["file server", "file share", "smb", "cifs", "nas", "file sync"]):
+        lines.append(
+            "**Azure File Sync** - Sync on-prem file servers with Azure Files, "
+            "with cloud tiering to free local space.\n"
+            "Docs: https://learn.microsoft.com/azure/storage/file-sync/"
+        )
+
+    if any(w in text for w in ["blob", "s3", "object", "azcopy", "container", "bucket"]):
+        lines.append(
+            "**AzCopy** - Fast CLI tool for copying data to/from Azure Blob Storage. "
+            "Supports direct S3-to-Azure copy.\n"
+            "Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10"
+        )
+
+    if any(w in text for w in ["storage mover", "managed", "agent-based"]):
+        lines.append(
+            "**Azure Storage Mover** - Fully managed migration service with "
+            "agent-based orchestration.\n"
+            "Docs: https://learn.microsoft.com/azure/storage-mover/"
+        )
+
+    if any(w in text for w in ["vm", "server", "vmware", "hyper-v", "virtual machine"]):
+        lines.append(
+            "**Azure Migrate** - Discover, assess, and migrate servers and VMs.\n"
+            "Docs: https://learn.microsoft.com/azure/migrate/"
+        )
+
+    # Always include AzCopy if not already mentioned
+    if not any("AzCopy" in l for l in lines):
+        lines.append(
+            "**AzCopy** - Versatile CLI tool for Azure Storage data movement.\n"
+            "Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10"
+        )
+
+    lines.append(
+        "\nFull migration guide: "
+        "https://learn.microsoft.com/azure/storage/common/storage-migration-overview"
+    )
+
+    return "\n\n".join(lines)
+
+
+# ============================================================
+# NOTIFICATIONS
+# ============================================================
+
+def send_notification(post, response):
+    """Route notification to the configured channel."""
+    try:
+        if NOTIFY_METHOD == "teams":
+            _notify_teams(post, response)
+        elif NOTIFY_METHOD == "ntfy":
+            _notify_ntfy(post, response)
+        elif NOTIFY_METHOD == "discord":
+            _notify_discord(post, response)
+        elif NOTIFY_METHOD == "email":
+            _notify_email(post, response)
+        else:
+            print(f"  Unknown NOTIFY_METHOD: {NOTIFY_METHOD}")
+    except Exception as e:
+        print(f"  Notification error ({NOTIFY_METHOD}): {e}")
+
+
+def _notify_ntfy(post, response):
+    """Send via ntfy.sh (free, no account)."""
+    message = (
+        f"Source: {post['source']}\n\n"
+        f"Question:\n{post['title']}\n\n"
+        f"{post['body'][:500]}\n\n"
+        f"---\nSuggested Response:\n{response[:1500]}\n\n"
+        f"Link: {post['link']}"
+    )
+
+    req = urllib.request.Request(
+        f"https://ntfy.sh/{urllib.parse.quote(NTFY_TOPIC, safe='')}",
+        data=message.encode("utf-8"),
+        headers={
+            "Title": f"Azure Migration Query: {post['title'][:60]}",
+            "Priority": "high",
+            "Tags": "cloud,mag",
+            "Click": post["link"],
+            "User-Agent": USER_AGENT,
+        },
+    )
+    urllib.request.urlopen(req, timeout=10)
+    print("  Sent ntfy notification")
+
+
+def _notify_teams(post, response):
+    """Send via Microsoft Teams Incoming Webhook."""
+    if not TEAMS_WEBHOOK_URL:
+        print("  TEAMS_WEBHOOK_URL not set, skipping")
+        return
+
+    # Adaptive Card payload for Teams
+    payload = {
+        "type": "message",
+        "attachments": [{
+            "contentType": "application/vnd.microsoft.card.adaptive",
+            "content": {
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                "type": "AdaptiveCard",
+                "version": "1.4",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "text": "Azure Migration Query Detected",
+                        "weight": "Bolder",
+                        "size": "Large",
+                        "color": "Accent",
+                    },
+                    {
+                        "type": "FactSet",
+                        "facts": [
+                            {"title": "Source", "value": post["source"]},
+                            {"title": "Title", "value": post["title"][:100]},
+                        ],
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "**Question:**",
+                        "weight": "Bolder",
+                        "spacing": "Medium",
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": post["body"][:500] or "See link for details",
+                        "wrap": True,
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "**Suggested Response:**",
+                        "weight": "Bolder",
+                        "spacing": "Medium",
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": response[:1500],
+                        "wrap": True,
+                    },
+                ],
+                "actions": [
+                    {
+                        "type": "Action.OpenUrl",
+                        "title": "Open Post",
+                        "url": post["link"],
+                    }
+                ],
+            },
+        }],
+    }
+
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        TEAMS_WEBHOOK_URL,
+        data=data,
+        headers={"Content-Type": "application/json", "User-Agent": USER_AGENT},
+    )
+    urllib.request.urlopen(req, timeout=15)
+    print("  Sent Teams notification")
+
+
+def _notify_discord(post, response):
+    """Send via Discord webhook (free)."""
+    if not DISCORD_WEBHOOK_URL:
+        print("  DISCORD_WEBHOOK_URL not set, skipping")
+        return
+
+    payload = {
+        "embeds": [{
+            "title": post["title"][:256],
+            "url": post["link"],
+            "color": 0x0078D4,
+            "fields": [
+                {"name": "Source", "value": post["source"], "inline": True},
+                {"name": "Question", "value": (post["body"][:1000] or "See link"), "inline": False},
+                {"name": "Suggested Response", "value": response[:1000], "inline": False},
+            ],
+            "footer": {"text": "Azure Migration Monitor"},
+        }]
+    }
+
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        DISCORD_WEBHOOK_URL,
+        data=data,
+        headers={"Content-Type": "application/json", "User-Agent": USER_AGENT},
+    )
+    urllib.request.urlopen(req, timeout=10)
+    print("  Sent Discord notification")
+
+
+def _notify_email(post, response):
+    """Send via Gmail SMTP (free with App Password)."""
+    if not all([EMAIL_FROM, EMAIL_TO, EMAIL_PASSWORD]):
+        print("  Email credentials not set, skipping")
+        return
+
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = f"Azure Migration Query: {post['title'][:80]}"
+    msg["From"] = EMAIL_FROM
+    msg["To"] = EMAIL_TO
+
+    safe_title = html_escape(post["title"])
+    safe_body = html_escape(post["body"][:2000])
+    safe_response = html_escape(response)
+    safe_link = html_escape(post["link"])
+    safe_source = html_escape(post["source"])
+
+    html = f"""<html><body>
+    <h2>New Azure Migration Query</h2>
+    <p><b>Source:</b> {safe_source}</p>
+    <p><b>Link:</b> <a href="{safe_link}">{safe_link}</a></p>
+    <h3>Question</h3>
+    <p><b>{safe_title}</b></p>
+    <p>{safe_body}</p>
+    <h3>Suggested Response</h3>
+    <pre>{safe_response}</pre>
+    </body></html>"""
+
+    msg.attach(MIMEText(html, "html"))
+
+    with smtplib.SMTP("smtp.gmail.com", 587) as server:
+        server.starttls()
+        server.login(EMAIL_FROM, EMAIL_PASSWORD)
+        server.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
+    print("  Sent email notification")
+
+
+# ============================================================
+# MAIN
+# ============================================================
+
+def main():
+    print(f"=== Azure Migration Monitor — {datetime.now(timezone.utc).isoformat()} ===\n")
+
+    seen = load_seen_posts()
+    initial_seen_count = len(seen)
+    new_relevant = []
+
+    for feed_url in RSS_FEEDS:
+        print(f"Fetching: {feed_url}")
+        posts = fetch_feed(feed_url)
+        print(f"  Got {len(posts)} posts")
+
+        for post in posts:
+            if post["id"] in seen:
+                continue
+            seen.add(post["id"])
+
+            if not is_recent(post):
+                continue
+
+            if is_relevant(post):
+                print(f"  MATCH: {post['title'][:80]}  ({post['published'][:10]})")
+                new_relevant.append(post)
+
+    print(f"\nNew posts scanned: {len(seen) - initial_seen_count}")
+    print(f"Relevant matches:  {len(new_relevant)}\n")
+
+    for post in new_relevant:
+        print(f"Processing: {post['title'][:80]}")
+        response = generate_response(post)
+        send_notification(post, response)
+        print()
+
+    save_seen_posts(seen)
+    print("Done.")
+
+
+if __name__ == "__main__":
+    main()
