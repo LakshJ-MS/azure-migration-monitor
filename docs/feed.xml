@@ -1,30 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
     <title>Azure Migration Monitor</title>
-    <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
-    <lastBuildDate>Thu, 12 Mar 2026 14:10:00 +0000</lastBuildDate>
+    <description>Azure storage migration queries with suggested responses.</description>
+    <lastBuildDate>Thu, 12 Mar 2026 14:09:15 +0000</lastBuildDate>
     <item>
       <title>Reddit r/azure: How to migrate on-prem file server to Azure Files?</title>
       <link>https://www.reddit.com/r/azure/test_post_001</link>
-      <guid isPermaLink="false">test-trigger-006</guid>
-      <pubDate>Thu, 12 Mar 2026 14:10:00 +0000</pubDate>
+      <guid isPermaLink="false">test-trigger-007</guid>
+      <pubDate>Thu, 12 Mar 2026 14:09:15 +0000</pubDate>
       <description>Source: Reddit r/azure
 
 Question:
 How to migrate on-prem file server to Azure Files?
 
-We have about 5TB of data on our on-prem file server and need to move it to Azure Files. What is the best approach?
+We have about 5TB on our file server. What is the best approach?
 
 ---
 
 Suggested Response:
-You can use AzCopy to migrate your on-premises file server to Azure Files. Steps:
-1. Install AzCopy: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
-2. Create an Azure Files share in the Azure portal
-3. Generate a SAS token
-4. Run: azcopy copy source destination --recursive
-Full guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
+Use AzCopy to migrate to Azure Files.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10</description>
     </item>
   </channel>
 </rss>
