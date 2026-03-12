@@ -5,7 +5,29 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 12 Mar 2026 15:13:58 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 16:25:05 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Migrate SQL Server to Azure SQL - offline vs online?</title>
+      <link>https://www.reddit.com/r/azure/comments/test014/sql_migration_offline_online</link>
+      <guid isPermaLink="false">test-trigger-014</guid>
+      <pubDate>Thu, 12 Mar 2026 16:25:05 +0000</pubDate>
+      <description>Source: Reddit r/azure
+
+Question:
+Migrate SQL Server to Azure SQL - offline vs online?
+
+We have a 500GB SQL Server on-prem and need to move it to Azure SQL. Should we do an offline migration with bacpac export or online with Azure Database Migration Service? Downtime window is about 2 hours.
+
+---
+
+Suggested Response:
+With a 2-hour downtime window and 500GB, online migration via Azure Database Migration Service (DMS) is recommended. It does continuous sync and cuts over with minimal downtime.
+
+For offline, bacpac works but 500GB export/import may exceed your 2-hour window.
+
+Docs: https://learn.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql
+Migration guide: https://learn.microsoft.com/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-overview</description>
+    </item>
     <item>
       <title>Reddit r/azure: How to use AzCopy to sync on-prem data daily?</title>
       <link>https://www.reddit.com/r/azure/comments/test013/azcopy_daily_sync</link>
@@ -16,66 +38,11 @@
 Question:
 How to use AzCopy to sync on-prem data daily?
 
-We want to set up a daily sync from our on-prem file server to Azure Blob Storage using AzCopy. Is there a way to do incremental sync so only changed files are transferred?
-
 ---
 
 Suggested Response:
-Yes! AzCopy supports incremental sync with the sync command:
+Yes! AzCopy supports incremental sync with the sync command.
 
-azcopy sync "C:\MyData" "https://account.blob.core.windows.net/container?SAS" --recursive
-
-This only transfers new or modified files. Schedule it via Task Scheduler (Windows) or cron (Linux) for daily runs.
-
-Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
-Sync reference: https://learn.microsoft.com/azure/storage/common/storage-ref-azcopy-sync</description>
-    </item>
-    <item>
-      <title>Reddit r/azure: Best approach for petabyte-scale migration to Azure?</title>
-      <link>https://www.reddit.com/r/azure/comments/test012/petabyte_migration</link>
-      <guid isPermaLink="false">test-trigger-012</guid>
-      <pubDate>Thu, 12 Mar 2026 15:02:02 +0000</pubDate>
-      <description>Source: Reddit r/azure
-
-Question:
-Best approach for petabyte-scale migration to Azure?
-
----
-
-Suggested Response:
-For petabyte-scale, use Azure Data Box Heavy.
-Docs: https://learn.microsoft.com/azure/databox/data-box-heavy-overview</description>
-    </item>
-    <item>
-      <title>Reddit r/azure: Migrating NFS file shares to Azure - best tools?</title>
-      <link>https://www.reddit.com/r/azure/comments/test010/migrating_nfs_shares</link>
-      <guid isPermaLink="false">test-trigger-010</guid>
-      <pubDate>Thu, 12 Mar 2026 14:52:58 +0000</pubDate>
-      <description>Source: Reddit r/azure
-
-Question:
-Migrating NFS file shares to Azure - best tools?
-
----
-
-Suggested Response:
-Use Azure Storage Mover.
-Docs: https://learn.microsoft.com/azure/storage-mover/</description>
-    </item>
-    <item>
-      <title>Reddit r/azure: Azure migrate agent</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1rqyn9s/azure_migrate_agent/</link>
-      <guid isPermaLink="false">t3_1rqyn9s</guid>
-      <pubDate>Wed, 11 Mar 2026 16:32:37 +0000</pubDate>
-      <description>Source: Reddit r/azure
-
-Question:
-Azure migrate agent
-
----
-
-Suggested Response:
-Use AzCopy.
 Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10</description>
     </item>
   </channel>
