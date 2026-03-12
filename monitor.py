@@ -13,6 +13,7 @@ import json
 import os
 import re
 import smtplib
+import time
 import urllib.request
 import urllib.parse
 from datetime import datetime, timezone, timedelta
@@ -48,10 +49,13 @@ RSS_FEEDS = [
 
 # Tier 1: High-confidence phrases — match alone, no other context needed
 HIGH_CONFIDENCE_PHRASES = [
-    # Azure storage migration tools (just mentioning these = relevant)
-    "azcopy", "az copy", "storage mover", "azure storage mover",
-    "azure file sync", "data box", "databox", "azure data box",
-    "azure migrate", "azure site recovery",
+    # Azure storage migration tools — all name variants
+    "azcopy", "az copy", "azcopy10",
+    "storage mover", "azure storage mover", "storagemover",
+    "azure file sync", "file sync agent",
+    "data box", "databox", "azure data box", "azure databox",
+    "data box heavy", "data box disk", "data box gateway",
+    "azure migrate", "azure site recovery", "asr migration",
     # Strong migration phrases
     "on-prem to azure", "on-premises to azure", "on prem to azure",
     "on-prem to cloud", "on-premises to cloud", "on prem to cloud",
@@ -169,38 +173,47 @@ def save_seen_posts(seen):
 # RSS FEED FETCHING
 # ============================================================
 
-def fetch_feed(url):
-    """Fetch and parse an RSS feed, returning a list of post dicts."""
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            content = resp.read()
+def fetch_feed(url, retries=2):
+    """Fetch and parse an RSS feed with retry for rate limiting."""
+    for attempt in range(retries + 1):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                content = resp.read()
 
-        feed = feedparser.parse(content)
-        posts = []
-        for entry in feed.entries:
-            body = entry.get("summary", "")
-            if not body and entry.get("content"):
-                body = entry["content"][0].get("value", "")
+            feed = feedparser.parse(content)
+            posts = []
+            for entry in feed.entries:
+                body = entry.get("summary", "")
+                if not body and entry.get("content"):
+                    body = entry["content"][0].get("value", "")
 
-            # Strip HTML tags
-            body = re.sub(r"<[^>]+>", " ", body)
-            body = re.sub(r"\s+", " ", body).strip()
+                # Strip HTML tags
+                body = re.sub(r"<[^>]+>", " ", body)
+                body = re.sub(r"\s+", " ", body).strip()
 
-            post = {
-                "id": entry.get("id", entry.get("link", "")),
-                "title": entry.get("title", "").strip(),
-                "body": body,
-                "link": entry.get("link", ""),
-                "published": entry.get("published", ""),
-                "source": _extract_source(url),
-            }
-            posts.append(post)
-        return posts
+                post = {
+                    "id": entry.get("id", entry.get("link", "")),
+                    "title": entry.get("title", "").strip(),
+                    "body": body,
+                    "link": entry.get("link", ""),
+                    "published": entry.get("published", ""),
+                    "source": _extract_source(url),
+                }
+                posts.append(post)
+            return posts
 
-    except Exception as e:
-        print(f"  Error fetching {url}: {e}")
-        return []
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < retries:
+                wait = 10 * (attempt + 1)
+                print(f"  Rate limited (429) on {url}, retrying in {wait}s...")
+                time.sleep(wait)
+                continue
+            print(f"  Error fetching {url}: {e}")
+            return []
+        except Exception as e:
+            print(f"  Error fetching {url}: {e}")
+            return []
 
 
 def _extract_source(url):
@@ -739,6 +752,10 @@ def main():
             if is_relevant(post):
                 print(f"  MATCH: {post['title'][:80]}  ({post['published'][:10]})")
                 new_relevant.append(post)
+
+        # Small delay between feeds to avoid Reddit rate limiting
+        if "reddit.com" in feed_url:
+            time.sleep(3)
 
     print(f"\nNew posts scanned: {len(seen) - initial_seen_count}")
     print(f"Relevant matches:  {len(new_relevant)}\n")
