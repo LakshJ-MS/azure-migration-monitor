@@ -693,12 +693,15 @@ def write_feed(processed_posts):
     all_items = unique_items[:MAX_FEED_ITEMS]
 
     now = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S %z")
+    feed_url = "https://lakshj-ms.github.io/azure-migration-monitor/feed.xml"
     feed_xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<rss version="2.0">\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
         '  <channel>\n'
         '    <title>Azure Migration Monitor</title>\n'
+        f'    <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>\n'
         '    <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>\n'
+        f'    <atom:link href="{feed_url}" rel="self" type="application/rss+xml"/>\n'
         f'    <lastBuildDate>{now}</lastBuildDate>\n'
         f'{chr(10).join(all_items)}\n'
         '  </channel>\n'

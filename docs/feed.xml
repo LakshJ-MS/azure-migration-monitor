@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Azure Migration Monitor</title>
-    <description>Azure storage migration queries with suggested responses.</description>
-    <lastBuildDate>Thu, 12 Mar 2026 14:55:00 +0000</lastBuildDate>
+    <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
+    <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
+    <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Thu, 12 Mar 2026 15:02:02 +0000</lastBuildDate>
     <item>
-      <title>Reddit r/azure: Moving 50TB from on-prem NetApp to Azure Blob</title>
-      <link>https://www.reddit.com/r/azure/comments/test011/moving_netapp_to_azure</link>
-      <guid isPermaLink="false">test-trigger-011</guid>
-      <pubDate>Thu, 12 Mar 2026 14:55:00 +0000</pubDate>
+      <title>Reddit r/azure: Best approach for petabyte-scale migration to Azure?</title>
+      <link>https://www.reddit.com/r/azure/comments/test012/petabyte_migration</link>
+      <guid isPermaLink="false">test-trigger-012</guid>
+      <pubDate>Thu, 12 Mar 2026 15:02:02 +0000</pubDate>
       <description>Source: Reddit r/azure
 
 Question:
-Moving 50TB from on-prem NetApp to Azure Blob
+Best approach for petabyte-scale migration to Azure?
 
-We have a NetApp filer with about 50TB of data. Need to migrate everything to Azure Blob Storage. Is Data Box the right choice or can we do this over the network?
+Our org has about 1.5PB of archival data on-prem. We are evaluating Azure Data Box Heavy vs network transfer with AzCopy. Any recommendations from people who have done this scale of migration?
 
 ---
 
 Suggested Response:
-For 50TB, Azure Data Box is recommended - it avoids network bandwidth limitations. Order a Data Box device, copy your data locally, ship it to Azure. For smaller datasets or ongoing sync, use AzCopy.
-Docs: https://learn.microsoft.com/azure/databox/
-AzCopy: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10</description>
+For petabyte-scale migrations, Azure Data Box Heavy is the recommended approach. Each device supports up to 1PB. For 1.5PB you would need two devices.
+
+Steps:
+1. Order Data Box Heavy from Azure portal
+2. Connect to your network and copy data
+3. Ship back to Azure datacenter
+4. Data is uploaded to your storage account
+
+Docs: https://learn.microsoft.com/azure/databox/data-box-heavy-overview
+Migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
     </item>
     <item>
       <title>Reddit r/azure: Migrating NFS file shares to Azure - best tools?</title>
@@ -33,20 +42,11 @@ AzCopy: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10<
 Question:
 Migrating NFS file shares to Azure - best tools?
 
-We have several NFS shares totaling about 2TB that we need to migrate to Azure. Should we use Azure Storage Mover, AzCopy, or something else? Looking for the most reliable approach.
-
 ---
 
 Suggested Response:
-For NFS share migration to Azure, Azure Storage Mover is purpose-built for this:
-1. Deploy a Storage Mover agent on-premises
-2. Register it with an Azure Storage Mover resource
-3. Define your NFS source and Azure target (Blob or Azure Files)
-4. Create and run a migration job
-
-Docs: https://learn.microsoft.com/azure/storage-mover/
-Alternative: AzCopy also works well for one-time transfers.
-Guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
+Use Azure Storage Mover.
+Docs: https://learn.microsoft.com/azure/storage-mover/</description>
     </item>
     <item>
       <title>Reddit r/azure: Best way to migrate 10TB from AWS S3 to Azure Blob?</title>
@@ -58,15 +58,10 @@ Guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overvi
 Question:
 Best way to migrate 10TB from AWS S3 to Azure Blob?
 
-We need to move roughly 10TB of data from S3 to Azure Blob Storage. Is AzCopy the best option or should we use Azure Data Factory?
-
 ---
 
 Suggested Response:
-For a 10TB S3-to-Azure migration, AzCopy is your best bet for a direct transfer. It natively supports S3 as a source:
-azcopy copy "https://s3.amazonaws.com/mybucket" "https://myaccount.blob.core.windows.net/container?SAS" --recursive
-
-For ongoing sync or scheduled transfers, Azure Data Factory is better.
+Use AzCopy with S3 source support.
 Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10</description>
     </item>
     <item>
@@ -78,8 +73,6 @@ Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10</d
 
 Question:
 Azure migrate agent
-
-I am trying to run the DRappliance script to start migrating severs over to Azure and I am getting push back on the OS version.
 
 ---
 
@@ -100,7 +93,7 @@ Active Directory migrate from VMware to Azure Local
 ---
 
 Suggested Response:
-Use Azure Migrate to discover, assess, and migrate servers.
+Use Azure Migrate.
 Docs: https://learn.microsoft.com/azure/migrate/</description>
     </item>
     <item>
@@ -116,7 +109,7 @@ VMware to Azure migration scenarios post Broadcom acquisition?
 ---
 
 Suggested Response:
-Use Azure Migrate for VMware to Azure migrations.
+Use Azure Migrate.
 Docs: https://learn.microsoft.com/azure/migrate/</description>
     </item>
     <item>
@@ -132,7 +125,7 @@ VMware alternatives or migrate to cloud?
 ---
 
 Suggested Response:
-Use Azure Migrate for cloud migration.
+Use Azure Migrate.
 Docs: https://learn.microsoft.com/azure/migrate/</description>
     </item>
   </channel>
