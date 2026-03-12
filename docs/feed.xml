@@ -3,28 +3,31 @@
   <channel>
     <title>Azure Migration Monitor</title>
     <description>Azure storage migration queries with suggested responses.</description>
-    <lastBuildDate>Thu, 12 Mar 2026 14:45:05 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 14:52:58 +0000</lastBuildDate>
     <item>
-      <title>Reddit r/azure: Migrating NFS file shares to Azure using Storage Mover</title>
+      <title>Reddit r/azure: Migrating NFS file shares to Azure - best tools?</title>
       <link>https://www.reddit.com/r/azure/comments/test010/migrating_nfs_shares</link>
       <guid isPermaLink="false">test-trigger-010</guid>
-      <pubDate>Thu, 12 Mar 2026 14:45:05 +0000</pubDate>
+      <pubDate>Thu, 12 Mar 2026 14:52:58 +0000</pubDate>
       <description>Source: Reddit r/azure
 
 Question:
-Migrating NFS file shares to Azure using Storage Mover
+Migrating NFS file shares to Azure - best tools?
 
-Has anyone used Azure Storage Mover for NFS shares? We have about 20TB across multiple NFS exports and need to move them to Azure Files NFS.
+We have several NFS shares totaling about 2TB that we need to migrate to Azure. Should we use Azure Storage Mover, AzCopy, or something else? Looking for the most reliable approach.
 
 ---
 
 Suggested Response:
-Azure Storage Mover is designed for this. Steps:
-1. Deploy a Storage Mover agent on-prem
-2. Register with Azure Storage Mover service
-3. Define source (NFS) and target (Azure Files NFS) endpoints
+For NFS share migration to Azure, Azure Storage Mover is purpose-built for this:
+1. Deploy a Storage Mover agent on-premises
+2. Register it with an Azure Storage Mover resource
+3. Define your NFS source and Azure target (Blob or Azure Files)
 4. Create and run a migration job
-Docs: https://learn.microsoft.com/azure/storage-mover/</description>
+
+Docs: https://learn.microsoft.com/azure/storage-mover/
+Alternative: AzCopy also works well for one-time transfers.
+Guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview</description>
     </item>
     <item>
       <title>Reddit r/azure: Best way to migrate 10TB from AWS S3 to Azure Blob?</title>
@@ -42,7 +45,6 @@ We need to move roughly 10TB of data from S3 to Azure Blob Storage. Is AzCopy th
 
 Suggested Response:
 For a 10TB S3-to-Azure migration, AzCopy is your best bet for a direct transfer. It natively supports S3 as a source:
-
 azcopy copy "https://s3.amazonaws.com/mybucket" "https://myaccount.blob.core.windows.net/container?SAS" --recursive
 
 For ongoing sync or scheduled transfers, Azure Data Factory is better.
@@ -52,7 +54,7 @@ Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10</d
       <title>Reddit r/azure: Azure migrate agent</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rqyn9s/azure_migrate_agent/</link>
       <guid isPermaLink="false">t3_1rqyn9s</guid>
-      <pubDate>Tue, 11 Mar 2026 16:32:37 +0000</pubDate>
+      <pubDate>Wed, 11 Mar 2026 16:32:37 +0000</pubDate>
       <description>Source: Reddit r/azure
 
 Question:
@@ -70,7 +72,7 @@ Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10</d
       <title>Reddit r/sysadmin: Active Directory migrate from VMware to Azure Local</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1rpup6e/active_directory_migrate_from_vmware_to_azure/</link>
       <guid isPermaLink="false">t3_1rpup6e</guid>
-      <pubDate>Mon, 10 Mar 2026 11:45:36 +0000</pubDate>
+      <pubDate>Tue, 10 Mar 2026 11:45:36 +0000</pubDate>
       <description>Source: Reddit r/sysadmin
 
 Question:
@@ -86,7 +88,7 @@ Docs: https://learn.microsoft.com/azure/migrate/</description>
       <title>Reddit r/sysadmin: VMware to Azure migration scenarios post Broadcom acquisition?</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1rpud6g/vmware_to_azure_migration_scenarios_post_broadcom/</link>
       <guid isPermaLink="false">t3_1rpud6g</guid>
-      <pubDate>Mon, 10 Mar 2026 11:28:18 +0000</pubDate>
+      <pubDate>Tue, 10 Mar 2026 11:28:18 +0000</pubDate>
       <description>Source: Reddit r/sysadmin
 
 Question:
@@ -102,7 +104,7 @@ Docs: https://learn.microsoft.com/azure/migrate/</description>
       <title>Reddit r/cloudcomputing: VMware alternatives or migrate to cloud?</title>
       <link>https://www.reddit.com/r/cloudcomputing/comments/1rqr1st/vmware_alternatives_or_migrate_to_cloud/</link>
       <guid isPermaLink="false">t3_1rqr1st</guid>
-      <pubDate>Tue, 11 Mar 2026 11:22:46 +0000</pubDate>
+      <pubDate>Wed, 11 Mar 2026 11:22:46 +0000</pubDate>
       <description>Source: Reddit r/cloudcomputing
 
 Question:
