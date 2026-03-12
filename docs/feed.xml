@@ -5,7 +5,38 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 12 Mar 2026 22:01:21 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 22:46:47 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Private Preview: Azure Storage Mover now supports private data transfers from AWS S3</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1rs5opd/private_preview_azure_storage_mover_now_supports/</link>
+      <guid isPermaLink="false">t3_1rs5opd</guid>
+      <pubDate>Thu, 12 Mar 2026 22:37:57 +0000</pubDate>
+      <description>Source: Reddit r/azure
+
+Question:
+Private Preview: Azure Storage Mover now supports private data transfers from AWS S3
+
+Microsoft just announced that this feature is now in private preview. Last year, they announced Storage Mover for AWS to Azure, but it was missing private network support, and now it has it! I wrote an article explaining what it is and what it does: https://larsschouwenaars.com/2026/03/12/private-preview-azure-storage-mover-now-supports-private-data-transfers-from-aws-s3/￼ In my opinion, this is an important feature! &amp;#32; submitted by &amp;#32; /u/lschouwenaars [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Thanks for sharing this update! The addition of private network support for Azure Storage Mover is indeed an exciting development for securely transferring data from AWS S3 to Azure.
+
+Azure Storage Mover is a fully managed service for migrating on-premises file shares to Azure (learn more [here](https://learn.microsoft.com/en-us/azure/storage-mover/)). With this private preview, it seems Microsoft is now enabling secure and private data transfers using Azure Private Link, which ensures traffic remains on Microsoft&apos;s private backbone network.
+
+For those unfamiliar with Azure Private Link, it allows you to securely connect to Azure services (like Azure Storage) using private endpoints. This ensures that your data transfer happens over a private connection, adding an extra layer of security. You can learn more about private endpoints and Azure Private Link [here](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview).
+
+If you&apos;re planning to use this feature, here are some general steps you might want to follow:
+
+1. **Set up Azure Storage Mover**: Get started with Azure Storage Mover to connect your AWS S3 source and Azure destination. Refer to the [Azure Storage Mover documentation](https://learn.microsoft.com/en-us/azure/storage-mover/) for setup guidance.
+   
+2. **Enable Private Endpoint for Azure Storage**: Create a private endpoint for your Azure Storage account to ensure secure access. Follow the steps in the [Private Endpoint Overview](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview).
+
+3. **Plan for TLS 1.2**: If you&apos;re transferring data to Azure Blob Storage, note that only TLS 1.2 will be supported after February 3, 2026. Ensure your configurations are compatible. Details are available [here](https://learn.microsoft.com/en-us/azure/storage/common/transport-layer-security-configure-migrate-to-tls2).
+
+This feature is a significant step for organizations prioritizing security and privacy during migrations. If you&apos;re part of the private preview, it&apos;d be great to hear how it works out for you!</description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Data Box 120 and 525TB - copy speeds and managed disk migration</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rrwh5y/azure_data_box_new_devices_review/</link>
