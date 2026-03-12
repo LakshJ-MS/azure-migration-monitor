@@ -55,6 +55,7 @@ HIGH_CONFIDENCE_PHRASES = [
     "azure file sync", "file sync agent",
     "data box", "databox", "azure data box", "azure databox",
     "data box heavy", "data box disk", "data box gateway",
+    "data box 120", "data box 525",
     "azure migrate", "azure site recovery", "asr migration",
     # Strong migration phrases
     "on-prem to azure", "on-premises to azure", "on prem to azure",
