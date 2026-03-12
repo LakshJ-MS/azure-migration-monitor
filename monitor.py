@@ -653,7 +653,12 @@ def write_feed(processed_posts):
     # Build new <item> entries
     new_items = []
     for post, response in processed_posts:
-        pub_date = post.get("published", datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S %z"))
+        raw_date = post.get("published", "")
+        # Always convert to RFC 2822 format (required by RSS spec)
+        parsed = _parse_date(raw_date) if raw_date else None
+        if parsed is None:
+            parsed = datetime.now(timezone.utc)
+        pub_date = parsed.strftime("%a, %d %b %Y %H:%M:%S %z")
         description = (
             f"Source: {_xml_escape(post['source'])}\n\n"
             f"Question:\n{_xml_escape(post['title'])}\n\n"

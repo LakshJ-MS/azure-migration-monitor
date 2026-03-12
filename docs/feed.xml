@@ -3,7 +3,25 @@
   <channel>
     <title>Azure Migration Monitor</title>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
-    <lastBuildDate>Fri, 13 Mar 2026 04:15:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 04:45:00 +0000</lastBuildDate>
+    <item>
+      <title>TEST 5: Fresh Pipeline Test After Date Fix</title>
+      <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
+      <guid isPermaLink="false">test-item-005</guid>
+      <pubDate>Fri, 13 Mar 2026 04:45:00 +0000</pubDate>
+      <description>Source: Test
+
+Question:
+How do I migrate data from AWS S3 to Azure Blob Storage?
+
+---
+
+Suggested Response:
+You can use AzCopy to transfer data from AWS S3 directly to Azure Blob Storage:
+1. Install AzCopy
+2. Run: azcopy copy "https://s3.amazonaws.com/mybucket" "https://myaccount.blob.core.windows.net/mycontainer?SAS" --recursive
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-s3</description>
+    </item>
     <item>
       <title>TEST 4: Verifying Teams Notification Pipeline</title>
       <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
@@ -43,7 +61,7 @@ If you see this message in your Teams channel, the full pipeline is working: Git
       <title>Reddit r/azure: Azure migrate agent</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rqyn9s/azure_migrate_agent/</link>
       <guid isPermaLink="false">t3_1rqyn9s</guid>
-      <pubDate>2026-03-11T16:32:37+00:00</pubDate>
+      <pubDate>Tue, 11 Mar 2026 16:32:37 +0000</pubDate>
       <description>Source: Reddit r/azure
 
 Question:
@@ -67,7 +85,7 @@ Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-m
       <title>Reddit r/sysadmin: Active Directory migrate from VMware to Azure Local</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1rpup6e/active_directory_migrate_from_vmware_to_azure/</link>
       <guid isPermaLink="false">t3_1rpup6e</guid>
-      <pubDate>2026-03-10T11:45:36+00:00</pubDate>
+      <pubDate>Mon, 10 Mar 2026 11:45:36 +0000</pubDate>
       <description>Source: Reddit r/sysadmin
 
 Question:
@@ -94,7 +112,7 @@ Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-m
       <title>Reddit r/sysadmin: VMware to Azure migration scenarios post Broadcom acquisition?</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1rpud6g/vmware_to_azure_migration_scenarios_post_broadcom/</link>
       <guid isPermaLink="false">t3_1rpud6g</guid>
-      <pubDate>2026-03-10T11:28:18+00:00</pubDate>
+      <pubDate>Mon, 10 Mar 2026 11:28:18 +0000</pubDate>
       <description>Source: Reddit r/sysadmin
 
 Question:
@@ -121,7 +139,7 @@ Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-m
       <title>Reddit r/cloudcomputing: VMware alternatives or migrate to cloud?</title>
       <link>https://www.reddit.com/r/cloudcomputing/comments/1rqr1st/vmware_alternatives_or_migrate_to_cloud/</link>
       <guid isPermaLink="false">t3_1rqr1st</guid>
-      <pubDate>2026-03-11T11:22:46+00:00</pubDate>
+      <pubDate>Tue, 11 Mar 2026 11:22:46 +0000</pubDate>
       <description>Source: Reddit r/cloudcomputing
 
 Question:
