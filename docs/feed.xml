@@ -3,7 +3,22 @@
   <channel>
     <title>Azure Migration Monitor</title>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
-    <lastBuildDate>Thu, 12 Mar 2026 13:38:17 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 23:00:00 +0000</lastBuildDate>
+    <item>
+      <title>TEST: Pipeline Verification - Azure Storage Migration Monitor</title>
+      <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
+      <guid isPermaLink="false">test-item-pipeline-verification-003</guid>
+      <pubDate>Thu, 12 Mar 2026 23:00:00 +0000</pubDate>
+      <description>Source: Test
+
+Question:
+This is a test item to verify the Power Automate pipeline is working correctly.
+
+---
+
+Suggested Response:
+If you see this message in your Teams channel, the full pipeline is working: GitHub Pages RSS feed to Power Automate to Teams. You can delete this test message.</description>
+    </item>
     <item>
       <title>Reddit r/azure: Azure migrate agent</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rqyn9s/azure_migrate_agent/</link>
