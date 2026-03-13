@@ -38,6 +38,26 @@ RSS_FEEDS = [
     "https://stackoverflow.com/feeds/tag?tagnames=azure-storage&sort=newest",
     # Stack Overflow - azure-migrate tag
     "https://stackoverflow.com/feeds/tag?tagnames=azure-migrate&sort=newest",
+    # Stack Overflow - azcopy tag
+    "https://stackoverflow.com/feeds/tag?tagnames=azcopy&sort=newest",
+    # Server Fault - azure tag (sysadmins doing migrations)
+    "https://serverfault.com/feeds/tag/azure",
+]
+
+# Microsoft Q&A — searched via Learn Search API with QnA category filter
+# Each query is searched separately; results go through is_relevant() like RSS posts
+MSQA_SEARCH_QUERIES = [
+    "azure storage migration",
+    "azure data box",
+    "azcopy",
+    "azure migrate",
+    "azure file sync",
+    "azure storage mover",
+    "migrate to azure storage",
+    "data box 120",
+    "data box 525",
+    "azure blob migration",
+    "on-premises to azure storage",
 ]
 
 # --- Keyword filters ---
@@ -202,9 +222,68 @@ def _extract_source(url):
         return f"Reddit r/{match.group(1)}" if match else "Reddit"
     if "stackoverflow.com" in url:
         return "Stack Overflow"
+    if "serverfault.com" in url:
+        return "Server Fault"
     if "learn.microsoft.com" in url:
         return "Microsoft Q&A"
     return url.split("/")[2]
+
+
+def fetch_msqa(queries, seen):
+    """Fetch questions from Microsoft Q&A via Learn Search API.
+
+    Uses the same Learn Search API we already use for doc lookup,
+    but with category filter set to 'QnA' instead of 'Documentation'.
+    Returns list of post dicts compatible with the rest of the pipeline.
+    """
+    posts = []
+    seen_urls = set()
+    for query in queries:
+        try:
+            encoded = urllib.parse.quote(query)
+            url = (
+                f"https://learn.microsoft.com/api/search?search={encoded}"
+                "&locale=en-us&%24filter=(category+eq+%27QnA%27)&%24top=10"
+            )
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+
+            for item in data.get("results", []):
+                item_url = item.get("url", "")
+                if not item_url or item_url in seen_urls:
+                    continue
+                seen_urls.add(item_url)
+
+                # Use URL as unique ID
+                post_id = f"msqa:{item_url}"
+                if post_id in seen:
+                    continue
+
+                title = item.get("title", "").strip()
+                # Remove " - Microsoft Q&A" suffix if present
+                title = re.sub(r"\s*-\s*Microsoft Q&A\s*$", "", title)
+                description = item.get("description", "")
+                # Strip HTML from description
+                description = re.sub(r"<[^>]+>", " ", description)
+                description = re.sub(r"\s+", " ", description).strip()
+
+                post = {
+                    "id": post_id,
+                    "title": title,
+                    "body": description,
+                    "link": item_url,
+                    "published": item.get("lastUpdatedDate", ""),
+                    "source": "Microsoft Q&A",
+                }
+                posts.append(post)
+
+        except Exception as e:
+            print(f"  MS Q&A search error for '{query}': {e}")
+        time.sleep(1)  # Be polite to the API
+
+    print(f"  Microsoft Q&A: {len(posts)} unique questions from {len(queries)} queries")
+    return posts
 
 
 def _parse_date(date_str):
@@ -534,6 +613,7 @@ def main():
     initial_seen_count = len(seen)
     new_relevant = []
 
+    # --- Phase 1: RSS feeds (Reddit, Stack Overflow, Server Fault) ---
     for feed_url in RSS_FEEDS:
         print(f"Fetching: {feed_url}")
         posts = fetch_feed(feed_url)
@@ -551,9 +631,20 @@ def main():
                 print(f"  MATCH: {post['title'][:80]}  ({post['published'][:10]})")
                 new_relevant.append(post)
 
-        # Small delay between feeds to avoid Reddit rate limiting
+        # Small delay between feeds to avoid rate limiting
         if "reddit.com" in feed_url:
             time.sleep(3)
+
+    # --- Phase 2: Microsoft Q&A (via Learn Search API) ---
+    print(f"\nFetching: Microsoft Q&A ({len(MSQA_SEARCH_QUERIES)} queries)")
+    msqa_posts = fetch_msqa(MSQA_SEARCH_QUERIES, seen)
+    for post in msqa_posts:
+        seen.add(post["id"])
+        if not is_recent(post):
+            continue
+        if is_relevant(post):
+            print(f"  MATCH: {post['title'][:80]}  ({post['published'][:10]})")
+            new_relevant.append(post)
 
     print(f"\nNew posts scanned: {len(seen) - initial_seen_count}")
     print(f"Relevant matches:  {len(new_relevant)}\n")
