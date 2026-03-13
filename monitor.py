@@ -27,22 +27,20 @@ from pathlib import Path
 # ============================================================
 
 RSS_FEEDS = [
-    # Reddit - Azure subreddit new posts
+    # Reddit - Azure subreddit: ALL new posts (is_relevant() filters)
     "https://www.reddit.com/r/azure/new/.rss",
-    # Reddit - targeted search: azure storage migration
-    "https://www.reddit.com/r/azure/search.rss?q=storage+migration&restrict_sr=1&sort=new&t=week",
-    # Reddit - sysadmin: azure storage migration
-    "https://www.reddit.com/r/sysadmin/search.rss?q=azure+storage+migration&restrict_sr=1&sort=new&t=week",
-    # Reddit - cloud computing
-    "https://www.reddit.com/r/cloudcomputing/search.rss?q=azure+migration&restrict_sr=1&sort=new&t=week",
-    # Reddit - dataengineering
-    "https://www.reddit.com/r/dataengineering/search.rss?q=azure+storage+migration&restrict_sr=1&sort=new&t=week",
+    # Reddit - Azure subreddit search: broad OR query for migration tools
+    "https://www.reddit.com/r/azure/search.rss?q=storage+migration+OR+data+box+OR+azcopy+OR+azure+migrate+OR+file+sync+OR+storage+mover&restrict_sr=1&sort=new&t=week",
+    # Reddit - sysadmin: broad OR (catches any Azure migration/storage topic)
+    "https://www.reddit.com/r/sysadmin/search.rss?q=azure+storage+OR+azure+migration+OR+azure+migrate+OR+data+box+OR+azcopy+OR+on-prem+to+azure&restrict_sr=1&sort=new&t=week",
+    # Reddit - cloud computing: broad OR
+    "https://www.reddit.com/r/cloudcomputing/search.rss?q=azure+storage+OR+azure+migration+OR+data+box+OR+azcopy+OR+migrate+to+azure&restrict_sr=1&sort=new&t=week",
+    # Reddit - dataengineering: broad OR
+    "https://www.reddit.com/r/dataengineering/search.rss?q=azure+storage+OR+azure+migration+OR+data+box+OR+azcopy+OR+data+lake+migration&restrict_sr=1&sort=new&t=week",
     # Stack Overflow - azure-storage tag
     "https://stackoverflow.com/feeds/tag?tagnames=azure-storage&sort=newest",
     # Stack Overflow - azure-migrate tag
     "https://stackoverflow.com/feeds/tag?tagnames=azure-migrate&sort=newest",
-    # Microsoft Q&A (add your tag-specific RSS URLs here if available)
-    # "https://learn.microsoft.com/en-us/answers/feeds/tags/azure-storage",
 ]
 
 # --- Keyword filters ---
