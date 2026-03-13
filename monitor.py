@@ -1,25 +1,22 @@
 """
 Azure Storage Migration Query Monitor
 --------------------------------------
-Monitors Reddit, Stack Overflow, and Microsoft community RSS feeds for
-questions about storage migrations to Azure. Sends notifications with
-the question and a suggested response.
+Monitors Reddit, Stack Overflow, and community RSS feeds for questions
+about storage migrations to Azure. Detects relevant posts, generates
+AI-powered suggested responses via GitHub Models (GPT-4o), and publishes
+an RSS feed that Power Automate consumes to post notifications to Teams.
 
-Fully free: RSS feeds + GitHub Actions + ntfy.sh notifications.
+Fully free: RSS feeds + GitHub Actions + GitHub Pages + Power Automate.
 """
 
 import feedparser
 import json
 import os
 import re
-import smtplib
 import time
 import urllib.request
 import urllib.parse
 from datetime import datetime, timezone, timedelta
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from html import escape as html_escape
 from pathlib import Path
 
 # ============================================================
@@ -108,26 +105,8 @@ EXCLUDE_KEYWORDS = [
     "mobility service agent", "agentless discovery",
 ]
 
-# --- Notification settings (set via env vars or GitHub Secrets) ---
-NOTIFY_METHOD = os.getenv("NOTIFY_METHOD", "ntfy")
-
-# ntfy.sh — completely free, no account needed
-# Install the ntfy app on your phone, subscribe to your topic name
-NTFY_TOPIC = os.getenv("NTFY_TOPIC", "azure-migration-monitor")
-
-# Microsoft Teams — Incoming Webhook (free, enterprise-ready)
-TEAMS_WEBHOOK_URL = os.getenv("TEAMS_WEBHOOK_URL", "")
-
-# Discord — free webhook
-DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL", "")
-
-# Email — Gmail SMTP (free with App Password)
-EMAIL_FROM = os.getenv("EMAIL_FROM", "")
-EMAIL_TO = os.getenv("EMAIL_TO", "")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD", "")
-
-# GitHub Models API (free tier: 150 req/day with GPT-4o-mini)
-# Uses your GitHub PAT with "models:read" permission
+# --- GitHub Models API (GPT-4o, free tier: 150 req/day) ---
+# Uses your GitHub PAT — no special scope needed
 # Leave empty to use template-based responses (no API needed)
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 
@@ -443,191 +422,10 @@ def _generate_template_response(post):
     return "\n\n".join(lines)
 
 
-# ============================================================
-# NOTIFICATIONS
-# ============================================================
-
-def send_notification(post, response):
-    """Route notification to the configured channel."""
-    try:
-        if NOTIFY_METHOD == "teams":
-            _notify_teams(post, response)
-        elif NOTIFY_METHOD == "ntfy":
-            _notify_ntfy(post, response)
-        elif NOTIFY_METHOD == "discord":
-            _notify_discord(post, response)
-        elif NOTIFY_METHOD == "email":
-            _notify_email(post, response)
-        else:
-            print(f"  Unknown NOTIFY_METHOD: {NOTIFY_METHOD}")
-    except Exception as e:
-        print(f"  Notification error ({NOTIFY_METHOD}): {e}")
 
 
-def _notify_ntfy(post, response):
-    """Send via ntfy.sh (free, no account)."""
-    message = (
-        f"Source: {post['source']}\n\n"
-        f"Question:\n{post['title']}\n\n"
-        f"{post['body'][:500]}\n\n"
-        f"---\nSuggested Response:\n{response[:1500]}\n\n"
-        f"Link: {post['link']}"
-    )
-
-    req = urllib.request.Request(
-        f"https://ntfy.sh/{urllib.parse.quote(NTFY_TOPIC, safe='')}",
-        data=message.encode("utf-8"),
-        headers={
-            "Title": f"Azure Migration Query: {post['title'][:60]}",
-            "Priority": "high",
-            "Tags": "cloud,mag",
-            "Click": post["link"],
-            "User-Agent": USER_AGENT,
-        },
-    )
-    urllib.request.urlopen(req, timeout=10)
-    print("  Sent ntfy notification")
 
 
-def _notify_teams(post, response):
-    """Send via Microsoft Teams Incoming Webhook."""
-    if not TEAMS_WEBHOOK_URL:
-        print("  TEAMS_WEBHOOK_URL not set, skipping")
-        return
-
-    # Adaptive Card payload for Teams
-    payload = {
-        "type": "message",
-        "attachments": [{
-            "contentType": "application/vnd.microsoft.card.adaptive",
-            "content": {
-                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-                "type": "AdaptiveCard",
-                "version": "1.4",
-                "body": [
-                    {
-                        "type": "TextBlock",
-                        "text": "Azure Migration Query Detected",
-                        "weight": "Bolder",
-                        "size": "Large",
-                        "color": "Accent",
-                    },
-                    {
-                        "type": "FactSet",
-                        "facts": [
-                            {"title": "Source", "value": post["source"]},
-                            {"title": "Title", "value": post["title"][:100]},
-                        ],
-                    },
-                    {
-                        "type": "TextBlock",
-                        "text": "**Question:**",
-                        "weight": "Bolder",
-                        "spacing": "Medium",
-                    },
-                    {
-                        "type": "TextBlock",
-                        "text": post["body"][:500] or "See link for details",
-                        "wrap": True,
-                    },
-                    {
-                        "type": "TextBlock",
-                        "text": "**Suggested Response:**",
-                        "weight": "Bolder",
-                        "spacing": "Medium",
-                    },
-                    {
-                        "type": "TextBlock",
-                        "text": response[:1500],
-                        "wrap": True,
-                    },
-                ],
-                "actions": [
-                    {
-                        "type": "Action.OpenUrl",
-                        "title": "Open Post",
-                        "url": post["link"],
-                    }
-                ],
-            },
-        }],
-    }
-
-    data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        TEAMS_WEBHOOK_URL,
-        data=data,
-        headers={"Content-Type": "application/json", "User-Agent": USER_AGENT},
-    )
-    urllib.request.urlopen(req, timeout=15)
-    print("  Sent Teams notification")
-
-
-def _notify_discord(post, response):
-    """Send via Discord webhook (free)."""
-    if not DISCORD_WEBHOOK_URL:
-        print("  DISCORD_WEBHOOK_URL not set, skipping")
-        return
-
-    payload = {
-        "embeds": [{
-            "title": post["title"][:256],
-            "url": post["link"],
-            "color": 0x0078D4,
-            "fields": [
-                {"name": "Source", "value": post["source"], "inline": True},
-                {"name": "Question", "value": (post["body"][:1000] or "See link"), "inline": False},
-                {"name": "Suggested Response", "value": response[:1000], "inline": False},
-            ],
-            "footer": {"text": "Azure Migration Monitor"},
-        }]
-    }
-
-    data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        DISCORD_WEBHOOK_URL,
-        data=data,
-        headers={"Content-Type": "application/json", "User-Agent": USER_AGENT},
-    )
-    urllib.request.urlopen(req, timeout=10)
-    print("  Sent Discord notification")
-
-
-def _notify_email(post, response):
-    """Send via Gmail SMTP (free with App Password)."""
-    if not all([EMAIL_FROM, EMAIL_TO, EMAIL_PASSWORD]):
-        print("  Email credentials not set, skipping")
-        return
-
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"Azure Migration Query: {post['title'][:80]}"
-    msg["From"] = EMAIL_FROM
-    msg["To"] = EMAIL_TO
-
-    safe_title = html_escape(post["title"])
-    safe_body = html_escape(post["body"][:2000])
-    safe_response = html_escape(response)
-    safe_link = html_escape(post["link"])
-    safe_source = html_escape(post["source"])
-
-    html = f"""<html><body>
-    <h2>New Azure Migration Query</h2>
-    <p><b>Source:</b> {safe_source}</p>
-    <p><b>Link:</b> <a href="{safe_link}">{safe_link}</a></p>
-    <h3>Question</h3>
-    <p><b>{safe_title}</b></p>
-    <p>{safe_body}</p>
-    <h3>Suggested Response</h3>
-    <pre>{safe_response}</pre>
-    </body></html>"""
-
-    msg.attach(MIMEText(html, "html"))
-
-    with smtplib.SMTP("smtp.gmail.com", 587) as server:
-        server.starttls()
-        server.login(EMAIL_FROM, EMAIL_PASSWORD)
-        server.sendmail(EMAIL_FROM, EMAIL_TO, msg.as_string())
-    print("  Sent email notification")
 
 
 # ============================================================
@@ -763,7 +561,6 @@ def main():
     for post in new_relevant:
         print(f"Processing: {post['title'][:80]}")
         response = generate_response(post)
-        send_notification(post, response)
         processed.append((post, response))
         print()
 
