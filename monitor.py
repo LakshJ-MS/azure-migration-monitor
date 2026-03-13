@@ -552,9 +552,7 @@ def write_feed(processed_posts):
         description = (
             f"Source: {_xml_escape(post['source'])}\n\n"
             f"Question:\n{_xml_escape(post['title'])}\n\n"
-            f"{_xml_escape(post['body'][:500])}\n\n"
-            f"---\n\n"
-            f"Suggested Response:\n{_xml_escape(response[:1500])}"
+            f"{_xml_escape(post['body'])}"
         )
         item = (
             f"    <item>\n"
@@ -563,6 +561,7 @@ def write_feed(processed_posts):
             f"      <guid isPermaLink=\"false\">{_xml_escape(post['id'])}</guid>\n"
             f"      <pubDate>{_xml_escape(pub_date)}</pubDate>\n"
             f"      <description>{description}</description>\n"
+            f"      <content:encoded><![CDATA[{response}]]></content:encoded>\n"
             f"    </item>"
         )
         new_items.append(item)
@@ -586,7 +585,7 @@ def write_feed(processed_posts):
     feed_url = "https://lakshj-ms.github.io/azure-migration-monitor/feed.xml"
     feed_xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">\n'
         '  <channel>\n'
         '    <title>Azure Migration Monitor</title>\n'
         f'    <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>\n'
