@@ -5,7 +5,34 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 13 Mar 2026 15:04:30 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 15:59:23 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Weekly Update - 13th March 2026</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1rsqgvj/azure_weekly_update_13th_march_2026/</link>
+      <guid isPermaLink="false">t3_1rsqgvj</guid>
+      <pubDate>Fri, 13 Mar 2026 15:30:08 +0000</pubDate>
+      <description>Source: Reddit r/azure
+
+Question:
+Azure Weekly Update - 13th March 2026
+
+This week&apos;s Azure Update is up on this glorious Friday the 13th! Be safe out there!! 📽️ https://youtu.be/17uHDPjdkto 📄 https://www.linkedin.com/pulse/azure-weekly-update-13th-march-2026-john-savill-cxkee/ 400K subscriber AMA (00:36) - See above for the link! Azure SRE Agent new features (01:11) - This is an AI powered operations agent with customizable autonomy to both recommend and automate actions to help ensure the uptime and reduce impact of incidents. It works across your code and Azure services. Private AWS S3 to Blob move (02:05) - Azure Storage Mover now supports storage migration from AWS S3 to blob using private connectivity instead of the existing public network transfer. You create a private connection that leverage VPC on the AWS side and private endpoints to the storage account on the Azure side. VS Code MSSQL query profiler (02:35) - The MS SQL extension for VS Code now has a query profiler that is used to observe, analyze, and troubleshoot how SQL queries execute, with the goal of understanding performance behavior and identifying problems. PostgreSQL Flexible Elastic Cluster IaC (03:07) - PostgreSQL Flexible elastic clusters are now supported for Infrastructure as Code deployment using Terraform, Bicep and Ansible. This makes it easy to manage via CICD pipelines. Elastic clusters are built on the Citus extension enabling horizontal scaling through multiple nodes. PostgreSQL Flexible Grafana (03:57) - PostgreSQL Flexible now has built-in Grafana dashboards from within the Azure portal. This means no more setting up separate Grafana instances. This includes key metrics like CPU, memory, storage, active connections, query throughput, replication status, PGBouncer usage and more. PostgreSQL Prem SSDv2 CMK (04:19) - If you are using Premium SSD v2 with PostgreSQL you can now use a Customer Managed Key (which resides in your own Key Vault and you have responsibility for the rotation etc). Azure Monitor retry bin (04:50) - If you have a batch aggregation in Log Analytics and it fails you can now “retry bin” that lets you re-run a specific batch where bin is the lookback time range and aggregation interval. This avoids having gaps in your aggregations where normal retry has failed. Microsoft 365 E7 and A365 (05:22) - The Agent 365 SKU has been released on a per user per month license. E7 is also now available which includes everything in E5, 365 Copilot, Entra Suite and Agent 365. Copilot Cowork (06:12) - The Claude Cowork plan-to-action capability is now integrated into M365 Copilot but is grounded in Work IQ giving full access to your M365 information and the learned knowledge of how and who you work with. You give it an ask and it will create a complete plan and the actions needed to complete it. You can check in on the process and modify as required. Really provides a powerful assistant. Works as a new type of agent today inside M365 Copilot once enabled for your tenant. &amp;#32; submitted by &amp;#32; /u/JohnSavill [link] &amp;#32; [comments]</description>
+      <content:encoded><![CDATA[Hello!
+
+Thanks for sharing the Azure Weekly Update! Here are some additional insights and relevant resources for a few topics mentioned:
+
+1. **Private AWS S3 to Blob Migration**: This is a fantastic addition to Azure Storage Mover, enabling private connectivity for migrations. To get started, you’ll need to configure a private connection using AWS VPC endpoints and Azure private endpoints. This ensures secure data transfer without exposing data to the public internet. For more general guidance on Azure Blob Storage, check out: [Migrate to TLS 1.2 for Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/common/transport-layer-security-configure-migrate-to-tls2).
+
+2. **PostgreSQL Flexible Elastic Cluster IaC**: Azure’s support for Terraform, Bicep, and Ansible makes deploying and managing PostgreSQL Flexible Elastic Clusters via CI/CD pipelines much easier. These clusters utilize the Citus extension for horizontal scaling. More details about Azure Cosmos DB, which also supports PostgreSQL, can be found here: [Azure Cosmos DB documentation](https://learn.microsoft.com/en-us/azure/cosmos-db/).
+
+3. **PostgreSQL Flexible Grafana Integration**: Built-in Grafana dashboards simplify monitoring by providing key metrics like CPU, memory, and replication status directly in the Azure portal. This eliminates the need for separate Grafana instances and streamlines database performance monitoring.
+
+4. **Premium SSD v2 with CMK for PostgreSQL**: The integration of Customer-Managed Keys (CMK) with Premium SSD v2 ensures enhanced security and control over data encryption. Make sure to configure and manage your Key Vault properly, as you are responsible for key rotation.
+
+If you have further questions or need more details on any of these features, feel free to ask. I hope this helps!
+
+Best regards.]]></content:encoded>
+    </item>
 <item>
       <title>Reddit r/azure: Private Preview: Azure Storage Mover now supports private data transfers from AWS S3</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rs5opd/private_preview_azure_storage_mover_now_supports/</link>
