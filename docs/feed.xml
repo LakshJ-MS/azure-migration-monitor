@@ -5,7 +5,63 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 13 Mar 2026 18:22:18 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 19:10:16 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Passed AZ-104 and got laid off — Should I focus on Azure projects or study AWS SAA-C03 next?”</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1rsvehx/passed_az104_and_got_laid_off_should_i_focus_on/</link>
+      <guid isPermaLink="false">t3_1rsvehx</guid>
+      <pubDate>Fri, 13 Mar 2026 18:26:37 +0000</pubDate>
+      <description>Source: Reddit r/azure
+
+Question:
+Passed AZ-104 and got laid off — Should I focus on Azure projects or study AWS SAA-C03 next?”
+
+Hi all, I’m 22 and worked in IT Support for a year until about a month ago (AD, M365, Exchange, Entra ID, and some basic Azure identity tasks). Unfortunately I was laid off, but the good part is that I can afford to spend a few months focusing on learning and improving my skills. Yesterday I passed the AZ-104 and also completed the official Microsoft labs and deployed resources myself (RBAC, VNets, storage, VMs, monitoring, governance). My goal now is to move away from helpdesk/support and try to transition into a Junior Cloud / Azure role . Since I have a few months to focus on learning, I’m considering focusing on one of these: Terraform / Infrastructure as Code Kubernetes / containers AWS Solutions Architect Associate (SAA-C03) Building real-world Azure projects The projects I’m thinking about building are things like: Hub-and-spoke Azure network architecture Migrating an on-prem Active Directory environment to Azure / hybrid setup My main doubt right now is whether it would be better to: Study for AWS SAA-C03 to broaden my cloud knowledge across providers Focus on hands-on Azure projects like hub-and-spoke or AD → Azure migration I know Terraform and Kubernetes are probably more complex topics, so I’m not sure if those make sense yet at my stage. Ultimately my goal is simply to break into a junior cloud role , even if it’s something like cloud support / cloud operations , just to get my first experience in cloud. From your experience, what would you recommend focusing on in my situation? Thanks in advance. &amp;#32; submitted by &amp;#32; /u/Dannyeloso [link] &amp;#32; [comments]</description>
+      <content:encoded><![CDATA[Congratulations on passing the AZ-104! That’s a significant achievement and a great step towards your goal of transitioning into a Junior Cloud role. Since you have a few months to focus, here’s my suggestion:
+
+### 1. Prioritize Hands-On Azure Projects
+Given your experience and certification, it makes sense to deepen your Azure knowledge through hands-on projects. Building real-world projects, like a hub-and-spoke Azure network architecture or migrating an on-prem Active Directory environment to Azure, will give you practical experience and showcase your skills to potential employers. For example:
+- **Hub-and-Spoke Network Architecture**: Learn from the Azure Architecture Center, which provides reference architectures and solution ideas for designing cloud projects. Start here: [Azure Architecture Center](https://learn.microsoft.com/en-us/azure/architecture/).
+- **Active Directory Migration to Azure**: This is a highly relevant skill for many companies moving to Azure. Use the Azure documentation to understand hybrid identity setups and Azure AD integration.
+
+### 2. Consider Terraform and Kubernetes Later
+Terraform and Kubernetes are valuable skills, but they’re more advanced and may not be critical for a junior role. Focus first on foundational cloud operations and infrastructure.
+
+### 3. Expand to AWS After Getting Azure Experience
+While AWS knowledge is valuable, prioritizing Azure makes sense for now. Once you’ve landed a role or built a strong Azure portfolio, consider pursuing the AWS SAA-C03 to broaden your expertise.
+
+### 4. Learn Azure Blob Storage
+For your projects, understanding storage is key. Check out the [Azure Blob Storage Introduction](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) to help with tasks like migrating file shares or backups.
+
+Good luck! With focused effort on projects and practical use cases, you’ll be well-prepared for a Junior Cloud role.]]></content:encoded>
+    </item>
+    <item>
+      <title>Reddit r/sysadmin: Passed AZ-104 and got laid off — Should I focus on Azure projects or study AWS SAA-C03 next?”</title>
+      <link>https://www.reddit.com/r/sysadmin/comments/1rsvjy0/passed_az104_and_got_laid_off_should_i_focus_on/</link>
+      <guid isPermaLink="false">t3_1rsvjy0</guid>
+      <pubDate>Fri, 13 Mar 2026 18:32:08 +0000</pubDate>
+      <description>Source: Reddit r/sysadmin
+
+Question:
+Passed AZ-104 and got laid off — Should I focus on Azure projects or study AWS SAA-C03 next?”
+
+Hi all, I’m 22 and worked in IT Support for a year until about a month ago (AD, M365, Exchange, Entra ID, and some basic Azure identity tasks). Unfortunately I was laid off, but the good part is that I can afford to spend a few months focusing on learning and improving my skills. Yesterday I passed the AZ-104 and also completed the official Microsoft labs and deployed resources myself (RBAC, VNets, storage, VMs, monitoring, governance). My goal now is to move away from helpdesk/support and try to transition into a Junior Cloud / Azure role . Since I have a few months to focus on learning, I’m considering focusing on one of these: Terraform / Infrastructure as Code Kubernetes / containers AWS Solutions Architect Associate (SAA-C03) Building real-world Azure projects The projects I’m thinking about building are things like: Hub-and-spoke Azure network architecture Migrating an on-prem Active Directory environment to Azure / hybrid setup My main doubt right now is whether it would be better to: Study for AWS SAA-C03 to broaden my cloud knowledge across providers Focus on hands-on Azure projects like hub-and-spoke or AD → Azure migration I know Terraform and Kubernetes are probably more complex topics, so I’m not sure if those make sense yet at my stage. Ultimately my goal is simply to break into a junior cloud role , even if it’s something like cloud support / cloud operations , just to get my first experience in cloud. From your experience, what would you recommend focusing on in my situation? Thanks in advance. &amp;#32; submitted by &amp;#32; /u/Dannyeloso [link] &amp;#32; [comments]</description>
+      <content:encoded><![CDATA[Congratulations on passing the AZ-104 and taking the initiative to improve your cloud skills—it’s a great foundation for transitioning into a Junior Cloud role. Based on your situation and goals, I’d recommend focusing on building real-world Azure projects to strengthen your hands-on experience with Azure. Demonstrating practical expertise will make you stand out to potential employers looking for candidates with applied knowledge.
+
+To get started, here’s a suggested roadmap:
+
+### 1. **Work on Real-World Azure Projects**
+   - **Hub-and-Spoke Network Architecture**: This is a classic Azure design pattern for implementing secure and scalable networking. You can find helpful guidance on this in the [Azure Architecture Center](https://learn.microsoft.com/en-us/azure/architecture/). Start with the basics of setting up VNets, subnets, VPN gateways, and network security groups, and then expand into more advanced topics like Azure Firewall, ExpressRoute, or private endpoints.
+   - **Active Directory Migration to Azure**: A hybrid identity setup is a common use case in the cloud. You can explore deploying Azure AD Connect, setting up hybrid identities, and configuring Azure AD DS. While this specific use case isn’t directly in the provided links, the [Introduction to Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) will help you understand object storage, which is often used for backups or syncing data during migrations.
+
+### 2. **Develop Automation Skills**
+   - While Terraform might feel a bit advanced, learning Infrastructure as Code is critical for cloud roles. Start by exploring Azure Resource Manager (ARM) templates, then transition to Terraform once you’re comfortable with basic automation.
+
+### 3. **Expand to AWS (Optional)**
+   - If time permits and you want to broaden your skills, studying for AWS SAA-C03 is a great secondary focus. However, given your Azure momentum, it’s better to solidify your expertise here first.
+
+Good luck, and remember to leverage free resources like the [Azure Architecture Center](https://learn.microsoft.com/en-us/azure/architecture/) for guidance on these projects!]]></content:encoded>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Weekly Update - 13th March 2026</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rsqgvj/azure_weekly_update_13th_march_2026/</link>
