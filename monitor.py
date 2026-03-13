@@ -62,6 +62,7 @@ HIGH_CONFIDENCE_PHRASES = [
     "storage migration", "data migration to azure",
     "migrate storage", "migrate file server",
     "migrate blob", "migrate file share",
+    "agentless discovery", "agentless migration",
 ]
 
 # Tier 2: Broader keywords — need ANY TWO of these three categories
@@ -102,7 +103,7 @@ EXCLUDE_KEYWORDS = [
     "framework migration", ".net migration", "dotnet migration",
     "identity migration", "user migration", "auth migration",
     "jit migration", "jit provisioning",
-    "mobility service agent", "agentless discovery",
+    "mobility service agent",
 ]
 
 # --- GitHub Models API (GPT-4o, free tier: 150 req/day) ---
