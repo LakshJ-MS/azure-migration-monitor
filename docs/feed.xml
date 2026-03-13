@@ -5,7 +5,33 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 13 Mar 2026 20:42:20 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 21:19:26 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/sysadmin: Azure Local (HCI) and DNS</title>
+      <link>https://www.reddit.com/r/sysadmin/comments/1rt00v9/azure_local_hci_and_dns/</link>
+      <guid isPermaLink="false">t3_1rt00v9</guid>
+      <pubDate>Fri, 13 Mar 2026 21:16:00 +0000</pubDate>
+      <description>Source: Reddit r/sysadmin
+
+Question:
+Azure Local (HCI) and DNS
+
+Noticed AD is heavily dependent on Azure Local. Do we need to keep AD DNS or can move to Azure DNS? End user devices are Entra Joined. &amp;#32; submitted by &amp;#32; /u/EducationAlert5209 [link] &amp;#32; [comments]</description>
+      <content:encoded><![CDATA[Active Directory (AD) DNS and Azure DNS serve different purposes, so whether you can fully move to Azure DNS depends on your architecture and requirements. Since your end-user devices are Entra (Azure AD) joined, it's possible to leverage Azure DNS for some workloads, but AD DNS might still be necessary for legacy systems or on-premises needs.
+
+### Key Considerations:
+1. **Azure DNS vs. AD DNS**: Azure DNS is a global DNS hosting service for managing DNS zones and records. It doesn't replace the role of AD-integrated DNS, which is critical for domain controllers, name resolution within AD, and group policies.
+2. **Azure Private Endpoints**: If you plan to use Azure resources (e.g., Azure Blob Storage or Cosmos DB) with private endpoints, you'll need private DNS zones for name resolution. Learn how to configure private DNS zones here: [Azure Private Endpoint DNS Configuration](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns).
+
+### Steps to Move or Integrate:
+- **Evaluate Dependencies**: Ensure that your legacy systems relying on AD DNS can function with Azure DNS. If not, keep AD DNS for internal domains and use Azure DNS for external/public-facing resources.
+- **Configure Private DNS Zones**: For Azure services like Blob Storage or Cosmos DB, set up private endpoints and associate them with private DNS zones. This ensures seamless connectivity for Azure-hosted resources.
+- **Azure AD and Entra**: Since your devices are Entra joined, you can optimize DNS for cloud-based services through Azure DNS while maintaining AD DNS for legacy systems.
+
+For more details on Azure Blob Storage and its private endpoint DNS settings, review this guide: [Introduction to Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction).
+
+If you’re modernizing your environment to rely more on Azure, consider tools or strategies like GitHub Copilot for app modernization: [GitHub Copilot Modernization Overview](https://learn.microsoft.com/en-us/dotnet/core/porting/github-copilot-app-modernization/overview).]]></content:encoded>
+    </item>
 <item>
       <title>Reddit r/azure: Passed AZ-104 and got laid off — Should I focus on Azure projects or study AWS SAA-C03 next?”</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rsvehx/passed_az104_and_got_laid_off_should_i_focus_on/</link>
