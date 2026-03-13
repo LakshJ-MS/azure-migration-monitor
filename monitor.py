@@ -552,9 +552,9 @@ def write_feed(processed_posts):
         description = (
             f"Source: {_xml_escape(post['source'])}\n\n"
             f"Question:\n{_xml_escape(post['title'])}\n\n"
-            f"{_xml_escape(post['body'][:1500])}\n\n"
+            f"{_xml_escape(post['body'][:500])}\n\n"
             f"---\n\n"
-            f"Suggested Response:\n{_xml_escape(response)}"
+            f"Suggested Response:\n{_xml_escape(response[:1500])}"
         )
         item = (
             f"    <item>\n"
