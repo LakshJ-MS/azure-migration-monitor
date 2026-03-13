@@ -33,13 +33,6 @@ jobs:
 
       - name: Run monitor
         env:
-          NOTIFY_METHOD: ${{ vars.NOTIFY_METHOD }}
-          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
-          TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
-          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
           GITHUB_TOKEN: ${{ secrets.GH_MODELS_TOKEN }}
         run: python monitor.py
 
