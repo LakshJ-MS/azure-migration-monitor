@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sat, 14 Mar 2026 21:43:36 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Sat, 14 Mar 2026 22:00:48 +0000</lastBuildDate>
+<item>
       <title>Reddit r/azure: Azure File sync vs Storage Mover blog</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rtuv8i/azure_file_sync_vs_storage_mover_blog/</link>
       <guid isPermaLink="false">t3_1rtuv8i</guid>
