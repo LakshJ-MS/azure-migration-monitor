@@ -5,7 +5,46 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sat, 14 Mar 2026 11:59:12 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Mar 2026 13:12:55 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Action required: Migrate Azure general-purpose v1 storage accounts to general-purpose v2 before 13 October 2026</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/5731825/action-required-migrate-azure-general-purpose-v1-s</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5731825/action-required-migrate-azure-general-purpose-v1-s</guid>
+      <pubDate>Mon, 09 Mar 2026 11:52:55 +0000</pubDate>
+      <description>Source: Microsoft Q&amp;A
+
+Question:
+Action required: Migrate Azure general-purpose v1 storage accounts to general-purpose v2 before 13 October 2026
+
+Steps to Take Before Migrating to GPv2: Get Approval from Application Owners: Yes, it&apos;s crucial to check with the application owners using the storage account. Disable Unsupported Features: Before initiating the migration, ensure that any unsupported features are disabled. Check for Active Locks and Operations: Go to the storage account’s.</description>
+      <content:encoded><![CDATA[To migrate your Azure general-purpose v1 storage accounts to general-purpose v2 (GPv2) before the October 13, 2026 deadline, follow these key steps:
+
+### 1. Assess Compatibility
+Before migrating, verify compatibility with GPv2 storage accounts. GPv2 offers enhanced features, such as support for advanced blob storage capabilities and performance improvements. Ensure your application does not rely on unsupported features in GPv2.
+
+More details: [Upgrade to a general-purpose v2 storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-upgrade)
+
+### 2. Get Approval from Application Owners
+Coordinate with the application owners to confirm they are ready for the migration. Validate that the application's functionality and integration will remain unaffected post-migration.
+
+### 3. Disable Unsupported Features
+Some features supported in GPv1 may no longer be available in GPv2. Review and disable any unsupported configurations before initiating the migration.
+
+### 4. Check for Active Locks and Operations
+Ensure there are no active locks or ongoing operations on the storage account. This avoids interruptions during the migration process.
+
+### 5. Perform the Upgrade
+Follow the steps outlined in the documentation to upgrade to GPv2 directly via the Azure portal, PowerShell, or CLI. The upgrade process is straightforward and does not require data migration.
+
+Full steps: [Upgrade to a general-purpose v2 storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-upgrade)
+
+### 6. Test Post-Migration Functionality
+After upgrading, test all dependent applications to ensure they function correctly with the GPv2 storage account.
+
+If you need to create new storage accounts or explore other options, refer to [Create an Azure storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
+
+Feel free to reach out if you have further questions!]]></content:encoded>
+    </item>
 <item>
       <title>Reddit r/sysadmin: Azure Local (HCI) and DNS</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1rt00v9/azure_local_hci_and_dns/</link>
