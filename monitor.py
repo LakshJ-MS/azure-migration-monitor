@@ -1,12 +1,22 @@
 """
 Azure Storage Migration Query Monitor
 --------------------------------------
-Monitors Reddit, Stack Overflow, and community RSS feeds for questions
-about storage migrations to Azure. Detects relevant posts, generates
-AI-powered suggested responses via GitHub Models (GPT-4o), and publishes
-an RSS feed that Power Automate consumes to post notifications to Teams.
+Monitors community forums for questions about storage migrations to
+Azure, generates AI-suggested responses, and delivers notifications
+to Microsoft Teams via Power Automate.
 
-Fully free: RSS feeds + GitHub Actions + GitHub Pages + Power Automate.
+Pipeline:
+    RSS/API sources → GitHub Actions (cron every 15 min) → keyword
+    filtering → GPT-4o response generation → RSS feed on GitHub Pages
+    → Power Automate RSS trigger → Teams message.
+
+Sources:
+    Reddit (r/azure, r/sysadmin, r/cloudcomputing, r/dataengineering),
+    Stack Overflow (azure-storage, azure-migrate, azcopy tags),
+    Server Fault (azure tag), Microsoft Q&A (via Learn Search API).
+
+All components are free-tier: GitHub Actions, GitHub Pages, GitHub
+Models (GPT-4o, 150 req/day), Power Automate RSS connector.
 """
 
 import feedparser
@@ -396,7 +406,7 @@ def _search_learn_docs(query):
 
 
 def _generate_llm_response(post):
-    """Call GitHub Models (GPT-4o-mini) with MS Learn context for a response."""
+    """Call GitHub Models (GPT-4o) with MS Learn context for a response."""
     try:
         # Step 1: Build search query from post keywords
         search_terms = f"Azure storage migration {post['title'][:100]}"
@@ -509,12 +519,6 @@ def _generate_template_response(post):
     )
 
     return "\n\n".join(lines)
-
-
-
-
-
-
 
 
 # ============================================================
