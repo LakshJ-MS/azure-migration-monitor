@@ -521,6 +521,36 @@ def _generate_template_response(post):
 # OUTPUT RSS FEED (for Power Automate → Teams)
 # ============================================================
 
+def _clean_text(text):
+    """Strip markdown/HTML formatting so RSS content is plain text.
+
+    Power Automate's RSS connector chokes on HTML entities and markdown
+    that get double-escaped. Clean everything to plain text so the full
+    question + response can go in <description> without truncation.
+    """
+    # Strip HTML tags (from Reddit/SO content)
+    text = re.sub(r"<[^>]+>", " ", text)
+    # Markdown bold/italic
+    text = re.sub(r"\*{1,3}(.+?)\*{1,3}", r"\1", text)
+    text = re.sub(r"_{1,3}(.+?)_{1,3}", r"\1", text)
+    # Markdown links [text](url) → text (url)
+    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"\1 (\2)", text)
+    # Markdown headers
+    text = re.sub(r"^#{1,6}\s+", "", text, flags=re.MULTILINE)
+    # Markdown code blocks
+    text = re.sub(r"```[\s\S]*?```", "", text)
+    text = re.sub(r"`([^`]+)`", r"\1", text)
+    # HTML entities
+    text = text.replace("&amp;", "&").replace("&lt;", "<").replace("&gt;", ">")
+    text = text.replace("&quot;", '"').replace("&apos;", "'")
+    text = text.replace("&#x200B;", "")  # zero-width space
+    text = text.replace("&nbsp;", " ")
+    # Normalize whitespace (collapse runs, strip blank lines)
+    text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
 def _xml_escape(text):
     """Escape text for safe XML embedding."""
     return (text
@@ -558,12 +588,14 @@ def write_feed(processed_posts):
         if parsed is None:
             parsed = datetime.now(timezone.utc)
         pub_date = parsed.strftime("%a, %d %b %Y %H:%M:%S %z")
+        clean_body = _clean_text(post['body'])
+        clean_response = _clean_text(response)
         description = (
             f"Source: {_xml_escape(post['source'])}\n\n"
             f"Question:\n{_xml_escape(post['title'])}\n\n"
-            f"{_xml_escape(post['body'][:2000])}\n\n"
+            f"{_xml_escape(clean_body)}\n\n"
             f"---\n\n"
-            f"Suggested Response:\n{_xml_escape(response[:3000])}"
+            f"Suggested Response:\n{_xml_escape(clean_response)}"
         )
         item = (
             f"    <item>\n"

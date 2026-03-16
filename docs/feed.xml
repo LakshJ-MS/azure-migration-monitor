@@ -9,8 +9,8 @@
 <item>
       <title>Reddit r/azure: Private Preview: Azure Storage Mover now supports private data transfers from AWS S3</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rs5opd/private_preview_azure_storage_mover_now_supports/</link>
-      <guid isPermaLink="false">t3_1rs5opd-v4</guid>
-      <pubDate>Mon, 16 Mar 2026 10:00:00 +0000</pubDate>
+      <guid isPermaLink="false">t3_1rs5opd-v5</guid>
+      <pubDate>Mon, 16 Mar 2026 12:00:00 +0000</pubDate>
       <description><![CDATA[Source: Reddit r/azure
 
 Question:
@@ -18,10 +18,28 @@ Private Preview: Azure Storage Mover now supports private data transfers from AW
 
 Microsoft just announced that this feature is now in private preview. Last year, they announced Storage Mover for AWS to Azure, but it was missing private network support, and now it has it!
 
+I wrote an article explaining what it is and what it does:
+
+https://larsschouwenaars.com/2026/03/12/private-preview-azure-storage-mover-now-supports-private-data-transfers-from-aws-s3/
+
+In my opinion, this is an important feature! Azure Storage Mover now supports private endpoints, meaning your data transfers from AWS S3 to Azure Blob Storage can go over a private network instead of the public internet.
+
+Key highlights:
+- Private Link support for AWS S3 to Azure transfers
+- Data stays on Microsofts backbone network
+- Works with existing Storage Mover agents
+- Currently in private preview - you can sign up through your Microsoft rep
+
+This was one of the biggest gaps in the service, especially for enterprises with strict compliance requirements around data transfer paths.
+
+If you are interested in the technical details, check out the official announcement (https://learn.microsoft.com/azure/storage-mover/) and the blog post above.
+
+Has anyone else signed up for the preview? Would love to hear your experience!
+
 ---
 
 Suggested Response:
-Great news for Azure Storage Mover users! The addition of private network support via Azure Private Link means data transfers from AWS S3 to Azure now stay on Microsoft's private backbone.
+Great news for Azure Storage Mover users! The addition of private network support via Azure Private Link means data transfers from AWS S3 to Azure now stay on Microsofts private backbone.
 
 Key steps to get started:
 1. Set up Azure Storage Mover: https://learn.microsoft.com/en-us/azure/storage-mover/
