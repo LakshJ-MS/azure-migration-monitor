@@ -72,13 +72,13 @@ HIGH_CONFIDENCE_PHRASES = [
     "data box heavy", "data box disk", "data box gateway",
     "data box 120", "data box 525",
     "azure migrate", "azure site recovery", "asr migration",
-    # Strong migration phrases
-    "on-prem to azure", "on-premises to azure", "on prem to azure",
-    "on-prem to cloud", "on-premises to cloud", "on prem to cloud",
-    "migrate to azure", "migration to azure", "moving to azure",
-    "move to azure", "transfer to azure", "copy to azure",
-    "aws to azure", "s3 to azure", "gcp to azure",
-    "offline migration", "online migration", "lift and shift",
+    # Strong migration phrases — must be storage/data specific
+    "on-prem to azure storage", "on-premises to azure storage",
+    "on-prem to azure blob", "on-prem to azure files",
+    "migrate to azure storage", "migration to azure storage",
+    "migrate to blob storage", "migrate to azure files",
+    "aws to azure storage", "s3 to azure blob", "s3 to azure",
+    "offline data migration", "online data migration",
     "storage migration", "data migration to azure",
     "migrate storage", "migrate file server",
     "migrate blob", "migrate file share",
@@ -124,6 +124,15 @@ EXCLUDE_KEYWORDS = [
     "identity migration", "user migration", "auth migration",
     "jit migration", "jit provisioning",
     "mobility service agent",
+    # Career / certification posts
+    "passed az-", "az-104", "az-900", "az-305", "az-500",
+    "certification", "career advice", "laid off", "got fired",
+    "job search", "interview", "resume",
+    # Non-storage azure topics
+    "azure dns", "azure ad migration", "active directory migration",
+    "entra migration", "entra id", "azure hci", "azure local",
+    "azure devops", "azure function", "azure logic app",
+    "move to azure dns", "migrate to entra",
 ]
 
 # --- GitHub Models API (GPT-4o, free tier: 150 req/day) ---
@@ -552,7 +561,9 @@ def write_feed(processed_posts):
         description = (
             f"Source: {_xml_escape(post['source'])}\n\n"
             f"Question:\n{_xml_escape(post['title'])}\n\n"
-            f"{_xml_escape(post['body'])}"
+            f"{_xml_escape(post['body'][:2000])}\n\n"
+            f"---\n\n"
+            f"Suggested Response:\n{_xml_escape(response[:3000])}"
         )
         item = (
             f"    <item>\n"
@@ -560,8 +571,7 @@ def write_feed(processed_posts):
             f"      <link>{_xml_escape(post['link'])}</link>\n"
             f"      <guid isPermaLink=\"false\">{_xml_escape(post['id'])}</guid>\n"
             f"      <pubDate>{_xml_escape(pub_date)}</pubDate>\n"
-            f"      <description>{description}</description>\n"
-            f"      <content:encoded><![CDATA[{response}]]></content:encoded>\n"
+            f"      <description><![CDATA[{description}]]></description>\n"
             f"    </item>"
         )
         new_items.append(item)
@@ -585,7 +595,7 @@ def write_feed(processed_posts):
     feed_url = "https://lakshj-ms.github.io/azure-migration-monitor/feed.xml"
     feed_xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">\n'
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n'
         '  <channel>\n'
         '    <title>Azure Migration Monitor</title>\n'
         f'    <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>\n'
