@@ -5,7 +5,40 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 17 Mar 2026 22:40:28 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2026 23:17:48 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure DB Linked Server</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1rwm56l/azure_db_linked_server/</link>
+      <guid isPermaLink="false">t3_1rwm56l</guid>
+      <pubDate>Tue, 17 Mar 2026 22:46:58 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure DB Linked Server
+
+Quick question. I have a database I&apos;m currently planning to move to Azure DB. This is my first time using Azure DB. Currently, there are some views and stored procedures in the database that reference another DB via a linked server. What are my options to refactor these views and stored procedures in the Azure DB so they can still access the data that is still in my on-prem server? &amp;#32; submitted by &amp;#32; /u/holdmebeer_m8 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+If you&apos;re migrating your database to Azure SQL Database (commonly referred to as Azure DB) and have views or stored procedures that rely on a linked server to access data from your on-premises database, you&apos;ll need to plan your approach carefully since Azure SQL Database does not support linked servers. Here are your options:
+
+1. Use Elastic Query for Cross-Database Queries
+Azure SQL Database provides Elastic Query (https://learn.microsoft.com/en-us/sql/relational-databases/elastic-query/elastic-query-overview?view=sql-server-ver16), which allows you to query remote Azure SQL databases or Azure SQL Managed Instances. However, Elastic Query does not directly support on-premises SQL Server databases. If you plan to move the secondary database to Azure, this could be a viable option.
+
+2. Leverage Azure Data Sync
+If the on-premises database must remain on-prem for now, consider using Azure SQL Data Sync (https://learn.microsoft.com/en-us/azure/azure-sql/database/sql-data-sync-sql-server-and-azure-sql), which enables bi-directional data synchronization between Azure SQL Database and your on-prem SQL Server. This way, you can sync the necessary tables and reference them directly in your views and procedures.
+
+3. Refactor to Access On-Prem Data via an API or Logic App
+You could refactor your application to use APIs or Azure Logic Apps to retrieve data from your on-premises database and integrate it into your Azure SQL Database workflows.
+
+4. Use Linked Servers in Azure SQL Managed Instance
+If linked server functionality is a must, consider using Azure SQL Managed Instance (https://learn.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview) instead of Azure SQL Database. Managed Instances support linked servers and can directly connect to your on-premises SQL Server.
+
+For more guidance on migrating to Azure SQL Database, refer to the Azure Database Migration Service documentation (https://learn.microsoft.com/en-us/azure/cosmos-db/).
+
+By selecting the right approach, you can ensure a seamless transition while maintaining access to your on-prem data.]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure app SPN</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rwkllf/azure_app_spn/</link>
