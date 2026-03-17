@@ -5,7 +5,45 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 17 Mar 2026 21:07:18 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2026 21:55:38 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure app SPN</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1rwkllf/azure_app_spn/</link>
+      <guid isPermaLink="false">t3_1rwkllf</guid>
+      <pubDate>Tue, 17 Mar 2026 21:48:47 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure app SPN
+
+Needing to use an already set up SPN for an azcopy devops pipeline. The mapping file is stored in ADLS GEN2 SA, and the SPN used has storage contributor permission. But when I go to read the file it errors. I’ve obviously put the error through AI and it mentioned something to do with VNET and ACLS? I have a feeling that it’s the SPNS permissions not being set up correctly( I don’t have access to edit as I’m an external consultant) I just don’t want to seem silly if it is a simple fix my side. Not a pro at working with bash and powershell so forgive me &amp;#32; submitted by &amp;#32; /u/MechanicOld3428 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It sounds like you&apos;re encountering an issue with your Service Principal Name (SPN) setup and permissions when trying to access a file in Azure Data Lake Storage Gen2 (ADLS Gen2) via an AzCopy DevOps pipeline. Based on your description, the problem could be related to Access Control Lists (ACLs) or Virtual Network (VNet) restrictions affecting access to the storage account.
+
+Here’s how you can troubleshoot and address the issue:
+
+1. Verify SPN Permissions
+ - Ensure that the SPN has the &quot;Storage Blob Data Contributor&quot; role assigned at the correct scope (e.g., storage account, container, or specific folder level). The &quot;Storage Contributor&quot; role alone grants management permissions but does not allow data access.
+ - For more details on Azure Role-Based Access Control (RBAC) for ADLS Gen2, refer to Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/).
+
+2. Check ACLs on the ADLS Gen2 Filesystem
+ - ADLS Gen2 uses both RBAC and ACLs for fine-grained access. Even if the SPN has the required RBAC role, it may not have the necessary ACL permissions to read the file.
+ - Use Azure CLI to check and set ACLs:
+ 
+ - Detailed instructions on managing ACLs can be found in the Mount SMB Azure File Share on Windows documentation (https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-windows).
+
+3. Check VNet or Firewall Restrictions
+ - If the storage account is behind a VNet or has firewall rules enabled, ensure the SPN or pipeline is accessing the storage from an allowed network or has appropriate exceptions configured.
+ - Guidance on configuring VNets with storage accounts can also be found in the Azure Architecture Center here (https://learn.microsoft.com/en-us/azure/architecture/).
+
+4. Test Access Locally
+ - If possible, test access to the file locally using the SPN to confirm where the issue lies.
+
+If you’re unable to modify permissions yourself due to limited access, you may need to involve the admin team to verify and adjust the setup. If you’d like to share the exact error you’re seeing, I’d be happy to provide more targeted advice!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Private Preview: Azure Storage Mover now supports private data transfers from AWS S3</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rs5opd/private_preview_azure_storage_mover_now_supports/</link>
