@@ -5,7 +5,52 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 20 Mar 2026 17:03:48 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2026 17:54:41 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Private Endpoint A record migration</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1rz1zwl/private_endpoint_a_record_migration/</link>
+      <guid isPermaLink="false">t3_1rz1zwl</guid>
+      <pubDate>Fri, 20 Mar 2026 17:06:06 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Private Endpoint A record migration
+
+Can I migrate a Private DNS A record from one Private Endpoint to another PE targeting the same resource and vNet? Hoping someone with hands-on Azure Backup / Private Endpoint experience can help here. Setup: - Recovery Services Vault ( vault1 ) has two private endpoints: - PE1 — the original, created with a naming convention we&apos;re moving away from - PE2 — newly created, same vault, same target vNet and subnet as PE1 - A VM is actively backed up to vault1 via PE1 - The VM&apos;s IP is registered as an A record in the Private DNS zone associated with PE1 What I want to do: Decommission PE1 in favour of PE2 (purely a naming hygiene exercise — the underlying resource, vNet, and subnet are identical). As part of that, I want to move the A record currently registered under PE1 &apos;s DNS zone linkage across to PE2 . Questions: 1. Is it safe to delete the A record from PE1 &apos;s DNS association and re-register it under PE2 , given both PEs point at the same vault and vNet? 2. Does Azure Backup maintain any hard binding between the backed-up VM&apos;s registration and the specific PE it was originally configured through — or is it purely DNS-resolution-based? 3. Are there any in-progress or scheduled backup jobs I should quiesce before making the switch? 4. Any other gotchas I should be aware of — e.g. NIC-level IP implications, DNS propagation windows, or the need to re-run the backup configuration wizard after switching PEs? For context, the goal is zero change to the actual network path — just cleaner naming. Happy to share more config detail if it helps. Thanks in advance! &amp;#32; submitted by &amp;#32; /u/ZimCanIT [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here’s a detailed response to help you with your Private Endpoint (PE) and A record migration:
+
+---
+
+1. Is it safe to delete the A record from PE1&apos;s DNS association and re-register it under PE2?
+Yes, it is safe to delete the A record from PE1&apos;s DNS zone and re-create it under PE2, provided that both endpoints target the same Recovery Services Vault, vNet, and subnet. The private DNS zone associated with the private endpoint is used for DNS resolution, and as long as the configuration is updated correctly, there should be no issues. For more on Private Endpoint DNS configuration, refer to Azure Private Endpoint DNS Configuration (https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns).
+
+---
+
+2. Does Azure Backup maintain any hard binding with the original PE?
+Azure Backup does not maintain a hard binding to a specific PE. It uses DNS resolution to route traffic through the private endpoint. As long as the DNS A record is updated to point to PE2, the backup service should function correctly. You can verify this by ensuring the new A record is properly registered and resolves to the IP of PE2.
+
+---
+
+3. Should you quiesce in-progress or scheduled backup jobs before switching?
+Yes, it’s recommended to pause or reschedule any in-progress or scheduled backup jobs during the migration to avoid potential disruptions. You can resume them after verifying that DNS resolution through PE2 is functioning as expected. For more information on Azure Backup, refer to the Azure Backup Documentation (https://learn.microsoft.com/en-us/azure/backup/).
+
+---
+
+4. Other considerations:
+- DNS Propagation: After updating the A record, allow sufficient time for DNS changes to propagate. Verify that the new record resolves to PE2 before proceeding further.
+- Network Interface (NIC) Considerations: Since the vNet and subnet remain unchanged, there are no expected NIC-level implications.
+- Backup Configuration Wizard: If backups fail after the migration, re-running the backup configuration wizard may help resolve issues, but this is unlikely since DNS-based routing should handle the transition seamlessly.
+
+For additional context on private endpoints, check the Azure Private Link Documentation (https://learn.microsoft.com/en-us/azure/private-link/).
+
+---
+
+Let me know if you need further clarity or assistance. Good luck with your migration!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Migrate to the new Azure Marketplace Windows Server 2022 image offer - What if we do nothing?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rygm9h/migrate_to_the_new_azure_marketplace_windows/</link>
