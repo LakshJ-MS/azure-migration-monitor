@@ -5,7 +5,37 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 19 Mar 2026 23:46:07 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2026 02:37:06 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Migrate to the new Azure Marketplace Windows Server 2022 image offer - What if we do nothing?</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1rygm9h/migrate_to_the_new_azure_marketplace_windows/</link>
+      <guid isPermaLink="false">t3_1rygm9h</guid>
+      <pubDate>Thu, 19 Mar 2026 23:50:55 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Migrate to the new Azure Marketplace Windows Server 2022 image offer - What if we do nothing?
+
+Question for the Azure pros... received the notice below with a link to a blog regarding updating our Vm source images. So... simple question... in reality if we do nothing (and remove .NET 6 - we don&apos;t use it) and run on the old deprecated images... what really happens? The language at the end that they use is a little fuzzy. I get that I won&apos;t be able to deploy with the deprecated images anymore, but can I just keep running them? For all I love about Azure, the ongoing updates, SKU changes, etc. can get tiring. BLOG: Breaking change for Window Server 2022 Image Users with .NET 6 NOTICE: With .NET 6 reaching end of life (EOL) in November 2024, customers are advised to migrate off .NET 6. The existing Azure Marketplace Windows Server 2022 images contain .NET 6 and will be out of compliance and deprecated starting 9 June 2026. See the following list of impacted Azure Marketplace Windows Server 2022 images: 2022-DATACENTER 2022-DATACENTER-AZURE-EDITION 2022-DATACENTER-AZURE-EDITION-CORE 2022-DATACENTER-AZURE-EDITION-CORE-SMALLDISK 2022-DATACENTER-AZURE-EDITION-HOTPATCH 2022-DATACENTER-AZURE-EDITION-HOTPATCH-SMALLDISK 2022-DATACENTER-AZURE-EDITION-SMALLDISK 2022-DATACENTER-CORE 2022-DATACENTER-CORE-G2 2022-DATACENTER-CORE-SMALLDISK 2022-DATACENTER-CORE-SMALLDISK-G2 2022-DATACENTER-G2 2022-DATACENTER-SMALLDISK 2022-DATACENTER-SMALLDISK-G2 From now until 9 June 2026, you can continue to use the impacted Azure Marketplace Windows Server images without disruption. New Windows Server 2022 images are now available for Azure Marketplace. Please transition to the new image offer by that date. &amp;#32; submitted by &amp;#32; /u/mrgames99 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+If you continue using the deprecated Azure Marketplace Windows Server 2022 images after the June 9, 2026, deadline, the primary consequence is that you will no longer receive updates, patches, or support for those images. This includes critical security updates, which could expose your environment to significant security risks. While your existing VMs using these images may continue to run, they will be out of compliance and potentially vulnerable to exploits.
+
+To ensure your environment remains secure and supported, it’s recommended to migrate to the updated Windows Server 2022 images available on Azure Marketplace. Here’s how you can proceed:
+
+Steps to Migrate:
+1. Identify Impacted Images: Review your current deployments to determine if they are using any of the deprecated images listed in the notice.
+2. Deploy New Windows Server 2022 Images: Use the new image offer available in Azure Marketplace to create updated VMs. Ensure that these images do not include .NET 6 if it’s not required for your workloads.
+3. Migrate Workloads: Migrate your applications, data, and configurations to the new VMs. You can use Azure tools like Azure Migrate or manual methods depending on your setup.
+4. Test and Validate: Before decommissioning the old VMs, thoroughly test the new environment to ensure everything is functioning as expected.
+5. Decommission Old VMs: Once the migration is complete and validated, shut down and delete the old VMs to avoid unnecessary cost and compliance issues.
+
+While I understand the fatigue from ongoing updates, these changes are crucial for maintaining a secure and compliant environment in Azure.
+
+For additional guidance, you can explore the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/) for storage-related migrations or reach out to Microsoft Support for tailored assistance.]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure DB Linked Server</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rwm56l/azure_db_linked_server/</link>
