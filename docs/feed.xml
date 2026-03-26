@@ -5,7 +5,46 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 26 Mar 2026 10:15:49 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Mar 2026 11:29:25 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/sysadmin: Trusted HTTPS certificates for on-prem services, where to start?</title>
+      <link>https://www.reddit.com/r/sysadmin/comments/1s44hlm/trusted_https_certificates_for_onprem_services/</link>
+      <guid isPermaLink="false">t3_1s44hlm</guid>
+      <pubDate>Thu, 26 Mar 2026 11:09:56 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/sysadmin
+
+Question:
+Trusted HTTPS certificates for on-prem services, where to start?
+
+We&apos;re a Microsoft centric org running both on-prem (local domain controller) and cloud (Azure/365 for Teams, Exchange, SharePoint). We use Caddy to reverse proxy several internal resources, currently served over HTTPS using Caddy&apos;s self-signed certs. We went with HTTPS because most of these apps use OAuth with our cloud credentials, and Azure requires HTTPS redirect URIs when registering an application. Users can log in with their name@org.com (mailto: name@org.com ) accounts, briefly redirected to Microsoft&apos;s OAuth flow. It works, but the browser shows the usual &quot;untrusted domain accept the risk to continue anyway&quot; etc. We also have another Caddy instance serving public facing resources, there the certificates are handled automatically with the HTTP challenge. Our DNS provider doesn&apos;t provide APIs for automatic challenge like Cloudflare. Current setup: Domain controller acts as DNS server (default domain: org.local ) DNS records point docs.org.local (for example) to the internal Caddy&apos;s on-prem IP Caddy matches host headers and reverse proxies accordingly What works: Users access HTTPS LAN resources (with browser warnings, we tell them to click &quot;accept risk and continue&quot;) OAuth login with cloud credentials via Azure-registered apps, each with proper secrets What we want: Remove the untrusted certificate warning As a direct consequence of the above point allow other internal apps to call these services&apos; APIs over HTTPS without cert validation errors. This is the key point. Any guidance on issuing trusted certs for internal domains while keeping Azure OAuth integration intact? I&apos;ve been also exploring how to issue a cert from the domain controller and have Caddy use that, but I lost myself in the guides and I am not even sure it&apos;s the right path. Cloud name servers are handled on Aruba Cloud (Italian org) and we can&apos;t easily migrate them to other DNS name servers. Side note: we added the cloud domain org.com to the trusted domains in Azure using TXT records to register exchange for emails. &amp;#32; submitted by &amp;#32; /u/Maxiride [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+To address your need for trusted HTTPS certificates for internal services while maintaining Azure OAuth integration, you have a few viable options to eliminate browser warnings and ensure API calls over HTTPS are trusted.
+
+Option 1: Use a Public Certificate Authority
+For internal domains like docs.org.local, public CAs will not issue certificates because .local is not a valid public domain. If you can use subdomains of your external domain (org.com), you could issue certificates through a public CA. Azure App Service provides robust guidance on managing TLS/SSL certificates for apps, including auto-renewal. However, this works best for external-facing services. More details here (https://learn.microsoft.com/en-us/azure/app-service/configure-ssl-certificate).
+
+Option 2: Issue Certificates from Azure Certificate Authority
+Azure itself does not provide an internal CA for on-prem services, but you can manage TLS certificates for your Azure-hosted apps via App Service Managed Certificates. These certificates enable HTTPS for Azure-hosted services and are free. Learn more here (https://learn.microsoft.com/en-us/azure/security/fundamentals/azure-certificate-authority-details).
+
+Option 3: Use Your Domain Controller’s Internal CA
+If you want to issue certificates for internal domains (org.local), you can configure your domain controller as a Certificate Authority (CA). This would allow you to issue trusted certificates for internal services. After issuing the certificate, you can configure Caddy to use it for HTTPS. You’ll also need to distribute the root CA certificate to all client devices to ensure trust. Follow the process in Microsoft&apos;s guide on Windows Server editions to set up CA services on your domain controller. More details here (https://learn.microsoft.com/en-us/windows-server/get-started/editions-comparison).
+
+Steps:
+1. Configure your domain controller as a CA.
+2. Issue certificates for internal domains.
+3. Distribute the root CA certificate to client devices (via Group Policy or manual installation).
+4. Update Caddy to use the issued certificates.
+
+Option 4: Create Self-Signed Certificates for Azure Integration
+If you solely need certificates for OAuth integration, you can create self-signed certificates for Azure application authentication. These are ideal for service-to-service authentication but require manual distribution to avoid trust issues. Learn how to do this here (https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-self-signed-certificate).
+
+For Azure-managed services or hybrid setups, you may also explore Azure Arc (https://learn.microsoft.com/en-us/windows-server/get-started/editions-comparison), which integrates on-prem resources with Azure, potentially simplifying certificate management.
+
+Let me know if you need further clarification!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Private Endpoint A record migration</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rz1zwl/private_endpoint_a_record_migration/</link>
