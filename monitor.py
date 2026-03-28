@@ -82,16 +82,23 @@ HIGH_CONFIDENCE_PHRASES = [
     "data box heavy", "data box disk", "data box gateway",
     "data box 120", "data box 525",
     "azure migrate", "azure site recovery", "asr migration",
-    # Strong migration phrases
-    "on-prem to azure", "on-premises to azure", "on prem to azure",
-    "on-prem to cloud", "on-premises to cloud", "on prem to cloud",
-    "migrate to azure", "migration to azure", "moving to azure",
-    "move to azure", "transfer to azure", "copy to azure",
+    # Strong migration phrases (storage-qualified)
+    "on-prem to azure storage", "on-premises to azure storage",
+    "migrate to azure storage", "migration to azure storage",
+    "move to azure storage", "move data to azure", "move files to azure",
+    "moving to azure storage", "transfer to azure storage", "copy to azure storage",
+    "on-prem to azure blob", "on-prem to azure files",
+    "on-premises to blob", "on-prem to blob",
+    "move to azure blob", "move to azure files",
+    "migrate to blob", "migrate to azure files",
+    "migrate to azure blob", "moving to blob storage",
+    "to azure blob storage", "to azure file share",
     "aws to azure", "s3 to azure", "gcp to azure",
     "offline migration", "online migration", "lift and shift",
     "storage migration", "data migration to azure",
     "migrate storage", "migrate file server",
     "migrate blob", "migrate file share",
+    "migrate nas", "migrate file shares",
     "agentless discovery", "agentless migration",
 ]
 
@@ -102,15 +109,18 @@ CATEGORY_A_MIGRATION = [
     "cutover", "replicate", "sync data", "move files",
     "moving data", "moving files", "transferring",
     "importing data", "exporting data",
+    "move to azure", "moving to azure", "migrate to azure",
+    "moving to cloud", "move to cloud",
 ]
 
 CATEGORY_B_STORAGE = [
-    "storage", "blob", "file share", "file server", "azure files",
+    "blob", "file share", "file server", "azure files",
     "data lake", "adls", "s3 bucket", "object storage", "block storage",
     "managed disk", "nas ", " san ", "smb", "nfs", "cifs",
-    "backup", "archive", "netapp", "file system",
+    "archive", "netapp", "file system",
     "terabyte", " tb ", "petabyte", " pb ",
     "bucket", "container storage",
+    "blob storage", "azure storage", "storage account",
 ]
 
 CATEGORY_C_INFRA = [
@@ -143,6 +153,32 @@ EXCLUDE_KEYWORDS = [
     "entra migration", "entra id", "azure hci", "azure local",
     "azure devops", "azure function", "azure logic app",
     "move to azure dns", "migrate to entra",
+    # Database / SQL
+    "linked server", "azure db", "azure sql", "sql migration",
+    "database migration", "migrate database", "cosmos db",
+    "move to azure db", "migrate db",
+    # VM / compute image
+    "vm image", "marketplace image", "vm migration", "migrate vm",
+    "virtual machine migration", "azure marketplace",
+    "windows server image", "server 2022 image", "server 2019 image",
+    # Networking / private endpoint / DNS records
+    "private endpoint", "private dns", "a record migration",
+    "dns record", "nsg migration", "vnet migration",
+    # SSL / certificates
+    "https certificate", "ssl certificate", "tls certificate",
+    "self-signed cert", "trusted cert", "caddy", "reverse proxy",
+    "letsencrypt", "let's encrypt", "certificate authority",
+    # App / SPN / identity
+    "service principal", " spn ", "app registration",
+    "migrate app", "app migration",
+    # Azure Backup (not storage migration)
+    "azure backup", "recovery services vault", "backup vault",
+    "backup policy", "backup job",
+    # Other non-storage migrations
+    "tenant migration", "migrate tenant",
+    "domain migration", "migrate domain",
+    "email migration", "exchange migration", "mailbox migration",
+    "oauth", "redirect uri",
 ]
 
 # --- GitHub Models API (GPT-4o, free tier: 150 req/day) ---
