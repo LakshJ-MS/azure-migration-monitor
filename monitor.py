@@ -70,72 +70,40 @@ MSQA_SEARCH_QUERIES = [
     "on-premises to azure storage",
 ]
 
-# --- Keyword filters ---
+# --- Keyword filters (tiered authority) ---
+#
+# Filtering uses a 5-step funnel where stronger signals override weaker ones.
+# This prevents exclusion keywords from killing legitimate storage posts that
+# happen to mention non-storage topics (e.g., "move SAN to managed disks,
+# also planning VM migration").
+#
+# Step 1: TOOL NAMES → always accept (cannot be overridden)
+# Step 2: HARD EXCLUSIONS → always reject (career, cert, never-storage topics)
+# Step 3: SOFT EXCLUSIONS → reject only if title has no storage signal
+# Step 4: STRONG PHRASES → accept (broad migration phrases, safe after Steps 2-3)
+# Step 5: CROSS-CATEGORY → accept if migration verb + storage noun + title keyword
 
-# Tier 1: High-confidence phrases — match alone, no other context needed
-HIGH_CONFIDENCE_PHRASES = [
-    # Azure storage migration tools — all name variants
+# --- Step 1: Azure storage migration tool names (always accept) ---
+TOOL_NAMES = [
     "azcopy", "az copy", "azcopy10",
     "storage mover", "azure storage mover", "storagemover",
     "azure file sync", "file sync agent",
     "data box", "databox", "azure data box", "azure databox",
     "data box heavy", "data box disk", "data box gateway",
     "data box 120", "data box 525",
-    "azure migrate", "azure site recovery", "asr migration",
-    # Strong migration phrases (storage-qualified)
-    "on-prem to azure storage", "on-premises to azure storage",
-    "migrate to azure storage", "migration to azure storage",
-    "move to azure storage", "move data to azure", "move files to azure",
-    "moving to azure storage", "transfer to azure storage", "copy to azure storage",
-    "on-prem to azure blob", "on-prem to azure files",
-    "on-premises to blob", "on-prem to blob",
-    "move to azure blob", "move to azure files",
-    "migrate to blob", "migrate to azure files",
-    "migrate to azure blob", "moving to blob storage",
-    "to azure blob storage", "to azure file share",
-    "aws to azure", "s3 to azure", "gcp to azure",
-    "offline migration", "online migration", "lift and shift",
-    "storage migration", "data migration to azure",
-    "migrate storage", "migrate file server",
-    "migrate blob", "migrate file share",
-    "migrate nas", "migrate file shares",
-    "agentless discovery", "agentless migration",
 ]
 
-# Tier 2: Broader keywords — need ANY TWO of these three categories
-CATEGORY_A_MIGRATION = [
-    "migrate", "migration", "move data", "transfer data",
-    "copy data", "data movement", "data transfer",
-    "cutover", "replicate", "sync data", "move files",
-    "moving data", "moving files", "transferring",
-    "importing data", "exporting data",
-    "move to azure", "moving to azure", "migrate to azure",
-    "moving to cloud", "move to cloud",
+# --- Step 2: Hard exclusions (always reject, even if tool name is absent) ---
+HARD_EXCLUSIONS = [
+    # Career / certification
+    "passed az-", "az-104", "az-900", "az-305", "az-500",
+    "certification", "career advice", "laid off", "got fired",
+    "job search", "interview tips", "resume",
 ]
 
-CATEGORY_B_STORAGE = [
-    "blob", "file share", "file server", "azure files",
-    "data lake", "adls", "s3 bucket", "object storage", "block storage",
-    "managed disk", "nas ", " san ", "smb", "nfs", "cifs",
-    "archive", "netapp", "file system",
-    "terabyte", " tb ", "petabyte", " pb ",
-    "bucket", "container storage",
-    "blob storage", "azure storage", "storage account",
-]
-
-CATEGORY_C_INFRA = [
-    # Source/destination infra (NOT just "azure" — too generic)
-    "on-prem", "on-premises", "on premises",
-    "aws", " s3 ", "gcp", "google cloud",
-    "vmware", "hyper-v", "local storage",
-    "datacenter", "data center", "physical server",
-    "colocation", "netapp",
-    "azure storage", "azure blob", "azure files",
-    "azure data lake", "blob storage",
-]
-
-# Posts matching these are excluded (common false positives)
-EXCLUDE_KEYWORDS = [
+# --- Step 3: Soft exclusions (reject only if title lacks storage terms) ---
+SOFT_EXCLUSIONS = [
+    # Non-storage Azure migrations
     "subscription migration", "migrate subscription",
     "devops migration", "tfs migration", "migrate pipeline",
     "migrate work item", "code migration", "sdk migration",
@@ -144,15 +112,6 @@ EXCLUDE_KEYWORDS = [
     "identity migration", "user migration", "auth migration",
     "jit migration", "jit provisioning",
     "mobility service agent",
-    # Career / certification posts
-    "passed az-", "az-104", "az-900", "az-305", "az-500",
-    "certification", "career advice", "laid off", "got fired",
-    "job search", "interview", "resume",
-    # Non-storage azure topics
-    "azure dns", "azure ad migration", "active directory migration",
-    "entra migration", "entra id", "azure hci", "azure local",
-    "azure devops", "azure function", "azure logic app",
-    "move to azure dns", "migrate to entra",
     # Database / SQL
     "linked server", "azure db", "azure sql", "sql migration",
     "database migration", "migrate database", "cosmos db",
@@ -161,9 +120,12 @@ EXCLUDE_KEYWORDS = [
     "vm image", "marketplace image", "vm migration", "migrate vm",
     "virtual machine migration", "azure marketplace",
     "windows server image", "server 2022 image", "server 2019 image",
-    # Networking / private endpoint / DNS records
+    # Networking / private endpoint / DNS
     "private endpoint", "private dns", "a record migration",
     "dns record", "nsg migration", "vnet migration",
+    "azure dns", "move to azure dns", "migrate to entra",
+    "azure ad migration", "active directory migration",
+    "entra migration", "entra id",
     # SSL / certificates
     "https certificate", "ssl certificate", "tls certificate",
     "self-signed cert", "trusted cert", "caddy", "reverse proxy",
@@ -179,6 +141,70 @@ EXCLUDE_KEYWORDS = [
     "domain migration", "migrate domain",
     "email migration", "exchange migration", "mailbox migration",
     "oauth", "redirect uri",
+    # Non-storage Azure services
+    "azure hci", "azure local",
+    "azure devops", "azure function", "azure logic app",
+]
+
+# Terms in the TITLE that signal the post is about storage (used to
+# override soft exclusions — if the title mentions storage, the post
+# is kept even if a soft exclusion appears in the body)
+STORAGE_TITLE_SIGNALS = [
+    "storage", "blob", "file share", "file server", "azure files",
+    "nas", "san", "managed disk", "data lake", "smb", "nfs",
+    "azcopy", "data box", "databox", "file sync", "storage mover",
+    "netapp", "s3 bucket", "object storage", "cifs",
+    "migrate storage", "storage migration", "migrate file",
+    "migrate blob", "migrate nas",
+]
+
+# --- Step 4: Strong migration phrases (accepted after exclusion filtering) ---
+STRONG_PHRASES = [
+    # Product names that imply migration context
+    "azure migrate", "azure site recovery", "asr migration",
+    "agentless discovery", "agentless migration",
+    # Broad migration phrases (safe because Steps 2-3 filtered noise)
+    "on-prem to azure", "on-premises to azure", "on prem to azure",
+    "on-prem to cloud", "on-premises to cloud", "on prem to cloud",
+    "migrate to azure", "migration to azure", "moving to azure",
+    "move to azure", "transfer to azure", "copy to azure",
+    "aws to azure", "s3 to azure", "gcp to azure",
+    "offline migration", "online migration", "lift and shift",
+    "storage migration", "data migration to azure",
+    "migrate storage", "migrate file server",
+    "migrate blob", "migrate file share", "migrate nas",
+    "migrate file shares", "to azure blob storage", "to azure file share",
+]
+
+# --- Step 5: Cross-category (weakest signal, needs title keyword) ---
+CATEGORY_A_MIGRATION = [
+    "migrate", "migration", "move data", "transfer data",
+    "copy data", "data movement", "data transfer",
+    "cutover", "replicate", "sync data", "move files",
+    "moving data", "moving files", "transferring",
+    "importing data", "exporting data",
+    "move to azure", "moving to azure", "migrate to azure",
+    "moving to cloud", "move to cloud",
+]
+
+CATEGORY_B_STORAGE = [
+    "storage", "blob", "file share", "file server", "azure files",
+    "data lake", "adls", "s3 bucket", "object storage", "block storage",
+    "managed disk", "nas ", " san ", "smb", "nfs", "cifs",
+    "archive", "netapp", "file system",
+    "terabyte", " tb ", "petabyte", " pb ",
+    "bucket", "container storage",
+    "blob storage", "azure storage", "storage account",
+]
+
+CATEGORY_C_INFRA = [
+    "on-prem", "on-premises", "on premises",
+    "aws", " s3 ", "gcp", "google cloud",
+    "vmware", "hyper-v", "local storage",
+    "datacenter", "data center", "physical server",
+    "colocation", "netapp",
+    "azure storage", "azure blob", "azure files",
+    "azure data lake", "blob storage",
 ]
 
 # --- GitHub Models API (GPT-4o, free tier: 150 req/day) ---
@@ -378,27 +404,47 @@ def is_recent(post):
 # ============================================================
 
 def is_relevant(post):
-    """Check if a post is about Azure storage migration."""
+    """Check if a post is about Azure storage migration.
+
+    Uses a 5-step tiered funnel where stronger signals override weaker ones:
+      1. Tool names (azcopy, data box, etc.) → always accept
+      2. Hard exclusions (career, cert) → always reject
+      3. Soft exclusions (VM, DB, DNS, etc.) → reject only if title
+         has no storage signal (so a storage post that also mentions
+         VMs still gets through)
+      4. Strong migration phrases → accept
+      5. Cross-category (migration verb + storage noun) → accept if
+         at least one keyword appears in the title
+    """
     text = f" {post['title']} {post['body']} ".lower()
     title = f" {post['title']} ".lower()
 
-    # Exclude common false positives first
-    if any(kw in text for kw in EXCLUDE_KEYWORDS):
-        return False
-
-    # Tier 1: High-confidence phrases — match alone
-    if any(phrase in text for phrase in HIGH_CONFIDENCE_PHRASES):
+    # Step 1: Tool names → always accept (highest authority)
+    if any(tool in text for tool in TOOL_NAMES):
         return True
 
-    # Tier 2: MIGRATION + (STORAGE or INFRA), but at least one keyword
-    # must appear in the TITLE (prevents matching random words in long posts)
+    # Step 2: Hard exclusions → always reject
+    if any(kw in text for kw in HARD_EXCLUSIONS):
+        return False
+
+    # Step 3: Soft exclusions → reject UNLESS the title has a storage signal
+    if any(kw in text for kw in SOFT_EXCLUSIONS):
+        if not any(sig in title for sig in STORAGE_TITLE_SIGNALS):
+            return False
+
+    # Step 4: Strong migration phrases → accept
+    if any(phrase in text for phrase in STRONG_PHRASES):
+        return True
+
+    # Step 5: Cross-category — migration verb + storage/infra noun,
+    # with at least one keyword in the title
     has_migration = any(kw in text for kw in CATEGORY_A_MIGRATION)
     has_storage = any(kw in text for kw in CATEGORY_B_STORAGE)
     has_infra = any(kw in text for kw in CATEGORY_C_INFRA)
 
     if has_migration and (has_storage or has_infra):
-        all_tier2 = CATEGORY_A_MIGRATION + CATEGORY_B_STORAGE + CATEGORY_C_INFRA
-        if any(kw in title for kw in all_tier2):
+        all_cats = CATEGORY_A_MIGRATION + CATEGORY_B_STORAGE + CATEGORY_C_INFRA
+        if any(kw in title for kw in all_cats):
             return True
 
     return False
