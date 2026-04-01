@@ -5,38 +5,7 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 01 Apr 2026 15:44:11 +0000</lastBuildDate>
-<item>
-      <title>Reddit r/sysadmin: I want to confirm I have my thought process correct for a on-prem hybrid to cloud joined only migration. (more in body)</title>
-      <link>https://www.reddit.com/r/sysadmin/comments/1s8o1ru/i_want_to_confirm_i_have_my_thought_process/</link>
-      <guid isPermaLink="false">t3_1s8o1ru</guid>
-      <pubDate>Tue, 31 Mar 2026 13:52:56 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/sysadmin
-
-Question:
-I want to confirm I have my thought process correct for a on-prem hybrid to cloud joined only migration. (more in body)
-
-So we decided to move to cloud based and currently have an on Prem hybrid setup. We want to decommission on on Prem dc and use Azure Ad. I have spent hours researching and also based off of my education I am certain that I need to reset the pcs and start fresh with windows and just have my users sign back in without adding the pc to the domain. And then it should be just cloud joined and managed through in tune. This is my first migration and while I have gained experience with domain controllers and this hybrid set up I just want to make sure I am not missing something or overlooking something due to stress or a clouded mind. To be frank, we have everything back up to one drive and users store nothing locally so wiping a pc doesn&apos;t bother me. &amp;#32; submitted by &amp;#32; /u/MVI_Tubby [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-It sounds like you&apos;re on the right track with your approach to moving from a hybrid setup to an Azure AD cloud-only environment. It&apos;s great to see that you&apos;re taking the time to plan this migration thoroughly. Here’s some guidance to help ensure a smooth transition:
-
-1. Decommissioning On-Premises AD: Before decommissioning your on-premises domain controller, ensure all necessary data and services like Group Policies and authentication are properly transitioned to Azure AD or Azure AD services. The Microsoft Cloud Adoption Framework (https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/) provides useful insights into planning your cloud adoption strategy.
-
-2. Azure AD Join for Devices: If you plan to reset the PCs and have users only join them to Azure AD, that’s a valid approach. With Azure AD Join, devices will be managed through Intune, which can handle policies, updates, and application deployments. For more on Azure AD Join, see Azure AD documentation (https://learn.microsoft.com/en-us/azure/active-directory/devices/concept-azure-ad-join).
-
-3. Backup Confirmation: Since you mentioned that users already back up their files to OneDrive, that’s excellent. Make sure to double-check that all critical data has been synced and verified before resetting the PCs.
-
-4. Intune Setup: After the devices are reset and Azure AD joined, you can enroll them in Intune for device management. This will allow you to enforce compliance policies, deploy applications, and manage updates. Learn more about Intune in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-5. Testing and User Communication: Before proceeding with a full rollout, test this process with a small group of devices to ensure everything functions as expected. Make sure users are informed about the changes and provide clear instructions for signing in and accessing their resources post-migration.
-
-If you’re using Azure Files for shared storage, consider enabling Active Directory Domain Services (AD DS) for authentication. You can follow this guide to set it up: Enable AD DS Authentication for Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-ad-ds-enable).
-
-Feel free to share any specific concerns or challenges you’re facing—good luck with your migration!]]></description>
-    </item>
+    <lastBuildDate>Tue, 01 Apr 2026 12:00:00 +0000</lastBuildDate>
 <item>
       <title>Reddit r/azure: Private Preview: Azure Storage Mover now supports private data transfers from AWS S3</title>
       <link>https://www.reddit.com/r/AZURE/comments/1rs5opd/private_preview_azure_storage_mover_now_supports/</link>

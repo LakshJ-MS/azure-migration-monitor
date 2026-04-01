@@ -144,6 +144,10 @@ SOFT_EXCLUSIONS = [
     # Non-storage Azure services
     "azure hci", "azure local",
     "azure devops", "azure function", "azure logic app",
+    # AD / Intune / device management
+    "intune", "domain controller", "hybrid join", "cloud join",
+    "azure ad", "entra join", "autopilot",
+    "decommission dc", "decommission domain",
 ]
 
 # Terms in the TITLE that signal the post is about storage (used to
@@ -436,13 +440,15 @@ def is_relevant(post):
     if any(phrase in text for phrase in STRONG_PHRASES):
         return True
 
-    # Step 5: Cross-category — migration verb + storage/infra noun,
-    # with at least one keyword in the title
+    # Step 5: Cross-category — needs migration verb + storage noun.
+    # Infra terms (on-prem, AWS, datacenter) strengthen the signal but
+    # cannot substitute for storage terms — otherwise generic "on-prem
+    # to cloud migration" posts (AD, Intune, etc.) get through.
     has_migration = any(kw in text for kw in CATEGORY_A_MIGRATION)
     has_storage = any(kw in text for kw in CATEGORY_B_STORAGE)
     has_infra = any(kw in text for kw in CATEGORY_C_INFRA)
 
-    if has_migration and (has_storage or has_infra):
+    if has_migration and has_storage:
         all_cats = CATEGORY_A_MIGRATION + CATEGORY_B_STORAGE + CATEGORY_C_INFRA
         if any(kw in title for kw in all_cats):
             return True
