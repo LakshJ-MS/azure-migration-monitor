@@ -5,7 +5,45 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 09 Apr 2026 12:48:29 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2026 14:57:32 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Reminder: Migrate your Azure unmanaged disks by March 31, 2026 question</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1sgquxx/reminder_migrate_your_azure_unmanaged_disks_by/</link>
+      <guid isPermaLink="false">t3_1sgquxx</guid>
+      <pubDate>Thu, 09 Apr 2026 14:15:41 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Reminder: Migrate your Azure unmanaged disks by March 31, 2026 question
+
+Hi All, Has anyone migrated their unmanaged disks to managed if so was the process easy enough? We have 3 servers with unmanaged disks, DC, APP and RDS and an availability set. Do i need to convert the availability set or just go into each server and click migrate to managed disks and Azure does the rest? &amp;#32; submitted by &amp;#32; /u/Far_Selection7515 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Migrating from unmanaged disks to managed disks in Azure is a straightforward process, and Azure provides tools to make this as seamless as possible. Since unmanaged disks were fully retired as of March 31, 2026, it&apos;s crucial to complete the migration soon to ensure your workloads remain supported.
+
+Steps to Migrate Unmanaged Disks:
+1. Assess Your Resources: Since you have an availability set with three servers (DC, APP, and RDS), note that all VMs within an availability set must be migrated at the same time. This is because managed disks are required for availability sets to function properly.
+
+2. Use the Azure Portal:
+ - Navigate to the VM in the Azure portal.
+ - Under &quot;Disks,&quot; look for the option to Migrate to managed disks.
+ - Azure will handle the migration, ensuring that the VM settings, data, and configurations remain intact.
+
+3. For Availability Sets:
+ - If your VMs are part of an availability set, you must migrate the entire availability set at once.
+ - Azure provides an automated process for this migration. Instructions are detailed in the documentation linked below.
+
+Validation:
+After migration, ensure that your VMs are running correctly and that the disks have been converted to managed disks. Managed disks provide better performance, scalability, and features like snapshots and backups.
+
+For detailed guidance, refer to the official documentation on Migrating unmanaged disks to managed disks (https://learn.microsoft.com/en-us/azure/virtual-machines/unmanaged-disks-deprecation).
+
+If you encounter issues or need to script this process for multiple VMs, you can also use Azure PowerShell or Azure CLI.
+
+Let me know if you have further questions!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Platform Updates Summary (April 2025 – April 2026)</title>
       <link>https://www.reddit.com/r/AZURE/comments/1sd2s01/azure_platform_updates_summary_april_2025_april/</link>
