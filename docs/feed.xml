@@ -5,7 +5,34 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 13 Apr 2026 12:08:41 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Apr 2026 14:10:21 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure is frustrating - quota issues</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1skbhig/azure_is_frustrating_quota_issues/</link>
+      <guid isPermaLink="false">t3_1skbhig</guid>
+      <pubDate>Mon, 13 Apr 2026 13:52:38 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure is frustrating - quota issues
+
+I&apos;m unable to get any quota increase in US East or East 2. No matter the size. I need a few new SQL hosts with relatively large memory. Rant\ Azure has been very frustrating to work with, always hitting quota limits. I did not want to migrate to Azure; I wanted to stay on-prem, but now it&apos;s too late, thanks to the AI black hole. Rant End\ Any advice? and moving to AWS is not an option. &amp;#32; submitted by &amp;#32; /u/SparcV [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It sounds like you&apos;re having a tough time with Azure quotas—I&apos;m sorry to hear about the frustration. While quota limits can be challenging, there are a few steps you can take to address this issue effectively within Azure.
+
+1. Requesting Quota Increases: Azure quotas are designed to ensure resource availability and operational stability. If your quota increase requests are being denied, double-check that you’re following the correct steps. You can submit quota increase requests through the Azure portal by navigating to Help + Support &gt; New Support Request &gt; Quota. Be specific about your requirements, including the size and type of resources you need (e.g., SQL hosts with large memory). For more guidance, check Azure Resource Manager documentation (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
+
+2. Optimizing Resource Usage: If quota increases remain a challenge, consider optimizing your workload. For relational databases like SQL, you might explore Azure Cosmos DB, which provides high-performance and distributed NoSQL capabilities. It may suit workloads with large memory requirements. Learn more here: Azure Cosmos DB documentation (https://learn.microsoft.com/en-us/azure/cosmos-db/).
+
+3. Flex Consumption Plan for Serverless Hosting: For resource-intensive applications, the Azure Functions Flex Consumption Plan could be a great alternative. It’s Linux-based and uses a serverless model, letting you scale dynamically as usage grows. Learn more about this plan here: Azure Functions Flex Consumption Plan documentation (https://learn.microsoft.com/en-us/azure/azure-functions/flex-consumption-plan).
+
+If you&apos;re migrating resources or considering reorganizing your resource groups/subscriptions for better quota management, Azure supports these moves. You can refer to detailed instructions here: Move Azure resources to a new resource group or subscription (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
+
+Lastly, if you’re still facing issues, consider engaging Azure Support directly—they may offer tailored solutions for your quota challenges. I hope this helps! Let me know if you need further clarification.]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Reminder: Migrate your Azure unmanaged disks by March 31, 2026 question</title>
       <link>https://www.reddit.com/r/AZURE/comments/1sgquxx/reminder_migrate_your_azure_unmanaged_disks_by/</link>
