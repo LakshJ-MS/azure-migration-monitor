@@ -5,7 +5,43 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 14 Apr 2026 12:01:20 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 14:15:25 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Auto migration from CDN classic to Azure Front Door - massive jump in monthly cost</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1sl7sn4/auto_migration_from_cdn_classic_to_azure_front/</link>
+      <guid isPermaLink="false">t3_1sl7sn4</guid>
+      <pubDate>Tue, 14 Apr 2026 12:51:13 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Auto migration from CDN classic to Azure Front Door - massive jump in monthly cost
+
+Received an email earlier saying this had been completed for some old web apps I still have hosted on Azure but are inactive following the domains expiring but hadn&apos;t deleted them from Azure storage as I was intending downloading a backup of the data first. Logged into Azure and see I&apos;ve already been charged £7.50 for activity so far this billing cycle, when until this auto migration I was paying only a few pence per month for CDN classic, so a fair jump in cost with what I consider insufficient warning. Am in the process of trying to delete the Front Door resource endpoints hoping that&apos;s all that&apos;s needed to stop being billed for it, but some of them are stuck at &apos;deleting&apos; for 30 mins now with only one successfully deleted so far. Is there a comprehensive set of steps I need to do, or do I need to delete the whole Azure subscription in &apos;nuke it from orbit it&apos;s the only way to be sure&apos; approach? So anyone with old web apps/sites still on Azure classic CDN, sort them out before they&apos;re auto-migrated to Front Door and Microsoft start charging a minimum base monthly fee (£35/month as far as I can tell) regardless of actual usage! &amp;#32; submitted by &amp;#32; /u/VirtualPAH [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It sounds like the automatic migration from Azure CDN (Classic) to Azure Front Door has caused unexpected charges due to the service&apos;s pricing model. Let me provide some clarity and guidance.
+
+Why the Cost Increase?
+Azure Front Door has a different pricing structure than Azure CDN (Classic), including a minimum monthly charge. You can find more details in the Azure Front Door FAQ (https://learn.microsoft.com/en-us/azure/frontdoor/front-door-faq) and the Azure Front Door Overview (https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview).
+
+Steps to Minimize Costs or Delete Resources
+1. Delete Unused Azure Front Door Resources: If the web apps and associated resources are no longer needed, deleting the Azure Front Door endpoints is a good step. However, if some resources are stuck in &quot;deleting&quot; status, ensure no dependent resources are preventing the deletion.
+ 
+2. Check for Dependencies: Verify if there are backend pools, routing rules, or custom domains associated with the stuck resources. These dependencies must be removed first. The Azure Front Door Overview (https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview) can help you identify these components.
+
+3. Stop Deployment of Azure Front Door: If you no longer require the service entirely, consider deleting the entire Front Door profile. This ensures all associated resources are removed.
+
+4. Review Billing: Use the Azure Cost Management tool to analyze your current charges and identify which resources are contributing to the cost.
+
+5. Backup Data: Before deleting resources, ensure you back up any critical data stored in Azure Storage. 
+
+Preventative Measures
+For future scenarios, keep an eye on the migration timeline for classic services. This will help ensure you&apos;re aware of changes that may impact costs. For more details, review the Comparison Between Azure Front Door and Azure CDN (https://learn.microsoft.com/en-us/azure/frontdoor/front-door-cdn-comparison).
+
+Let me know if you need assistance with any of these steps!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Runbooks - Github integration alternatives for PS 7.4 &amp; Python Runbooks?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1sl2kh5/azure_runbooks_github_integration_alternatives/</link>
