@@ -5,8 +5,56 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 14 Apr 2026 14:15:25 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 15:45:07 +0000</lastBuildDate>
     <item>
+      <title>Reddit r/azure: Copy all files from one Azure storage account to another</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1slac68/copy_all_files_from_one_azure_storage_account_to/</link>
+      <guid isPermaLink="false">t3_1slac68</guid>
+      <pubDate>Tue, 14 Apr 2026 14:28:38 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Copy all files from one Azure storage account to another
+
+I have a BlockBlobStorage storage account with one container that contains 30+ TB of files. There are literally millions of files. I would like to copy those files as quickly as possible to a different storage account of type StorageV2. I don&apos;t think the storage type really matters for the purposes of this question. What is the quickest and most reliable way to copy all files from the source storage account to the destination? I have an azcopy script set up but it&apos;s going to take a week at the rate it is copying. Is there a quicker way to move everything? I looked into the Azure Storage Mover but it seems to be for transferring from elsewhere to Azure. &amp;#32; submitted by &amp;#32; /u/PrizeStaff7941 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+To copy files between Azure storage accounts quickly and reliably, there are several approaches you can consider. Since you mentioned that AzCopy is too slow for your use case, here are alternative options:
+
+1. Data Transfer Using Azure Storage Account Features
+Azure provides options to copy data directly between storage accounts without downloading and re-uploading, which can be faster. You can use Azure Storage Blob Copy with the Start-AzStorageBlobCopy PowerShell cmdlet or the az storage blob copy start Azure CLI command. These operations are server-side and can be faster than downloading and uploading via AzCopy.
+
+Learn more about creating Azure storage accounts here: 
+Create an Azure storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create) 
+
+2. Use Shared Access Signatures (SAS) for Secure Transfers
+If you need to grant limited access to the source or destination storage account, you can generate a Shared Access Signature (SAS) token. SAS tokens allow secure delegated access to your storage resources during the transfer process.
+
+For detailed steps on SAS, check: 
+Grant limited access to data with shared access signatures (SAS) (https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
+
+3. Consider SFTP for Large File Transfers
+If your storage account supports SFTP and your source data is structured in a way that SFTP can handle efficiently, this could be an alternative. SFTP is ideal for securely transferring large datasets.
+
+Learn more here: 
+SFTP support for Azure Blob Storage (https://learn.microsoft.com/en-us/azure/storage/blobs/secure-file-transfer-protocol-support)
+
+4. Optimize AzCopy
+If you decide to stick with AzCopy, ensure you are using the latest version and optimize the concurrency settings. Use the --parallel-level parameter to increase the number of concurrent operations, and experiment with --block-size-mb for larger block sizes.
+
+5. Azure Data Factory
+For large-scale data migration, Azure Data Factory provides scalable and reliable data transfer pipelines. It supports copying data between Azure storage accounts efficiently and can handle millions of files. This method is ideal for your use case given the volume of data.
+
+While the Azure Storage Mover is indeed focused on migrations from external sources to Azure, Data Factory may be better suited for your scenario.
+
+For an overview of Azure Storage capabilities: 
+Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction)
+
+Let me know if you need further guidance!]]></description>
+    </item>
+<item>
       <title>Reddit r/azure: Auto migration from CDN classic to Azure Front Door - massive jump in monthly cost</title>
       <link>https://www.reddit.com/r/AZURE/comments/1sl7sn4/auto_migration_from_cdn_classic_to_azure_front/</link>
       <guid isPermaLink="false">t3_1sl7sn4</guid>
