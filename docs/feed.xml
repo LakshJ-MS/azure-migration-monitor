@@ -5,7 +5,40 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 15 Apr 2026 11:59:04 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2026 13:59:55 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Defender detecting false-positive malware in Azure Site Recovery activities</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1sm4uxq/defender_detecting_falsepositive_malware_in_azure/</link>
+      <guid isPermaLink="false">t3_1sm4uxq</guid>
+      <pubDate>Wed, 15 Apr 2026 12:37:24 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Defender detecting false-positive malware in Azure Site Recovery activities
+
+&amp;#32; submitted by &amp;#32; /u/EquivalentDrive976 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It sounds like you&apos;re experiencing false-positive malware detections related to Azure Site Recovery activities in Microsoft Defender. This can occasionally happen when security tools misinterpret legitimate activity as malicious due to pattern similarities.
+
+To address this:
+
+1. Investigate the Alert in Microsoft Defender XDR 
+ Start by analyzing the specific alert in Microsoft Defender XDR to understand its context. Microsoft Defender XDR allows you to investigate security alerts, view related incidents, and filter based on services. Follow the steps outlined here to drill down into the alert details: Investigate alerts in Microsoft Defender XDR (https://learn.microsoft.com/en-us/defender-xdr/investigate-alerts).
+
+2. Identify False Positives 
+ If the activity is indeed legitimate (e.g., routine Azure Site Recovery operations), you can mark the alert as a false positive within Defender. This ensures that similar activities are not flagged in the future.
+
+3. Adjust Microsoft Defender for Cloud Policies 
+ You might need to customize your Microsoft Defender for Cloud settings to reduce false-positive detections. Defender for Cloud provides a unified security experience and can be tailored to your environment. Learn more about its capabilities and setup here: Microsoft Defender for Cloud Overview (https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction).
+
+4. Review Security Rules for Azure Site Recovery 
+ Ensure that your Azure Site Recovery activities are properly configured and documented. If necessary, you can whitelist certain processes or operations in Defender to avoid future false positives. Microsoft Defender for Cloud Apps may also be helpful in monitoring cloud app activities: Microsoft Defender for Cloud Apps (https://learn.microsoft.com/en-us/defender/).
+
+By following these steps, you should be able to resolve the issue and improve detection accuracy. Let me know if you need further assistance!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Looking for advice on Microsoft Foundry Abstractive Summarization (previously working)</title>
       <link>https://www.reddit.com/r/AZURE/comments/1sltrnt/looking_for_advice_on_microsoft_foundry/</link>
