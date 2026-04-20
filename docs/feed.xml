@@ -5,7 +5,38 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 20 Apr 2026 10:20:07 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2026 11:53:28 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Azure File Sync and Move 100% to the Cloud</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/5863610/azure-file-sync-and-move-100-to-the-cloud</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5863610/azure-file-sync-and-move-100-to-the-cloud</guid>
+      <pubDate>Mon, 20 Apr 2026 02:35:03 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Azure File Sync and Move 100% to the Cloud
+
+Azure File Sync can be used as a migration path and then the environment can be switched to “cloud‑only” Azure file shares after a final sync. Conceptually, the steps are: Ensure all data is fully in Azure Files If cloud tiering is enabled, first recall al... Move to a cloud‑only deployment Azure Files supports a cloud-only deployment where the.
+
+---
+
+Suggested Response:
+To transition from Azure File Sync to a cloud-only Azure Files deployment, your outlined approach is correct. Below are specific steps to guide you through the process:
+
+1. Ensure All Data Is Fully Synced: Before moving to a cloud-only setup, confirm that all your on-premises data has been fully synchronized with Azure Files. If cloud tiering is enabled, use the recall feature to ensure all files are fully present in Azure Files. For details on Azure Files, refer to the Introduction to Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction).
+
+2. Remove On-Premises Dependencies: After verifying the data sync, you can disable Azure File Sync and remove the server endpoint. This ensures that your environment operates entirely from Azure Files without reliance on local infrastructure.
+
+3. Optimize Azure Files for Cloud-Only Use: Configure Azure Files to meet your cloud-only performance, scalability, and access requirements. Azure Files supports both SMB and NFS protocols, enabling seamless access across different platforms and devices. Learn more about Azure Files capabilities in the Azure Files Introduction (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction).
+
+4. Monitor and Manage Your Cloud Deployment: Once the transition is complete, continue monitoring your Azure Files deployment to ensure optimal performance and cost management. You can leverage Azure tools for monitoring and scaling. The Azure Storage Introduction (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction) provides a comprehensive overview of storage options.
+
+If you’re moving resources to a different subscription or resource group as part of this process, you can follow the steps outlined in Move Azure Resources (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
+
+For broader guidance on planning and executing migrations, the Cloud Adoption Framework (https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/) can help you align your strategy, people, processes, and technology effectively.
+
+Let me know if you need further assistance!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Defender detecting false-positive malware in Azure Site Recovery activities</title>
       <link>https://www.reddit.com/r/AZURE/comments/1sm4uxq/defender_detecting_falsepositive_malware_in_azure/</link>
