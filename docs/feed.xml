@@ -5,7 +5,46 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 01 May 2026 07:14:49 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 May 2026 09:14:10 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Orchestra Xen migration to Azure</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1t0n3ns/orchestra_xen_migration_to_azure/</link>
+      <guid isPermaLink="false">t3_1t0n3ns</guid>
+      <pubDate>Fri, 01 May 2026 08:08:58 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Orchestra Xen migration to Azure
+
+Orchestra Xen migration to Azure Hey All, I am working at a MSP, and we recently have a project to migrate a client to Azure. We took the Azure migration approach to start, and came to the conclusion that we currently have A not supported environment. It includes 3 windows VMs, and 8 Linux machines. The 3 Windows VMs has been migrated without any issue, the issue is with the Linux machines. After a lot of errors, which where not clear, we made a MS ticket, there we got the feedback That Paravirtualized disks are not supported. Since they don’t provide the needed metadata. Therefor The linux machines would need scsi disks, since they provide all the data to the Mobility service so it can install And start the migration. Migrating disks on Orchestra Xen looks complex. Since we don’t have the needed knowledge about that type of hypervisor, We don’t wanna risk doing that. Are there other alternatives to migrate the machines to Azure? Anyone in the same boat, how did you manage to solve it? Is converting this easier then we expect? Need help!! &amp;#32; submitted by &amp;#32; /u/This_Ad3002 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It sounds like you&apos;re facing challenges with migrating Linux VMs from Orchestra Xen to Azure due to unsupported paravirtualized disks. You&apos;re correct that such disks lack the necessary metadata for Azure Migrate&apos;s Mobility service.
+
+To address this, you have a couple of alternatives:
+
+1. Convert Paravirtualized Disks to SCSI:
+ While it seems complex, converting paravirtualized disks to SCSI might still be the most reliable approach. This is required because Azure supports SCSI disks, which provide the necessary metadata for the migration process. You might want to consult with someone familiar with Orchestra Xen for this task or engage with a Microsoft partner to assist with the conversion.
+
+2. Use Azure Migrate Appliance for Assessment and Migration (Recommended):
+ If converting the disks is not feasible, you can explore using the Azure Migrate appliance. This tool helps assess and migrate workloads to Azure. It supports multiple environments, including VMware and Hyper-V, as well as physical and other virtualized servers. However, Orchestra Xen isn&apos;t directly supported, so this may require exporting the VMs to an intermediate format. 
+
+ Steps:
+ - Install the Azure Migrate appliance on a supported hypervisor (e.g., Hyper-V or VMware).
+ - Export the VMs from Orchestra Xen, convert them to a supported format (e.g., VHD or VMDK), and then import them into the Azure Migrate appliance for migration.
+ - Use Azure Migrate&apos;s server migration feature to replicate the VMs to Azure.
+
+ Documentation: Azure Migrate appliance (https://learn.microsoft.com/en-us/azure/migrate/migrate-appliance)
+
+3. Manually Export and Import VM Disks:
+ If the above doesn&apos;t work, you can manually export the VMs from Orchestra Xen, convert their disks to a compatible format (e.g., VHD), and upload them to Azure Storage. Then, create new Azure VMs and attach the uploaded disks.
+
+ Documentation: Azure Storage documentation (https://learn.microsoft.com/en-us/azure/storage/)
+
+If you&apos;re unsure, consider engaging Azure Support or a certified Azure migration partner for guidance. Let me know if you need further clarification!]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: Azure File Sync and Move 100% to the Cloud</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/5863610/azure-file-sync-and-move-100-to-the-cloud</link>
