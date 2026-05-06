@@ -5,7 +5,43 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 06 May 2026 11:26:46 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2026 13:17:31 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Migrate data from NAS to Azure Files using Azure Data Box</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/5881059/migrate-data-from-nas-to-azure-files-using-azure-d</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5881059/migrate-data-from-nas-to-azure-files-using-azure-d</guid>
+      <pubDate>Wed, 06 May 2026 09:50:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Migrate data from NAS to Azure Files using Azure Data Box
+
+...Azure Files via Data Box, and there is no requirement to stage data in Azure BlobAzure Data Box fully supports SMB-based data transfer to Azure Files, and during this process, NTFS ACLs, timestamps, and file attributes are preserved. If you have extra questions about this answer, please click &quot; Comment &quot;.| Azure Data Box supports.
+
+---
+
+Suggested Response:
+To migrate data from your NAS to Azure Files using Azure Data Box, you&apos;re on the right track. Azure Data Box is designed for secure and efficient data transfer, and it supports SMB-based transfers while preserving NTFS ACLs, timestamps, and file attributes during migration.
+
+Here’s a high-level process for using Azure Data Box with Azure Files:
+
+1. Prepare Azure Storage: 
+ Create an Azure storage account and set up Azure Files. You can find more details on storage accounts and Azure Files in the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+2. Order and Configure Azure Data Box: 
+ Place an order for an Azure Data Box via the Azure portal. Configure it with the details of your Azure storage account and specify Azure Files as the destination. Follow the documentation steps here: Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/).
+
+3. Copy Data to Azure Data Box: 
+ Connect the Data Box to your NAS and copy the data using SMB protocol. Since Azure Data Box supports SMB, you can directly copy files, ensuring NTFS ACLs, timestamps, and file attributes are retained.
+
+4. Return Azure Data Box: 
+ Once data is copied, ship the Data Box back to Azure. Microsoft will process the data ingestion and upload it to the Azure Files share in your storage account.
+
+5. Verify Data in Azure: 
+ After ingestion is complete, confirm that your data has been successfully migrated to Azure Files.
+
+For a deeper overview of Azure Files and related features, refer to the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/). If you require further clarification, feel free to ask!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Orchestra Xen migration to Azure</title>
       <link>https://www.reddit.com/r/AZURE/comments/1t0n3ns/orchestra_xen_migration_to_azure/</link>
