@@ -5,7 +5,118 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 07 May 2026 19:00:50 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 20:24:06 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Azure Migrate Storage account</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1274408/azure-migrate-storage-account</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1274408/azure-migrate-storage-account</guid>
+      <pubDate>Thu, 07 May 2026 20:24:06 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Azure Migrate Storage account
+
+After Migrate Virtual mach... Azure Migrate created ASR disks and Storage account. Can I delete the storage account ?| Yes, you should be able to (if you don&apos;t want to migrate any other VMs)- as the VMs you migrated should be using Managed Disks. You can be certain, by making sure that the Virtual Machine is running and logging into your Storage.
+
+---
+
+Suggested Response:
+Yes, you can delete the storage account created by Azure Migrate if it is no longer needed. When you migrate virtual machines (VMs) using Azure Migrate, the process often creates an Azure Site Recovery (ASR) storage account to temporarily store replicated data. Once the migration is complete and your VMs are running on Managed Disks, the ASR storage account may no longer be required.
+
+Steps to Confirm Before Deletion:
+1. Verify VM Disk Type: Ensure that the migrated VMs are using Managed Disks. You can check this in the Azure Portal by navigating to the VM&apos;s disk settings.
+ - Documentation for storage account types: Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+
+2. Confirm VM Functionality: Start the VM and ensure it is running as expected. Log in to verify that all required applications/services are operational.
+
+3. Check Dependencies: Confirm that the ASR storage account is not being used by any other services or migrations. If you plan to migrate more VMs, the account might still be needed.
+
+4. Backup Data (Optional): Before deleting the storage account, ensure that there is no critical data stored in it that you might need later.
+
+Deleting the Storage Account:
+Once you confirm that the ASR storage account is no longer required:
+1. Navigate to the storage account in the Azure Portal.
+2. Verify that no resources are dependent on the storage account.
+3. Delete the storage account.
+
+For reference on creating and managing storage accounts, see: Create an Azure Storage Account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
+
+If you&apos;re managing migrations, you might find the Azure Migrate documentation helpful: Azure Migrate Appliance (https://learn.microsoft.com/en-us/azure/migrate/migrate-appliance).
+
+By following these steps, you can safely remove unnecessary storage accounts post-migration. Let me know if you have further questions!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: how to update azure migrate classic storage accounts to Azure Resource Manager</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1920949/how-to-update-azure-migrate-classic-storage-accoun</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1920949/how-to-update-azure-migrate-classic-storage-accoun</guid>
+      <pubDate>Thu, 07 May 2026 20:24:06 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+how to update azure migrate classic storage accounts to Azure Resource Manager
+
+migrate classic storage accounts to Azure Resource Manager| To migrate your storage accounts to Azure Resource Manager, follow the steps here: How to migrate your classic storage accounts to Azure Resource Manager If you also need further info and understand the model, see: Understand storage account migration from the classic deployment model to.
+
+---
+
+Suggested Response:
+To migrate your classic Azure Storage accounts to the Azure Resource Manager (ARM) deployment model, you’ll need to follow the steps outlined in the Azure documentation. ARM offers enhanced features and better management capabilities compared to the classic model.
+
+Here’s a high-level overview of the process:
+
+1. Understand the Migration Process: Before you begin, make sure you understand the differences between the classic and ARM deployment models. This will help you better plan the migration. Refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for more details.
+
+2. Prepare for Migration:
+ - Review the prerequisites and limitations of the migration.
+ - Ensure that none of the resources in your classic storage account depend on features not supported in ARM.
+
+3. Initiate the Migration:
+ - Use the Azure portal, PowerShell, or Azure CLI to migrate your storage account.
+ - Follow the specific steps provided in the Move Azure Resources to a New Resource Group or Subscription (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription) documentation, which includes detailed instructions for moving resources between deployment models.
+
+4. Validate and Complete the Migration:
+ - After moving the storage account, validate that all resources and their functionalities are working as expected.
+ - Update your applications or services to reference the new ARM-based storage account, if necessary.
+
+If you haven’t yet created a new storage account in ARM, you can follow the steps in the Create an Azure Storage Account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create) guide to set it up.
+
+For further details on migrating classic storage accounts to ARM, I recommend starting with the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). Let me know if you need more help!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: How to migrate Aure standard storage to premium storage- Azure Files Service</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/413129/how-to-migrate-aure-standard-storage-to-premium-st</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/413129/how-to-migrate-aure-standard-storage-to-premium-st</guid>
+      <pubDate>Thu, 07 May 2026 20:24:06 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+How to migrate Aure standard storage to premium storage- Azure Files Service
+
+If not please correct me Migrate from standard to premium You can&apos;t convert an existing standard performance storage account to a block blob storage account with premium performance. To migrate to a premium performance storage account, you must create a premium block blob account, and migrate the data to the new account. ... a storage account:.
+
+---
+
+Suggested Response:
+To migrate data from a standard storage account to a premium storage account in Azure Files, your understanding is partially correct. As you mentioned, you cannot directly convert a standard-performance storage account to premium. Instead, you need to create a new premium storage account and migrate your data to it.
+
+Here’s a step-by-step guide:
+
+1. Create a Premium Storage Account 
+ Start by creating a new premium storage account to host your Azure Files. Premium storage accounts are designed for low-latency and high-performance scenarios. Learn more about storage account types here: Storage Account Overview - Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+2. Plan Your Migration Strategy 
+ Before migrating, evaluate the volume of data, downtime tolerance, and dependencies. This will ensure a smooth transition without impacting business continuity. You can refer to this guide for planning: Azure Storage migration strategy (https://learn.microsoft.com/en-us/azure/storage/common/storage-migration-plan-strategy).
+
+3. Use Azure Storage Mover or AzCopy for File Migration 
+ Azure Storage Mover is a fully managed service for migrating files and folders from on-premises or other Azure storage accounts. It supports syncing data incrementally and can simplify the migration process. Alternatively, you can use tools like AzCopy for file transfer. Learn more about Azure Storage Mover here: Introduction to Azure Storage Mover (https://learn.microsoft.com/en-us/azure/storage-mover/service-overview).
+
+4. Validate and Update Dependencies 
+ After migration, ensure your applications are updated to point to the new premium storage account. Validate that all files are intact and accessible.
+
+For detailed guidance on Azure Files and related options, you can also compare services using this link: Azure Files and Azure NetApp Files Comparison (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-netapp-comparison).
+
+Feel free to ask if you need further clarification!]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: what&apos;s the simplest way to copy files from Azure CLI to Azure Windows VMs?</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1857014/whats-the-simplest-way-to-copy-files-from-azure-cl</link>
