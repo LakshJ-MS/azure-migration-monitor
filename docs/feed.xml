@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 07 May 2026 20:24:06 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Thu, 07 May 2026 21:32:24 +0000</lastBuildDate>
+<item>
       <title>Microsoft Q&amp;A: Azure Migrate Storage account</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1274408/azure-migrate-storage-account</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1274408/azure-migrate-storage-account</guid>
@@ -45,7 +45,7 @@ If you&apos;re managing migrations, you might find the Azure Migrate documentati
 
 By following these steps, you can safely remove unnecessary storage accounts post-migration. Let me know if you have further questions!]]></description>
     </item>
-    <item>
+<item>
       <title>Microsoft Q&amp;A: how to update azure migrate classic storage accounts to Azure Resource Manager</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1920949/how-to-update-azure-migrate-classic-storage-accoun</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1920949/how-to-update-azure-migrate-classic-storage-accoun</guid>
@@ -82,7 +82,7 @@ If you haven’t yet created a new storage account in ARM, you can follow the st
 
 For further details on migrating classic storage accounts to ARM, I recommend starting with the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). Let me know if you need more help!]]></description>
     </item>
-    <item>
+<item>
       <title>Microsoft Q&amp;A: How to migrate Aure standard storage to premium storage- Azure Files Service</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/413129/how-to-migrate-aure-standard-storage-to-premium-st</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/413129/how-to-migrate-aure-standard-storage-to-premium-st</guid>
