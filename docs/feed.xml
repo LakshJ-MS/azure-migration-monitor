@@ -5,8 +5,638 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 07 May 2026 15:06:34 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 17:06:39 +0000</lastBuildDate>
     <item>
+      <title>Microsoft Q&amp;A: what&apos;s the simplest way to copy files from Azure CLI to Azure Windows VMs?</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1857014/whats-the-simplest-way-to-copy-files-from-azure-cl</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1857014/whats-the-simplest-way-to-copy-files-from-azure-cl</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+what&apos;s the simplest way to copy files from Azure CLI to Azure Windows VMs?
+
+Download Files Using AzCopy : Open a command prompt or PowerShell window on your Azure VM. Use AzCopy to copy files from the Cloud Shell storage file share to the VM. Step 3: Mount the Azure File Share Directly (Alternative Method) Mount the Azure File Share on the VM : Instead of using AzCopy, you can directly mount the Azure File Share to the VM.
+
+---
+
+Suggested Response:
+To copy files from Azure CLI to an Azure Windows VM, you can use AzCopy or mount an Azure File Share directly to the VM. Here’s a breakdown of both methods:
+
+---
+
+Option 1: Use AzCopy
+1. Install AzCopy: If AzCopy is not already installed on your VM, download and install it using this guide (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
+ 
+2. Authenticate AzCopy: Use the following command to authenticate:
+ 
+
+3. Copy files to VM: 
+ - Specify the source (e.g., an Azure Blob or File Share URL) and the destination (a folder on your VM). For example:
+ 
+
+ You can learn more about AzCopy usage in the Azure Storage documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
+
+---
+
+Option 2: Mount Azure File Share Directly
+1. Create an Azure File Share: If you don’t already have one, create a file share in your storage account. Refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for guidance.
+
+2. Mount the File Share:
+ - Open PowerShell on your Windows VM and use the following commands to mount the file share as a network drive:
+ 
+ - Replace and with your storage account and file share names.
+
+3. Access the File Share: The file share will now be accessible as a network drive (e.g., Z:\), allowing you to copy files directly.
+
+For more details on Azure File Shares and mounting, refer to the Azure Storage Documentation (https://learn.microsoft.com/en-us/azure/storage/).
+
+---
+
+Both methods are effective, so choose one based on your requirements. For more advanced scenarios (e.g., SFTP for Blob storage), see the SFTP support for Azure Blob Storage documentation (https://learn.microsoft.com/en-us/azure/storage/blobs/secure-file-transfer-protocol-support).]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Azcopy fails when copying data from azure blob storage to a vm on OCI(oracle cloud infrastructure)</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1162863/azcopy-fails-when-copying-data-from-azure-blob-sto</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1162863/azcopy-fails-when-copying-data-from-azure-blob-sto</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Azcopy fails when copying data from azure blob storage to a vm on OCI(oracle cloud infrastructure)
+
+I am using azcopy to copy blob storage content to a VM on OCI( oracle cloud infra) all network settings are in-place but I see below issue, I am using SAS token to copy the content. command: azcopy cp &quot;https://&lt;Sacacount&gt;.blob.core.windows.net/stage-data-lake/xxxx/xxxx/xxxxx?&lt;SAS token&gt;&quot; &quot;/home/opc/xxxx&quot;.
+
+---
+
+Suggested Response:
+It seems like you&apos;re encountering issues with using AzCopy to transfer data from Azure Blob Storage to a VM on Oracle Cloud Infrastructure (OCI). Below are some troubleshooting tips and steps to ensure your transfer is successful:
+
+1. Verify SAS Token Permissions: Ensure that the SAS token you’re using has the appropriate permissions (e.g., Read and List) to access the blob storage container or files you&apos;re trying to copy. For more details on SAS tokens, refer to the Storage Account Overview documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+2. Ensure AzCopy Connectivity: Test connectivity between the source (Azure Blob Storage) and destination (OCI VM). Ensure your VM can access Azure Blob Storage endpoints. Confirm that any firewalls or network security groups (NSGs) on the OCI VM or Azure Storage are not blocking traffic.
+
+3. Validate AzCopy Command: Double-check the syntax of your AzCopy command. The correct format for copying files from Azure Blob Storage to a local destination is:
+ 
+ Ensure you replace , , and with your actual values.
+
+4. Check for AzCopy Errors: If you are seeing specific error messages, refer to AzCopy error handling documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-errors) for troubleshooting guidance.
+
+5. Consider Alternative Tools: If the issue persists, you could use the Copy activity in Azure Data Factory to automate the transfer from Azure Blob Storage to your OCI VM. Learn more about the Copy activity in the Azure Data Factory documentation (https://learn.microsoft.com/en-us/azure/data-factory/copy-activity-overview).
+
+By following these steps and verifying the configuration, you should be able to identify and resolve the issue. Let us know if you need further assistance!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Azure azcopy download</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/2122050/azure-azcopy-download</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2122050/azure-azcopy-download</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Azure azcopy download
+
+I am trying to download backup files from azure storage to on-prim VM. ...d (/*)| Hello , Welcome to MS Q&amp;A The issue seems with your AzCopy command is that it is not correctly formatted for copyingRefer to AzCopy Migration Guide for v8 to v10. To view the same information online, see azcopy copy. To help you understand commands, we provide.
+
+---
+
+Suggested Response:
+To download backup files from Azure Storage to your on-premises VM using AzCopy, you need to ensure your command is properly formatted and meets the requirements for the azcopy copy operation. Here&apos;s a step-by-step guide:
+
+Steps to Download Files Using AzCopy:
+1. Install AzCopy: If you haven’t already, download and install the latest version of AzCopy. You can do this by visiting the AzCopy documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
+
+2. Authenticate AzCopy: Before running commands, authenticate AzCopy to your Azure Storage account. Use the following command to log in:
+ 
+ Alternatively, you can use a Shared Access Signature (SAS) token.
+
+3. Construct the AzCopy Command:
+ Use the azcopy copy command to download files. For example:
+ 
+ Replace:
+ - : Your Azure Storage account name.
+ - : The name of your blob container.
+ - : The path to your blob or folder. Use /* for all blobs in the container.
+ - : Your Shared Access Signature token.
+ - : The destination path on your on-prem VM.
+
+4. Verify the Download: Check the local path to ensure the files were downloaded successfully.
+
+For additional details on using AzCopy, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) to understand storage structures and the Azure Storage documentation hub (https://learn.microsoft.com/en-us/azure/storage/) for related resources.
+
+If you encounter issues, ensure your AzCopy command syntax is correct, and verify your network connectivity and permissions. Let me know if you need further clarification!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: What is the most speed effecient method of copying very large (1TB) Azure Storage account containers WITHIN the same account?</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/5576555/what-is-the-most-speed-effecient-method-of-copying</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5576555/what-is-the-most-speed-effecient-method-of-copying</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+What is the most speed effecient method of copying very large (1TB) Azure Storage account containers WITHIN the same account?
+
+I&apos;ve been attempting to find the most efficient way of copying the contents of container &apos;A&apos; to container &apos;B&apos; within the same storage account. From what I&apos;ve researched, AzCopy seems to be the most suggested solution as it&apos;s built for large data transfers with no data manipulation being done otherwise. Is there a faster method I&apos;m not.
+
+---
+
+Suggested Response:
+You’re correct that AzCopy is one of the most efficient tools for copying large amounts of data, such as 1TB, between containers within the same Azure Storage account. It’s specifically designed for high-performance data transfers and supports parallelization to maximize speed. Since no data manipulation is required, AzCopy is likely your best option.
+
+Here’s how you can use AzCopy for your scenario:
+
+1. Install AzCopy: If you haven’t already, download and install AzCopy. Instructions are available in AzCopy documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-blobs).
+
+2. Authenticate: You can authenticate using Azure Active Directory (AAD) or a shared access signature (SAS). Authentication details are outlined here (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-blobs#authenticate-with-azure-storage).
+
+3. Run AzCopy Command: Use the following command to copy all blobs from container A to container B:
+ 
+ Replace with your actual storage account name. Add a SAS token if required for authentication.
+
+4. Optimize Performance: AzCopy supports parallel file transfers. You can increase performance by tuning the concurrency level using the --cap-mbps and --parallel flags. More details are available in Copying blobs with AzCopy (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-blobs).
+
+If you’re looking for alternative methods, the Copy Blob API can be used programmatically for blob-to-blob transfers. However, it’s less efficient for bulk transfers compared to AzCopy. Learn more about the API in the Azure Blob Storage documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
+
+For a complete overview of Azure Storage, see Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). Let me know if you need further assistance!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: azcopy v8.1.0 to v10 commands</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/338009/azcopy-v8-1-0-to-v10-commands</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/338009/azcopy-v8-1-0-to-v10-commands</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+azcopy v8.1.0 to v10 commands
+
+are the commands that i use to copy pst to the blob storage still valid under v10. AzCopy /Source:&lt;source&gt; /Dest:&lt;destination&gt; [options]| @Efff dd The release notes on this page will show when certain features were released. We recommend using the latest version as it contains the most up to date features and bug fixes. There have been.
+
+---
+
+Suggested Response:
+The AzCopy commands you used in v8.1.0 are not directly compatible with v10, as v10 introduced a new syntax and command structure. However, the functionality remains, and you can still transfer your .pst files to Azure Blob Storage with the updated commands.
+
+To copy files to Azure Blob Storage using AzCopy v10, follow these steps:
+
+1. Download and Install AzCopy v10: 
+ Ensure you have AzCopy v10 installed. You can download the latest version here (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
+
+2. Authenticate AzCopy: 
+ Use one of the supported authentication methods, such as Azure Active Directory (AAD) or SAS tokens. For example, to log in interactively, run:
+ 
+
+3. Use the Copy Command: 
+ The updated syntax for copying files to Azure Blob Storage is:
+ 
+ Example:
+ 
+ Replace placeholders with your storage account, container name, and file details.
+
+4. Verify the Transfer: 
+ After the transfer, you can verify the blob in your Azure Storage account using the Azure portal or Azure Storage Explorer.
+
+For more details on Azure Blob Storage and authentication methods, see the following documentation:
+- Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction)
+- Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+
+If you&apos;re using SFTP to transfer .pst files, Azure Blob Storage also supports SFTP. Learn more about setting it up here: SFTP Support for Azure Blob Storage (https://learn.microsoft.com/en-us/azure/storage/blobs/secure-file-transfer-protocol-support). 
+
+Let me know if you need further clarification!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: How to move files into particular folder in azure storage account, which is archive tier</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/2265455/how-to-move-files-into-particular-folder-in-azure</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2265455/how-to-move-files-into-particular-folder-in-azure</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+How to move files into particular folder in azure storage account, which is archive tier
+
+i have some backup files in my azure storage account, but i need to move those files into particular folder, and those backupfiles are in the archive tier could ... Move the Blobs : Once the blobs are in a hot or cool tier, you can move them to the desired folder within your Azure Storage account. You can do this by using the Azure portal or Azure.
+
+---
+
+Suggested Response:
+To move files (blobs) into a specific folder within your Azure Storage account, especially when they are in the archive tier, you&apos;ll need to follow specific steps, as blobs in the archive tier must first be rehydrated to the hot or cool tier before they can be accessed or moved. Here&apos;s a detailed process:
+
+1. Rehydrate Blobs from Archive Tier
+ - Archive-tier blobs are inaccessible until rehydrated. You must change the access tier of these blobs to either &quot;Hot&quot; or &quot;Cool.&quot;
+ - Use the Azure portal, PowerShell, or Azure CLI to change the access tier. More information on managing storage tiers can be found in the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+2. Move Blobs to the Desired Folder
+ - Azure Storage does not have a traditional folder structure, but you can simulate one using virtual directories by specifying a prefix (e.g., folder-name/filename).
+ - To move blobs to a specific &quot;folder&quot;:
+ 1. Navigate to your storage account in the Azure portal (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
+ 2. Use tools like Azure Storage Explorer or the Azure portal to rename blobs, adding the desired folder path as a prefix to the blob name (e.g., archive-folder/backup1.txt).
+ 3. Alternatively, use PowerShell or Azure CLI for programmatic operations.
+
+3. Re-Tier Blobs (Optional)
+ - Once the blobs are moved, you can optionally change them back to the archive tier using the same tools.
+
+For more details, refer to:
+- Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+- Create an Azure Storage Account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create)
+
+Let me know if you need further assistance!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Need to move ~50TB of data from an Azure VM to an Azure File share in the same tenant</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/2143728/need-to-move-50tb-of-data-from-an-azure-vm-to-an-a</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2143728/need-to-move-50tb-of-data-from-an-azure-vm-to-an-a</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Need to move ~50TB of data from an Azure VM to an Azure File share in the same tenant
+
+I need to move 50tb from ... Azure storage mover agent are image files for Hyper-v or VMware only so I can&apos;t use that. After a lot of searching and failed attempts, I&apos;m left with the solution of AzCopy/Azure storage mover to move the data. Is there another solution I&apos;m missing that could handle this bulk move better than AzCopy/Azure storage.
+
+---
+
+Suggested Response:
+To move ~50TB of data from an Azure VM to an Azure File share, AzCopy is indeed one of the most efficient tools for this task. However, there are additional options depending on your specific needs, such as Azure Data Box or Azure File Sync. Here’s an overview of potential solutions:
+
+Option 1: AzCopy
+AzCopy is a command-line tool designed for high-performance and scalable data transfers. It can handle bulk data movement efficiently.
+
+Steps:
+1. Download and install AzCopy (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
+2. Use the azcopy copy command to transfer the data. For example:
+ 
+3. Monitor the transfer process using AzCopy logs.
+
+For an overview of Azure Storage account features and types, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+Option 2: Azure Data Box
+If the network bandwidth is a concern, Azure Data Box provides a physical device for offline data transfer. You can copy your data to the Data Box and ship it to Microsoft for upload to your Azure File share.
+
+Learn more about Azure Data Box in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+Option 3: Azure File Sync
+If you need ongoing synchronization between the VM and Azure File share, consider deploying Azure File Sync. This is particularly useful if you plan to use the Azure File share as a hybrid storage solution.
+
+For details, see the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+Moving Resources?
+If you need to reorganize your resources, such as moving the storage account between subscriptions or resource groups, refer to Move Azure resources to a new resource group or subscription (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
+
+Let me know if you need further guidance!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: moving or copying</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/253902/moving-or-copying</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/253902/moving-or-copying</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+moving or copying
+
+Yes, you can use Azure Storage Explorer or Azcopy tools Similarly, you can perform for files with in other folder/container and more Hope this helps. ...-------------------------------------------------------------- Please don’t forget to &quot;Accept the answer” and “up-vote” wherever the information provided helps you, this can be beneficial to.
+
+---
+
+Suggested Response:
+To move or copy files within Azure Storage, you have several options, including Azure Storage Explorer or AzCopy, as mentioned. Additionally, depending on your scenario, you may want to consider Azure&apos;s Storage Mover for hybrid migrations or the Azure Resource Manager tools if you&apos;re relocating storage accounts.
+
+Using Azure Storage Explorer:
+1. Download and install Azure Storage Explorer (https://azure.microsoft.com/en-us/products/storage/storage-explorer/).
+2. Connect to your Azure Storage account using your credentials or SAS token.
+3. Navigate to the container or folder containing the files.
+4. Use the drag-and-drop functionality or copy/paste options to move files between containers, folders, or even between storage accounts.
+
+Using AzCopy:
+1. Install AzCopy by downloading it here (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
+2. Use AzCopy commands to move or copy files. For example:
+ - To copy a blob: 
+ 
+ - Refer to the AzCopy documentation for detailed syntax: AzCopy Documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
+
+Moving Resources Between Resource Groups/Subscriptions:
+If your goal is to move an entire storage account to a different resource group or subscription, follow the steps outlined in Move Azure resources to a new resource group or subscription (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
+
+Using Azure Storage Mover for Hybrid Scenarios:
+For migrating on-premises file shares to Azure, Azure Storage Mover offers a fully managed service. Learn how to configure and use it here: Azure Storage Mover documentation (https://learn.microsoft.com/en-us/azure/storage-mover/).
+
+Let me know if you need further guidance!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Synology to Azure</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1852084/synology-to-azure</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1852084/synology-to-azure</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Synology to Azure
+
+I have 1.6TB in Blob, that needs to move over to Azure File Shares TIA| Hi, To move your files from an Azure Blob container to Azure File Shares, you can use the AzCopy tool, which is a command-line utility designed for copying and synchronizing files between storage accounts. Install AzCopy: Download and install AzCopy from the... AzCopy is a.
+
+---
+
+Suggested Response:
+To move your 1.6TB of data from Azure Blob Storage to Azure File Shares, you can use AzCopy, a command-line utility specifically designed for transferring data in and out of Azure Storage.
+
+Here’s a step-by-step guide:
+
+1. Install AzCopy 
+ Download and install AzCopy by following the instructions in the AzCopy installation guide (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10#download-azcopy). 
+
+2. Authenticate AzCopy 
+ To access your Azure Storage, authenticate AzCopy using Azure AD credentials or a Shared Access Signature (SAS). For more details, see the authentication guide (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10#authenticate-azcopy).
+
+3. Copy Data from Blob to File Shares 
+ Use the following AzCopy command to transfer data: 
+ 
+ Replace , , , , and with your specific values.
+
+4. Validate Transfer 
+ After completion, verify the transferred files in your Azure File Share. You can use Azure Storage Explorer for a GUI-based validation. Here&apos;s more about Azure Storage Explorer (https://learn.microsoft.com/en-us/azure/storage/common/storage-explorer-overview).
+
+5. Optional: Automate with Scripts 
+ If this is a repetitive process, you can script the AzCopy commands using PowerShell or Bash for automation.
+
+For an overview of Azure Storage and its capabilities, check the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). For additional resources, visit the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+Let me know if you have further questions!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Incremental / delta Sync two Azure Storage Accounts</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1618130/incremental-delta-sync-two-azure-storage-accounts</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1618130/incremental-delta-sync-two-azure-storage-accounts</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Incremental / delta Sync two Azure Storage Accounts
+
+Hi We wish to migrate Azure Storage account (BLOBs and Tables) from one tenant to another. Tried using AZCopy copy command to move it and it took over 8 hours to migrate the BLOB data. I understand that you would like to migrate a large amount of data from one tenant to another, This -.
+
+---
+
+Suggested Response:
+To address your need for migrating Blob and Table data between Azure Storage Accounts across different tenants, leveraging incremental/delta sync can help optimize the process. Here&apos;s a recommended approach:
+
+1. Using Azure Storage Tools
+For migrating Blob data, AzCopy is one of the most effective tools, but its performance can depend on several factors, such as the size of data, network bandwidth, and the number of parallel operations. To improve efficiency:
+- Enable incremental copy: Use the /sync flag in AzCopy to copy only changed files since the last migration.
+- Increase concurrency: Adjust the --blob-type and --include-pattern flags to control how much data is copied simultaneously.
+
+Learn how to use AzCopy effectively here: Storage Account Overview - Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+2. Alternative Migration Options
+For larger migrations or scenarios requiring automation:
+- Azure Data Factory: Set up a pipeline to migrate data between storage accounts. This method supports incremental copy and can be customized for Blob and Table data.
+- Azure Storage Explorer: A GUI-based tool that provides a simpler interface for manual migrations.
+
+More details on Azure Storage tools can be found here: Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+3. Delta Sync Considerations
+Azure Storage does not natively support incremental sync for Table data. You may need to implement a custom solution using Azure Functions or Azure Logic Apps to identify changes (e.g., based on timestamps).
+
+4. Best Practices
+- Use network acceleration options to reduce migration time.
+- Consider enabling geo-redundancy for storage accounts to improve availability.
+
+For a broad overview of Azure Storage capabilities and tools, visit: Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
+
+Feel free to share additional details about your setup, and I can provide more tailored recommendations!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Migrate file server to azure</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/175072/migrate-file-server-to-azure</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/175072/migrate-file-server-to-azure</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Migrate file server to azure
+
+I have figured out most of the thing about how to move the data, I am confused with is, how will I map the data with the users so that there wont be any issue with the user permission and they remain intact.| @Rohan Azure file shares allow you to replace existing file servers with Azure file shares without replacing your existing directory.
+
+---
+
+Suggested Response:
+To ensure a seamless migration of your file server to Azure while maintaining user permissions, you can leverage Azure File Shares integrated with Azure Active Directory (Azure AD) or your on-premises Active Directory. This allows you to preserve user access and permissions during and after the migration process.
+
+Steps to Map Data with User Permissions:
+1. Set Up Azure File Shares: 
+ - Use Azure Files to create fully managed file shares in the cloud. These shares can be mounted on Windows, macOS, and Linux, just like a traditional file server.
+ - Learn more about Azure Files here: Azure Files Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+2. Integrate with Directory Services:
+ - To ensure user permissions are retained, integrate your Azure File Shares with Active Directory (AD). You can either use Azure AD or synchronize your on-premises AD with Azure AD.
+ - This helps map existing user permissions to the new storage environment.
+ - Learn how to configure identity-based authentication for Azure Files here: Azure Files identity-based authentication (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview).
+
+3. Use Azure Storage Mover:
+ - Azure Storage Mover is a fully managed service that simplifies migrating on-premises file shares to Azure while preserving metadata and permissions.
+ - The service supports incremental migrations, ensuring minimal downtime for users.
+ - Refer to the documentation for details: Azure Storage Mover Overview (https://learn.microsoft.com/en-us/azure/storage-mover/).
+
+4. Validate Permissions Post-Migration:
+ - After migration, verify that file and folder permissions are intact by testing access for different user roles.
+
+Additional Tips:
+- If you are replacing an existing file server, consider using Azure File Sync to cache frequently accessed files locally on your on-premises server while storing the rest in Azure. This reduces latency for local users.
+
+For more information on Azure Storage, visit Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Migrate file server to Azure blob or file share</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/394656/migrate-file-server-to-azure-blob-or-file-share</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/394656/migrate-file-server-to-azure-blob-or-file-share</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Migrate file server to Azure blob or file share
+
+Hi I am new to Azure, What is the best way to migrate existing physical/ vmware File server to Azure. A fundamental aspect of file migrations to Azure is determining which Azure storage option is right for your data. This article covers the basic aspects of a migration to Azure file shares( Tools, Migration Guides, NTFS permissions, authentication.
+
+---
+
+Suggested Response:
+Migrating your file server to Azure is a great way to enhance scalability, reliability, and accessibility for your data. Azure offers two primary options for storing files: Azure Blob Storage and Azure Files. Here&apos;s an overview and steps to help you get started:
+
+1. Choose the Right Azure Storage Option
+- Azure Files: Best for lift-and-shift migrations where you want to retain file share semantics (e.g., SMB or NFS support). It&apos;s ideal for scenarios requiring NTFS permissions, file locking, and seamless integration with on-premises environments using Azure File Sync.
+- Azure Blob Storage: Suitable for applications that require object storage for unstructured data like logs, images, or backups. Blob storage also supports SFTP, enabling secure file transfer.
+
+For an introduction to Azure Storage options, refer to the Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
+
+2. Migrate to Azure Files
+To migrate a file server to Azure Files:
+1. Create an Azure Storage Account: Follow the steps in Create an Azure storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create) to set up a storage account.
+2. Create an Azure File Share: Within your storage account, create an Azure Files share to store your data.
+3. Use Migration Tools: Tools such as Azure Storage Migration Tool, Azure Data Box (for large datasets), or Robocopy can help copy files from your file server to the Azure file share.
+4. Enable Azure File Sync (Optional): To sync your on-premises file server with Azure Files and enable hybrid access, set up Azure File Sync. Learn more in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+3. Migrate to Azure Blob Storage
+If you choose Blob Storage:
+1. Create a Storage Account: Use the same instructions as above.
+2. Enable SFTP (if needed): Configure SFTP support to securely transfer files. See the guide SFTP support for Azure Blob Storage (https://learn.microsoft.com/en-us/azure/storage/blobs/secure-file-transfer-protocol-support).
+3. Transfer Files: Use tools like AzCopy, Azure Storage Explorer, or SFTP clients to upload data to Blob Storage.
+
+For detailed information on Azure Storage services, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+If you have more specific requirements, feel free to share!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: how to archive an on premise sql server database to azure</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1286193/how-to-archive-an-on-premise-sql-server-database-t</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1286193/how-to-archive-an-on-premise-sql-server-database-t</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+how to archive an on premise sql server database to azure
+
+...he following tutorials: https://learn.microsoft.com/en-us/azure/dms/tutorial-sql-server-to-azure-sql https://learn.microsoft.com/en-us/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-guide?view=azuresql And in the case of archiving in Azure storage, you can use the following general steps: Set up an Azure Storage.
+
+---
+
+Suggested Response:
+To archive an on-premises SQL Server database to Azure, you have two main options: migrate to Azure SQL Database or store the database backups in Azure Storage for long-term archiving. Below are the steps for both approaches:
+
+---
+
+Option 1: Migrate to Azure SQL Database
+If you want to migrate your database to Azure SQL Database for active use or storage, follow these steps:
+
+1. Assess your Database: Use the Azure Database Migration Service (DMS) to evaluate compatibility. Start with this tutorial (https://learn.microsoft.com/en-us/azure/dms/tutorial-sql-server-to-azure-sql) for step-by-step guidance.
+ 
+2. Prepare Azure SQL Database: Set up the Azure SQL Database or Azure SQL Managed Instance to receive the migrated data. You can find more details in the migration guide (https://learn.microsoft.com/en-us/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-guide?view=azuresql).
+
+3. Use SQL Server Management Studio (SSMS): SSMS can help you connect to Azure SQL Database and perform post-migration validation. Learn more about SSMS here (https://learn.microsoft.com/en-us/ssms/).
+
+---
+
+Option 2: Archive in Azure Storage
+If you simply want to archive backups in Azure Storage, follow these steps:
+
+1. Setup Azure Storage Account: Create a storage account to store your database backups. Refer to the Azure Storage Account overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for guidance.
+
+2. Take Database Backup: Use SQL Server to create a .bak file of your database.
+
+3. Upload to Azure Storage: Use tools like AzCopy or Azure Storage Explorer to upload the .bak file to your Azure Blob storage. 
+
+---
+
+Choose the approach based on whether you need active access or long-term archiving. If you have further questions, feel free to ask!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: On Prem vm to azure storage files manual feed</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1328569/on-prem-vm-to-azure-storage-files-manual-feed</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1328569/on-prem-vm-to-azure-storage-files-manual-feed</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+On Prem vm to azure storage files manual feed
+
+The individual users will need to upload these files into the storage account from on-prem machines at the same time we ne... One solution that I can think of is we can have express route connection to on-prem but do we really need express route connectivity. A secure solution for manual file uploads to Azure Blob Storage or Data Lake Storage can.
+
+---
+
+Suggested Response:
+To securely upload files from on-premises machines to Azure Storage without requiring an ExpressRoute connection, you can use several Azure services and tools. Here&apos;s a recommended approach:
+
+1. Use Azure Storage Mover for Hybrid File Migration
+Azure Storage Mover is a fully managed service designed for migrating on-premises file shares to Azure. It securely transfers data over the internet or through a VPN without requiring ExpressRoute. This solution is ideal for one-time or recurring file uploads. Learn more here: Azure Storage Mover documentation (https://learn.microsoft.com/en-us/azure/storage-mover/).
+
+2. Create an Azure Storage Account
+First, ensure you have an Azure Storage account created. This account will house your Azure Storage resources, such as Blob Storage or Azure Files, where the uploaded files will reside. Follow this guide to create a storage account: Create an Azure Storage Account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
+
+3. Use Azure Blob Storage or Azure Files
+Depending on your use case:
+- Azure Blob Storage: For unstructured data like text or binary files.
+- Azure Files: For file shares accessible via SMB or NFS protocols.
+
+Check the overview of storage account options here: Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+4. Upload Files Securely
+For secure manual uploads, you can use tools like Azure Storage Explorer or AzCopy:
+- Azure Storage Explorer: A GUI-based tool for uploading and managing storage.
+- AzCopy: A command-line tool for high-performance uploads. Learn more about these tools in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+5. Networking Considerations
+ExpressRoute is not mandatory for this scenario. You can use secure HTTPS connections or configure a site-to-site VPN for additional security. If you anticipate high data transfer needs, consider Azure Data Box for offline transfers.
+
+Let me know if you need further clarification!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Data Archive Process in Azure Blob.</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1199379/data-archive-process-in-azure-blob</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1199379/data-archive-process-in-azure-blob</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Data Archive Process in Azure Blob.
+
+We need to build a data archive process from on-premise to Azure cloud. You can use Azure StorSimple appliance running on-premises that can tier data to Azure Blob storage (both hot and cool tier). StorSimple can be used to archive data from on-premises to Azure. Azure Architecture Center provides best practices, design patterns, reference.
+
+---
+
+Suggested Response:
+To build a data archive process from on-premises to Azure Blob Storage, you can utilize Azure&apos;s storage capabilities to efficiently tier and manage your data. While StorSimple was a popular solution for hybrid storage, note that Microsoft has deprecated StorSimple. Instead, consider using Azure-native solutions for archiving your data. Here’s how you can proceed:
+
+1. Choose the Right Storage Tier
+Azure Blob Storage supports multiple tiers, including Hot, Cool, and Archive, for cost-effective data storage. Use the Cool tier for infrequently accessed data and the Archive tier for long-term storage. Refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for details on these options.
+
+2. Create an Azure Storage Account
+To get started, create a storage account that will host your blob data. This is a prerequisite for managing blobs, files, queues, and tables. Follow the step-by-step instructions in Create an Azure storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
+
+3. Set Up Data Transfer
+For transferring data from your on-premises environment:
+ - Use Azure Data Box for large-scale data migrations.
+ - Alternatively, leverage AzCopy, a command-line tool, to copy data from on-premises directly to Azure Blob Storage. Learn more about AzCopy in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+4. Test Locally with Azurite
+If you need a local testing environment to validate your data archive process, Azurite provides a free emulator for Azure Storage. You can explore it in Use the Azurite emulator for local Azure Storage development (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite).
+
+5. Implement Data Management Policies
+Define lifecycle management policies in Azure to automate moving data between Hot, Cool, and Archive tiers based on access patterns.
+
+For more information on Azure Storage services and best practices, visit the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/). Let me know if you have further questions!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Unable to connect Azure File Sync from On-premises File share</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1791804/unable-to-connect-azure-file-sync-from-on-premises</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1791804/unable-to-connect-azure-file-sync-from-on-premises</guid>
+      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Unable to connect Azure File Sync from On-premises File share
+
+We did the host entry also for Storage account and Storage sync. we already have the following setup: VPN from on-premise into Azure Storage account to and Azure file Subnet for the Private Link Endpoints Storage account to and Azure file share On-Premise file share We have followed the below mentioned blog for configuring the Azure file sync.
+
+---
+
+Suggested Response:
+To troubleshoot your issue with connecting Azure File Sync from your on-premises file share, it’s important to ensure all configurations are properly set up. Based on the details you’ve provided, here are some key points to review:
+
+1. Verify Active Directory Domain Services (AD DS) Integration 
+ If you’re using an SMB file share with Azure Files, ensure that AD DS authentication is enabled. This allows you to authenticate using on-premises AD credentials. Follow the steps in the guide here: Enable AD DS Authentication for Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-ad-ds-enable). This includes configuring DNS and ensuring correct permissions.
+
+2. Check Private Endpoint Connectivity 
+ Since you’re using a VPN and Private Link endpoints, ensure that the private endpoint is correctly configured and DNS resolution is working as expected. Verify that the on-premises network can resolve the private endpoint FQDN to the private IP address.
+
+3. Mount Azure File Share on Your On-Premises Server 
+ Test mounting the Azure file share on a Windows server to confirm connectivity. Use the steps in this guide: Mount SMB Azure File Share on Windows (https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-windows). Make sure the Azure storage account key or AD authentication is working.
+
+4. Validate File and Directory-Level Permissions 
+ If permissions are not correctly configured, it may block access. Use this guide to configure appropriate permissions: Configure Directory and File-Level Permissions for Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-configure-file-level-permissions).
+
+5. Reference the Azure Architecture Center for Best Practices 
+ Review the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/) for best practices on securing and designing your storage and networking setup.
+
+If these steps don’t resolve the issue, please share additional details about any error messages you’re encountering so we can assist further.]]></description>
+    </item>
+<item>
       <title>Reddit r/sysadmin: Thoughts on DFS Replication?</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1t5yb9u/thoughts_on_dfs_replication/</link>
       <guid isPermaLink="false">t3_1t5yb9u</guid>
@@ -43,7 +673,7 @@ Getting Started with Azure File Sync
 
 Azure File Sync can simplify managing large, distributed file shares while providing flexibility and cloud benefits. Let me know if you need further help!]]></description>
     </item>
-    <item>
+<item>
       <title>Reddit r/cloudcomputing: Cloud migration was easy. Managing Azure costs later was the hard part.</title>
       <link>https://www.reddit.com/r/cloudcomputing/comments/1t698xo/cloud_migration_was_easy_managing_azure_costs/</link>
       <guid isPermaLink="false">t3_1t698xo</guid>
