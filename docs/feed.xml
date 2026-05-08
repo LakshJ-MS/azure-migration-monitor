@@ -5,7 +5,43 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 07 May 2026 23:38:47 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2026 01:27:37 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Large blob storage migration from one Azure AD tenant to another</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1319845/large-blob-storage-migration-from-one-azure-ad-ten</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1319845/large-blob-storage-migration-from-one-azure-ad-ten</guid>
+      <pubDate>Fri, 08 May 2026 01:27:37 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Large blob storage migration from one Azure AD tenant to another
+
+So far we have come up with two options: We switch the subscription ownership of the entire storage account to the new subscription - as resources can only be moved between subscriptions and only subscriptions can change tenants, we will have to create a temporary subscription to hold the resource while we move it (along with the subscription) to.
+
+---
+
+Suggested Response:
+To migrate large blob storage between Azure AD tenants, your outlined approach of switching subscription ownership is viable, but it involves multiple steps. Here&apos;s a refined process to achieve this:
+
+1. Create a New Subscription in the Destination Tenant
+ - First, create a temporary subscription in the target Azure AD tenant. This will serve as the intermediate step for transferring the storage account. Ensure you have sufficient permissions in both source and destination tenants.
+
+2. Move the Storage Account to the Temporary Subscription
+ - In the source tenant, move the storage account to the newly created subscription. Note that only general-purpose v2 storage accounts can be moved between subscriptions. Ensure the account meets all prerequisites for the move, such as no dependencies on other resources. 
+ - Refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for details on supported account types and services.
+
+3. Transfer the Subscription to the Destination Tenant
+ - Once the storage account is in the temporary subscription, transfer ownership of the subscription to the destination tenant. This involves reassigning the subscription to the target Azure AD tenant.
+
+4. Verify and Reconfigure Resources
+ - After the transfer, verify that all data and configurations are intact. You may need to update access keys, connection strings, and permissions for the new tenant.
+
+If this approach doesn’t meet your needs (e.g., due to account type restrictions), consider alternative methods like Azure Data Factory or tools like AzCopy for manual data transfer. For an overview of Azure storage account types and their use cases, refer to Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
+
+For step-by-step guidance on creating a storage account, see Create an Azure storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
+
+Let me know if you need help with any specific step!]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: Azure Migrate Storage account</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1274408/azure-migrate-storage-account</link>
