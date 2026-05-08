@@ -5,8 +5,77 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 08 May 2026 09:56:30 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2026 11:23:40 +0000</lastBuildDate>
     <item>
+      <title>Microsoft Q&amp;A: Azure Data Box Device FIPS validated Encryption</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/5880040/azure-data-box-device-fips-validated-encryption</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5880040/azure-data-box-device-fips-validated-encryption</guid>
+      <pubDate>Fri, 08 May 2026 11:23:40 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Azure Data Box Device FIPS validated Encryption
+
+I&apos;m trying to find information to confirm if Azure Data Box uses FIPS validated modules for data encryption. This article says hardware encryption and Bitlocker is used. https://learn.microsoft.com/en-us/azure/databox/data-box-disk-security however, it doesn&apos;t say if the hardware encryption is FIPS validated and listed on the CMVP.
+
+---
+
+Suggested Response:
+Azure Data Box uses hardware encryption and BitLocker to secure data at rest, as mentioned in the Azure Data Box security overview (https://learn.microsoft.com/en-us/azure/databox/data-box-security). However, for your specific question about FIPS validation, you need to look at Microsoft&apos;s FIPS 140 compliance documentation.
+
+The Federal Information Processing Standard (FIPS) 140 compliance article (https://learn.microsoft.com/en-us/azure/compliance/offerings/offering-fips-140-2) confirms that Azure implements cryptographic modules validated under FIPS 140-2 or FIPS 140-3 standards, which are certified by the Cryptographic Module Validation Program (CMVP). While this ensures that Azure services, including Azure Data Box, comply with FIPS validation requirements, the specific encryption modules used by Data Box hardware are not explicitly mentioned in the available documentation.
+
+To clarify if the hardware encryption modules of Azure Data Box are listed on the CMVP, I recommend reaching out to Microsoft Support or your account representative for confirmation. Meanwhile, you can refer to the following resources for more details:
+
+1. Azure Data Box Security Overview: Details the security features of Azure Data Box, including encryption mechanisms. 
+ Learn more (https://learn.microsoft.com/en-us/azure/databox/data-box-security) 
+
+2. Azure FIPS 140 Compliance: Explains how Azure services adhere to FIPS 140 standards. 
+ Learn more (https://learn.microsoft.com/en-us/azure/compliance/offerings/offering-fips-140-2) 
+
+Additionally, if regulatory compliance is a key concern, review the Azure Policy Regulatory Compliance controls for Azure Data Box (https://learn.microsoft.com/en-us/azure/databox/security-controls-policy) to ensure that your deployment adheres to any required standards.
+
+Let me know if you have further questions!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Using data box disk uploading data</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/547752/using-data-box-disk-uploading-data</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/547752/using-data-box-disk-uploading-data</guid>
+      <pubDate>Fri, 08 May 2026 11:23:40 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Using data box disk uploading data
+
+Hi, I have ordered data box disk to copy data form my local device to azure fileshare. What I want to understand is, whether data box will create a new fileshare or can I have the option to upload it to already created fileshare. Thanks| @Biswajeet Kumar Data Box will not create a new share you will need to manually create this. For more.
+
+---
+
+Suggested Response:
+Hi @Biswajeet Kumar,
+
+Great question! When using Azure Data Box Disk to upload data to Azure File Share, the Data Box Disk will not automatically create a new file share for you. You must manually create the file share in your storage account before transferring the data.
+
+Here’s how you can proceed:
+
+1. Prepare Your Azure File Share: 
+ If you want to upload data into an existing file share, ensure the file share is already created in your storage account. If you need to create a new file share, follow the steps in this guide: Create an Azure File Share (https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share).
+
+2. Copy Data to the Data Box Disk: 
+ Before you ship the Data Box Disk to Azure, copy your data to it as per the instructions provided during the ordering process.
+
+3. Import Data to Your File Share: 
+ When the Data Box Disk is received at the Azure datacenter, you can specify the target Azure storage account and file share where the data should be uploaded. Note that you must explicitly assign the destination file share during the data import process. If you select an existing file share, the data will be uploaded into it.
+
+For more details about the Data Box Disk and its functionality, refer to the Microsoft Azure Data Box Overview (https://learn.microsoft.com/en-us/azure/databox/data-box-overview).
+
+If you encounter any issues or need further assistance, feel free to ask. Happy transferring! 😊
+
+Best regards, 
+[Your Name] 
+Microsoft Azure Storage Migration Expert]]></description>
+    </item>
+<item>
       <title>Microsoft Q&amp;A: Exporting disks to USB drives?</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1220358/exporting-disks-to-usb-drives</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1220358/exporting-disks-to-usb-drives</guid>
@@ -43,7 +112,7 @@ For more detailed guidance on migrating storage accounts, refer to the Microsoft
 
 Let me know if you have further questions!]]></description>
     </item>
-    <item>
+<item>
       <title>Microsoft Q&amp;A: we need pricing information of Data box and technical assistance</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1334353/we-need-pricing-information-of-data-box-and-techni</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1334353/we-need-pricing-information-of-data-box-and-techni</guid>
@@ -72,7 +141,7 @@ To address your query about Azure Data Box pricing and technical assistance, her
 
 If you provide more details about your technical question or migration scenario, I’d be happy to assist further!]]></description>
     </item>
-    <item>
+<item>
       <title>Microsoft Q&amp;A: data box daily usage limit extension</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/113763/data-box-daily-usage-limit-extension</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/113763/data-box-daily-usage-limit-extension</guid>
@@ -104,7 +173,7 @@ Feel free to reach out if you have additional questions or need further guidance
 Best regards, 
 [Your Name]]]></description>
     </item>
-    <item>
+<item>
       <title>Microsoft Q&amp;A: Is the power supply on the azure databox switchable for 110v and 220v power source?</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/105241/is-the-power-supply-on-the-azure-databox-switchabl</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/105241/is-the-power-supply-on-the-azure-databox-switchabl</guid>
@@ -132,7 +201,7 @@ For additional guidance on Azure Data Box and other Azure storage solutions, ref
 
 If you need further assistance, feel free to ask!]]></description>
     </item>
-    <item>
+<item>
       <title>Microsoft Q&amp;A: Data transfer to Azure files using Data box</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/368174/data-transfer-to-azure-files-using-data-box</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/368174/data-transfer-to-azure-files-using-data-box</guid>
@@ -166,7 +235,7 @@ To transfer 30 TB of data from your data center to an Azure file share using Azu
 
 By preparing the file shares in advance and following the Data Box process, you can efficiently migrate your 30 TB of data to Azure. Let me know if you have further questions!]]></description>
     </item>
-    <item>
+<item>
       <title>Microsoft Q&amp;A: Databox reports</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1193889/databox-reports</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1193889/databox-reports</guid>
@@ -202,7 +271,7 @@ Best regards,
 [Your Name] 
 Microsoft Azure Storage Migration Expert]]></description>
     </item>
-    <item>
+<item>
       <title>Microsoft Q&amp;A: Data Box for export not available</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/2180276/data-box-for-export-not-available</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2180276/data-box-for-export-not-available</guid>
@@ -246,7 +315,7 @@ Best regards,
 [Your Name] 
 Azure Storage Migration Expert]]></description>
     </item>
-    <item>
+<item>
       <title>Microsoft Q&amp;A: best way to migrate about 1TB of data from sharepoint online to azure storage</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1375974/best-way-to-migrate-about-1tb-of-data-from-sharepo</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1375974/best-way-to-migrate-about-1tb-of-data-from-sharepo</guid>
