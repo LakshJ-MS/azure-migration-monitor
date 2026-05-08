@@ -5,8 +5,91 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 08 May 2026 17:53:10 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2026 19:27:03 +0000</lastBuildDate>
     <item>
+      <title>Microsoft Q&amp;A: Azure file sync - 5tb - hybrid cache solution</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1283331/azure-file-sync-5tb-hybrid-cache-solution</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1283331/azure-file-sync-5tb-hybrid-cache-solution</guid>
+      <pubDate>Fri, 08 May 2026 19:27:03 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Azure file sync - 5tb - hybrid cache solution
+
+With Azure File Sync, you can create a synchronization relationship between your local file server and an Azure file share. The primary purpose of Azure File Sync is to synchronize files between the local file server and Azure, providing cloud-based redundancy and offloading of less frequently accessed files to the cloud. ...ou to cache several.
+
+---
+
+Suggested Response:
+Azure File Sync is an excellent solution for hybrid environments where you need to maintain local file server performance while leveraging cloud storage for redundancy and scalability. Based on your description, it sounds like you&apos;re looking for guidance on setting up Azure File Sync for a 5TB workload with hybrid caching.
+
+Steps to Implement Azure File Sync:
+
+1. Create a Storage Account 
+ Begin by creating a storage account in Azure. The storage account will host your Azure file share. To choose the right storage account type, review the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+2. Set Up an Azure File Share 
+ Once the storage account is created, set up an Azure file share to store your files. Azure file shares provide cloud-based file storage accessible via SMB or REST APIs. Refer to the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/) for a deeper understanding of file shares.
+
+3. Install Azure File Sync Agent 
+ Install the Azure File Sync agent on your on-premises file server. This agent enables the synchronization of files between your server and the Azure file share. Ensure your server meets the system requirements specified in the Azure File Sync documentation.
+
+4. Register the File Server with Azure 
+ Use the agent to register your file server with the Azure File Sync service. This step ties your local server to the Azure environment.
+
+5. Create a Sync Group 
+ Create a sync group in Azure, which establishes the relationship between the Azure file share and your on-premises file server. This is where you configure caching policies to keep frequently accessed files locally while offloading the rest to Azure.
+
+6. Enable Hybrid Caching 
+ To optimize performance, configure the cloud tiering feature. This ensures that only hot (frequently accessed) data resides on your local server, while cold data is tiered to Azure.
+
+For detailed architectural guidance, you can also explore the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/).
+
+By following these steps, you can efficiently sync and cache 5TB of data with Azure File Sync. Let me know if you need clarification on any specific aspect!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: AFS Sync behavior</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1427131/afs-sync-behavior</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1427131/afs-sync-behavior</guid>
+      <pubDate>Fri, 08 May 2026 19:27:03 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+AFS Sync behavior
+
+This is because Azure File Sync is specifically designed to handle synchronization between your cache drive and cloud share, and it ensures that the data on both locations are always in sync. The primary behavior of Azure File Sync is as follows: AFS Cache to Cloud Share Sync : The local AFS cache server will upload any changes made locally to the.
+
+---
+
+Suggested Response:
+Hello!
+
+Azure File Sync (AFS) is indeed a powerful tool designed to synchronize data between your on-premises servers (cache) and your Azure Files cloud shares. Its primary behavior ensures that changes made locally are uploaded to the cloud, while also providing efficient caching of frequently accessed files locally.
+
+Key Behavior of Azure File Sync:
+1. Bidirectional Sync: Changes made in the Azure File share are downloaded to the local server, and updates on the local server are uploaded to the Azure File share.
+2. Cloud Tiering: AFS supports cloud tiering, which allows you to store frequently accessed files locally while offloading infrequently accessed files to the cloud, helping optimize storage costs and performance.
+
+Steps to Ensure Proper Sync Behavior:
+1. Set Up Azure File Sync:
+ - Create an Azure Storage Account for your Azure File share (Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)).
+ - Deploy the Azure File Sync agent on your on-premises server.
+ - Register the server with your Azure Storage resource.
+
+2. Configure Sync Group:
+ - Create a sync group to define the relationship between your Azure File share and the server endpoint (on-premises cache).
+ - Ensure that proper file paths and permissions are configured.
+
+3. Enable Cloud Tiering (Optional):
+ - Configure cloud tiering to offload unused files to the cloud while keeping metadata locally.
+
+Additional Resources:
+- For more detailed instructions, visit the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+- If you are working in a private network, ensure proper DNS configuration for Azure File Sync using Azure Private Endpoint DNS values (https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns).
+
+Let me know if you have further questions or need help with your setup!]]></description>
+    </item>
+<item>
       <title>Microsoft Q&amp;A: Data Box Disk Tamper Protection - FIPS 140-2 Certification Level</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1101846/data-box-disk-tamper-protection-fips-140-2-certifi</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1101846/data-box-disk-tamper-protection-fips-140-2-certifi</guid>
@@ -1757,34 +1840,6 @@ Key steps to get started:
 3. Plan for TLS 1.2 compliance: https://learn.microsoft.com/en-us/azure/storage/common/transport-layer-security-configure-migrate-to-tls2
 
 This is a significant step for secure cross-cloud migrations.]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Azure Data Box new devices review</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1rrwh5y/azure_data_box_new_devices_review/</link>
-      <guid isPermaLink="false">t3_1rrwh5y</guid>
-      <pubDate>Thu, 12 Mar 2026 17:03:42 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Azure Data Box new devices review
-
-Has anyone here used the Azure databox new devices? How is the 120 and 525TB capacity copy speeds? what usecases did you guys use it for? I want to migrate to managed disk, is that an option?
-
----
-
-Suggested Response:
-Here are Azure tools that can help with your migration:
-
-**Azure Data Box** - For large offline migrations (tens of TBs+). Microsoft ships a physical device to your site.
-Docs: https://learn.microsoft.com/azure/databox/
-
-**Azure Storage Mover** - Fully managed migration service with agent-based orchestration.
-Docs: https://learn.microsoft.com/azure/storage-mover/
-
-**AzCopy** - Versatile CLI tool for Azure Storage data movement.
-Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
-
-Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
     </item>
   </channel>
 </rss>
