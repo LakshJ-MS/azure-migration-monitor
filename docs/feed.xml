@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 08 May 2026 19:27:03 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Fri, 08 May 2026 20:35:37 +0000</lastBuildDate>
+<item>
       <title>Microsoft Q&amp;A: Azure file sync - 5tb - hybrid cache solution</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1283331/azure-file-sync-5tb-hybrid-cache-solution</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1283331/azure-file-sync-5tb-hybrid-cache-solution</guid>
@@ -47,7 +47,7 @@ For detailed architectural guidance, you can also explore the Azure Architecture
 
 By following these steps, you can efficiently sync and cache 5TB of data with Azure File Sync. Let me know if you need clarification on any specific aspect!]]></description>
     </item>
-    <item>
+<item>
       <title>Microsoft Q&amp;A: AFS Sync behavior</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1427131/afs-sync-behavior</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1427131/afs-sync-behavior</guid>
