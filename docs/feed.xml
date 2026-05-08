@@ -5,7 +5,36 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 08 May 2026 16:20:46 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2026 17:53:10 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Data Box Disk Tamper Protection - FIPS 140-2 Certification Level</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1101846/data-box-disk-tamper-protection-fips-140-2-certifi</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1101846/data-box-disk-tamper-protection-fips-140-2-certifi</guid>
+      <pubDate>Fri, 08 May 2026 17:53:10 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Data Box Disk Tamper Protection - FIPS 140-2 Certification Level
+
+According to the Data Box Security and Data Protection documentation ( https://learn.microsoft.com/en-us/azure/databox/data-box-security ), tamper protection is FIPS 140-2 level 2 certified. The Data Box Disk overview ( https://learn.microsoft.com/en-us/azure/databox/data-box-disk-overview ) states &quot;The disks are tamper-resistant and support.
+
+---
+
+Suggested Response:
+The Microsoft Learn documentation you referenced confirms that Azure Data Box Disk is indeed tamper-resistant and complies with FIPS 140-2 Level 2 certification for tamper protection. This certification ensures that the device meets strict security standards for cryptographic modules, making it suitable for secure data transfers.
+
+While the specific details about Data Box Disk security are outlined in the Data Box Security and Data Protection documentation (https://learn.microsoft.com/en-us/azure/databox/data-box-security), let me provide additional context for Azure compliance and security capabilities:
+
+1. FIPS 140-2 Certification: The FIPS 140-2 Level 2 compliance ensures that the Data Box Disk provides physical tamper evidence and role-based authentication. This is critical for maintaining data integrity during transport.
+ 
+2. Azure Compliance Offerings: Azure meets several global regulatory standards, including ISO 27001, ISO 27018, SOC 1, SOC 2, and more. You can explore the full list of Azure compliance certifications here (https://learn.microsoft.com/en-us/azure/compliance/).
+
+3. Data Security with Azure Storage: Azure Storage is built with security as a cornerstone, offering features like encryption at rest, secure data transfer, and integration with Azure Active Directory for access management. Learn more in the Azure Storage documentation hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+For a detailed understanding of Azure Storage’s security and compliance capabilities, you may also refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) and the Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
+
+If you have additional questions about setting up or using the Data Box Disk, let me know!]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: Data landing zone from databox</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1484090/data-landing-zone-from-databox</link>
