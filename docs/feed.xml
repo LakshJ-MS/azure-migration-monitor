@@ -5,7 +5,280 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 08 May 2026 08:10:42 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2026 09:56:30 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Exporting disks to USB drives?</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1220358/exporting-disks-to-usb-drives</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1220358/exporting-disks-to-usb-drives</guid>
+      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Exporting disks to USB drives?
+
+I am looking for a way to get the disks without having to export/download them individually. Thank you.| Yes, Microsoft offers an Azure Data Box service that allows you to transfer large amounts of data to and from Azure using physical storage devices, such as hard drives or Azure Data Box devices. This service can be particularly useful when you.
+
+---
+
+Suggested Response:
+To export Azure disks to USB drives or other physical media en masse, you can consider using the Azure Data Box service. Azure Data Box is designed to securely transfer large amounts of data to and from Azure using physical storage devices. This can be more efficient than downloading disks individually, especially when dealing with significant data volumes.
+
+Here’s how you can proceed:
+
+1. Evaluate Azure Data Box: Start by reviewing the Azure Data Box service to ensure it fits your requirements. The Data Box can be ordered directly from the Azure portal and supports large-scale data export scenarios. For more information, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). 
+
+2. Prepare Disks for Transfer:
+ - If the disks are managed disks in Azure, you may need to convert them to VHD files for export.
+ - For guidance on Azure managed disk types and their configurations, refer to Select a disk type for Azure IaaS VMs (https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types).
+
+3. Use Azure Data Box:
+ - Order a Data Box device from the Azure portal.
+ - Once the device is delivered, copy the data (e.g., VHDs of your disks) to the Data Box using the provided tools.
+ - Return the device to Microsoft, and the data will be uploaded to your Azure storage account.
+
+4. Alternative for Small-Scale Exports:
+ - If the dataset is small, you can download individual VHDs from Azure using tools like Azure Storage Explorer or Azure CLI. You can then use utilities like diskpart to prepare and manage the data on USB drives. Learn more about diskpart here (https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/diskpart).
+
+For more detailed guidance on migrating storage accounts, refer to the Microsoft Storage Account Overview documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). 
+
+Let me know if you have further questions!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: we need pricing information of Data box and technical assistance</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1334353/we-need-pricing-information-of-data-box-and-techni</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1334353/we-need-pricing-information-of-data-box-and-techni</guid>
+      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+we need pricing information of Data box and technical assistance
+
+need pricing information of Data box and technical assistance.| You can post technical questions in this forum. The data box pricing is listed here , but you can use this link to chat with Microsoft sales. For a more curated experience, if you have a Microsoft account manager, reach out to them. You can also consider finding a local Microsoft.
+
+---
+
+Suggested Response:
+To address your query about Azure Data Box pricing and technical assistance, here&apos;s how you can proceed:
+
+1. Pricing Information: Azure Data Box pricing details are not directly linked in the provided documentation, but you can access the Azure Data Box Pricing page (https://azure.microsoft.com/pricing/details/databox/) for accurate and up-to-date information. Pricing can vary based on the Data Box model and your region.
+
+2. Technical Assistance: For technical questions related to Azure Storage or Data Box, this forum is a great place to start. Additionally, the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/) provides comprehensive resources on Azure Storage services. If your question is specific to storage account migration, refer to the Storage Account Overview documentation: Storage Account Overview - Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+3. Sales Support and Account Management: For a tailored experience, you can contact Microsoft Sales directly through the Contact Microsoft Sales page (https://www.microsoft.com/en-us/licensing/expert). If you&apos;re part of the Microsoft AI Cloud Partner Program or a Cloud Solution Provider (CSP), you may also find additional resources in the Partner Center documentation (https://learn.microsoft.com/en-us/partner-center/).
+
+4. Additional Resources: If your query involves migrating storage or understanding Azure storage types for specific workloads (e.g., Azure VMs), check the relevant documentation:
+ - Storage Account Overview - Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+ - Select a disk type for Azure IaaS VMs (https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types)
+
+If you provide more details about your technical question or migration scenario, I’d be happy to assist further!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: data box daily usage limit extension</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/113763/data-box-daily-usage-limit-extension</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/113763/data-box-daily-usage-limit-extension</guid>
+      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+data box daily usage limit extension
+
+Hi, I need to extend the 45 day limit for keeping the Azure data disk on-premises. Is this possible?| The migration project got delayed, but the 45 days are about to expire. Logistically it does make sense to send back the disk, just to request a new one in a couple of days or weeks. I&apos;m sure there must be a way to extend this at a cost.|.
+
+---
+
+Suggested Response:
+Hello,
+
+Azure Data Box devices, by default, have a retention period of 45 days for on-premises usage. Unfortunately, this limit cannot be extended. Once the 45-day period expires, the device must be returned to Microsoft. If the device is not returned on time, additional fees may apply.
+
+Given your situation, it would likely be more efficient to return the current device and request a new one when you&apos;re ready to proceed with the migration. While this may seem inconvenient, it ensures compliance with Azure&apos;s policies and avoids potential penalties.
+
+For your migration project, I recommend exploring Azure Storage options to ensure you&apos;re fully prepared when the new Data Box arrives. You can review the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) to familiarize yourself with your storage options and best practices.
+
+If you&apos;re looking for alternatives to streamline your data transfer process, you can also explore Azure File Sync or Azure Blob Storage, depending on your use case. The Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/) provides comprehensive guidance on these services.
+
+To avoid similar delays in the future, consider planning your storage migration with buffer time or utilizing Azure&apos;s cloud-based services, such as Azure Files or Azure Blob, to minimize reliance on physical devices.
+
+Feel free to reach out if you have additional questions or need further guidance!
+
+Best regards, 
+[Your Name]]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Is the power supply on the azure databox switchable for 110v and 220v power source?</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/105241/is-the-power-supply-on-the-azure-databox-switchabl</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/105241/is-the-power-supply-on-the-azure-databox-switchabl</guid>
+      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Is the power supply on the azure databox switchable for 110v and 220v power source?
+
+we are receiving a databox to install from one of our tenants. The picture on the website shows a 110v ac cord. Is the power supply switchable for 22... It&apos;s support 220V. Please find below link for your reference. &quot;Provide a suitable power source with electrical overload protection to meet the following power specifications: Voltage: 100 V.
+
+---
+
+Suggested Response:
+It seems your question refers to the Azure Data Box&apos;s power requirements, specifically whether it supports both 110V and 220V power sources. While the provided documentation links do not directly address the Azure Data Box hardware specifications, I recommend consulting the official Azure Data Box documentation for precise details. However, I can provide some general guidance.
+
+Azure Data Box devices are typically designed to support a wide range of power inputs, including both 110V and 220V, as they are used across various regions globally. The device usually comes with region-specific power cords, so if the power cord included with your unit is for 110V, you may need to obtain a compatible cord for a 220V source if required.
+
+To ensure proper operation:
+1. Refer to the Azure Data Box User Guide: Check the official documentation for power specifications. Look for the section on &quot;Power Requirements&quot; or similar.
+2. Inspect the Device Labeling: The power brick or the device itself may have a label indicating its voltage compatibility.
+3. Contact Microsoft Support: If you&apos;re unsure about the compatibility or need to request additional power cords, reach out to Azure Support.
+
+For additional guidance on Azure Data Box and other Azure storage solutions, refer to the Azure Storage documentation: Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+If you need further assistance, feel free to ask!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Data transfer to Azure files using Data box</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/368174/data-transfer-to-azure-files-using-data-box</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/368174/data-transfer-to-azure-files-using-data-box</guid>
+      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Data transfer to Azure files using Data box
+
+Team, We are trying to transfer 30 TB of data from our DC to Azure file share using Data box. My question is: Do we have to create the file share structure on Azure portal before the Data box are dispatched OR do we hav... Here&apos;s how to set up Azure File Sync in a way that&apos;s compatible with bulk migration tools such as Azure Data Box: Copy data to.
+
+---
+
+Suggested Response:
+To transfer 30 TB of data from your data center to an Azure file share using Azure Data Box, you’ll need to follow a few steps to ensure a smooth migration. Here’s how you can proceed:
+
+1. Prepare the Azure File Share: 
+ Before using Azure Data Box, you must create the file share structure in your Azure storage account. Azure Data Box does not automatically create file shares for you, so you need to set these up in advance. You can do this via the Azure portal, Azure PowerShell, or Azure CLI. For an overview of storage accounts and their capabilities, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+2. Order and Configure the Data Box: 
+ Use the Azure portal to order a Data Box and specify the target storage account and file share details. The Data Box will copy your data into the specified file shares during the import process. Details about Azure Data Box and its capabilities can be found in the Microsoft Azure Data Box overview (https://learn.microsoft.com/en-us/azure/databox/data-box-overview).
+
+3. Copy Data to the Data Box: 
+ Once the Data Box is delivered, copy your data onto it using the SMB protocol. Ensure the folder structure on the Data Box matches the file share structure you created in Azure.
+
+4. Return and Import Data: 
+ After copying the data, return the Data Box to Azure. Microsoft will handle the data upload into the file shares you specified during the Data Box configuration.
+
+5. Set Up Azure File Sync (Optional): 
+ If you plan to keep your on-premises and Azure file shares synchronized, you can configure Azure File Sync after the data transfer is complete. Learn more about Azure File Sync in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+By preparing the file shares in advance and following the Data Box process, you can efficiently migrate your 30 TB of data to Azure. Let me know if you have further questions!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Databox reports</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1193889/databox-reports</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1193889/databox-reports</guid>
+      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Databox reports
+
+How many Storage accounts I can use in a one databox? how data box pricing is calculated| @Dhruthi R Welcome to Microsoft Q&amp;A Forum, Thank you for posting your query here. Azure Data Box service nat... Both hot and cool blob are supported Data Box pricing: https://azure.microsoft.com/en-in/pricing/details/databox/ You are billed when the order.
+
+---
+
+Suggested Response:
+Hello @Dhruthi R,
+
+Thank you for posting your query on the Microsoft Q&amp;A Forum. I’m happy to assist you with your questions regarding Azure Data Box usage and pricing.
+
+Storage Accounts per Data Box
+You can copy data into multiple storage accounts using a single Azure Data Box device. The Azure Data Box supports Blob Storage (both hot and cool tiers), Azure Files, and other data types. You can find more information about Azure Storage accounts and their types in the Storage Account Overview documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+Data Box Pricing
+As for pricing, the cost of using Azure Data Box depends on multiple factors, including the type of Data Box device (e.g., Data Box Disk, Data Box, Data Box Heavy) and the duration for which the device is rented. You are billed when the order is placed, and additional charges may apply for shipping, customs duties/taxes, and extending the usage period. Detailed pricing information can be found on the official Azure Data Box Pricing page (https://azure.microsoft.com/en-in/pricing/details/databox/).
+
+Next Steps
+1. Review Storage Account Options: Ensure you configure the appropriate storage accounts for your data transfer by referring to the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+2. Estimate Costs: Use the pricing calculator available on the Azure Pricing (https://azure.microsoft.com/en-in/pricing/) page to estimate costs based on your specific requirements.
+3. Compliance Considerations: If you’re transferring sensitive data, make sure to review Microsoft Compliance offerings (https://learn.microsoft.com/en-us/compliance/) to ensure adherence to regulatory requirements.
+
+Please let me know if you need further clarification or assistance!
+
+Best regards, 
+[Your Name] 
+Microsoft Azure Storage Migration Expert]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Data Box for export not available</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/2180276/data-box-for-export-not-available</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2180276/data-box-for-export-not-available</guid>
+      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Data Box for export not available
+
+Hmm, I want to export somewhere around 50TB of data from one of our StorageV2 blob storage containers to a customer&apos;s on-prem site in Denmark. I thought I could create a Data Box for export but it appers it is not available for my subscription. What are my options?| Hello Ulf Brehmer , Thanks for your question Data Box is only available for.
+
+---
+
+Suggested Response:
+Hello Ulf Brehmer,
+
+Thank you for your question. Exporting 50TB of data from an Azure StorageV2 blob container to an on-premises location can indeed be challenging, especially if Azure Data Box is not available for your subscription. Fortunately, there are alternative approaches you can consider:
+
+1. Azure Storage to On-Premises via AzCopy
+ - AzCopy is a command-line tool optimized for transferring large amounts of data to and from Azure Storage. You can use AzCopy to download the data from your blob storage to your on-premises environment.
+ - Steps:
+ 1. Install AzCopy on your local machine or a VM.
+ 2. Authenticate AzCopy with your storage account.
+ 3. Use the azcopy copy command to download the blob files locally.
+ 4. Transfer the downloaded files to your customer&apos;s site using your preferred method.
+ - Learn more about AzCopy here (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-blobs).
+
+2. Azure File Sync
+ - If the data needs to be accessed as files, you could use Azure File Sync to sync your blobs with an Azure Files share, then map the share to an on-premises server for transfer.
+ - This requires setting up an Azure File share and installing the Azure File Sync agent.
+ - Detailed instructions are available in the Azure Storage documentation hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+3. Custom Data Transfer Solutions
+ - If the above methods are not feasible due to bandwidth or time constraints, you might need to explore custom solutions such as arranging physical media exchange (if allowed) or leveraging third-party transfer services.
+
+For more information about Azure Storage options, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+If you need further assistance or have additional constraints, please share more details, and I’ll be happy to help!
+
+Best regards, 
+[Your Name] 
+Azure Storage Migration Expert]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: best way to migrate about 1TB of data from sharepoint online to azure storage</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1375974/best-way-to-migrate-about-1tb-of-data-from-sharepo</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1375974/best-way-to-migrate-about-1tb-of-data-from-sharepo</guid>
+      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+best way to migrate about 1TB of data from sharepoint online to azure storage
+
+Hi, I&apos;m looking for ways to migrate/move about 1TB of data from office SharePoint online to Azure storage blob and just downloading to local system an... If the idea is just to migrate the data to blob so it can be accessed from a plugin in SPO (btw. this is very interesting so if you can share more information on that it would be great) any.
+
+---
+
+Suggested Response:
+To migrate approximately 1TB of data from SharePoint Online to Azure Blob Storage, you can use a combination of tools and services to achieve an efficient and secure transfer. Here&apos;s a step-by-step guide:
+
+1. Export Data from SharePoint Online 
+ Use the SharePoint Migration Tool (SPMT) (https://learn.microsoft.com/en-us/sharepointmigration/introducing-the-sharepoint-migration-tool) to export your data from SharePoint Online. While the tool is primarily designed for migrating data into SharePoint or OneDrive, it can also assist in exporting data to your local system.
+
+2. Prepare Azure Storage 
+ If you haven’t already, create an Azure Storage account to house your blob data. Follow this guide to create an Azure storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create). Ensure you choose the appropriate performance tier (Standard or Premium) and redundancy option for your use case. 
+
+3. Upload Data to Azure Blob Storage 
+ After exporting the data to your local system: 
+ - Use tools like AzCopy, Azure Storage Explorer, or PowerShell to upload the data to Azure Blob Storage. AzCopy is a command-line utility specifically designed for high-performance data transfers. 
+ - Learn more about Azure Storage options in this Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+4. Access Data in Azure from SharePoint Online 
+ If your objective is to make the data accessible via a SharePoint Online plugin, you can generate a Shared Access Signature (SAS) for secure access to blobs. SAS tokens allow granular, time-limited access to Azure Storage resources. Refer to the Azure Storage documentation hub (https://learn.microsoft.com/en-us/azure/storage/) for more details on configuring access.
+
+This approach minimizes downtime, ensures data security, and allows for seamless integration between Azure Storage and SharePoint Online. Let me know if you need additional guidance!]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: Large blob storage migration from one Azure AD tenant to another</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1319845/large-blob-storage-migration-from-one-azure-ad-ten</link>
