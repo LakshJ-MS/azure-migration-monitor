@@ -5,7 +5,38 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sat, 09 May 2026 07:11:52 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2026 08:54:24 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: AZURE MIGRATE</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/2041549/azure-migrate</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2041549/azure-migrate</guid>
+      <pubDate>Sat, 09 May 2026 08:54:24 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+AZURE MIGRATE
+
+| @Maninder Kaur Sorry for the inconvenience caused. Based on the information provided, I understand that you&apos;re experiencing an issue with the Azure Migrate tool where you are unable to select the VMs to migrate. please follow the steps suggested below: Ensure that all required fields are filled out correctly. If none of these steps resolve the.
+
+---
+
+Suggested Response:
+It sounds like you&apos;re encountering an issue with selecting VMs in the Azure Migrate tool. To address this, please follow these steps:
+
+1. Verify Appliance Configuration: Ensure that the Azure Migrate appliance is set up correctly and meets all the prerequisites. The appliance is critical for discovering and assessing your on-premises environment. You can review the configuration steps and prerequisites here: Azure Migrate appliance (https://learn.microsoft.com/en-us/azure/migrate/migrate-appliance).
+
+2. Check Discovery Status: After configuring the appliance, check if your VMs have been successfully discovered. If the discovery process is incomplete, the VMs may not appear in the Azure Migrate portal.
+
+3. Assess Project Settings: Confirm that all required fields in your Azure Migrate project are filled out accurately. Ensure that you&apos;ve selected the correct assessment type (e.g., server migration) and that the discovered VMs are properly tagged or grouped for migration.
+
+4. Network and Permissions: Ensure that the appliance has proper network connectivity to both your on-premises VMs and Azure. Additionally, verify that the required permissions are granted for the service principal being used during the migration process.
+
+5. Select VMs for Migration: Once discovery is complete, navigate to your Azure Migrate project in the Azure portal, go to the Servers section, and verify that the VMs are listed. If they aren’t, recheck the discovery process and ensure compatibility with Azure Migrate.
+
+For further troubleshooting, refer to the Azure Migrate documentation: Azure Migrate Documentation (https://learn.microsoft.com/en-us/azure/migrate/migrate-appliance).
+
+If the issue persists after these steps, feel free to provide additional details here, and we’ll assist further.]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: Azure file sync - 5tb - hybrid cache solution</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1283331/azure-file-sync-5tb-hybrid-cache-solution</link>
@@ -1798,48 +1829,6 @@ Thank you for sharing this Azure Weekly Update! There are some exciting announce
  App Configuration’s integration with Azure Front Door is a game-changer for global app delivery. This is ideal for scalable applications like SPAs and mobile apps. To learn about the Azure Front Door service in detail, visit Azure Front Door documentation (https://learn.microsoft.com/en-us/azure/frontdoor/).
 
 Feel free to share any specific questions or details about your use case for further insights!]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Private Preview: Azure Storage Mover now supports private data transfers from AWS S3</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1rs5opd/private_preview_azure_storage_mover_now_supports/</link>
-      <guid isPermaLink="false">t3_1rs5opd-v5</guid>
-      <pubDate>Mon, 16 Mar 2026 12:00:00 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Private Preview: Azure Storage Mover now supports private data transfers from AWS S3
-
-Microsoft just announced that this feature is now in private preview. Last year, they announced Storage Mover for AWS to Azure, but it was missing private network support, and now it has it!
-
-I wrote an article explaining what it is and what it does:
-
-https://larsschouwenaars.com/2026/03/12/private-preview-azure-storage-mover-now-supports-private-data-transfers-from-aws-s3/
-
-In my opinion, this is an important feature! Azure Storage Mover now supports private endpoints, meaning your data transfers from AWS S3 to Azure Blob Storage can go over a private network instead of the public internet.
-
-Key highlights:
-- Private Link support for AWS S3 to Azure transfers
-- Data stays on Microsofts backbone network
-- Works with existing Storage Mover agents
-- Currently in private preview - you can sign up through your Microsoft rep
-
-This was one of the biggest gaps in the service, especially for enterprises with strict compliance requirements around data transfer paths.
-
-If you are interested in the technical details, check out the official announcement (https://learn.microsoft.com/azure/storage-mover/) and the blog post above.
-
-Has anyone else signed up for the preview? Would love to hear your experience!
-
----
-
-Suggested Response:
-Great news for Azure Storage Mover users! The addition of private network support via Azure Private Link means data transfers from AWS S3 to Azure now stay on Microsofts private backbone.
-
-Key steps to get started:
-1. Set up Azure Storage Mover: https://learn.microsoft.com/en-us/azure/storage-mover/
-2. Enable Private Endpoint for Azure Storage: https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview
-3. Plan for TLS 1.2 compliance: https://learn.microsoft.com/en-us/azure/storage/common/transport-layer-security-configure-migrate-to-tls2
-
-This is a significant step for secure cross-cloud migrations.]]></description>
     </item>
   </channel>
 </rss>
