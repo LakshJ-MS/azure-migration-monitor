@@ -5,7 +5,39 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 10 May 2026 23:58:03 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 May 2026 04:17:13 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Azure Migrate Explore Utility</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/2124359/azure-migrate-explore-utility</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2124359/azure-migrate-explore-utility</guid>
+      <pubDate>Mon, 11 May 2026 04:17:13 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Azure Migrate Explore Utility
+
+In the Ignite sess... The Azure Migrate: Explore utility isn&apos;t something you can download separately. It’s actually built right into the Azure Migrate service within the Azure Portal. Here’s how you can access it: Go to Azure Portal and log in. Type &quot;Azure Migrate&quot; in the search bar and select it from the results. Inside your project,.
+
+---
+
+Suggested Response:
+The Azure Migrate: Explore utility is indeed an integrated feature within the Azure Migrate service, available directly in the Azure portal. It helps assess and plan your migration to Azure for various workloads, including storage, databases, and virtual machines.
+
+To access and use the Azure Migrate: Explore utility:
+
+1. Log in to the Azure Portal at portal.azure.com (https://portal.azure.com).
+2. In the search bar, type &quot;Azure Migrate&quot; and select it from the search results.
+3. Once in the Azure Migrate service, create a new migration project or select an existing one.
+4. Within the project, you&apos;ll find tools for discovery, assessment, and migration. The Explore feature allows you to analyze your current workloads and determine the best migration strategy.
+
+For migrating Azure Storage specifically, you can review the Storage Account Overview documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) to understand Azure Storage offerings such as blobs, files, queues, and tables. This will help you plan and configure the target storage services appropriately.
+
+If you&apos;re migrating databases, the Azure Database Migration Service (https://learn.microsoft.com/en-us/sql/) can assist. For example, migrating data to Azure Cosmos DB or SQL Server is covered comprehensively in the Azure Cosmos DB documentation (https://learn.microsoft.com/en-us/azure/cosmos-db/) and Microsoft SQL documentation (https://learn.microsoft.com/en-us/sql/).
+
+For an end-to-end guide on designing your migration strategy, the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/) is a valuable resource to explore established patterns and best practices.
+
+Let me know if you need further help with any specific migration scenario!]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: AZURE MIGRATE</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/2041549/azure-migrate</link>
@@ -1798,37 +1830,6 @@ For updates like the deprecation of the ShardMapManager mode in Azure SQL, revie
 For broader cloud ecosystem updates, such as AI and security enhancements, the Partner Center Announcements (https://learn.microsoft.com/en-us/partner-center/announcements/) and Release Plans for Dynamics 365 and Power Platform (https://learn.microsoft.com/en-us/dynamics365/release-plans/) can provide additional insights.
 
 By leveraging these resources, you can effectively manage these changes and minimize disruption to your workloads. Let me know if you need further assistance!]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Azure Weekly Update - 3rd April 2026</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1sba0ju/azure_weekly_update_3rd_april_2026/</link>
-      <guid isPermaLink="false">t3_1sba0ju</guid>
-      <pubDate>Fri, 03 Apr 2026 10:37:35 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Azure Weekly Update - 3rd April 2026
-
-This week&apos;s Azure Update (3rd April 2026) is up. 📺 https://youtu.be/x8ULC4uDQos 📄 https://www.linkedin.com/pulse/azure-weekly-update-3rd-april-2026-john-savill-ykp0c/ Azure Red Hat Openshift new regions (02:05) - The jointly managed and supported Red Hat OpenShift solutions is now available in Indonesia Central. Useful where want to run workloads closer to customers to reduce latency or meet regulatory requirements. VM and VMSS full ephemeral OS disk caching (02:32) - Today when you use ephemeral OS disk (where its not using a durable managed disk but instead local host resources) the writes are to local storage but it still reads the OS image from remote storage. This new feature caches the entire OS disk to the local storage removing any remote storage dependency. This increases resiliency and improves performance with very low latencies. App Config AFD integration (04:13) - App Configuration that enables app configurations to be centrally managed and delivered to client apps and can now be integrated with Azure Front Door giving a global, layer 7 delivery layer. With the use of CDN the scale of that delivery can be in terms of millions of clients without having to develop your own proxy layers. This could include Single Page Apps, mobile apps and more. Premium SSDv2 new region (05:34) - The sub milli-second latency disk that enables separate IOPS, throughput from capacity (and can dynamically change IOPS and throughput). Now available in South India and US Gov Arizona. Useful for database, big data/analytics and gaming. Obviously VMs but also containers where need durable state stored. User delegation SAS for table file and queue (06:16) - This was already available for blob and they are bringing to the other storage services. User delegation SAS is more secure than the account or service SAS as its tied to the delegating Entra ID instead of the master storage account key. Azure Data Box to Files Provisioned v2 (07:00) - You can now ingest into Azure Files Provisioned v2 storage accounts from the offline Azure Data Box solution for data migration. Provisioned v2 enables capacity, IOPS and throughput so being able to now utilize from Data Box for offline migrations is great. ANF cool access enhancements (07:49) - Azure NetApp Files enables less used data to move from the native ANF storage (hot tier) to Azure Storage (the cool tier) to drive cost savings. For the Premium and Ultra service levels there are enhancements in the Quality of Service algorithms that drive allocated throughput to minimize any performance impact. Cosmos DB for PostgreSQL retirement (08:26) - This is being replaced by PostgreSQL Elastic Cluster that has same distributed PostgreSQL capabilities also built off the Citus extension. Has built-in HA, backups, DR and future engineering investment. Migrate before retirement date using the available migration tooling. Event Grid updates (09:11) - Event Grid enables you to build event-driven solutions at massive scale without them having to hammer poll the source service. It has a number of MQTT enhancements ensuring in-order message delivery within a client session, 1 connection attempt per second per client connection limiting and up to 15 MQTT topic segments along with cross-tenant delivery in GA. In preview it has MQTT OAuth 2.0 auth, custom webhook authentication and static client ID identifiers. Also managed identities for webhooks, cross-tenant web hook delivery and network security perimeter support (meaning it can be placed in a NSP along with other PaaS services to restrict communication and group level network rule controls). Copilot Cowork (10:48) - It’s just crazy good. Cloud agent, interruptible to add more requirements, grounded in Work IQ and more. You just tell it the outcomes and it works out how and does it! Azure Speech Neural HD 2.5 (11:39) - Neural HD Voice is all about giving choices in region, quality, performance, expressiveness for low-latency, real-time interactions. This update has a number of speak style updates for English content. I want to try our the struggling and skeptical styles. You can also do things like sighing and yawning. Nemotron-3-Super-120B-A12B model (12:18) - Constantly adding models to Foundry, that’s a key point, model choice but this is an amazing name for the new NVIDIA model and its mixture of experts which means when used it only activates part of its neural network based on the need. So its 120 billion parameters but only 10% (12 billion) activate for any inference. 1M token context and is for text generation. &amp;#32; submitted by &amp;#32; /u/JohnSavill [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-Thank you for sharing this Azure Weekly Update! There are some exciting announcements here. Below are additional details and related resources from Microsoft Learn that might be helpful:
-
-1. User Delegation SAS for Table, File, and Queue 
- Expanding User Delegation SAS to Table, File, and Queue storage services is a fantastic security enhancement. User Delegation SAS ties permissions to Azure Active Directory identities, offering stronger security compared to Account or Service SAS. For detailed guidance on SAS and access control models, I recommend exploring Azure role-based access control migration (https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-migration).
-
-2. Azure Red Hat OpenShift in Indonesia Central 
- The newly available region is ideal for reducing latency and meeting regulatory requirements. If you&apos;re considering deploying workloads in this region, you can use Azure Cosmos DB for scalable NoSQL database solutions to support modern app development. Learn more about Azure Cosmos DB’s capabilities here (https://learn.microsoft.com/en-us/azure/cosmos-db/).
-
-3. VM and VMSS Full Ephemeral OS Disk Caching 
- This feature improves performance by caching the entire OS disk on local storage, eliminating remote storage dependency. It’s an excellent enhancement for latency-sensitive workloads. To explore more, check out Microsoft Lifecycle Policy for updates on OS support timelines: Microsoft Lifecycle Policy (https://learn.microsoft.com/en-us/lifecycle/).
-
-4. App Config Azure Front Door Integration 
- App Configuration’s integration with Azure Front Door is a game-changer for global app delivery. This is ideal for scalable applications like SPAs and mobile apps. To learn about the Azure Front Door service in detail, visit Azure Front Door documentation (https://learn.microsoft.com/en-us/azure/frontdoor/).
-
-Feel free to share any specific questions or details about your use case for further insights!]]></description>
     </item>
   </channel>
 </rss>
