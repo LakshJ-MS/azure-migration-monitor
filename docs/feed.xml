@@ -5,7 +5,47 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 13 May 2026 16:10:27 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 18:17:57 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/sysadmin: Migrate to Azure Files</title>
+      <link>https://www.reddit.com/r/sysadmin/comments/1tc53i9/migrate_to_azure_files/</link>
+      <guid isPermaLink="false">t3_1tc53i9</guid>
+      <pubDate>Wed, 13 May 2026 16:38:34 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/sysadmin
+
+Question:
+Migrate to Azure Files
+
+Hey Guys/Gals, I am slowly working to get our company off of a server. At this point in time I have all of our company computers Entra Joined (not hybrid). We still have AD sync to Entra for users, but I&apos;d like to eventually get rid of AD and make all the users just Entra only. We have a mapped drive to our file server. (If I just turn off my AD at some point will those Entra Synced users have any issues?) Main hangup is our data. It&apos;s not a ton of data (under 700 GB) and I&apos;ve been wanting to move it to department based Sharepoint sites, but getting the department heads to cleanup their data has been a challenge. I extended our warranty on our server one more year, but really would like it to be gone by the time we move to a new building this winter. I&apos;d really like to be able to just lift and shift my data up into Azure File Shares and then have users authenticate with their Entra logins. From what I understand with Azure Files I can sync the data to the Azure Files storage from my server, assign it a drive letter and it will essentially show up exactly the same as our current mapped drive. Once everyone is onboarded and it&apos;s working, I can just turn off the server. Or at least that&apos;s how I&apos;d like this too work. Concerns or questions. SMB uses port 445 which most IP&apos;s block. It sounds like there is a way I can push out an Azure Endpoint to my devices via Intune that will essentially allow an always on vpn/connection to the tunnel so my staff won&apos;t even have to do anything to access the mapped drive regardless of their locaiton/network. Any guides or details on that? Ideally I&apos;d like it to be the same experience for in office as remote staff. Also our data is not huge, we are a specialized vehicle dealer, so mainly just pdfs and documents. No crazy large files like CAD drawings or anything. It seems up until recently it still required some sort of entra/hybrid environment with traditional AD still involved. While my users are currently synced with local AD. I hope to cut that off at some point soon and be 100% Entra only. This is a generally open share with no permissions within the structure so I&apos;m not too worried about permissions or things coming over from AD. What is the backup situation cost like. It looks like with the calculators, I can get 1000 TB of storage for $90-120 a month, but not sure how much the backup tacks on top of that. Also I use Ninja365 backup for my Sharepoint/Outlook/Onedrive backups at the moment. Is there a third party backup solution? If anyone knows of any guides that can help with this including primarly the setting up of the secure connection and the Azure File blob correctly, I&apos;d appreciate it. &amp;#32; submitted by &amp;#32; /u/SisterLakesMI [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It sounds like you&apos;re on the right track with your plan to migrate to Azure Files while transitioning away from your on-premises server and Active Directory (AD). Azure Files is a great solution for your scenario, offering the ability to lift-and-shift your file shares to the cloud while providing seamless access for both on-premises and remote users.
+
+Here’s how you can approach this migration:
+
+1. Use Azure Storage Mover for Data Migration
+Azure Storage Mover is a fully managed service designed for hybrid migrations. It can help you securely migrate your file shares from on-premises to Azure File Shares. This service is ideal for your scenario, given its simplicity and efficiency. 
+- Documentation: Azure Storage Mover Overview (https://learn.microsoft.com/en-us/azure/storage-mover/)
+
+2. Enable Authentication with Azure AD (Entra ID)
+You can configure Azure Files to use Azure AD for authentication. This allows your users to access file shares using their Entra credentials (no need for a hybrid setup with on-prem AD). You’ll also need to ensure your Azure AD users have the necessary permissions to access the file shares.
+- Documentation: Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+
+3. Address SMB Port 445 Concerns
+For remote users, you’re correct that port 445 is often blocked by ISPs. Azure provides a solution through private endpoints or Azure File Sync, enabling secure connection to your file shares. You can push settings via Intune to configure an SMB connection over these private endpoints, ensuring a seamless experience for your remote users.
+- Documentation: Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/)
+
+4. Plan the Migration
+- Organize your file shares and clean up data to reduce redundancy.
+- Use Azure File Sync if you want to keep a local copy of frequently accessed files for performance.
+- Test the setup with a small group of users before migrating everyone.
+
+Once everything is working as expected, you can decommission the on-prem server.
+
+Let me know if you need additional guidance!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Anyone migrated away from Rightworks to Azure? Need guidance</title>
       <link>https://www.reddit.com/r/AZURE/comments/1tb03de/anyone_migrated_away_from_rightworks_to_azure/</link>
@@ -1793,44 +1833,6 @@ It sounds like you&apos;re having a tough time with Azure quotas—I&apos;m sorr
 If you&apos;re migrating resources or considering reorganizing your resource groups/subscriptions for better quota management, Azure supports these moves. You can refer to detailed instructions here: Move Azure resources to a new resource group or subscription (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
 
 Lastly, if you’re still facing issues, consider engaging Azure Support directly—they may offer tailored solutions for your quota challenges. I hope this helps! Let me know if you need further clarification.]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Reminder: Migrate your Azure unmanaged disks by March 31, 2026 question</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1sgquxx/reminder_migrate_your_azure_unmanaged_disks_by/</link>
-      <guid isPermaLink="false">t3_1sgquxx</guid>
-      <pubDate>Thu, 09 Apr 2026 14:15:41 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Reminder: Migrate your Azure unmanaged disks by March 31, 2026 question
-
-Hi All, Has anyone migrated their unmanaged disks to managed if so was the process easy enough? We have 3 servers with unmanaged disks, DC, APP and RDS and an availability set. Do i need to convert the availability set or just go into each server and click migrate to managed disks and Azure does the rest? &amp;#32; submitted by &amp;#32; /u/Far_Selection7515 [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-Migrating from unmanaged disks to managed disks in Azure is a straightforward process, and Azure provides tools to make this as seamless as possible. Since unmanaged disks were fully retired as of March 31, 2026, it&apos;s crucial to complete the migration soon to ensure your workloads remain supported.
-
-Steps to Migrate Unmanaged Disks:
-1. Assess Your Resources: Since you have an availability set with three servers (DC, APP, and RDS), note that all VMs within an availability set must be migrated at the same time. This is because managed disks are required for availability sets to function properly.
-
-2. Use the Azure Portal:
- - Navigate to the VM in the Azure portal.
- - Under &quot;Disks,&quot; look for the option to Migrate to managed disks.
- - Azure will handle the migration, ensuring that the VM settings, data, and configurations remain intact.
-
-3. For Availability Sets:
- - If your VMs are part of an availability set, you must migrate the entire availability set at once.
- - Azure provides an automated process for this migration. Instructions are detailed in the documentation linked below.
-
-Validation:
-After migration, ensure that your VMs are running correctly and that the disks have been converted to managed disks. Managed disks provide better performance, scalability, and features like snapshots and backups.
-
-For detailed guidance, refer to the official documentation on Migrating unmanaged disks to managed disks (https://learn.microsoft.com/en-us/azure/virtual-machines/unmanaged-disks-deprecation).
-
-If you encounter issues or need to script this process for multiple VMs, you can also use Azure PowerShell or Azure CLI.
-
-Let me know if you have further questions!]]></description>
     </item>
   </channel>
 </rss>
