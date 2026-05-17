@@ -5,7 +5,43 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 17 May 2026 12:01:58 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 13:59:13 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Windows server 2012 R2 migration to Azure issues (VMware)</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1tfmcur/windows_server_2012_r2_migration_to_azure_issues/</link>
+      <guid isPermaLink="false">t3_1tfmcur</guid>
+      <pubDate>Sun, 17 May 2026 11:01:56 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Windows server 2012 R2 migration to Azure issues (VMware)
+
+Hi all, We had a project regarding migration of the following: 2 x Windows server 2012 R2 2 x Windows server 2016 From Physical Vmware server to Azure. Azure migrate said that all servers was ready to migrate so we tried an test migration of all of them. 3/4 servers came alive but one of the 2012 R2 servers didnt. It ended up in &quot;Choose an option&quot; recovery screen. I found the following article from Microsoft and tried the steps but it didnt help: https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/windows/windows-server-2012r2-boot-failure-platform-update Have anybody hit this issue when migration 2012/2012 R2 servers and what was your fix for this. In-place upgrade is too risky for us on-prem as it is an old SQL server. &amp;#32; submitted by &amp;#32; /u/TechCrow93 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It sounds like you&apos;ve run into a common issue during migration. The &quot;Choose an option&quot; recovery screen often indicates a boot issue. Since this involves a Windows Server 2012 R2 VM and in-place upgrades aren&apos;t an option, here are some suggestions to resolve the issue:
+
+1. Validate the Boot Configuration
+ - Follow the steps in the Windows Server 2012 R2 boot failure troubleshooting guide (https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/windows/windows-server-2012r2-boot-failure-platform-update) you mentioned. Double-check that you’ve completed all steps, especially around rebuilding the Boot Configuration Data (BCD) store using the bootrec commands.
+
+2. Confirm Azure Compatibility
+ - Verify that your Windows Server 2012 R2 VM meets the upgrade prerequisites (https://learn.microsoft.com/en-us/azure/virtual-machines/windows-in-place-upgrade) for Azure. While Azure Migrate checks for compatibility, specific configurations (e.g., disk partitioning) might cause boot issues post-migration.
+
+3. Test with a Clean Installation
+ - If the existing server continues to fail, consider setting up a clean Windows Server 2012 R2 installation in Azure, then migrate your applications and data manually. Use the Windows Server upgrade path guide (https://learn.microsoft.com/en-us/windows-server/get-started/install-upgrade-migrate) to ensure you plan this properly.
+
+4. SQL Server-Specific Considerations
+ - Since the server in question hosts SQL Server, check the SQL Server migration documentation (https://learn.microsoft.com/en-us/sql/) for guidance on migrating SQL workloads to Azure. If you plan to modernize, Azure SQL Database or Azure SQL Managed Instance could be options.
+
+5. Consider Extended Security Updates
+ - If resolving the issue delays your migration timeline, note that Extended Security Updates (ESUs) can help keep your Windows Server 2012 R2 secure while you troubleshoot. More details are available in the Extended Security Updates FAQ (https://learn.microsoft.com/en-us/lifecycle/faq/extended-security-updates).
+
+If none of the above works, consider engaging Microsoft Support for deeper troubleshooting.
+
+Let us know how it goes!]]></description>
+    </item>
 <item>
       <title>Reddit r/sysadmin: Migrate to Azure Files</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1tc53i9/migrate_to_azure_files/</link>
@@ -1806,33 +1842,6 @@ You can manually integrate your runbooks with GitHub or Azure DevOps to track ch
 While this approach requires some upfront setup, it ensures you have robust source control and deployment pipelines for your modernized runbooks.
 
 Feel free to ask if you need guidance on creating these pipelines!]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Azure is frustrating - quota issues</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1skbhig/azure_is_frustrating_quota_issues/</link>
-      <guid isPermaLink="false">t3_1skbhig</guid>
-      <pubDate>Mon, 13 Apr 2026 13:52:38 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Azure is frustrating - quota issues
-
-I&apos;m unable to get any quota increase in US East or East 2. No matter the size. I need a few new SQL hosts with relatively large memory. Rant\ Azure has been very frustrating to work with, always hitting quota limits. I did not want to migrate to Azure; I wanted to stay on-prem, but now it&apos;s too late, thanks to the AI black hole. Rant End\ Any advice? and moving to AWS is not an option. &amp;#32; submitted by &amp;#32; /u/SparcV [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-It sounds like you&apos;re having a tough time with Azure quotas—I&apos;m sorry to hear about the frustration. While quota limits can be challenging, there are a few steps you can take to address this issue effectively within Azure.
-
-1. Requesting Quota Increases: Azure quotas are designed to ensure resource availability and operational stability. If your quota increase requests are being denied, double-check that you’re following the correct steps. You can submit quota increase requests through the Azure portal by navigating to Help + Support &gt; New Support Request &gt; Quota. Be specific about your requirements, including the size and type of resources you need (e.g., SQL hosts with large memory). For more guidance, check Azure Resource Manager documentation (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
-
-2. Optimizing Resource Usage: If quota increases remain a challenge, consider optimizing your workload. For relational databases like SQL, you might explore Azure Cosmos DB, which provides high-performance and distributed NoSQL capabilities. It may suit workloads with large memory requirements. Learn more here: Azure Cosmos DB documentation (https://learn.microsoft.com/en-us/azure/cosmos-db/).
-
-3. Flex Consumption Plan for Serverless Hosting: For resource-intensive applications, the Azure Functions Flex Consumption Plan could be a great alternative. It’s Linux-based and uses a serverless model, letting you scale dynamically as usage grows. Learn more about this plan here: Azure Functions Flex Consumption Plan documentation (https://learn.microsoft.com/en-us/azure/azure-functions/flex-consumption-plan).
-
-If you&apos;re migrating resources or considering reorganizing your resource groups/subscriptions for better quota management, Azure supports these moves. You can refer to detailed instructions here: Move Azure resources to a new resource group or subscription (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
-
-Lastly, if you’re still facing issues, consider engaging Azure Support directly—they may offer tailored solutions for your quota challenges. I hope this helps! Let me know if you need further clarification.]]></description>
     </item>
   </channel>
 </rss>
