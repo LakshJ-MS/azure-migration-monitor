@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 17 May 2026 13:59:13 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Sun, 17 May 2026 15:09:17 +0000</lastBuildDate>
+<item>
       <title>Reddit r/azure: Windows server 2012 R2 migration to Azure issues (VMware)</title>
       <link>https://www.reddit.com/r/AZURE/comments/1tfmcur/windows_server_2012_r2_migration_to_azure_issues/</link>
       <guid isPermaLink="false">t3_1tfmcur</guid>
