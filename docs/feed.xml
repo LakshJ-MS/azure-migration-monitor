@@ -5,8 +5,41 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 19 May 2026 19:27:02 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 21:05:35 +0000</lastBuildDate>
     <item>
+      <title>Reddit r/azure: Where can I see results of this AzCopy command that just executed?</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1thxqs5/where_can_i_see_results_of_this_azcopy_command/</link>
+      <guid isPermaLink="false">t3_1thxqs5</guid>
+      <pubDate>Tue, 19 May 2026 19:34:37 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Where can I see results of this AzCopy command that just executed?
+
+I ran the following azcopy sync command. It supposedly completed in 10 seconds, but there&apos;s no feedback. Nothing&apos;s returned. Am I supposed to see the results somewhere else? Here&apos;s the screenshot. https://preview.redd.it/mwdsypx7c52h1.png?width=1279&amp;format=png&amp;auto=webp&amp;s=634dea08d8150a8ae7e8fa028ff207f3c6a5737a &amp;#32; submitted by &amp;#32; /u/EastSentence4245 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It sounds like you&apos;re using AzCopy to sync data, but you&apos;re unsure where to see the results or logs of your operation. AzCopy typically provides feedback directly in the command line, but if nothing is displayed, you can verify the operation in a few ways:
+
+1. Check the AzCopy Log File: 
+ AzCopy stores detailed logs by default. You can find these logs in the directory specified by the AZCOPYLOGLOCATION environment variable. If you haven&apos;t set a custom location, the default is typically in your system&apos;s temporary folder. The log file will provide detailed information about the operation, including errors or skipped files.
+
+2. Verify the Destination: 
+ If the sync operation completed successfully, you should see the files or changes in the destination storage location. Use a tool like Azure Storage Explorer (https://learn.microsoft.com/en-us/troubleshoot/azure/azure-storage/blobs/alerts/storage-explorer-troubleshooting) to inspect the destination container or directory.
+
+3. Enable Verbose Mode: 
+ To get more detailed feedback during execution, you can add the --verbose flag to your AzCopy command. For example: 
+ 
+
+4. Verify the Command Syntax: 
+ Ensure your command is properly formatted. For example, a typical sync command looks like this: 
+ 
+
+For further information on using AzCopy, refer to the Microsoft Learn documentation: Use network upload to import PST files (https://learn.microsoft.com/en-us/purview/pst-import-network-upload) (this guide contains useful AzCopy details, even if it&apos;s PST-specific). If the issue persists, please share additional details or error messages from the log file.]]></description>
+    </item>
+<item>
       <title>Reddit r/azure: Terminating azcopy running process?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1thw0y1/terminating_azcopy_running_process/</link>
       <guid isPermaLink="false">t3_1thw0y1</guid>
@@ -1800,42 +1833,6 @@ For an overview of Azure Storage capabilities:
 Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction)
 
 Let me know if you need further guidance!]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Auto migration from CDN classic to Azure Front Door - massive jump in monthly cost</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1sl7sn4/auto_migration_from_cdn_classic_to_azure_front/</link>
-      <guid isPermaLink="false">t3_1sl7sn4</guid>
-      <pubDate>Tue, 14 Apr 2026 12:51:13 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Auto migration from CDN classic to Azure Front Door - massive jump in monthly cost
-
-Received an email earlier saying this had been completed for some old web apps I still have hosted on Azure but are inactive following the domains expiring but hadn&apos;t deleted them from Azure storage as I was intending downloading a backup of the data first. Logged into Azure and see I&apos;ve already been charged £7.50 for activity so far this billing cycle, when until this auto migration I was paying only a few pence per month for CDN classic, so a fair jump in cost with what I consider insufficient warning. Am in the process of trying to delete the Front Door resource endpoints hoping that&apos;s all that&apos;s needed to stop being billed for it, but some of them are stuck at &apos;deleting&apos; for 30 mins now with only one successfully deleted so far. Is there a comprehensive set of steps I need to do, or do I need to delete the whole Azure subscription in &apos;nuke it from orbit it&apos;s the only way to be sure&apos; approach? So anyone with old web apps/sites still on Azure classic CDN, sort them out before they&apos;re auto-migrated to Front Door and Microsoft start charging a minimum base monthly fee (£35/month as far as I can tell) regardless of actual usage! &amp;#32; submitted by &amp;#32; /u/VirtualPAH [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-It sounds like the automatic migration from Azure CDN (Classic) to Azure Front Door has caused unexpected charges due to the service&apos;s pricing model. Let me provide some clarity and guidance.
-
-Why the Cost Increase?
-Azure Front Door has a different pricing structure than Azure CDN (Classic), including a minimum monthly charge. You can find more details in the Azure Front Door FAQ (https://learn.microsoft.com/en-us/azure/frontdoor/front-door-faq) and the Azure Front Door Overview (https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview).
-
-Steps to Minimize Costs or Delete Resources
-1. Delete Unused Azure Front Door Resources: If the web apps and associated resources are no longer needed, deleting the Azure Front Door endpoints is a good step. However, if some resources are stuck in &quot;deleting&quot; status, ensure no dependent resources are preventing the deletion.
- 
-2. Check for Dependencies: Verify if there are backend pools, routing rules, or custom domains associated with the stuck resources. These dependencies must be removed first. The Azure Front Door Overview (https://learn.microsoft.com/en-us/azure/frontdoor/front-door-overview) can help you identify these components.
-
-3. Stop Deployment of Azure Front Door: If you no longer require the service entirely, consider deleting the entire Front Door profile. This ensures all associated resources are removed.
-
-4. Review Billing: Use the Azure Cost Management tool to analyze your current charges and identify which resources are contributing to the cost.
-
-5. Backup Data: Before deleting resources, ensure you back up any critical data stored in Azure Storage. 
-
-Preventative Measures
-For future scenarios, keep an eye on the migration timeline for classic services. This will help ensure you&apos;re aware of changes that may impact costs. For more details, review the Comparison Between Azure Front Door and Azure CDN (https://learn.microsoft.com/en-us/azure/frontdoor/front-door-cdn-comparison).
-
-Let me know if you need assistance with any of these steps!]]></description>
     </item>
   </channel>
 </rss>
