@@ -5,7 +5,41 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 19 May 2026 17:18:36 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 May 2026 19:27:02 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Terminating azcopy running process?</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1thw0y1/terminating_azcopy_running_process/</link>
+      <guid isPermaLink="false">t3_1thw0y1</guid>
+      <pubDate>Tue, 19 May 2026 18:37:46 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Terminating azcopy running process?
+
+I pasted an azcopy sync command and pressed &lt;Enter&gt;. Nothing happened so I pressed &lt;Ctrl-C&gt; to terminate the current execution. Then I ran it again and I get the error More than one AzCopy process is running. This is a non-blocking warning, AzCopy will continue the operation. But, it is best practice to run a single process per VM. Please terminate other instances. I would prefer cancelling all AzCopy processes, run a new one and wait. How can I do that? If not possible, how do I know the results of the AzCopy being run? I switched from Bash to powershell and ran the same command, so I&apos;m not sure what&apos;s running. &amp;#32; submitted by &amp;#32; /u/EastSentence4245 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+To terminate all running AzCopy processes and start fresh, you can follow these steps:
+
+1. Identify and Terminate AzCopy Processes: 
+ Use your system&apos;s task manager or process management tools to locate and terminate any running AzCopy processes. On Windows, open Task Manager (Ctrl+Shift+Esc), look for AzCopy.exe under the &quot;Processes&quot; tab, and end the task. On Linux or macOS, use the ps command to list processes and kill to terminate the AzCopy processes.
+
+2. Verify Active Processes: 
+ After terminating the processes, you can confirm by checking again in the task manager or running ps to ensure no AzCopy instances are active.
+
+3. Re-run AzCopy Command: 
+ Once you&apos;ve terminated all prior instances, safely re-run your AzCopy command. Use the --verbose flag when running AzCopy to get detailed output, which can help you track the progress and results of the sync operation.
+
+4. Check Results of Previous AzCopy Runs: 
+ AzCopy generates logs that provide information about completed processes. By default, logs are saved in the %USERPROFILE%\.azcopy directory on Windows or $HOME/.azcopy on Linux/macOS. Review these logs to understand the status of previously executed AzCopy commands.
+
+For more details on using AzCopy, including troubleshooting and best practices, refer to the AzCopy documentation: 
+Copy or move data to Azure Storage using AzCopy v10 (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10). 
+
+If you encounter further issues, feel free to share the specific error messages or logs for troubleshooting assistance.]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Windows server 2012 R2 migration to Azure issues (VMware)</title>
       <link>https://www.reddit.com/r/AZURE/comments/1tfmcur/windows_server_2012_r2_migration_to_azure_issues/</link>
@@ -1802,46 +1836,6 @@ Preventative Measures
 For future scenarios, keep an eye on the migration timeline for classic services. This will help ensure you&apos;re aware of changes that may impact costs. For more details, review the Comparison Between Azure Front Door and Azure CDN (https://learn.microsoft.com/en-us/azure/frontdoor/front-door-cdn-comparison).
 
 Let me know if you need assistance with any of these steps!]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Azure Runbooks - Github integration alternatives for PS 7.4 &amp; Python Runbooks?</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1sl2kh5/azure_runbooks_github_integration_alternatives/</link>
-      <guid isPermaLink="false">t3_1sl2kh5</guid>
-      <pubDate>Tue, 14 Apr 2026 08:24:38 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Azure Runbooks - Github integration alternatives for PS 7.4 &amp; Python Runbooks?
-
-Hello all, the default source control integration feature from Microsoft only supports Powershell 5.1. https://learn.microsoft.com/en-us/azure/automation/source-control-integration We are using Powershell 7.4 and Python in our Runbooks, and those cannot be connected. Any experiences or workarounds you are using to get it or something similar running? We have the issue that changes to runbooks are not really trackable. Help and tips are much appreaciated! We initially had all our scripts running on local AD via task scheduler, Scripts are mainly used for dynamic user assignment, where we cannot use dynamic groups for example. And custom connectors to systems like Workday. Since moving to Azure only, we lost the source control feature. &amp;#32; submitted by &amp;#32; /u/PancoBenJo [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-Hello!
-
-It&apos;s true that the default source control integration for Azure Automation currently supports only PowerShell 5.1, which limits its compatibility with newer versions like PowerShell 7.4 and Python-based runbooks. However, there are workarounds you can implement to achieve source control and better version tracking for your scripts.
-
-Recommended Approach: Use GitHub or Azure DevOps for Source Control
-You can manually integrate your runbooks with GitHub or Azure DevOps to track changes and manage version control. Here’s how you can set it up:
-
-1. Store Runbooks in a GitHub Repository 
- Create a repository on GitHub to store and manage your runbooks. This allows version tracking and collaborative editing. For creating modern and standardized projects, you can also explore GitHub Copilot Modernization (documentation here (https://learn.microsoft.com/en-us/dotnet/core/porting/github-copilot-app-modernization/overview)).
-
-2. Automate Deployment to Azure Automation 
- Use CI/CD pipelines in GitHub Actions or Azure DevOps to automatically sync runbook changes to Azure Automation accounts. This can be done using the Azure PowerShell Module (https://learn.microsoft.com/en-us/powershell/azure/new-azureps-module-az?view=azps-10.7.0) or Azure REST APIs.
-
-3. Track Changes for Python and PowerShell 7.4 
- For Python runbooks, you can upload .py files directly to Azure Automation. Similarly, PowerShell 7.4 scripts can be updated and managed via CI/CD pipelines. A simple pipeline could:
- - Pull the latest changes from the repository.
- - Use the Import-AzAutomationRunbook cmdlet to upload updates to Azure Automation.
-
-4. Monitor and Alert with Azure Monitor 
- Set up Azure Monitor Action Groups to alert you about runbook execution issues. Learn more here (https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/action-groups).
-
-While this approach requires some upfront setup, it ensures you have robust source control and deployment pipelines for your modernized runbooks.
-
-Feel free to ask if you need guidance on creating these pipelines!]]></description>
     </item>
   </channel>
 </rss>
