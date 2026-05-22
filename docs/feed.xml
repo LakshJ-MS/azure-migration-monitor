@@ -5,7 +5,34 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 22 May 2026 13:55:05 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2026 16:29:59 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Weekly Update - 22nd May 2026</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1tkmees/azure_weekly_update_22nd_may_2026/</link>
+      <guid isPermaLink="false">t3_1tkmees</guid>
+      <pubDate>Fri, 22 May 2026 15:30:27 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Weekly Update - 22nd May 2026
+
+This week&apos;s Azure Update is up! 📽️ https://youtu.be/pMfG-vYvnv8 🧾 https://www.linkedin.com/pulse/azure-weekly-update-22nd-may-2026-john-savill-xpidc/?trackingId=ogg9bm9PQnyhEbNxtvW8Iw%3D%3D AKS AppInsight auto-instrumentation (00:28) - You can now enable your apps for App Insights without having to modify your code if its Java running on Node.js. This works in conjunction with the Azure Monitor OpenTelemetry Distro. App Configuration scorecards (00:53) - Azure App Configuration provides a centralized configuration setting and flag store for application configuration. Scorecards help show how different feature flag variants are performing in production based off captured telemetry via App Insights. You can then use this to understand how the various features are behaving and performing to influence future changes and focus. Azure Functions Flex Consumption TLS cert (01:43) - Instead of one cert used for all apps in the same webspace (think of logical container based around region, OS and resource group), these flex certificates get scoped to an individual function app. Each app can hold up to 3 certificates. During preview the recommendation is to use the Azure portal for configuration. TLS 1.0 and 1.1 app service retirement (02:20) - With the improvements in TLS 1.2 and later the now legacy versions are being retired. Any client application working with App Service, Functions and Logic Apps must support TLS 1.2 or above prior to the retirement date. Azure Front Door WebSocket (03:05) - AFD Standard and Premium SKU now support WebSocket in GA. It’s enabled y default and no additional configuration is required. WebSockets are useful for interactive, real-time scenarios, streaming and more because of its long-lived, full-duplex TCP connectivity. NSG and UDR limit updates (03:35) - Virtual networks are updating the maximum numbers of Network Security Groups (that control the flow of traffic) and User Defined Routes. You can now have 2000 security rules per NSG and 6000 addresses or ports per rule. 1000 routes per route table and 600 route tables per subscription. Basically helping to enable higher scale for those complex networks. Network Watcher rule impact analyzer (04:22) - Network Watcher shows the impact of NSG or Azure Virtual Network Manager security admin rules can be evaluated on the impact on live traffic before actually applying. GW summarized prefixes (05:11) - If you have large virtual network setups your gateways for ExpressRoute or VPN may advertise a large number of IP spaces back to on-premises. With this feature it will summarize those prefixes to a covering prefix, so install of lots of /24 prefixes you can just advertise a /16 S2S VPN cert auth (06:04) - You can now authenticate S2S VPN connection using certificates instead of the traditional pre-shared key. This can increase security and add resistance to tampering. User group specific IP pools P2S VPN (06:20) - You can now assign distinct IP pools based on the authenticating user, e.g. the user group memberships. This helps utilize the network for finer segmentation. Azure Blob Storage SDK for Rust (06:45) - Blob is used in so many solutions today and now if you are using the memory-safe Rust programming language you now have a native Software Development Kit (SDK) available for easier integration. This includes Entra-integrated authentication, automatic retires and OpenTelemetry support for full tracing. This joins SDKs for Azure, Identity and Key Vault. Azure Storage Action mock runs (07:28) - Azure Storage Actions are a powerful way to perform operations at scale across blob and data lake. You define conditions and then actions which can then be executed on assigned storage accounts. This also means the impact of a mistake can be vast. With mock runs it will show which objects WOULD be impacted without actually impacting them. This allows you to tweak before true execution. ANF cache volumes (08:27) - These are cloud caches of an external source NetApp ONTAP or Cloud Volumes ONTAP storage volumes (for example instances in other clouds like AWS or GCP or other ANF volumes in Azure). The cache resides in the cloud containing the most used (hot) data reducing latency but also saving cost in accessing the same data over connections repeatedly. ANF object REST API (09:18) - This provides an S3 compatible REST API enables seamless integration with many services including Microsoft Fabric via shortcuts that avoids any data duplication or movement but also other S3 speaking systems which opens up many new opportunities over analytics, AI, business intelligence and more. Azure Storage Mover blob-to-blob (09:59) - You can now use Azure Storage Mover to transfer between blob containers making it easy to move blob content between subscriptions, regions and storage accounts. It works for both flat and hierarchical namespace (so data lake support). It can be configured in just a few steps. Azure Storage Mover schedule update (10:21) - Also for storage mover you can now opt to do a one-time migration (so no schedule) or setup a recurrence at a daily, weekly or monthly cadence. This gives a lot more flexibility for keeping consistency across environments. Azure Files Entra-only identity (10:41) - You can now enable access to Azure Files SMB shares using Entra only identities which removes the previous requirement of the identities being sync’d from Active Directory, i.e. a hybrid identity. Kerberos authentication can now be used with cloud-only Entra identities which is great where you don’t have AD. The huge benefit is the ability to take advantage of the granular RBAC on the SMB file share content based on the NTFS ACLs. Event Grid subscription identifiers (11:28) - Now a client that is subscribing to events with MQTT can see the identifier for the filter that triggered the delivery. This is useful if a client subscribes to many topics which means now the client can make decisions on the processing path depending on that identifier. Maybe it needs to go to a log, maybe to a dashboard. Event Grid updates (12:09) - In GA are other updates around MQTT capabilities that work with the subscription identifier. This includes retain support to better support new subscribers to a topic by sharing the last known good value of a topic, shared subscriptions to better scale and distribute traffic via a group of clients and also publish of MQTT messages using standard HTTP requests. Cosmos DB LangChain and LangGraph integration (12:39) - This new python package makes it easy to use Cosmos DB for vector and hybrid search through LangChain and LangGraph which obviously is huge for AI scenarios. SQL Server on Azure VM new regions (12:59) - This is part of the ability to deploy and manage SQL instances on Azure VMs managed through the SQL iaaS agent extension and Arc-enabled machines. This is now also available in Malaysia West and Indonesia Central which can be important for specific data residency requirements. Azure PostgreSQL Flex token refresh update (13:24) - Entra ID token refresh update is now available in Python, .NET and JavaScript when talking to PostgreSQL using Entra integrated authentication. Foundry role updates (13:44) - A number of roles in Microsoft Foundry have been updated with its rebranding from Azure AI Foundry. So now we have Foundry Account Owner, Foundry Owner, Foundry User and Foundry Project Manager. Foundry Account Owners and Owners can now assign the following roles to themselves and others – Foundry User, Log Analytics Reader and two Container Registry focused roles. New Foundry Model Router models (14:24) - One of the biggest challenges is which model to use based on the prompt. Do you need a small, fast, cheaper model or a large, deep reasoning, more expensive model based on complexity, task type etc. The model router provides a single endpoint to send prompts to that automatically sends to the most appropriate model based on the prompt to optimize performance and spend. It now adds gpt-5.4, gpt-5.4-mini, gpt-5.4-nano, gpt-5.3-chat, Claude-Opus-4.7, gpt-5.5, and grok-4.1-fast-reasoning to the models it can use as possible selections. Now up to 28 possible usable models! They also added a new open-source auto-evaluation repository that helps evaluate how the model router is performing. This is separate from the existing Foundry evaluations that help ensure your AI applications are staying fit for purpose and not regressing. Azure Linux 4.0 (15:59) - Azure Linux has been around for a while, originally CBL-Mariner but was really focused on being a very light weight, hardened OS host for containers. With 4.0 we have a split. Azure Linux 4.0 is available for Azure VMs and WSL (Windows Subsystem for Linux) as a Linux OS to use. It is derived from Fedora, open sourced and maintained by Microsoft. It is free and the kernel is optimized for use on Azure infrastructure. They also have GA’d Azure Container Linux based on the immutable Flatcar project specifically for container hosts. &amp;#32; submitted by &amp;#32; /u/JohnSavill [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Thank you for sharing the Azure Weekly Update! There&apos;s a lot of great information packed in there. Let me provide some additional context and resources for a few of the updates mentioned:
+
+1. Azure Functions Flex Consumption TLS Certificates: The introduction of certificates scoped to individual function apps is a significant improvement for security and flexibility. This change allows each app to have up to three TLS certificates, offering better isolation and management. For detailed information about Azure Functions and how to configure TLS settings, you can explore the Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+2. TLS 1.0 and 1.1 Retirement: The retirement of TLS 1.0 and 1.1 aligns with the industry trend of adopting more secure protocols. It’s essential to ensure that client applications interacting with App Service, Functions, and Logic Apps are updated to support TLS 1.2 or higher. You can find lifecycle-related announcements and dates by referring to the Microsoft Lifecycle Policy (https://learn.microsoft.com/en-us/lifecycle/).
+
+3. Azure Front Door WebSocket Support: The general availability of WebSocket in Azure Front Door (Standard and Premium SKUs) is excellent for developers building real-time or streaming applications. With WebSocket enabled by default, you can immediately start leveraging this feature for long-lived, full-duplex connections. If you&apos;re new to setting up Azure services, you might find the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) helpful for background information on Azure resources.
+
+4. NSG and UDR Limit Updates: With the limit increases for Network Security Groups and User Defined Routes, managing traffic within Azure Virtual Networks becomes more scalable. This is especially beneficial for larger and more complex environments.
+
+For more details on any Azure updates, I recommend keeping an eye on the Partner Center announcements (https://learn.microsoft.com/en-us/partner-center/announcements/), where updates about new features and deprecations are regularly published.]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Where can I see results of this AzCopy command that just executed?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1thxqs5/where_can_i_see_results_of_this_azcopy_command/</link>
@@ -1785,54 +1812,6 @@ It’s a good practice to store your API keys and endpoints securely, as you men
 If the issue persists, try contacting Microsoft Support for further assistance, as this may be related to recent updates in the Foundry platform.
 
 Let me know if you need additional help!]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Copy all files from one Azure storage account to another</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1slac68/copy_all_files_from_one_azure_storage_account_to/</link>
-      <guid isPermaLink="false">t3_1slac68</guid>
-      <pubDate>Tue, 14 Apr 2026 14:28:38 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Copy all files from one Azure storage account to another
-
-I have a BlockBlobStorage storage account with one container that contains 30+ TB of files. There are literally millions of files. I would like to copy those files as quickly as possible to a different storage account of type StorageV2. I don&apos;t think the storage type really matters for the purposes of this question. What is the quickest and most reliable way to copy all files from the source storage account to the destination? I have an azcopy script set up but it&apos;s going to take a week at the rate it is copying. Is there a quicker way to move everything? I looked into the Azure Storage Mover but it seems to be for transferring from elsewhere to Azure. &amp;#32; submitted by &amp;#32; /u/PrizeStaff7941 [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-To copy files between Azure storage accounts quickly and reliably, there are several approaches you can consider. Since you mentioned that AzCopy is too slow for your use case, here are alternative options:
-
-1. Data Transfer Using Azure Storage Account Features
-Azure provides options to copy data directly between storage accounts without downloading and re-uploading, which can be faster. You can use Azure Storage Blob Copy with the Start-AzStorageBlobCopy PowerShell cmdlet or the az storage blob copy start Azure CLI command. These operations are server-side and can be faster than downloading and uploading via AzCopy.
-
-Learn more about creating Azure storage accounts here: 
-Create an Azure storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create) 
-
-2. Use Shared Access Signatures (SAS) for Secure Transfers
-If you need to grant limited access to the source or destination storage account, you can generate a Shared Access Signature (SAS) token. SAS tokens allow secure delegated access to your storage resources during the transfer process.
-
-For detailed steps on SAS, check: 
-Grant limited access to data with shared access signatures (SAS) (https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
-
-3. Consider SFTP for Large File Transfers
-If your storage account supports SFTP and your source data is structured in a way that SFTP can handle efficiently, this could be an alternative. SFTP is ideal for securely transferring large datasets.
-
-Learn more here: 
-SFTP support for Azure Blob Storage (https://learn.microsoft.com/en-us/azure/storage/blobs/secure-file-transfer-protocol-support)
-
-4. Optimize AzCopy
-If you decide to stick with AzCopy, ensure you are using the latest version and optimize the concurrency settings. Use the --parallel-level parameter to increase the number of concurrent operations, and experiment with --block-size-mb for larger block sizes.
-
-5. Azure Data Factory
-For large-scale data migration, Azure Data Factory provides scalable and reliable data transfer pipelines. It supports copying data between Azure storage accounts efficiently and can handle millions of files. This method is ideal for your use case given the volume of data.
-
-While the Azure Storage Mover is indeed focused on migrations from external sources to Azure, Data Factory may be better suited for your scenario.
-
-For an overview of Azure Storage capabilities: 
-Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction)
-
-Let me know if you need further guidance!]]></description>
     </item>
   </channel>
 </rss>
