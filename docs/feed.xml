@@ -5,7 +5,47 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 26 May 2026 08:01:44 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 14:19:47 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Is Azure Data Box available for new Azure accounts (new customer)?</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/5901220/is-azure-data-box-available-for-new-azure-accounts</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5901220/is-azure-data-box-available-for-new-azure-accounts</guid>
+      <pubDate>Tue, 26 May 2026 06:50:00 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Is Azure Data Box available for new Azure accounts (new customer)?
+
+...India and want to transfer 70 TB via Data Box. i want to transfer form Chennai location. #azure-data-box| Hi Madhavaraja s , Thanks for reaching out in Microsoft Q&amp;A forum, Yes, Azure Data Box is supported for Microsoft Customer Agreement (MCA) subscriptions,To use Azure Data Box with a new Azure account in India to transfer 70 TB from.
+
+---
+
+Suggested Response:
+Hi Madhavaraja,
+
+Yes, Azure Data Box is available for new Azure accounts, including customers in India, provided they have an active Microsoft Customer Agreement (MCA) subscription. Azure Data Box is designed for secure data transfer to Azure when dealing with large datasets, such as your 70 TB requirement.
+
+Here’s how you can proceed with Azure Data Box:
+
+1. Verify Subscription Eligibility: Ensure your Azure account is under an MCA subscription, as Azure Data Box requires this. You can confirm subscription details in your Azure portal.
+
+2. Choose a Data Box SKU: Depending on your data transfer size, select the appropriate Data Box device. For 70 TB, the standard Azure Data Box device should suffice.
+
+3. Create and Configure the Order: Navigate to the Azure portal, search for &quot;Data Box,&quot; and create an order. Specify your data transfer details, including the Chennai location as your source. You can find guidance in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+4. Prepare and Transfer Data: Once the Data Box arrives, copy your data to the device. Follow the instructions provided with the device to ensure proper data preparation.
+
+5. Ship and Upload: Ship the Data Box back to the designated Azure data center. The data will be securely uploaded to your Azure storage account.
+
+For more detailed instructions on storage accounts and Azure Storage services, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+If you need additional help with designing the optimal architecture for your solution, check the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/).
+
+Let me know if you need further guidance!
+
+Best regards, 
+[Your Name]]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Weekly Update - 22nd May 2026</title>
       <link>https://www.reddit.com/r/AZURE/comments/1tkmees/azure_weekly_update_22nd_may_2026/</link>
@@ -1779,39 +1819,6 @@ To address this:
  Ensure that your Azure Site Recovery activities are properly configured and documented. If necessary, you can whitelist certain processes or operations in Defender to avoid future false positives. Microsoft Defender for Cloud Apps may also be helpful in monitoring cloud app activities: Microsoft Defender for Cloud Apps (https://learn.microsoft.com/en-us/defender/).
 
 By following these steps, you should be able to resolve the issue and improve detection accuracy. Let me know if you need further assistance!]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Looking for advice on Microsoft Foundry Abstractive Summarization (previously working)</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1sltrnt/looking_for_advice_on_microsoft_foundry/</link>
-      <guid isPermaLink="false">t3_1sltrnt</guid>
-      <pubDate>Wed, 15 Apr 2026 02:52:03 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Looking for advice on Microsoft Foundry Abstractive Summarization (previously working)
-
-TL;DR Azure.AI.TextAnalytics code stopped working in the last two weeks, code hasn&apos;t changed, Microsoft Foundry interface has. I was under the impression that a feature I had built using the Abstractive Summarization was unwanted, by my client, about 2 weeks ago (March 25th specifically). I deleted my Microsoft Foundry resource last week, and then received an email stating that the feature could be useful to others using the software. Not a big deal, I use Git and hadn&apos;t even rolled back the commit because it hadn&apos;t made it to production. Today I went to recreate the resource, and I get a 401 server error: Access denied due to invalid subscription key or wrong API endpoint. Make sure to provide a valid key for an active subscription and use a correct regional API endpoint for your resource. Status: 401 (PermissionDenied) ErrorCode: 401 Content: {&quot;error&quot;:{&quot;code&quot;:&quot;401&quot;,&quot;message&quot;:&quot;Access denied due to invalid subscription key or wrong API endpoint. Make sure to provide a valid key for an active subscription and use a correct regional API endpoint for your resource.&quot;}} Previously, I had just created a resource, project, and had the correct API endpoint and Key, stored in my secrets.json (UserSecrets - moving to Azure ENV variables on production). This seems to not work any longer, and I&apos;m fairly certain the interface has changed, as my steps to create everything changed. Initially, I didn&apos;t have to select a model to use, it just worked (TM). This was my working code: namespace Project.AI; using System; using System.Collections.Generic; using System.Text; using System.Threading.Tasks; using Azure; using Azure.AI.TextAnalytics; using Microsoft.Extensions.Logging; using Microsoft.Extensions.Options; using Project.Configuration; using Project.Interfaces.AI; public class UserAbstractSummarization : IUserAbstractSummarization // fulfills interface, no syntax errors or DI errors { private readonly IOptionsSnapshot&lt;AzureAIConfiguration&gt; config; private readonly ILogger&lt;UserAbstractSummarization&gt; logger; public UserAbstractSummarization( IOptionsSnapshot&lt;AzureAIConfiguration&gt; configuration, ILogger&lt;UserAbstractSummarization&gt; logger) { config = configuration; logger = logger; } public async Task&lt;string?&gt; SummarizeAsync( string comments) { var azureAiConfig = config.Value; var credentials = new AzureKeyCredential(azureAiConfig.AzureAIKey); var endpoint = new Uri(azureAiConfig.AzureAIEndpoint); var client = new TextAnalyticsClient(endpoint, credentials); var batchInput = new List&lt;string&gt; { comments }; var actions = new TextAnalyticsActions { AbstractiveSummarizeActions = new List&lt;AbstractiveSummarizeAction&gt; { new() } }; var operation = await client.StartAnalyzeActionsAsync(batchInput, actions); await operation.WaitForCompletionAsync(); var output = new StringBuilder(); await foreach (var documentsInPage in operation.Value) { var summaryResults = documentsInPage.AbstractiveSummarizeResults; foreach (var summaryActionResults in summaryResults) { if (summaryActionResults.HasError) { logger.LogError(&quot;Error with Abstractive Summarize Results - {ErrorCode} - {Message}&quot;, summaryActionResults.Error.ErrorCode, summaryActionResults.Error.Message); output.AppendLine(&quot; A summarization error occurred, this may be an issue with the AI service - [user-friendly message]&quot;); continue; } foreach (var documentResults in summaryActionResults.DocumentsResults) { if (documentResults.HasError) { _logger.LogError(&quot;Document error with the Abstractive Summarization - {ErrorCode} - {Message}&quot;, documentResults.Error.ErrorCode, documentResults.Error.Message); output.AppendLine(&quot; The summarization document has an error, this may be an issue with the AI service - [user-friendly message]&quot;); continue; } foreach (var summary in documentResults.Summaries) { output.AppendLine(summary.Text); } } } } return output.Length == 0 ? null : output.ToString(); } } In my project file: &lt;PackageReference Include=&quot;Azure.AI.TextAnalytics&quot; Version=&quot;5.3.0&quot; /&gt; I did not have a RBAC user setup to use this, no permissions have been changed. I initially followed this tutorial for the code: https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/quickstart?tabs=text-summarization%2Cwindows&amp;pivots=programming-language-csharp I can&apos;t find it now, but I saw a message about something being changed/deprecated with the API&apos;s May 30th of this year. I feel like I picked the worst time to begin this &quot;project&quot;. I&apos;m feeding this client entered comments, and there is probably a page and a half of text (in web browser, around 5,000 to 7,000 characters). Any suggestions on how to fix this are appreciated. I have been trying to deploy models to Microsoft Foundry, but continue to get the same errors. &amp;#32; submitted by &amp;#32; /u/progcodeprogrock [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-It seems like you&apos;re encountering issues related to authentication and setup changes in the Microsoft Foundry platform for your abstractive summarization feature. Here are some steps and suggestions to help resolve your issue:
-
-1. Validate Subscription Key and Regional API Endpoint
-The error indicates that your subscription key or API endpoint is invalid. Ensure you are using the correct subscription key and endpoint for your new resource. You can find the correct API endpoint and key in the Azure portal under your Microsoft Foundry resource. Refer to the Microsoft Foundry Agent Service documentation (https://learn.microsoft.com/en-us/azure/foundry/agents/overview) for more details on resource creation and accessing required credentials.
-
-2. Check Resource Configuration
-From your description, it seems the interface for resource creation has changed. When recreating the resource, ensure you correctly configure the project and select the required model for abstractive summarization. The Foundry platform may now require you to explicitly select a model during setup that aligns with your use case. Details on supported models and their configuration can be found in the Microsoft Agent Framework documentation (https://learn.microsoft.com/en-us/agent-framework/agents/).
-
-3. Update Your Code for New Endpoints or Configurations
-If the Foundry platform&apos;s API has been updated, your code might need minor adjustments. Review the latest API documentation and ensure your implementation adheres to the updated interface. If you&apos;re using Azure.AI.TextAnalytics, confirm that the library version is compatible with the new API setup.
-
-4. Environment Variables for Production
-It’s a good practice to store your API keys and endpoints securely, as you mentioned. Transitioning to Azure environment variables is a step in the right direction. You can learn more about managing secrets securely in Azure here (https://learn.microsoft.com/en-us/azure/architecture/ai-ml/).
-
-If the issue persists, try contacting Microsoft Support for further assistance, as this may be related to recent updates in the Foundry platform.
-
-Let me know if you need additional help!]]></description>
     </item>
   </channel>
 </rss>
