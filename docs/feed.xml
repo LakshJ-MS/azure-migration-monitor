@@ -5,7 +5,81 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 27 May 2026 01:29:34 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2026 05:58:24 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure File Sync and Cloud Kerberos</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1towlxa/azure_file_sync_and_cloud_kerberos/</link>
+      <guid isPermaLink="false">t3_1towlxa</guid>
+      <pubDate>Wed, 27 May 2026 05:57:20 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure File Sync and Cloud Kerberos
+
+&amp;#32; submitted by &amp;#32; /u/stevenm_83 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Hi Steven,
+
+It sounds like you&apos;re exploring Azure File Sync and might be interested in setting up Microsoft Entra Kerberos authentication for your Azure Files. This is a great option, especially when working in hybrid or cloud-only environments, as it allows seamless identity-based authentication for SMB file shares. Here&apos;s how you can approach this:
+
+1. Enable Microsoft Entra Kerberos Authentication
+To enable Microsoft Entra Kerberos authentication for Azure Files, you&apos;ll need to ensure a few prerequisites are met:
+- Configure an Azure Storage account.
+- Use an AD DS or Microsoft Entra ID setup to establish identity-based authentication.
+- Register your storage account in your domain and configure Kerberos.
+
+You can follow the step-by-step guide provided in the Microsoft Learn documentation here: 
+Enable Microsoft Entra Kerberos authentication for Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-auth-hybrid-identities-enable)
+
+2. Configure Azure File Sync
+Azure File Sync allows you to centralize your file shares in Azure while keeping frequently accessed files cached locally. After enabling Kerberos authentication, you can set up Azure File Sync to integrate with your on-premises servers and ensure data consistency.
+
+More details on Azure Storage and its capabilities can be found here: 
+Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+
+3. Troubleshooting Authentication Issues
+If you encounter any issues with identity-based authentication, the troubleshooting guide for Azure Files can be particularly helpful. It covers common problems and their resolutions: 
+Troubleshoot Azure Files identity-based authentication issues (https://learn.microsoft.com/en-us/troubleshoot/azure/azure-storage/files/security/files-troubleshoot-smb-authentication)
+
+Feel free to share additional details about your current setup if you need more specific guidance. Good luck with your configuration!
+
+Best regards, 
+[Your Name]]]></description>
+    </item>
+    <item>
+      <title>Reddit r/azure: Azure File Sync and Cloud Kerberos</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1towlie/azure_file_sync_and_cloud_kerberos/</link>
+      <guid isPermaLink="false">t3_1towlie</guid>
+      <pubDate>Wed, 27 May 2026 05:56:45 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure File Sync and Cloud Kerberos
+
+OK here me out. Am I doing this all wrong. We have maybe 10-20 devices all using Azure Files with Cloud Kerberos as we have Entra DS setup just for some Linux Servers. So all devices are intune joined and no AD. This working very nicely the devices all have mapped drive which they store data in. So all of these computers are not in HQ. So my plan for HQ was setup Win Server 2025 join tot Entra DS and use Azure File Sync. So anyone at HQ can easily just access all the data. Now I have all this setup but now the issue is I cant actually access the file shares on the Server im getting permission error. So im guessing this setup will not work or am I missing something? &amp;#32; submitted by &amp;#32; /u/stevenm_83 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It sounds like you&apos;ve done a good job leveraging Microsoft Entra Kerberos authentication for Azure Files, but there might be a configuration issue with your Azure File Sync setup or permissions on the server.
+
+Here are some steps and considerations to help you resolve the issue:
+
+1. Validate Entra Kerberos Authentication Setup: Ensure that your Microsoft Entra Kerberos authentication is correctly enabled for Azure Files. This is crucial for identity-based access. Follow the steps in the official guide to verify your setup: Enable Microsoft Entra Kerberos authentication for Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-auth-hybrid-identities-enable).
+
+2. Check Azure File Sync Configuration: Ensure that Azure File Sync is set up correctly on your Windows Server 2025 machine. The server must be registered with the Storage Sync Service, and the appropriate file shares must be synced. For a foundational understanding, review the Azure Storage documentation hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+3. Verify Permissions: Since you&apos;re using Microsoft Entra ID (formerly Azure AD), ensure that the correct permissions are assigned to the users or devices that need access to the file shares. You can troubleshoot permissions-related issues using the steps in this guide: Troubleshoot Azure Files identity-based authentication and authorization issues (https://learn.microsoft.com/en-us/troubleshoot/azure/azure-storage/files/security/files-troubleshoot-smb-authentication).
+
+4. Check Intune and Azure AD Join Status: Your Intune-joined devices and the server must have the proper Microsoft Entra ID integration to access the file shares. Ensure that the devices have the necessary access policies applied.
+
+5. Review Network Configuration: Ensure that the server and devices at HQ can communicate with the Azure Files endpoint. This might involve checking firewall rules or ensuring proper DNS resolution.
+
+If the issue persists after following these steps, consider revisiting your architecture. The Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/) can offer insights into best practices for designing Azure-based solutions.]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: Is Azure Data Box available for new Azure accounts (new customer)?</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/5901220/is-azure-data-box-available-for-new-azure-accounts</link>
@@ -1755,70 +1829,6 @@ To address this, you have a couple of alternatives:
  Documentation: Azure Storage documentation (https://learn.microsoft.com/en-us/azure/storage/)
 
 If you&apos;re unsure, consider engaging Azure Support or a certified Azure migration partner for guidance. Let me know if you need further clarification!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Azure File Sync and Move 100% to the Cloud</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/5863610/azure-file-sync-and-move-100-to-the-cloud</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5863610/azure-file-sync-and-move-100-to-the-cloud</guid>
-      <pubDate>Mon, 20 Apr 2026 02:35:03 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Azure File Sync and Move 100% to the Cloud
-
-Azure File Sync can be used as a migration path and then the environment can be switched to “cloud‑only” Azure file shares after a final sync. Conceptually, the steps are: Ensure all data is fully in Azure Files If cloud tiering is enabled, first recall al... Move to a cloud‑only deployment Azure Files supports a cloud-only deployment where the.
-
----
-
-Suggested Response:
-To transition from Azure File Sync to a cloud-only Azure Files deployment, your outlined approach is correct. Below are specific steps to guide you through the process:
-
-1. Ensure All Data Is Fully Synced: Before moving to a cloud-only setup, confirm that all your on-premises data has been fully synchronized with Azure Files. If cloud tiering is enabled, use the recall feature to ensure all files are fully present in Azure Files. For details on Azure Files, refer to the Introduction to Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction).
-
-2. Remove On-Premises Dependencies: After verifying the data sync, you can disable Azure File Sync and remove the server endpoint. This ensures that your environment operates entirely from Azure Files without reliance on local infrastructure.
-
-3. Optimize Azure Files for Cloud-Only Use: Configure Azure Files to meet your cloud-only performance, scalability, and access requirements. Azure Files supports both SMB and NFS protocols, enabling seamless access across different platforms and devices. Learn more about Azure Files capabilities in the Azure Files Introduction (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction).
-
-4. Monitor and Manage Your Cloud Deployment: Once the transition is complete, continue monitoring your Azure Files deployment to ensure optimal performance and cost management. You can leverage Azure tools for monitoring and scaling. The Azure Storage Introduction (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction) provides a comprehensive overview of storage options.
-
-If you’re moving resources to a different subscription or resource group as part of this process, you can follow the steps outlined in Move Azure Resources (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
-
-For broader guidance on planning and executing migrations, the Cloud Adoption Framework (https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/) can help you align your strategy, people, processes, and technology effectively.
-
-Let me know if you need further assistance!]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Defender detecting false-positive malware in Azure Site Recovery activities</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1sm4uxq/defender_detecting_falsepositive_malware_in_azure/</link>
-      <guid isPermaLink="false">t3_1sm4uxq</guid>
-      <pubDate>Wed, 15 Apr 2026 12:37:24 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Defender detecting false-positive malware in Azure Site Recovery activities
-
-&amp;#32; submitted by &amp;#32; /u/EquivalentDrive976 [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-It sounds like you&apos;re experiencing false-positive malware detections related to Azure Site Recovery activities in Microsoft Defender. This can occasionally happen when security tools misinterpret legitimate activity as malicious due to pattern similarities.
-
-To address this:
-
-1. Investigate the Alert in Microsoft Defender XDR 
- Start by analyzing the specific alert in Microsoft Defender XDR to understand its context. Microsoft Defender XDR allows you to investigate security alerts, view related incidents, and filter based on services. Follow the steps outlined here to drill down into the alert details: Investigate alerts in Microsoft Defender XDR (https://learn.microsoft.com/en-us/defender-xdr/investigate-alerts).
-
-2. Identify False Positives 
- If the activity is indeed legitimate (e.g., routine Azure Site Recovery operations), you can mark the alert as a false positive within Defender. This ensures that similar activities are not flagged in the future.
-
-3. Adjust Microsoft Defender for Cloud Policies 
- You might need to customize your Microsoft Defender for Cloud settings to reduce false-positive detections. Defender for Cloud provides a unified security experience and can be tailored to your environment. Learn more about its capabilities and setup here: Microsoft Defender for Cloud Overview (https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction).
-
-4. Review Security Rules for Azure Site Recovery 
- Ensure that your Azure Site Recovery activities are properly configured and documented. If necessary, you can whitelist certain processes or operations in Defender to avoid future false positives. Microsoft Defender for Cloud Apps may also be helpful in monitoring cloud app activities: Microsoft Defender for Cloud Apps (https://learn.microsoft.com/en-us/defender/).
-
-By following these steps, you should be able to resolve the issue and improve detection accuracy. Let me know if you need further assistance!]]></description>
     </item>
   </channel>
 </rss>
