@@ -5,7 +5,7 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 28 May 2026 21:33:29 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 23:02:18 +0000</lastBuildDate>
 <item>
       <title>Reddit r/azure: Moving from Airbyte and dbt to Azure.</title>
       <link>https://www.reddit.com/r/AZURE/comments/1tq6cm0/moving_from_airbyte_and_dbt_to_azure/</link>
