@@ -5,7 +5,45 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 28 May 2026 23:02:18 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 01:28:36 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: CVE-2026-42897 — Microsoft Exchange OWA zero-day, no permanent patch, CISA KEV deadline today: what&apos;s your mitigation status?</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1tqmfmh/cve202642897_microsoft_exchange_owa_zeroday_no/</link>
+      <guid isPermaLink="false">t3_1tqmfmh</guid>
+      <pubDate>Fri, 29 May 2026 01:06:16 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+CVE-2026-42897 — Microsoft Exchange OWA zero-day, no permanent patch, CISA KEV deadline today: what&apos;s your mitigation status?
+
+Wanted to get a thread going on CVE-2026-42897 since the CISA KEV remediation deadline for federal agencies is today (May 29) and there&apos;s still no permanent fix from Microsoft. The vulnerability is a cross-site scripting flaw in Outlook Web Access — the browser-based Exchange client. An attacker sends a specially crafted email. When the recipient opens it inside OWA, malicious JavaScript executes in the context of their authenticated browser session. That&apos;s it. No authentication required on the attacker side. No server-level access needed. The attack path is: inbox → browser render → session compromise. What an attacker gets post-exploitation: - Session token theft (authenticated OWA access as the victim) - Ability to read, modify, or forward emails - Covert inbox rule manipulation (the classic persistence move) Affected: Exchange Server 2016, 2019, Subscription Edition — all CU levels. Exchange Online is NOT vulnerable. The disclosure timing is worth discussing: Microsoft&apos;s May Patch Tuesday (May 12) fixed 138 CVEs. CVE-2026-42897 was not among them. It was disclosed on May 14, two days later, already under active exploitation. CISA KEV-listed within 24 hours — which usually means exploitation was confirmed before the public advisory, not discovered afterwards. The only defence right now is Microsoft&apos;s EEMS emergency mitigation (auto-applied URL rewrite rule M2.1.x). It has documented side effects — OWA Print Calendar breaks, OWA light mode issues. Microsoft is expected to ship a permanent patch in the next Cumulative Update, roughly June 10. Questions for the thread: Has anyone observed exploitation activity in IIS/OWA logs that predates the May 14 disclosure? The Centre for Cybersecurity Belgium&apos;s advisory suggests the attack window may be wider than officially acknowledged. For those running the EEMS mitigation — are the OWA side-effects causing operational problems significant enough that anyone is considering a rollback? If so, what compensating controls are you deploying? This feels like a structural problem with Exchange on-prem more broadly — nearly 25 Exchange CVEs are sitting in CISA&apos;s KEV catalog now. Is this incident accelerating Exchange Online migration conversations at your org? --- I previously covered how the Webworm APT group used Microsoft&apos;s own Graph API and OneDrive for nation-state C2 operations — different attack vector, same theme of abusing trusted Microsoft infrastructure. Background here if useful: https://www.techgines.com/post/webworm-echocreep-graphworm-discord-microsoft-graph-api-c2-backdoor Full technical breakdown of CVE-2026-42897 with attack chain and mitigation checklist: https://www.techgines.com/post/cve-2026-42897-microsoft-exchange-owa-zero-day-xss &amp;#32; submitted by &amp;#32; /u/Expert_Sort7434 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+This is a critical issue, and it&apos;s great that you&apos;re raising awareness about CVE-2026-42897. While the vulnerability has significant implications, Microsoft has provided emergency mitigations via the Exchange Emergency Mitigation Service (EEMS), specifically the auto-applied URL rewrite rule (M2.1.x). 
+
+Key Actions for Mitigation:
+1. Ensure EEMS Mitigation is Active: 
+ The URL rewrite rule is auto-applied for Exchange servers with EEMS enabled. To confirm:
+ - Check if EEMS is running on your Exchange servers.
+ - Review the applied mitigation rules. More details on managing EEMS mitigations can be found in Mitigate zero-day vulnerabilities - Microsoft Defender Vulnerability Management (https://learn.microsoft.com/en-us/defender-vulnerability-management/tvm-zero-day-vulnerabilities).
+
+2. Monitor System and IIS Logs: 
+ Investigate for signs of exploitation, such as abnormal access patterns or unauthorized actions. The Centre for Cybersecurity Belgium&apos;s advisory suggests the attack window may be larger than reported, so expand your log analysis timeframe. Utilize tools like Microsoft Defender or other SIEM solutions to assist with log analysis.
+
+3. Assess Operational Impact: 
+ If the EEMS mitigation&apos;s side effects (e.g., OWA Print Calendar issues) interfere with operations, consider temporary workarounds. However, rolling back the mitigation is highly discouraged unless absolutely necessary. Instead, explore alternative compensating controls, such as enhanced monitoring and user education.
+
+4. Plan for the Permanent Patch: 
+ Microsoft has indicated a permanent fix will be included in the June Cumulative Update. Ensure your Exchange servers are updated immediately once the patch is available.
+
+For additional guidance on managing vulnerabilities, refer to Threat and vulnerability management - Microsoft Service Assurance (https://learn.microsoft.com/en-us/compliance/assurance/assurance-vulnerability-management).
+
+If you&apos;re running legacy Exchange servers, consider migrating to a supported platform, as outdated environments pose increased risks. Microsoft&apos;s resources on storage migration can assist with transitions: Azure Storage Migration Program Details (https://learn.microsoft.com/en-us/azure/storage/solution-integration/validated-partners/data-management/azure-file-migration-program-solutions).
+
+Stay vigilant and prioritize mitigation until the permanent fix is released.]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Moving from Airbyte and dbt to Azure.</title>
       <link>https://www.reddit.com/r/AZURE/comments/1tq6cm0/moving_from_airbyte_and_dbt_to_azure/</link>
@@ -1790,42 +1828,6 @@ Managing Azure resources and costs post-migration can indeed be challenging, esp
 Finally, consider leveraging Azure tools like Azure Policy (https://learn.microsoft.com/en-us/azure/governance/policy/) to enforce compliance and cost-saving measures automatically. For storage-specific growth concerns, review options in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
 
 By adopting a proactive management approach and leveraging these Azure tools, you can gain better control over costs while maintaining security and performance. Let me know if you need help with specific configurations!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Migrate data from NAS to Azure Files using Azure Data Box</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/5881059/migrate-data-from-nas-to-azure-files-using-azure-d</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5881059/migrate-data-from-nas-to-azure-files-using-azure-d</guid>
-      <pubDate>Wed, 06 May 2026 09:50:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Migrate data from NAS to Azure Files using Azure Data Box
-
-...Azure Files via Data Box, and there is no requirement to stage data in Azure BlobAzure Data Box fully supports SMB-based data transfer to Azure Files, and during this process, NTFS ACLs, timestamps, and file attributes are preserved. If you have extra questions about this answer, please click &quot; Comment &quot;.| Azure Data Box supports.
-
----
-
-Suggested Response:
-To migrate data from your NAS to Azure Files using Azure Data Box, you&apos;re on the right track. Azure Data Box is designed for secure and efficient data transfer, and it supports SMB-based transfers while preserving NTFS ACLs, timestamps, and file attributes during migration.
-
-Here’s a high-level process for using Azure Data Box with Azure Files:
-
-1. Prepare Azure Storage: 
- Create an Azure storage account and set up Azure Files. You can find more details on storage accounts and Azure Files in the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-2. Order and Configure Azure Data Box: 
- Place an order for an Azure Data Box via the Azure portal. Configure it with the details of your Azure storage account and specify Azure Files as the destination. Follow the documentation steps here: Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/).
-
-3. Copy Data to Azure Data Box: 
- Connect the Data Box to your NAS and copy the data using SMB protocol. Since Azure Data Box supports SMB, you can directly copy files, ensuring NTFS ACLs, timestamps, and file attributes are retained.
-
-4. Return Azure Data Box: 
- Once data is copied, ship the Data Box back to Azure. Microsoft will process the data ingestion and upload it to the Azure Files share in your storage account.
-
-5. Verify Data in Azure: 
- After ingestion is complete, confirm that your data has been successfully migrated to Azure Files.
-
-For a deeper overview of Azure Files and related features, refer to the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/). If you require further clarification, feel free to ask!]]></description>
     </item>
   </channel>
 </rss>
