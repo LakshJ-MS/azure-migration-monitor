@@ -5,7 +5,7 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 29 May 2026 13:34:37 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 17:03:00 +0000</lastBuildDate>
 <item>
       <title>Reddit r/azure: CVE-2026-42897 — Microsoft Exchange OWA zero-day, no permanent patch, CISA KEV deadline today: what&apos;s your mitigation status?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1tqmfmh/cve202642897_microsoft_exchange_owa_zeroday_no/</link>
