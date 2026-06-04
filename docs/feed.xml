@@ -5,7 +5,38 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 04 Jun 2026 16:38:25 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 19:07:38 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Your GPv1 Storage Accounts have a migration deadline, or a “do nothing” option that’ll quietly cost you money</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1twtr99/your_gpv1_storage_accounts_have_a_migration/</link>
+      <guid isPermaLink="false">t3_1twtr99</guid>
+      <pubDate>Thu, 04 Jun 2026 17:04:28 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Your GPv1 Storage Accounts have a migration deadline, or a “do nothing” option that’ll quietly cost you money
+
+&amp;#32; submitted by &amp;#32; /u/SeikoShadow [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Azure is retiring legacy blob storage accounts and general-purpose v1 (GPv1) storage accounts, so it&apos;s important to take action before the migration deadline to avoid potential costs or service disruptions. If you don&apos;t migrate, your GPv1 storage account will automatically transition to a general-purpose v2 (GPv2) account, which could result in unexpected costs due to different pricing structures and features.
+
+Key Steps:
+1. Understand the Benefits of GPv2 Accounts: GPv2 accounts support the latest Azure Storage features, including tiered storage (Hot, Cool, Archive), enhanced performance, and lower costs for certain use cases. Learn more about GPv2 features here (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-upgrade).
+
+2. Plan Your Migration: Review your existing storage usage to determine how the transition to GPv2 will affect costs and functionality. If your workloads benefit from GPv2 features, upgrading manually before the deadline ensures smoother migration. Use the guide provided here (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-upgrade).
+
+3. Legacy Blob Storage Retirement: If you&apos;re using a legacy blob storage account type, note that Azure will retire it entirely. Failure to migrate by the deadline will result in automatic conversion to GPv2, with potential cost implications. For details, check the retirement overview here (https://learn.microsoft.com/en-us/azure/storage/common/legacy-blob-storage-account-migration-overview).
+
+Next Steps:
+- Determine your account type and review pricing impacts.
+- Follow the upgrade guide to manually migrate to GPv2, if appropriate.
+- Ensure your applications are compatible with GPv2 features and pricing.
+
+For more details, explore the full Azure Storage documentation hub here (https://learn.microsoft.com/en-us/azure/storage/). Taking proactive steps ensures you avoid unexpected costs and benefit from the enhanced capabilities of GPv2.]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: CVE-2026-42897 — Microsoft Exchange OWA zero-day, no permanent patch, CISA KEV deadline today: what&apos;s your mitigation status?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1tqmfmh/cve202642897_microsoft_exchange_owa_zeroday_no/</link>
@@ -1797,37 +1828,6 @@ Getting Started with Azure File Sync
 4. Secure Access: If you need to provide access to specific files or resources, consider using Shared Access Signatures (SAS) for secure delegated access. Learn more about SAS here: Grant limited access to data with shared access signatures (SAS) (https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 
 Azure File Sync can simplify managing large, distributed file shares while providing flexibility and cloud benefits. Let me know if you need further help!]]></description>
-    </item>
-<item>
-      <title>Reddit r/cloudcomputing: Cloud migration was easy. Managing Azure costs later was the hard part.</title>
-      <link>https://www.reddit.com/r/cloudcomputing/comments/1t698xo/cloud_migration_was_easy_managing_azure_costs/</link>
-      <guid isPermaLink="false">t3_1t698xo</guid>
-      <pubDate>Thu, 07 May 2026 12:35:44 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/cloudcomputing
-
-Question:
-Cloud migration was easy. Managing Azure costs later was the hard part.
-
-We migrated a few workloads to Azure last year thinking the difficult part would be the migration itself. Honestly, the migration went smoother than expected. What became difficult later was: cost visibility scaling correctly storage growth performance tuning cleaning up unused resources balancing security vs spend Especially once multiple teams started deploying resources independently, the monthly bill became a moving target. Curious if others here found cloud management harder than the actual migration phase. &amp;#32; submitted by &amp;#32; /u/tresorrarereviews [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-Managing Azure resources and costs post-migration can indeed be challenging, especially when multiple teams are involved. Fortunately, Microsoft provides tools and frameworks to help you optimize and gain control over your Azure environment. Here are some actionable steps:
-
-1. Cost Management and Visibility: Use Azure Cost Management + Billing (https://learn.microsoft.com/en-us/azure/cost-management-billing/) to track spending, set budgets, and analyze cost drivers. Regularly review your usage reports and set up alerts for spending thresholds. Leveraging Azure Advisor (https://learn.microsoft.com/en-us/azure/advisor/) can also help identify cost-saving opportunities.
-
-2. Scaling and Performance Optimization: Review your storage and compute configurations for efficiency. Azure provides scalable storage options like Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for cost-effective data management. Use performance tuning tools such as Azure Monitor to identify bottlenecks and optimize workloads.
-
-3. Cleaning Up Unused Resources: Use Azure Resource Graph to query your environment for unused or underutilized resources. Regular audits can prevent unnecessary spending.
-
-4. Security vs. Cost Balance: Follow the Azure Cloud Adoption Framework (https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/) to establish governance policies. This includes defining roles, permissions, and security baselines that align with your budgetary goals.
-
-5. Centralized Resource Management: Implement management groups and tagging strategies to organize resources. This improves tracking and accountability across teams.
-
-Finally, consider leveraging Azure tools like Azure Policy (https://learn.microsoft.com/en-us/azure/governance/policy/) to enforce compliance and cost-saving measures automatically. For storage-specific growth concerns, review options in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-By adopting a proactive management approach and leveraging these Azure tools, you can gain better control over costs while maintaining security and performance. Let me know if you need help with specific configurations!]]></description>
     </item>
   </channel>
 </rss>
