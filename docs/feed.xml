@@ -5,7 +5,42 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 19 Jun 2026 13:52:03 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 16:36:12 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Migrating Remote Access VPN from on-premises to Azure and successfully tested authentication with vendor partner today!</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1ua44lh/migrating_remote_access_vpn_from_onpremises_to/</link>
+      <guid isPermaLink="false">t3_1ua44lh</guid>
+      <pubDate>Fri, 19 Jun 2026 14:53:11 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Migrating Remote Access VPN from on-premises to Azure and successfully tested authentication with vendor partner today!
+
+&amp;#32; submitted by &amp;#32; /u/SuburbanCyber [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Congratulations on successfully testing authentication with your vendor partner! Migrating a remote access VPN to Azure is a great step to modernize and secure your network. To further assist you, here are some steps and recommendations for implementing a remote access VPN in Azure, leveraging the hub-spoke network topology:
+
+1. Understand the Hub-Spoke Network Topology: 
+ The hub-spoke model is a common design for Azure networking. The hub acts as the central connectivity point to on-premises networks, while the spokes are used to isolate workloads. This topology is ideal for secure and scalable VPN setups. 
+ Learn more here: Hub-Spoke Network Topology in Azure (https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/hub-spoke)
+
+2. Implement Azure VPN Gateway: 
+ Azure VPN Gateway is the key service for setting up a remote access VPN. It supports both point-to-site (P2S) and site-to-site (S2S) configurations. You&apos;ll also want to ensure your VPN client is configured to authenticate users via Azure Active Directory or another identity provider. 
+ For setup details, refer to the guidance in the Azure Architecture Center: 
+ Azure VPN Gateway Overview (https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/hub-spoke#azure-vpn-gateway)
+
+3. Leverage Microsoft Entra ID for Authentication: 
+ Microsoft Entra ID (formerly Azure AD) can manage user identities and provide secure access to your Azure VPN. You can configure conditional access policies and MFA to enhance security for your VPN users. 
+ Learn more here: Microsoft Entra ID documentation (https://learn.microsoft.com/en-us/entra/identity/)
+
+4. Follow Cloud Adoption Best Practices: 
+ Leverage the Cloud Adoption Framework (https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/) to align your VPN migration with best practices for strategic planning, implementation, and governance in Azure.
+
+If you encounter specific challenges or have further questions, feel free to share them here!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Linux Consumption Function app to Flex migration whine</title>
       <link>https://www.reddit.com/r/AZURE/comments/1u2bnf0/linux_consumption_function_app_to_flex_migration/</link>
@@ -1793,40 +1828,6 @@ If you need a local testing environment to validate your data archive process, A
 Define lifecycle management policies in Azure to automate moving data between Hot, Cool, and Archive tiers based on access patterns.
 
 For more information on Azure Storage services and best practices, visit the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/). Let me know if you have further questions!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Unable to connect Azure File Sync from On-premises File share</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1791804/unable-to-connect-azure-file-sync-from-on-premises</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1791804/unable-to-connect-azure-file-sync-from-on-premises</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Unable to connect Azure File Sync from On-premises File share
-
-We did the host entry also for Storage account and Storage sync. we already have the following setup: VPN from on-premise into Azure Storage account to and Azure file Subnet for the Private Link Endpoints Storage account to and Azure file share On-Premise file share We have followed the below mentioned blog for configuring the Azure file sync.
-
----
-
-Suggested Response:
-To troubleshoot your issue with connecting Azure File Sync from your on-premises file share, it’s important to ensure all configurations are properly set up. Based on the details you’ve provided, here are some key points to review:
-
-1. Verify Active Directory Domain Services (AD DS) Integration 
- If you’re using an SMB file share with Azure Files, ensure that AD DS authentication is enabled. This allows you to authenticate using on-premises AD credentials. Follow the steps in the guide here: Enable AD DS Authentication for Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-ad-ds-enable). This includes configuring DNS and ensuring correct permissions.
-
-2. Check Private Endpoint Connectivity 
- Since you’re using a VPN and Private Link endpoints, ensure that the private endpoint is correctly configured and DNS resolution is working as expected. Verify that the on-premises network can resolve the private endpoint FQDN to the private IP address.
-
-3. Mount Azure File Share on Your On-Premises Server 
- Test mounting the Azure file share on a Windows server to confirm connectivity. Use the steps in this guide: Mount SMB Azure File Share on Windows (https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-windows). Make sure the Azure storage account key or AD authentication is working.
-
-4. Validate File and Directory-Level Permissions 
- If permissions are not correctly configured, it may block access. Use this guide to configure appropriate permissions: Configure Directory and File-Level Permissions for Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-configure-file-level-permissions).
-
-5. Reference the Azure Architecture Center for Best Practices 
- Review the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/) for best practices on securing and designing your storage and networking setup.
-
-If these steps don’t resolve the issue, please share additional details about any error messages you’re encountering so we can assist further.]]></description>
     </item>
   </channel>
 </rss>
