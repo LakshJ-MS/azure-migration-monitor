@@ -5,7 +5,38 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 24 Jun 2026 14:45:10 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 16:58:10 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Cosmos DB and Blob Storage compared to Azure SQL, with real query examples and an honest take on when SQL is still the better choice</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1ueg9w9/cosmos_db_and_blob_storage_compared_to_azure_sql/</link>
+      <guid isPermaLink="false">t3_1ueg9w9</guid>
+      <pubDate>Wed, 24 Jun 2026 15:12:43 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Cosmos DB and Blob Storage compared to Azure SQL, with real query examples and an honest take on when SQL is still the better choice
+
+Every post on my TechStack blog so far has used Azure SQL for a small Posts table, which has been the right call for that specific data. Used Cosmos DB at Blue Yonder for a different purpose though - holding operational and application data from an integration platform, queried with KQL for troubleshooting and reporting. Wrote this post to cover the two services worth reaching for when a relational table is NOT the right shape - Cosmos DB and Blob Storage - and tried to keep it honest about when SQL still wins rather than presenting NoSQL as automatically superior. Covers: - The relational vs document model, using my own blog&apos;s Posts table reshaped as a Cosmos DB document for direct comparison - Partition key selection - probably the single most consequential design decision in Cosmos DB - Cosmos DB&apos;s SQL-like query language, compared line by line against equivalent Azure SQL queries - LINQ against Cosmos DB vs LINQ against EF Core - same vocabulary, different engine and cost model entirely - Request Units, and why Serverless billing mode fits unpredictable low-traffic workloads (like a blog) better than provisioned throughput - Blob Storage tiers (Hot/Cool/Archive), blob types, and SAS tokens for scoped temporary access - A genuine side-by-side table: Azure SQL vs Cosmos DB vs Blob Storage Full post here ( https://www.techstackblog.com/post.html?slug=azure-cosmos-db-blob-storage ) Curious if anyone here has migrated a relational table to Cosmos DB and regretted it, or the reverse - genuinely interested in real war stories either direction, not just &quot;NoSQL is web scale&quot; takes. &amp;#32; submitted by &amp;#32; /u/LittlePerformer4515 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Great post and discussion points! It sounds like you&apos;ve already done some deep thinking about the trade-offs between Azure SQL, Cosmos DB, and Blob Storage. I&apos;ll try to address your query and provide some practical insights.
+
+Relational Tables in Cosmos DB: When It Works (and When It Doesn&apos;t)
+Migrating a relational table like your blog&apos;s &quot;Posts&quot; table to Cosmos DB can work well if your workload demands global distribution, low-latency reads/writes, or flexible schemas. However, if your queries rely heavily on JOINs, complex aggregations, or strong transactional consistency across partitions, Azure SQL might still be the better choice. Cosmos DB supports SQL-like queries, but its engine and cost model are optimized for NoSQL workloads, where data shapes can vary, and queries are simpler. For a refresher on Cosmos DB, its query language, and best practices (like partitioning), see the Azure Cosmos DB documentation (https://learn.microsoft.com/en-us/azure/cosmos-db/).
+
+Request Units and Serverless Mode
+You&apos;re spot on about the importance of Request Units (RUs) in Cosmos DB. The Serverless billing model is indeed well-suited for low-traffic workloads with unpredictable patterns, like a personal blog. However, for workloads with consistent, high usage, provisioned throughput might be more cost-effective. You can learn more about Cosmos DB&apos;s pricing models and RUs in the Azure Cosmos DB documentation (https://learn.microsoft.com/en-us/azure/cosmos-db/).
+
+When Blob Storage Fits
+Blob Storage is excellent for unstructured data, such as images, videos, or backups, but it&apos;s not optimized for querying structured data. Features like tiers (Hot, Cool, Archive) and SAS tokens are great for cost management and secure access. For an overview of Blob Storage capabilities, check the Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+Migration Considerations
+If you’re considering migration, ensure you evaluate query patterns, expected traffic, and cost models. For relational workloads, Azure SQL&apos;s maturity and support for complex queries often make it the safer choice. For guidance on Azure SQL, refer to the Microsoft SQL Documentation (https://learn.microsoft.com/en-us/sql/).
+
+Would love to hear others&apos; experiences with similar migrations!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Migrating Remote Access VPN from on-premises to Azure and successfully tested authentication with vendor partner today!</title>
       <link>https://www.reddit.com/r/AZURE/comments/1ua44lh/migrating_remote_access_vpn_from_onpremises_to/</link>
@@ -1792,42 +1823,6 @@ For secure manual uploads, you can use tools like Azure Storage Explorer or AzCo
 ExpressRoute is not mandatory for this scenario. You can use secure HTTPS connections or configure a site-to-site VPN for additional security. If you anticipate high data transfer needs, consider Azure Data Box for offline transfers.
 
 Let me know if you need further clarification!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Data Archive Process in Azure Blob.</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1199379/data-archive-process-in-azure-blob</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1199379/data-archive-process-in-azure-blob</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Data Archive Process in Azure Blob.
-
-We need to build a data archive process from on-premise to Azure cloud. You can use Azure StorSimple appliance running on-premises that can tier data to Azure Blob storage (both hot and cool tier). StorSimple can be used to archive data from on-premises to Azure. Azure Architecture Center provides best practices, design patterns, reference.
-
----
-
-Suggested Response:
-To build a data archive process from on-premises to Azure Blob Storage, you can utilize Azure&apos;s storage capabilities to efficiently tier and manage your data. While StorSimple was a popular solution for hybrid storage, note that Microsoft has deprecated StorSimple. Instead, consider using Azure-native solutions for archiving your data. Here’s how you can proceed:
-
-1. Choose the Right Storage Tier
-Azure Blob Storage supports multiple tiers, including Hot, Cool, and Archive, for cost-effective data storage. Use the Cool tier for infrequently accessed data and the Archive tier for long-term storage. Refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for details on these options.
-
-2. Create an Azure Storage Account
-To get started, create a storage account that will host your blob data. This is a prerequisite for managing blobs, files, queues, and tables. Follow the step-by-step instructions in Create an Azure storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
-
-3. Set Up Data Transfer
-For transferring data from your on-premises environment:
- - Use Azure Data Box for large-scale data migrations.
- - Alternatively, leverage AzCopy, a command-line tool, to copy data from on-premises directly to Azure Blob Storage. Learn more about AzCopy in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-4. Test Locally with Azurite
-If you need a local testing environment to validate your data archive process, Azurite provides a free emulator for Azure Storage. You can explore it in Use the Azurite emulator for local Azure Storage development (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite).
-
-5. Implement Data Management Policies
-Define lifecycle management policies in Azure to automate moving data between Hot, Cool, and Archive tiers based on access patterns.
-
-For more information on Azure Storage services and best practices, visit the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/). Let me know if you have further questions!]]></description>
     </item>
   </channel>
 </rss>
