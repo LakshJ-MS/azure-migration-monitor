@@ -5,7 +5,45 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 01 Jul 2026 15:14:55 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2026 17:26:32 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Site Recovery</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1ukpzk6/azure_site_recovery/</link>
+      <guid isPermaLink="false">t3_1ukpzk6</guid>
+      <pubDate>Wed, 01 Jul 2026 16:08:39 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Site Recovery
+
+We are utilizing ASR for our on-prem VMware environment to replicate to Azure. Everything is setup correctly and the VMs replicate to a healthy state. The problem is, I performed a Failover (not a Test Failover) on a pair of VMs (app and sql) to test the latency and capabilities of these servers in Azure. After employees tested and confirmed all was well, I attempted to fail back to my on-prem VMware solution, but something got messed up to where now I have: My app server in a &quot;Protection couldn&apos;t be enabled&quot; state. I&apos;m unable to do anything except Disable Replication, and My sql server in a &quot;Healthy&quot; and &quot;Protected&quot; state, but all I can do is &quot;Planned Failover&quot; and &quot;Disable Replication&quot;. I believe all of this stemmed from one problem where my on-prem ASR Appliance has encryption turned on (found it on a forum somewhere). I have disabled encryption of the ASR Appliance, but am I able to get these two server back down to my VMware setup or am I just f*ed? FYI, we utilize Veeam for backups, so, worst case scenario, I can fully commit and complete the migration of these servers to Azure, back them up and restore them into VMware, but I&apos;d like to know what all my options are. I may not have spelled everything out clearly, so any questions PLEASE feel free to ask. &amp;#32; submitted by &amp;#32; /u/Civil_Fly7803 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It sounds like you&apos;re encountering a few challenges with your Azure Site Recovery (ASR) failback process. I’ll guide you through possible solutions and provide helpful resources to assist.
+
+The issue could indeed be related to the encryption settings on your on-premises ASR appliance, as encryption mismatches can interfere with replication and failback. To help you proceed, here are some steps and considerations:
+
+1. Resolve the &quot;Protection couldn&apos;t be enabled&quot; State:
+ - For your app server in the &quot;Protection couldn&apos;t be enabled&quot; state, disabling replication and re-enabling it might help. Be cautious with this approach as it could lead to data loss if recent changes are not backed up.
+
+2. Failing Back to On-Premises:
+ - For the SQL server in a &quot;Healthy&quot; and &quot;Protected&quot; state, you should be able to perform a Planned Failover to fail back to your VMware environment. A Planned Failover ensures data consistency and requires a shutdown of the VM to synchronize changes.
+ - Refer to the official guide on Failback from Azure to on-premises (https://learn.microsoft.com/en-us/azure/site-recovery/vmware-azure-failback).
+
+3. Check ASR Configuration:
+ - Since you modified the encryption setting on your ASR appliance, ensure the change has been correctly propagated. Restarting the ASR services and verifying the configuration might be necessary. 
+
+4. Backup and Restore Option:
+ - If the above steps don’t resolve the issue, your contingency plan to back up the Azure-hosted VMs using Veeam and restore them on VMware is viable. Ensure you have the latest backups before proceeding.
+
+For additional details on storage configuration and redundancy (which may affect replication), you can review the Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) and Azure Storage Redundancy (https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy).
+
+If the issue persists, I recommend opening a support ticket with Microsoft for deeper investigation.
+
+Let me know if you have further questions!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Cosmos DB and Blob Storage compared to Azure SQL, with real query examples and an honest take on when SQL is still the better choice</title>
       <link>https://www.reddit.com/r/AZURE/comments/1ueg9w9/cosmos_db_and_blob_storage_compared_to_azure_sql/</link>
@@ -1783,46 +1821,6 @@ If you simply want to archive backups in Azure Storage, follow these steps:
 ---
 
 Choose the approach based on whether you need active access or long-term archiving. If you have further questions, feel free to ask!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: On Prem vm to azure storage files manual feed</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1328569/on-prem-vm-to-azure-storage-files-manual-feed</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1328569/on-prem-vm-to-azure-storage-files-manual-feed</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-On Prem vm to azure storage files manual feed
-
-The individual users will need to upload these files into the storage account from on-prem machines at the same time we ne... One solution that I can think of is we can have express route connection to on-prem but do we really need express route connectivity. A secure solution for manual file uploads to Azure Blob Storage or Data Lake Storage can.
-
----
-
-Suggested Response:
-To securely upload files from on-premises machines to Azure Storage without requiring an ExpressRoute connection, you can use several Azure services and tools. Here&apos;s a recommended approach:
-
-1. Use Azure Storage Mover for Hybrid File Migration
-Azure Storage Mover is a fully managed service designed for migrating on-premises file shares to Azure. It securely transfers data over the internet or through a VPN without requiring ExpressRoute. This solution is ideal for one-time or recurring file uploads. Learn more here: Azure Storage Mover documentation (https://learn.microsoft.com/en-us/azure/storage-mover/).
-
-2. Create an Azure Storage Account
-First, ensure you have an Azure Storage account created. This account will house your Azure Storage resources, such as Blob Storage or Azure Files, where the uploaded files will reside. Follow this guide to create a storage account: Create an Azure Storage Account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
-
-3. Use Azure Blob Storage or Azure Files
-Depending on your use case:
-- Azure Blob Storage: For unstructured data like text or binary files.
-- Azure Files: For file shares accessible via SMB or NFS protocols.
-
-Check the overview of storage account options here: Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-4. Upload Files Securely
-For secure manual uploads, you can use tools like Azure Storage Explorer or AzCopy:
-- Azure Storage Explorer: A GUI-based tool for uploading and managing storage.
-- AzCopy: A command-line tool for high-performance uploads. Learn more about these tools in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-5. Networking Considerations
-ExpressRoute is not mandatory for this scenario. You can use secure HTTPS connections or configure a site-to-site VPN for additional security. If you anticipate high data transfer needs, consider Azure Data Box for offline transfers.
-
-Let me know if you need further clarification!]]></description>
     </item>
   </channel>
 </rss>
