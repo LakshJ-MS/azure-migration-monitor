@@ -5,7 +5,38 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 03 Jul 2026 11:13:33 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 13:15:06 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/cloudcomputing: Offloading petabyte-scale legacy tape data to cloud cold tiers without network sync?</title>
+      <link>https://www.reddit.com/r/cloudcomputing/comments/1umb6tv/offloading_petabytescale_legacy_tape_data_to/</link>
+      <guid isPermaLink="false">t3_1umb6tv</guid>
+      <pubDate>Fri, 03 Jul 2026 10:51:57 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/cloudcomputing
+
+Question:
+Offloading petabyte-scale legacy tape data to cloud cold tiers without network sync?
+
+We&apos;re currently auditing our long-term archiving costs and looking for some architectural advice. Right now, we have about 4 PB of compliance data sitting on physical, aging magnetic tapes on-prem. It&apos;s deep cold storage, so reads are practically zero, but keeping the old hardware alive is getting expensive. Moving all this to Azure Archive or AWS Glacier Deep Archive seems like the obvious choice for the long run. The catch is our local bandwidth. Trying to stream petabytes over our current pipe would drag down production for months. Because a network migration is out of the question, I&apos;ve been looking into physical mass-ingest alternatives. I was checking out how specialized operations like Tape Ark or physical bulk-ingest pipelines handle reading legacy media formats and uploading them directly to cloud buckets. Has anyone used this kind of offline approach to completely decommission their on-prem tape setups? If you did it at this scale, did you hit any hidden formatting or index compilation issues once the data reached the cloud? &amp;#32; submitted by &amp;#32; /u/dtsagdis [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Migrating petabyte-scale data from legacy tape to Azure cold storage is a great strategy for reducing long-term costs and hardware maintenance needs. Given your network constraints, leveraging an offline data transfer method is the most practical approach. Azure offers a service called Azure Data Box, which is designed for securely transferring large volumes of data to Azure offline.
+
+Here’s how you can approach this migration:
+
+1. Evaluate Azure Data Box for Bulk Data Transfer: Azure Data Box provides a physical device that you can use to copy your data locally and then ship it to Microsoft for direct upload into your Azure Storage account. This avoids the need for network-based transfers. For details, visit the Azure Data Box documentation (https://learn.microsoft.com/en-us/azure/databox/).
+
+2. Choose the Right Storage Tiers: Since your data is deep cold storage with minimal read requirements, Azure Archive Storage is an ideal solution. It offers cost-effective, secure, and durable storage for infrequently accessed data. Review the Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) to understand storage tiers and options.
+
+3. Upgrade to General-purpose v2 Storage Account: Ensure your storage account is upgraded to a general-purpose v2 account, as it supports the latest Azure Storage features, including Archive Storage. Follow the steps in the Upgrade to a general-purpose v2 storage account guide (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-upgrade).
+
+4. Partner with Data Ingestion Specialists: For legacy magnetic tape formats, consider working with specialized vendors like Tape Ark. They handle tape reading and formatting issues, ensuring compatibility with Azure Storage.
+
+5. Test and Validate Data: Once your data is ingested into Azure, verify its integrity and accessibility. If you encounter indexing or formatting issues, Azure tools like Azure Data Explorer or Azure Blob Storage APIs can help with data validation and access.
+
+For additional architectural guidance, check out the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/). This resource can help you design a robust and scalable long-term storage solution.]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Site Recovery</title>
       <link>https://www.reddit.com/r/AZURE/comments/1ukpzk6/azure_site_recovery/</link>
@@ -1778,49 +1809,6 @@ If you choose Blob Storage:
 For detailed information on Azure Storage services, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
 
 If you have more specific requirements, feel free to share!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: how to archive an on premise sql server database to azure</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1286193/how-to-archive-an-on-premise-sql-server-database-t</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1286193/how-to-archive-an-on-premise-sql-server-database-t</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-how to archive an on premise sql server database to azure
-
-...he following tutorials: https://learn.microsoft.com/en-us/azure/dms/tutorial-sql-server-to-azure-sql https://learn.microsoft.com/en-us/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-guide?view=azuresql And in the case of archiving in Azure storage, you can use the following general steps: Set up an Azure Storage.
-
----
-
-Suggested Response:
-To archive an on-premises SQL Server database to Azure, you have two main options: migrate to Azure SQL Database or store the database backups in Azure Storage for long-term archiving. Below are the steps for both approaches:
-
----
-
-Option 1: Migrate to Azure SQL Database
-If you want to migrate your database to Azure SQL Database for active use or storage, follow these steps:
-
-1. Assess your Database: Use the Azure Database Migration Service (DMS) to evaluate compatibility. Start with this tutorial (https://learn.microsoft.com/en-us/azure/dms/tutorial-sql-server-to-azure-sql) for step-by-step guidance.
- 
-2. Prepare Azure SQL Database: Set up the Azure SQL Database or Azure SQL Managed Instance to receive the migrated data. You can find more details in the migration guide (https://learn.microsoft.com/en-us/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-guide?view=azuresql).
-
-3. Use SQL Server Management Studio (SSMS): SSMS can help you connect to Azure SQL Database and perform post-migration validation. Learn more about SSMS here (https://learn.microsoft.com/en-us/ssms/).
-
----
-
-Option 2: Archive in Azure Storage
-If you simply want to archive backups in Azure Storage, follow these steps:
-
-1. Setup Azure Storage Account: Create a storage account to store your database backups. Refer to the Azure Storage Account overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for guidance.
-
-2. Take Database Backup: Use SQL Server to create a .bak file of your database.
-
-3. Upload to Azure Storage: Use tools like AzCopy or Azure Storage Explorer to upload the .bak file to your Azure Blob storage. 
-
----
-
-Choose the approach based on whether you need active access or long-term archiving. If you have further questions, feel free to ask!]]></description>
     </item>
   </channel>
 </rss>
