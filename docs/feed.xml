@@ -5,8 +5,50 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 03 Jul 2026 13:15:06 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 15:30:11 +0000</lastBuildDate>
     <item>
+      <title>Reddit r/azure: Azure Weekly Update - 3rd July 2026</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1umh2y0/azure_weekly_update_3rd_july_2026/</link>
+      <guid isPermaLink="false">t3_1umh2y0</guid>
+      <pubDate>Fri, 03 Jul 2026 15:11:51 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Weekly Update - 3rd July 2026
+
+This week&apos;s Azure Update is up! 📽️ https://youtu.be/RQmWSjKIQJY 📄 https://www.linkedin.com/pulse/azure-weekly-update-nearly-4th-july-2026-john-savill-5hk6c/ VM instant application-consistent restore points (00:54) - This enables a restore point that is application consistent, i.e. utilizes the VSS capabilities in Windows or pre/post scripts on Linux to ensure all app data is flushed out to disk, can be restored as soon as its created, no delay for the normal background data replication. New client-side blob integrity (01:36) - CRC64-NVME is integrated into the latest SDKs enabling greater support for integrity assurance for client applications at a byte level. ASM migration from Google Cloud Storage (GCS) (02:11) - Azure Storage Mover now supports migration from Google Cloud Storage buckets via its S3-compatible interface to Azure blob storage. This does include support for private network support. PostgreSQL new PowerShell module (02:37) - The new PowerShell module for PostgreSQL Flexible which adds support for version 18 of PostgreSQL, elastic clusters and a number of other capabilities. Foundry Toolboxes (02:53) - Toolboxes provide a single endpoint for MCP clients to connect to that can then expose any combination of tools you define including exposing via a tool search to avoid flooding the model context with too many tools. The various IQs (Work, Foundry and Fabric) can also be exposed via toolbox. Foundry handles the authentication, lifecycle and governance. Foundry Claude on Azure (04:27) - Claude models are now available in Foundry hosted on Azure ensuring the entire AI app flow stays within the Microsoft governance and security boundary. Both global and US data zone options are available. Claude Sonnet 5 (05:01) - This includes the new Claude Sonnet 5 which has stronger coding and agentic performance and can easily replace Sonnet 4.6 and in many scenarios can be used in place of Opus 4.8 at a far better cost-performance. This is also available in GitHub Copilot and Azure Databricks Kimi K2.7 in GitHub Copilot (06:01) - The open-weight model Kimi K2.7 Code is also available in GitHub Copilot now as a new lower cost option. Quantum safe program acceleration (06:13) - The Microsoft Quantum Safe Program (QSP) is accelerating which includes TLS 1.3 adoption, changes to stored data cryptography and modernized cryptographic trust chains. Document PII NextGen Playground (07:14) - Azure AI Language has a playground enabling a way to evaluate capabilities. The Document PII has an updated playground with curated samples to see exactly how Personally Identifiable Information like addresses, names, financial IDs are detected and redacted. &amp;#32; submitted by &amp;#32; /u/JohnSavill [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Thank you for sharing the detailed update! It looks like there are several exciting announcements this week. I’ll highlight one of them and provide guidance based on the available Microsoft Learn documentation.
+
+Azure Storage Mover Support for Google Cloud Storage (GCS)
+The announcement about Azure Storage Mover now supporting migration from Google Cloud Storage (GCS) buckets via its S3-compatible interface is particularly noteworthy. This feature simplifies the process of migrating data to Azure Blob Storage, especially with private network support.
+
+Steps for Migrating from GCS to Azure Blob Storage
+1. Set Up Azure Storage Mover:
+ - Create an Azure Storage Mover resource in your Azure subscription.
+ - Refer to the Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for guidance on setting up and managing storage accounts.
+ 
+2. Configure the Migration:
+ - Use Azure Storage Mover’s S3-compatible interface to connect to your GCS buckets.
+ - Ensure you configure the necessary permissions for GCS and Azure Blob Storage for seamless data transfer.
+
+3. Test and Monitor:
+ - Perform a test migration with a small dataset to validate the connection and settings.
+ - Use Azure Monitoring tools to track the progress of your migration.
+
+4. Complete the Migration:
+ - Once the test is successful, proceed with the full migration of your GCS bucket data to Azure Blob Storage.
+
+For a detailed overview of storage migration scenarios, refer to the Storage Account Overview - Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) documentation.
+
+If you encounter any issues during the migration, reviewing the Troubleshooting Azure Storage (https://learn.microsoft.com/en-us/troubleshoot/azure/azure-storage/files/security/files-troubleshoot-encryption) article could be helpful.
+
+Let me know if you need further assistance or clarification!]]></description>
+    </item>
+<item>
       <title>Reddit r/cloudcomputing: Offloading petabyte-scale legacy tape data to cloud cold tiers without network sync?</title>
       <link>https://www.reddit.com/r/cloudcomputing/comments/1umb6tv/offloading_petabytescale_legacy_tape_data_to/</link>
       <guid isPermaLink="false">t3_1umb6tv</guid>
@@ -1769,46 +1811,6 @@ Additional Tips:
 - If you are replacing an existing file server, consider using Azure File Sync to cache frequently accessed files locally on your on-premises server while storing the rest in Azure. This reduces latency for local users.
 
 For more information on Azure Storage, visit Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Migrate file server to Azure blob or file share</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/394656/migrate-file-server-to-azure-blob-or-file-share</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/394656/migrate-file-server-to-azure-blob-or-file-share</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Migrate file server to Azure blob or file share
-
-Hi I am new to Azure, What is the best way to migrate existing physical/ vmware File server to Azure. A fundamental aspect of file migrations to Azure is determining which Azure storage option is right for your data. This article covers the basic aspects of a migration to Azure file shares( Tools, Migration Guides, NTFS permissions, authentication.
-
----
-
-Suggested Response:
-Migrating your file server to Azure is a great way to enhance scalability, reliability, and accessibility for your data. Azure offers two primary options for storing files: Azure Blob Storage and Azure Files. Here&apos;s an overview and steps to help you get started:
-
-1. Choose the Right Azure Storage Option
-- Azure Files: Best for lift-and-shift migrations where you want to retain file share semantics (e.g., SMB or NFS support). It&apos;s ideal for scenarios requiring NTFS permissions, file locking, and seamless integration with on-premises environments using Azure File Sync.
-- Azure Blob Storage: Suitable for applications that require object storage for unstructured data like logs, images, or backups. Blob storage also supports SFTP, enabling secure file transfer.
-
-For an introduction to Azure Storage options, refer to the Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
-
-2. Migrate to Azure Files
-To migrate a file server to Azure Files:
-1. Create an Azure Storage Account: Follow the steps in Create an Azure storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create) to set up a storage account.
-2. Create an Azure File Share: Within your storage account, create an Azure Files share to store your data.
-3. Use Migration Tools: Tools such as Azure Storage Migration Tool, Azure Data Box (for large datasets), or Robocopy can help copy files from your file server to the Azure file share.
-4. Enable Azure File Sync (Optional): To sync your on-premises file server with Azure Files and enable hybrid access, set up Azure File Sync. Learn more in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-3. Migrate to Azure Blob Storage
-If you choose Blob Storage:
-1. Create a Storage Account: Use the same instructions as above.
-2. Enable SFTP (if needed): Configure SFTP support to securely transfer files. See the guide SFTP support for Azure Blob Storage (https://learn.microsoft.com/en-us/azure/storage/blobs/secure-file-transfer-protocol-support).
-3. Transfer Files: Use tools like AzCopy, Azure Storage Explorer, or SFTP clients to upload data to Blob Storage.
-
-For detailed information on Azure Storage services, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-If you have more specific requirements, feel free to share!]]></description>
     </item>
   </channel>
 </rss>
