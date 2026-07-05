@@ -5,7 +5,47 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 05 Jul 2026 20:02:01 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 21:16:36 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/sysadmin: linux guy being asked to do windows entraid stuff with hybrid setup</title>
+      <link>https://www.reddit.com/r/sysadmin/comments/1uoc55f/linux_guy_being_asked_to_do_windows_entraid_stuff/</link>
+      <guid isPermaLink="false">t3_1uoc55f</guid>
+      <pubDate>Sun, 05 Jul 2026 20:09:58 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/sysadmin
+
+Question:
+linux guy being asked to do windows entraid stuff with hybrid setup
+
+Hello fellow sysadmins! I&apos;m a linux guy, kubernetes, AWS, GCP, Onprem stuff, devops and all that. I am being asked to do a job in a smaller company that is trying to move to Azure/exchange online from a local mail server, all good right? what could go wrong getting a linux guy to handle AD stuff and o365 migration? their current domain has a non routable name, it ends with .lan, everything I&apos;m reading is telling me that this is not really a good idea and it&apos;s just something that creates headaches down the road, can somebody experienced with this confirm? oh and their domain has a functional level of 2008, windows AD servers are 2019.... the windows guy left years ago and they never really got anybody else to do it...you know, smaller companies and all that (72 users). even the test environment I&apos;ve built to try this out has plenty of issues trying to use the tenant with onmicrosoft.com while a spare domain I had was configured as a custom domain name, which was the first plan I tried to validate, I&apos;m in login hell with the Entra Cloud Sync agent not accepting my a different email for the login, besides this, I should really change the domain name, correct? &amp;#32; submitted by &amp;#32; /u/Zestyclose_Ad8420 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Hi @Zestyclose_Ad8420,
+
+Welcome to the Azure world! You’ve raised valid concerns about the non-routable .lan domain and the challenges with transitioning to Azure AD (now Microsoft Entra ID). Here’s how you can approach this migration effectively:
+
+1. Domain Name Considerations 
+You&apos;re correct that non-routable domain names like .lan can cause issues, especially when integrating with cloud services such as Microsoft Entra ID. Migrating to a routable domain (e.g., company.com) is strongly recommended to avoid login issues and ensure smooth hybrid identity synchronization.
+
+2. Upgrade Functional Level 
+Since your domain functional level is at 2008, upgrading it is necessary to support modern features. With Windows Server 2019 as your AD servers, you can raise the domain functional level to at least 2016 (if your environment supports it). This ensures compatibility with Microsoft Entra ID and avoids legacy limitations.
+
+3. Configure Hybrid Identity 
+For hybrid environments, Microsoft Entra Cloud Sync is a lightweight solution for synchronizing on-premises AD users, groups, and passwords to Microsoft Entra ID. However, if you&apos;re facing login issues with the Cloud Sync agent, follow the steps in the guide below to troubleshoot and configure hybrid identity correctly: 
+Configure Microsoft Entra hybrid join (https://learn.microsoft.com/en-us/entra/identity/devices/how-to-hybrid-join).
+
+4. Enable Microsoft Entra Kerberos Authentication 
+Azure Files can integrate with Microsoft Entra ID, enabling Kerberos authentication for hybrid identities. This is particularly useful if your organization uses SMB file shares. You can follow this guide for setup: 
+Enable Microsoft Entra Kerberos Authentication for Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-auth-hybrid-identities-enable).
+
+5. Validate Configuration in Test Environment 
+It’s great that you set up a test environment. Use this to validate your custom domain setup and hybrid identity configuration. Also, ensure that the custom domain is properly verified in Azure AD and associated with the tenant.
+
+Once your custom domain is verified and hybrid identity is configured, user login issues should be resolved.
+
+Let me know if you need further guidance. You&apos;re on the right track!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Weekly Update - 3rd July 2026</title>
       <link>https://www.reddit.com/r/AZURE/comments/1umh2y0/azure_weekly_update_3rd_july_2026/</link>
@@ -1771,46 +1811,6 @@ Azure Storage does not natively support incremental sync for Table data. You may
 For a broad overview of Azure Storage capabilities and tools, visit: Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
 
 Feel free to share additional details about your setup, and I can provide more tailored recommendations!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Migrate file server to azure</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/175072/migrate-file-server-to-azure</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/175072/migrate-file-server-to-azure</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Migrate file server to azure
-
-I have figured out most of the thing about how to move the data, I am confused with is, how will I map the data with the users so that there wont be any issue with the user permission and they remain intact.| @Rohan Azure file shares allow you to replace existing file servers with Azure file shares without replacing your existing directory.
-
----
-
-Suggested Response:
-To ensure a seamless migration of your file server to Azure while maintaining user permissions, you can leverage Azure File Shares integrated with Azure Active Directory (Azure AD) or your on-premises Active Directory. This allows you to preserve user access and permissions during and after the migration process.
-
-Steps to Map Data with User Permissions:
-1. Set Up Azure File Shares: 
- - Use Azure Files to create fully managed file shares in the cloud. These shares can be mounted on Windows, macOS, and Linux, just like a traditional file server.
- - Learn more about Azure Files here: Azure Files Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-2. Integrate with Directory Services:
- - To ensure user permissions are retained, integrate your Azure File Shares with Active Directory (AD). You can either use Azure AD or synchronize your on-premises AD with Azure AD.
- - This helps map existing user permissions to the new storage environment.
- - Learn how to configure identity-based authentication for Azure Files here: Azure Files identity-based authentication (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview).
-
-3. Use Azure Storage Mover:
- - Azure Storage Mover is a fully managed service that simplifies migrating on-premises file shares to Azure while preserving metadata and permissions.
- - The service supports incremental migrations, ensuring minimal downtime for users.
- - Refer to the documentation for details: Azure Storage Mover Overview (https://learn.microsoft.com/en-us/azure/storage-mover/).
-
-4. Validate Permissions Post-Migration:
- - After migration, verify that file and folder permissions are intact by testing access for different user roles.
-
-Additional Tips:
-- If you are replacing an existing file server, consider using Azure File Sync to cache frequently accessed files locally on your on-premises server while storing the rest in Azure. This reduces latency for local users.
-
-For more information on Azure Storage, visit Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).]]></description>
     </item>
   </channel>
 </rss>
