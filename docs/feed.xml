@@ -5,7 +5,43 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 06 Jul 2026 06:04:58 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 11:07:14 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Decoupling from on-prem tape hardware and pushing 4PB to Azure Archive</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1uotmog/decoupling_from_onprem_tape_hardware_and_pushing/</link>
+      <guid isPermaLink="false">t3_1uotmog</guid>
+      <pubDate>Mon, 06 Jul 2026 10:37:29 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Decoupling from on-prem tape hardware and pushing 4PB to Azure Archive
+
+We are looking into a major infrastructure shift and could use some advice on the data movement side. Right now, we maintain about 4 Petabytes of legacy data on physical tapes on-prem. It&apos;s purely for legal compliance, zero active reads. Our local tape libraries are end-of-life and instead of doing another hardware refresh cycle, we want to lift and shift everything to Azure Archive Storage. The main blocker is our local outbound pipe. It&apos;s way too slow to handle 4PBs over the wire without completely tanking our production network for half a year. ExpressRoute or standard VPN sync isn&apos;t viable for this initial load. Was looking into offline, physical mass-ingest workflows to bypass our network entirely. Specifically checking out how providers like Tape Ark or other specialized legacy ingest setups read the media directly and upload it straight into Azure Blob containers. Has anyone here retired a large tape library using this kind of third-party offline ingest? Did you run into any indexing headaches or metadata mismatches once the data hit the blob containers? &amp;#32; submitted by &amp;#32; /u/luisp35 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Great question, Luis! Migrating 4PB from on-prem tape libraries to Azure Archive Storage is a significant undertaking, but Azure provides tools and workflows to streamline this process, especially for scenarios like yours where the network bandwidth is insufficient.
+
+Offline Data Transfer Options
+For scenarios where network-based transfer isn&apos;t feasible, Azure Data Box is a robust solution. It’s a physical device provided by Microsoft that can be used to securely transfer large volumes of data to Azure without impacting your production network. You can ship the device back to Microsoft, where the data is uploaded directly into your Azure Storage account. Learn more about Azure Data Box here: Azure Data Box Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+Third-Party Tape Migration Services
+Services like Tape Ark specialize in reading legacy tape media and ingesting it directly into cloud platforms like Azure. They often handle indexing and format conversion, ensuring metadata is preserved. Once the data lands in Azure Blob Storage, you can leverage Azure Archive Storage for cost-efficient long-term retention. For an introduction to Archive Storage, check: Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+Metadata and Indexing
+To avoid metadata mismatches, ensure that the ingestion service supports metadata preservation. If issues arise post-migration, Azure Blob Storage allows you to update blob metadata manually or programmatically using the Azure SDKs or CLI.
+
+Data Redundancy and Security
+When moving compliance-related data, ensure redundancy and durability using Azure Storage’s built-in options like RA-GRS (Read-Access Geo-Redundant Storage). Details here: Azure Storage Redundancy (https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy).
+
+Next Steps
+1. Engage with a third-party service for tape ingestion if Azure Data Box alone doesn’t meet your needs.
+2. Plan your Azure Storage hierarchy and retention policies upfront.
+3. Test a small batch migration to validate indexing and metadata workflows.
+
+Feel free to ask more questions as you proceed!]]></description>
+    </item>
 <item>
       <title>Reddit r/sysadmin: linux guy being asked to do windows entraid stuff with hybrid setup</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1uoc55f/linux_guy_being_asked_to_do_windows_entraid_stuff/</link>
@@ -1769,48 +1805,6 @@ Here’s a step-by-step guide:
 For an overview of Azure Storage and its capabilities, check the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). For additional resources, visit the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
 
 Let me know if you have further questions!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Incremental / delta Sync two Azure Storage Accounts</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1618130/incremental-delta-sync-two-azure-storage-accounts</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1618130/incremental-delta-sync-two-azure-storage-accounts</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Incremental / delta Sync two Azure Storage Accounts
-
-Hi We wish to migrate Azure Storage account (BLOBs and Tables) from one tenant to another. Tried using AZCopy copy command to move it and it took over 8 hours to migrate the BLOB data. I understand that you would like to migrate a large amount of data from one tenant to another, This -.
-
----
-
-Suggested Response:
-To address your need for migrating Blob and Table data between Azure Storage Accounts across different tenants, leveraging incremental/delta sync can help optimize the process. Here&apos;s a recommended approach:
-
-1. Using Azure Storage Tools
-For migrating Blob data, AzCopy is one of the most effective tools, but its performance can depend on several factors, such as the size of data, network bandwidth, and the number of parallel operations. To improve efficiency:
-- Enable incremental copy: Use the /sync flag in AzCopy to copy only changed files since the last migration.
-- Increase concurrency: Adjust the --blob-type and --include-pattern flags to control how much data is copied simultaneously.
-
-Learn how to use AzCopy effectively here: Storage Account Overview - Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-2. Alternative Migration Options
-For larger migrations or scenarios requiring automation:
-- Azure Data Factory: Set up a pipeline to migrate data between storage accounts. This method supports incremental copy and can be customized for Blob and Table data.
-- Azure Storage Explorer: A GUI-based tool that provides a simpler interface for manual migrations.
-
-More details on Azure Storage tools can be found here: Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-3. Delta Sync Considerations
-Azure Storage does not natively support incremental sync for Table data. You may need to implement a custom solution using Azure Functions or Azure Logic Apps to identify changes (e.g., based on timestamps).
-
-4. Best Practices
-- Use network acceleration options to reduce migration time.
-- Consider enabling geo-redundancy for storage accounts to improve availability.
-
-For a broad overview of Azure Storage capabilities and tools, visit: Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
-
-Feel free to share additional details about your setup, and I can provide more tailored recommendations!]]></description>
     </item>
   </channel>
 </rss>
