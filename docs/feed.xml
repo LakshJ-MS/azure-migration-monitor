@@ -5,7 +5,36 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 08 Jul 2026 06:35:10 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 09:16:59 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Avoid Azure Files Authentication Issues by Migrating to AES-256!</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1uql7un/avoid_azure_files_authentication_issues_by/</link>
+      <guid isPermaLink="false">t3_1uql7un</guid>
+      <pubDate>Wed, 08 Jul 2026 07:05:20 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Avoid Azure Files Authentication Issues by Migrating to AES-256!
+
+🚨If you are using Azure Files with Active Directory Domain Services authentication, there is an important change you should not ignore. Microsoft has announced that future Windows Server updates will change the default Kerberos ticket encryption from RC4 to AES-256. While this is a welcome security improvement, it also means that Azure Files deployments still relying on the older configuration may experience authentication failures if they are not upgraded in time. In this blog , I will explain how to identify Azure Files storage accounts that still require an upgrade, how to verify your current configuration, and how to safely migrate to AES-256 using the latest AzFilesHybrid tooling. &amp;#32; submitted by &amp;#32; /u/brianveldman [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Thanks for raising this important topic! You&apos;re absolutely correct that upcoming Windows Server updates will default Kerberos ticket encryption to AES-256, which may impact Azure Files deployments still using RC4. Here&apos;s how you can avoid authentication issues:
+
+1. Identify Storage Accounts Requiring Upgrade: Start by verifying which Azure storage accounts are using Azure Files with AD DS authentication. The Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) provides insights into managing your Azure Storage resources.
+
+2. Troubleshoot Encryption Changes: If you suspect your configuration may be affected, Microsoft has detailed troubleshooting steps for Azure Files AD DS authentication with AES-256 encryption. Review the guidance here: Troubleshoot Encryption Changes Affecting Azure Files (https://learn.microsoft.com/en-us/troubleshoot/azure/azure-storage/files/security/files-troubleshoot-encryption).
+
+3. Enable AES-256 Authentication: To migrate safely, configure Azure Files for AES-256 Kerberos encryption by enabling AD DS authentication. Follow the step-by-step guide here: Enable AD DS Authentication for Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-ad-ds-enable). This includes updating your domain controllers and ensuring your Azure file share is configured correctly.
+
+4. Mount Azure File Shares: Once you&apos;ve updated the authentication, verify the functionality by mounting your Azure file shares. For Windows systems, you can follow the instructions provided in this guide: Mount SMB Azure File Share on Windows (https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-windows).
+
+Proactively addressing these changes ensures uninterrupted authentication and improved security. If you&apos;re working on a broader Azure migration or redesign, consider exploring the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/) for best practices.
+
+Let us know if you encounter any challenges!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Decoupling from on-prem tape hardware and pushing 4PB to Azure Archive</title>
       <link>https://www.reddit.com/r/AZURE/comments/1uotmog/decoupling_from_onprem_tape_hardware_and_pushing/</link>
@@ -1765,46 +1794,6 @@ Using Azure Storage Mover for Hybrid Scenarios:
 For migrating on-premises file shares to Azure, Azure Storage Mover offers a fully managed service. Learn how to configure and use it here: Azure Storage Mover documentation (https://learn.microsoft.com/en-us/azure/storage-mover/).
 
 Let me know if you need further guidance!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Synology to Azure</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1852084/synology-to-azure</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1852084/synology-to-azure</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Synology to Azure
-
-I have 1.6TB in Blob, that needs to move over to Azure File Shares TIA| Hi, To move your files from an Azure Blob container to Azure File Shares, you can use the AzCopy tool, which is a command-line utility designed for copying and synchronizing files between storage accounts. Install AzCopy: Download and install AzCopy from the... AzCopy is a.
-
----
-
-Suggested Response:
-To move your 1.6TB of data from Azure Blob Storage to Azure File Shares, you can use AzCopy, a command-line utility specifically designed for transferring data in and out of Azure Storage.
-
-Here’s a step-by-step guide:
-
-1. Install AzCopy 
- Download and install AzCopy by following the instructions in the AzCopy installation guide (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10#download-azcopy). 
-
-2. Authenticate AzCopy 
- To access your Azure Storage, authenticate AzCopy using Azure AD credentials or a Shared Access Signature (SAS). For more details, see the authentication guide (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10#authenticate-azcopy).
-
-3. Copy Data from Blob to File Shares 
- Use the following AzCopy command to transfer data: 
- 
- Replace , , , , and with your specific values.
-
-4. Validate Transfer 
- After completion, verify the transferred files in your Azure File Share. You can use Azure Storage Explorer for a GUI-based validation. Here&apos;s more about Azure Storage Explorer (https://learn.microsoft.com/en-us/azure/storage/common/storage-explorer-overview).
-
-5. Optional: Automate with Scripts 
- If this is a repetitive process, you can script the AzCopy commands using PowerShell or Bash for automation.
-
-For an overview of Azure Storage and its capabilities, check the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). For additional resources, visit the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-Let me know if you have further questions!]]></description>
     </item>
   </channel>
 </rss>
