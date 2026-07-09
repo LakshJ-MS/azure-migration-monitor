@@ -5,7 +5,43 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 09 Jul 2026 20:27:25 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 22:04:18 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Exporting firewall logs from on-prem server to Azure storage</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1512874/exporting-firewall-logs-from-on-prem-server-to-azu</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1512874/exporting-firewall-logs-from-on-prem-server-to-azu</guid>
+      <pubDate>Thu, 09 Jul 2026 22:04:18 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Exporting firewall logs from on-prem server to Azure storage
+
+... compromising securityYou can try to upload your files from on-prem to adls gen2 using azcopy tool or azure data factory pipelines. Using AZCOPY : https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-migrate-on-premises-data?tabs=windows Using Azure Data Factory Pipelines :.
+
+---
+
+Suggested Response:
+To securely export your on-premises firewall logs to Azure Storage, both AzCopy and Azure Data Factory are excellent options. Below is a brief overview of both approaches to help you decide and implement the best solution for your needs.
+
+Option 1: Using AzCopy
+AzCopy is a command-line tool designed for fast data transfer to and from Azure Storage. To upload your logs to Azure Data Lake Storage Gen2, follow these steps:
+1. Download and Install AzCopy: Install the latest version of AzCopy on your on-premises server. Download AzCopy (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
+2. Authenticate AzCopy: Use Azure AD or a Shared Access Signature (SAS) token to authenticate. Follow the steps outlined here: Authenticate AzCopy (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-authenticate).
+3. Copy Data: Use the following command to upload your logs:
+ 
+ Detailed information is available in the AzCopy documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-migrate-on-premises-data?tabs=windows).
+
+Option 2: Using Azure Data Factory (ADF)
+ADF provides a no-code, scalable approach for data migration:
+1. Create a Data Factory: Set up a new Azure Data Factory instance. Refer to the Quickstart guide (https://learn.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory-portal).
+2. Set Up Linked Services: Configure linked services to connect your on-premises server and Azure Storage. For on-premises data, you’ll use the Integration Runtime. Learn more (https://learn.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime).
+3. Create a Pipeline: Design a pipeline to copy data from your on-premises server to the Azure Storage account.
+4. Run and Monitor: Execute the pipeline and monitor its progress within the ADF portal.
+
+For an overview of Azure Storage accounts, including Data Lake Gen2, visit Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+Both approaches are secure and efficient, so your choice depends on your project’s complexity and volume. Let us know if you need further assistance!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Avoid Azure Files Authentication Issues by Migrating to AES-256!</title>
       <link>https://www.reddit.com/r/AZURE/comments/1uql7un/avoid_azure_files_authentication_issues_by/</link>
@@ -1754,44 +1790,6 @@ For details, see the Azure Storage Documentation Hub (https://learn.microsoft.co
 
 Moving Resources?
 If you need to reorganize your resources, such as moving the storage account between subscriptions or resource groups, refer to Move Azure resources to a new resource group or subscription (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
-
-Let me know if you need further guidance!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: moving or copying</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/253902/moving-or-copying</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/253902/moving-or-copying</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-moving or copying
-
-Yes, you can use Azure Storage Explorer or Azcopy tools Similarly, you can perform for files with in other folder/container and more Hope this helps. ...-------------------------------------------------------------- Please don’t forget to &quot;Accept the answer” and “up-vote” wherever the information provided helps you, this can be beneficial to.
-
----
-
-Suggested Response:
-To move or copy files within Azure Storage, you have several options, including Azure Storage Explorer or AzCopy, as mentioned. Additionally, depending on your scenario, you may want to consider Azure&apos;s Storage Mover for hybrid migrations or the Azure Resource Manager tools if you&apos;re relocating storage accounts.
-
-Using Azure Storage Explorer:
-1. Download and install Azure Storage Explorer (https://azure.microsoft.com/en-us/products/storage/storage-explorer/).
-2. Connect to your Azure Storage account using your credentials or SAS token.
-3. Navigate to the container or folder containing the files.
-4. Use the drag-and-drop functionality or copy/paste options to move files between containers, folders, or even between storage accounts.
-
-Using AzCopy:
-1. Install AzCopy by downloading it here (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
-2. Use AzCopy commands to move or copy files. For example:
- - To copy a blob: 
- 
- - Refer to the AzCopy documentation for detailed syntax: AzCopy Documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
-
-Moving Resources Between Resource Groups/Subscriptions:
-If your goal is to move an entire storage account to a different resource group or subscription, follow the steps outlined in Move Azure resources to a new resource group or subscription (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
-
-Using Azure Storage Mover for Hybrid Scenarios:
-For migrating on-premises file shares to Azure, Azure Storage Mover offers a fully managed service. Learn how to configure and use it here: Azure Storage Mover documentation (https://learn.microsoft.com/en-us/azure/storage-mover/).
 
 Let me know if you need further guidance!]]></description>
     </item>
