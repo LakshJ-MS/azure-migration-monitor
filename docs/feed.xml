@@ -5,7 +5,82 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 10 Jul 2026 11:59:05 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 14:48:17 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Dataverse to Azure Blob Storage</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/2134279/dataverse-to-azure-blob-storage</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2134279/dataverse-to-azure-blob-storage</guid>
+      <pubDate>Fri, 10 Jul 2026 14:48:17 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Dataverse to Azure Blob Storage
+
+Hello, I am currently using Microsoft Dynamics 365, and all my documents are stored in Dataverse. I would like to migrate all existing documents to Azure Blob Storage (or Azure File Storage, based on recommendations) and continue using this solution for storing new documents. ...ons: Is it possible to migrate existing documents from Dataverse to.
+
+---
+
+Suggested Response:
+Migrating documents from Dataverse to Azure Blob Storage is a feasible solution, and Azure provides robust tools for secure and efficient data migration. Here&apos;s how you can approach this:
+
+1. Evaluate Storage Options
+Azure Blob Storage is the most suitable option for unstructured data like documents and media files. You can explore the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) to understand the types of storage options available.
+
+If you are considering Azure Files (for SMB protocol access) instead, review the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/) for additional details on managed file shares.
+
+2. Set Up an Azure Blob Storage Account
+Create an Azure Storage Account to host your Blob Storage. Follow the steps in the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) to set up a new storage account.
+
+3. Choose Data Redundancy Options
+Decide on your data redundancy strategy (e.g., LRS, GRS, ZRS) based on your business continuity and disaster recovery requirements. Learn more about redundancy options in Azure Storage Redundancy (https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy).
+
+4. Export Data from Dataverse
+Use the Dataverse Web API or Power Automate to extract documents. Dataverse allows bulk data export through these tools, which can then be uploaded to Azure Blob Storage.
+
+5. Migrate Data to Blob Storage
+Use tools like Azure Storage Explorer or AzCopy to upload the exported files into Blob Storage. If you&apos;re dealing with large datasets, consider Azure Data Factory for streamlined migration.
+
+6. Set Up Ongoing Storage for New Documents
+Once migration is complete, you can configure Dynamics 365 to integrate with Azure Blob Storage for new document uploads. This might involve custom connectors or Power Automate flows.
+
+For long-term planning, ensure you&apos;re not using legacy storage accounts, as outlined in the Legacy Blob Storage Account Retirement Overview (https://learn.microsoft.com/en-us/azure/storage/common/legacy-blob-storage-account-migration-overview).
+
+Let me know if you need further assistance!]]></description>
+    </item>
+    <item>
+      <title>Microsoft Q&amp;A: Oracle Blob Migration to Azure Sql Database</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1313163/oracle-blob-migration-to-azure-sql-database</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1313163/oracle-blob-migration-to-azure-sql-database</guid>
+      <pubDate>Fri, 10 Jul 2026 14:48:17 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Oracle Blob Migration to Azure Sql Database
+
+Hi All, I have migrated the blob column type from Oracle to Azure sql database. Question-1 -Does ADF perfectly migrate the blob data type from oracle to azure, keeping in view oracle blob are stored in the LOB segment. Azure Sql Database No of Rows-312796 SUM(DATALENGTH(PSTREAM))-36.8 GB Question-2 Since the lob segment is 588 GB and sum.
+
+---
+
+Suggested Response:
+Migrating BLOB data from Oracle to Azure SQL Database can be complex due to differences in how both systems store large objects. Let me address your questions:
+
+Question 1: Does Azure Data Factory (ADF) handle BLOB data migration accurately?
+Yes, Azure Data Factory (ADF) supports migrating BLOB data types from Oracle to Azure SQL Database, but there are considerations. ADF reads the BLOB data from Oracle, processes it as binary data, and writes it into an appropriate column in Azure SQL Database (e.g., VARBINARY(MAX) or NVARCHAR(MAX)). However, since Oracle stores BLOBs in the LOB segment, you must ensure proper configuration of ADF&apos;s Oracle connector to handle LOBs efficiently. 
+
+Steps to validate migration accuracy:
+1. Configure Oracle connector in ADF: Use the Oracle connector in ADF to extract BLOB data. Ensure the EnableBinaryTransfer property is enabled for handling large binary objects.
+2. Map Oracle BLOB to Azure SQL Column: Map the Oracle BLOB column to an equivalent column type in Azure SQL Database, such as VARBINARY(MAX).
+3. Test with Sample Data: Before migrating all rows, test the pipeline with a subset of records to validate data integrity.
+
+Refer to the Azure Data Factory documentation for details on supported data types and configurations: Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+Question 2: Discrepancy between LOB segment size and the sum of DATALENGTH(PSTREAM)
+The discrepancy arises because Oracle&apos;s LOB segment includes additional overhead for metadata, indexing, and storage management, whereas DATALENGTH in Azure SQL Database reports only the actual data size. This is expected behavior and does not indicate data loss. To confirm, compare the actual content (e.g., checksum or row count) between source and destination.
+
+For more on Azure SQL Database storage options, see Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+If you encounter performance issues during migration, consider breaking the dataset into smaller chunks or using parallel copy in ADF. Let me know if you need further assistance!]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: Exporting firewall logs from on-prem server to Azure storage</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1512874/exporting-firewall-logs-from-on-prem-server-to-azu</link>
@@ -1712,86 +1787,6 @@ For more details on Azure Blob Storage and authentication methods, see the follo
 If you&apos;re using SFTP to transfer .pst files, Azure Blob Storage also supports SFTP. Learn more about setting it up here: SFTP Support for Azure Blob Storage (https://learn.microsoft.com/en-us/azure/storage/blobs/secure-file-transfer-protocol-support). 
 
 Let me know if you need further clarification!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: How to move files into particular folder in azure storage account, which is archive tier</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/2265455/how-to-move-files-into-particular-folder-in-azure</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2265455/how-to-move-files-into-particular-folder-in-azure</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-How to move files into particular folder in azure storage account, which is archive tier
-
-i have some backup files in my azure storage account, but i need to move those files into particular folder, and those backupfiles are in the archive tier could ... Move the Blobs : Once the blobs are in a hot or cool tier, you can move them to the desired folder within your Azure Storage account. You can do this by using the Azure portal or Azure.
-
----
-
-Suggested Response:
-To move files (blobs) into a specific folder within your Azure Storage account, especially when they are in the archive tier, you&apos;ll need to follow specific steps, as blobs in the archive tier must first be rehydrated to the hot or cool tier before they can be accessed or moved. Here&apos;s a detailed process:
-
-1. Rehydrate Blobs from Archive Tier
- - Archive-tier blobs are inaccessible until rehydrated. You must change the access tier of these blobs to either &quot;Hot&quot; or &quot;Cool.&quot;
- - Use the Azure portal, PowerShell, or Azure CLI to change the access tier. More information on managing storage tiers can be found in the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-2. Move Blobs to the Desired Folder
- - Azure Storage does not have a traditional folder structure, but you can simulate one using virtual directories by specifying a prefix (e.g., folder-name/filename).
- - To move blobs to a specific &quot;folder&quot;:
- 1. Navigate to your storage account in the Azure portal (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
- 2. Use tools like Azure Storage Explorer or the Azure portal to rename blobs, adding the desired folder path as a prefix to the blob name (e.g., archive-folder/backup1.txt).
- 3. Alternatively, use PowerShell or Azure CLI for programmatic operations.
-
-3. Re-Tier Blobs (Optional)
- - Once the blobs are moved, you can optionally change them back to the archive tier using the same tools.
-
-For more details, refer to:
-- Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
-- Create an Azure Storage Account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create)
-
-Let me know if you need further assistance!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Need to move ~50TB of data from an Azure VM to an Azure File share in the same tenant</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/2143728/need-to-move-50tb-of-data-from-an-azure-vm-to-an-a</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2143728/need-to-move-50tb-of-data-from-an-azure-vm-to-an-a</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Need to move ~50TB of data from an Azure VM to an Azure File share in the same tenant
-
-I need to move 50tb from ... Azure storage mover agent are image files for Hyper-v or VMware only so I can&apos;t use that. After a lot of searching and failed attempts, I&apos;m left with the solution of AzCopy/Azure storage mover to move the data. Is there another solution I&apos;m missing that could handle this bulk move better than AzCopy/Azure storage.
-
----
-
-Suggested Response:
-To move ~50TB of data from an Azure VM to an Azure File share, AzCopy is indeed one of the most efficient tools for this task. However, there are additional options depending on your specific needs, such as Azure Data Box or Azure File Sync. Here’s an overview of potential solutions:
-
-Option 1: AzCopy
-AzCopy is a command-line tool designed for high-performance and scalable data transfers. It can handle bulk data movement efficiently.
-
-Steps:
-1. Download and install AzCopy (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
-2. Use the azcopy copy command to transfer the data. For example:
- 
-3. Monitor the transfer process using AzCopy logs.
-
-For an overview of Azure Storage account features and types, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-Option 2: Azure Data Box
-If the network bandwidth is a concern, Azure Data Box provides a physical device for offline data transfer. You can copy your data to the Data Box and ship it to Microsoft for upload to your Azure File share.
-
-Learn more about Azure Data Box in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-Option 3: Azure File Sync
-If you need ongoing synchronization between the VM and Azure File share, consider deploying Azure File Sync. This is particularly useful if you plan to use the Azure File share as a hybrid storage solution.
-
-For details, see the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-Moving Resources?
-If you need to reorganize your resources, such as moving the storage account between subscriptions or resource groups, refer to Move Azure resources to a new resource group or subscription (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription).
-
-Let me know if you need further guidance!]]></description>
     </item>
   </channel>
 </rss>
