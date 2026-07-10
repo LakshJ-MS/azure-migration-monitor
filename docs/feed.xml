@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 10 Jul 2026 14:48:17 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Fri, 10 Jul 2026 17:03:08 +0000</lastBuildDate>
+<item>
       <title>Microsoft Q&amp;A: Dataverse to Azure Blob Storage</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/2134279/dataverse-to-azure-blob-storage</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2134279/dataverse-to-azure-blob-storage</guid>
@@ -47,7 +47,7 @@ For long-term planning, ensure you&apos;re not using legacy storage accounts, as
 
 Let me know if you need further assistance!]]></description>
     </item>
-    <item>
+<item>
       <title>Microsoft Q&amp;A: Oracle Blob Migration to Azure Sql Database</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1313163/oracle-blob-migration-to-azure-sql-database</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1313163/oracle-blob-migration-to-azure-sql-database</guid>
