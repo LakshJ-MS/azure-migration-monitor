@@ -5,7 +5,47 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sat, 11 Jul 2026 20:58:29 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2026 21:59:45 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: How to migrate an external, static website to Azure?</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/1691827/how-to-migrate-an-external-static-website-to-azure</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1691827/how-to-migrate-an-external-static-website-to-azure</guid>
+      <pubDate>Sat, 11 Jul 2026 21:59:45 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+How to migrate an external, static website to Azure?
+
+Migration: Azure Storage migration overview -This article focuses on storage migrations to Azure and provides guid... Choose a unique name for your account and select the appropriate subscription, resource group, and location. Enable Static Website feature: Once your Storage account is created, go to the &quot;Static website&quot; blade and enable.
+
+---
+
+Suggested Response:
+To migrate an external, static website to Azure, you can leverage Azure Storage&apos;s Static website feature, which allows you to host static web content directly from a storage account. Here&apos;s a step-by-step guide:
+
+1. Create a Storage Account: 
+ - Go to the Azure portal (https://portal.azure.com/), and create a new Storage Account by selecting the appropriate subscription, resource group, and location. 
+ - Choose a globally unique name for the storage account. 
+ - For more details about storage accounts, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+2. Enable the Static Website Feature: 
+ - Navigate to the storage account you just created. 
+ - On the left-hand menu, select &quot;Static website.&quot; 
+ - Enable the static website feature and specify the default index document (e.g., index.html). You can also set an error document if needed. 
+ - Upon enabling, Azure will provide a primary endpoint URL for your website (e.g., https:// .z6.web.core.windows.net). 
+ - Learn more about static website hosting in Azure Storage in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+3. Upload Your Website Files: 
+ - Use Azure Portal, Azure CLI, or Azure Storage Explorer to upload your HTML, CSS, JavaScript, and other static assets to the $web container (automatically created when you enable static website hosting). 
+
+4. Test Your Website: 
+ - Visit the primary endpoint URL provided in step 2 using a web browser to verify that your website is working correctly.
+
+5. Optional - Configure a Custom Domain: 
+ - If you&apos;d like to use a custom domain for your static website, you can configure it by following the steps in the Azure Storage documentation.
+
+For more detailed guidance, visit the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/). This hub covers everything from storage account creation to advanced configurations.]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: azcopy copy failure between storage accounts with &gt;10MB blob size</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/2105029/azcopy-copy-failure-between-storage-accounts-with</link>
@@ -1749,39 +1789,6 @@ Steps to Download Files Using AzCopy:
 For additional details on using AzCopy, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) to understand storage structures and the Azure Storage documentation hub (https://learn.microsoft.com/en-us/azure/storage/) for related resources.
 
 If you encounter issues, ensure your AzCopy command syntax is correct, and verify your network connectivity and permissions. Let me know if you need further clarification!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: What is the most speed effecient method of copying very large (1TB) Azure Storage account containers WITHIN the same account?</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/5576555/what-is-the-most-speed-effecient-method-of-copying</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5576555/what-is-the-most-speed-effecient-method-of-copying</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-What is the most speed effecient method of copying very large (1TB) Azure Storage account containers WITHIN the same account?
-
-I&apos;ve been attempting to find the most efficient way of copying the contents of container &apos;A&apos; to container &apos;B&apos; within the same storage account. From what I&apos;ve researched, AzCopy seems to be the most suggested solution as it&apos;s built for large data transfers with no data manipulation being done otherwise. Is there a faster method I&apos;m not.
-
----
-
-Suggested Response:
-You’re correct that AzCopy is one of the most efficient tools for copying large amounts of data, such as 1TB, between containers within the same Azure Storage account. It’s specifically designed for high-performance data transfers and supports parallelization to maximize speed. Since no data manipulation is required, AzCopy is likely your best option.
-
-Here’s how you can use AzCopy for your scenario:
-
-1. Install AzCopy: If you haven’t already, download and install AzCopy. Instructions are available in AzCopy documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-blobs).
-
-2. Authenticate: You can authenticate using Azure Active Directory (AAD) or a shared access signature (SAS). Authentication details are outlined here (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-blobs#authenticate-with-azure-storage).
-
-3. Run AzCopy Command: Use the following command to copy all blobs from container A to container B:
- 
- Replace with your actual storage account name. Add a SAS token if required for authentication.
-
-4. Optimize Performance: AzCopy supports parallel file transfers. You can increase performance by tuning the concurrency level using the --cap-mbps and --parallel flags. More details are available in Copying blobs with AzCopy (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-blobs).
-
-If you’re looking for alternative methods, the Copy Blob API can be used programmatically for blob-to-blob transfers. However, it’s less efficient for bulk transfers compared to AzCopy. Learn more about the API in the Azure Blob Storage documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
-
-For a complete overview of Azure Storage, see Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). Let me know if you need further assistance!]]></description>
     </item>
   </channel>
 </rss>
