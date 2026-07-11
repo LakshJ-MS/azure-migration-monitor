@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sat, 11 Jul 2026 21:59:45 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Sat, 11 Jul 2026 23:00:21 +0000</lastBuildDate>
+<item>
       <title>Microsoft Q&amp;A: How to migrate an external, static website to Azure?</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1691827/how-to-migrate-an-external-static-website-to-azure</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1691827/how-to-migrate-an-external-static-website-to-azure</guid>
