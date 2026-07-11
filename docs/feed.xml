@@ -5,7 +5,46 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sat, 11 Jul 2026 01:13:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2026 04:32:00 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: azcopy copy failure between storage accounts with &gt;10MB blob size</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/2105029/azcopy-copy-failure-between-storage-accounts-with</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2105029/azcopy-copy-failure-between-storage-accounts-with</guid>
+      <pubDate>Sat, 11 Jul 2026 04:32:00 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+azcopy copy failure between storage accounts with &gt;10MB blob size
+
+...oZUV8%3D&quot; &quot;https://&lt;destination-server&gt;.blob.core.windows.net/123456/456789/731f7b0c?sv=2024-11-04&amp;se=2024-10-31T13%3A57%3A31Z&amp;sr=b&amp;sp=c&amp;sig=vGcoZyIeyisYtMR7S2IcqjD%2B5SehZil%2BYfhBMoYUMuw%3D&quot; Failure log for ~10MB blob size...With AzCopy when copying blobs larger than 10MB between storage accounts you can.
+
+---
+
+Suggested Response:
+It seems like you&apos;re encountering issues with AzCopy while transferring blobs larger than 10MB between storage accounts. Let&apos;s troubleshoot and ensure everything is configured correctly.
+
+Steps to Resolve the Issue:
+
+1. Confirm Storage Account Compatibility 
+ Ensure both the source and destination storage accounts are of the same type (e.g., General-purpose v2). General-purpose v2 accounts support the latest Azure Storage features, which can help improve transfer reliability. If either account is not already v2, consider upgrading. 
+ Documentation: Upgrade to a general-purpose v2 storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-upgrade)
+
+2. Check Network Configuration 
+ Large blob transfers may fail due to network latency or interruptions. Ensure your network connection is stable and that there are no firewall or network restrictions blocking the AzCopy connection.
+
+3. Set Appropriate AzCopy Flags 
+ For large files, you can optimize AzCopy performance by using flags like --block-size-mb to set a suitable block size. For example, try setting --block-size-mb=8 to divide the blob into smaller chunks.
+
+4. Check Data Redundancy Settings 
+ If you’re using redundancy options like Geo-redundant Storage (GRS) or Read-access Geo-redundant Storage (RA-GRS), replication delays might affect transfer speed. Ensure your redundancy settings align with your needs. 
+ Documentation: Data redundancy in Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+
+5. Use Azure Storage Explorer for Troubleshooting 
+ If the issue persists, you can use Azure Storage Explorer to manually test the blob transfer. This tool can also help identify potential configuration issues. 
+ Documentation: Azure Storage Explorer troubleshooting guide (https://learn.microsoft.com/en-us/troubleshoot/azure/azure-storage/blobs/alerts/storage-explorer-troubleshooting)
+
+By following these steps, you should be able to resolve your AzCopy issue. Let us know if you encounter further challenges!]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: Dataverse to Azure Blob Storage</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/2134279/dataverse-to-azure-blob-storage</link>
@@ -1743,50 +1782,6 @@ Here’s how you can use AzCopy for your scenario:
 If you’re looking for alternative methods, the Copy Blob API can be used programmatically for blob-to-blob transfers. However, it’s less efficient for bulk transfers compared to AzCopy. Learn more about the API in the Azure Blob Storage documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
 
 For a complete overview of Azure Storage, see Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). Let me know if you need further assistance!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: azcopy v8.1.0 to v10 commands</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/338009/azcopy-v8-1-0-to-v10-commands</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/338009/azcopy-v8-1-0-to-v10-commands</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-azcopy v8.1.0 to v10 commands
-
-are the commands that i use to copy pst to the blob storage still valid under v10. AzCopy /Source:&lt;source&gt; /Dest:&lt;destination&gt; [options]| @Efff dd The release notes on this page will show when certain features were released. We recommend using the latest version as it contains the most up to date features and bug fixes. There have been.
-
----
-
-Suggested Response:
-The AzCopy commands you used in v8.1.0 are not directly compatible with v10, as v10 introduced a new syntax and command structure. However, the functionality remains, and you can still transfer your .pst files to Azure Blob Storage with the updated commands.
-
-To copy files to Azure Blob Storage using AzCopy v10, follow these steps:
-
-1. Download and Install AzCopy v10: 
- Ensure you have AzCopy v10 installed. You can download the latest version here (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
-
-2. Authenticate AzCopy: 
- Use one of the supported authentication methods, such as Azure Active Directory (AAD) or SAS tokens. For example, to log in interactively, run:
- 
-
-3. Use the Copy Command: 
- The updated syntax for copying files to Azure Blob Storage is:
- 
- Example:
- 
- Replace placeholders with your storage account, container name, and file details.
-
-4. Verify the Transfer: 
- After the transfer, you can verify the blob in your Azure Storage account using the Azure portal or Azure Storage Explorer.
-
-For more details on Azure Blob Storage and authentication methods, see the following documentation:
-- Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction)
-- Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
-
-If you&apos;re using SFTP to transfer .pst files, Azure Blob Storage also supports SFTP. Learn more about setting it up here: SFTP Support for Azure Blob Storage (https://learn.microsoft.com/en-us/azure/storage/blobs/secure-file-transfer-protocol-support). 
-
-Let me know if you need further clarification!]]></description>
     </item>
   </channel>
 </rss>
