@@ -148,6 +148,10 @@ SOFT_EXCLUSIONS = [
     "intune", "domain controller", "hybrid join", "cloud join",
     "azure ad", "entra join", "autopilot",
     "decommission dc", "decommission domain",
+    # Adjacent / non-storage migrations (added to cut false positives)
+    "static website", "static web app", "function app",
+    "flex consumption", "logic apps", "vpn", "remote access",
+    "site recovery", "disaster recovery", "oracle", "dataverse",
 ]
 
 # Terms in the TITLE that signal the post is about storage (used to
@@ -160,12 +164,16 @@ STORAGE_TITLE_SIGNALS = [
     "netapp", "s3 bucket", "object storage", "cifs",
     "migrate storage", "storage migration", "migrate file",
     "migrate blob", "migrate nas",
+    "archive", "cold tier", "cool tier", "hot tier", "cold storage",
+    "tape", "blob storage",
 ]
 
 # --- Step 4: Strong migration phrases (accepted after exclusion filtering) ---
 STRONG_PHRASES = [
     # Product names that imply migration context
-    "azure migrate", "azure site recovery", "asr migration",
+    # (Site Recovery / ASR intentionally excluded — that is DR / VM
+    # replication, not a storage migration; see SOFT_EXCLUSIONS.)
+    "azure migrate",
     "agentless discovery", "agentless migration",
     # Broad migration phrases (safe because Steps 2-3 filtered noise)
     "on-prem to azure", "on-premises to azure", "on prem to azure",
@@ -209,6 +217,37 @@ CATEGORY_C_INFRA = [
     "colocation", "netapp",
     "azure storage", "azure blob", "azure files",
     "azure data lake", "blob storage",
+]
+
+# --- Step 0: News / noise (always reject, even over tool names) ---
+# Newsletters, weekly roundups and CVE/security bulletins are not
+# questions anyone is asking for migration help with.
+NEWS_NOISE = [
+    "weekly update", "azure weekly", "monthly update", "monthly roundup",
+    "roundup", "newsletter", "this week in", "week in azure",
+    "cve-", "zero-day", "0-day", "patch tuesday", "release notes",
+    "changelog", "what's new", "whats new", "known issues",
+]
+
+# --- Troubleshooting signals ---
+# A bare tool mention (azcopy, data box, ...) is often a usage/error
+# question, not a migration lead. We keep it only if migration intent is
+# also present (see MIGRATION_INTENT below).
+TROUBLESHOOTING = [
+    "error", "fails", "failing", "failed", "not working",
+    "doesn't work", "does not work", "won't work", "wont work",
+    "stuck", "hangs", "hanging", "timeout", "timed out",
+    "terminating", "terminate", "kill process", "where can i see",
+    "how do i see", "permission denied", "access denied",
+    "403", "404", "500", "throwing", "exception",
+]
+
+# --- Migration intent (rescues genuine migration posts that also mention
+# an error, e.g. "azcopy fails while migrating 4PB to Azure") ---
+MIGRATION_INTENT = [
+    "migrate", "migration", "moving", "move to", "transfer",
+    "on-prem", "on-premises", "on prem", "to azure", "cutover",
+    "lift and shift", "copy to azure", "onboard",
 ]
 
 # --- GitHub Models API (GPT-4o, free tier: 150 req/day) ---
@@ -345,6 +384,21 @@ def fetch_msqa(queries, seen):
                 if post_id in seen:
                     continue
 
+                # P0 fix: use the ORIGINAL question date (createdAt), NOT
+                # lastUpdatedDate. The Learn Search API ranks by relevance and
+                # routinely returns questions from 2020-2024; an old question
+                # that gets a recent comment has a fresh lastUpdatedDate and
+                # would slip past the recency filter and fire as if new.
+                # createdAt reflects the true age of the question.
+                created = item.get("createdAt", "")
+                if not created:
+                    continue  # fail closed: no creation date → skip
+
+                # Skip questions that already have an accepted answer — they
+                # are solved, so there is nothing useful to respond to.
+                if item.get("acceptedAnswer"):
+                    continue
+
                 title = item.get("title", "").strip()
                 # Remove " - Microsoft Q&A" suffix if present
                 title = re.sub(r"\s*-\s*Microsoft Q&A\s*$", "", title)
@@ -358,7 +412,7 @@ def fetch_msqa(queries, seen):
                     "title": title,
                     "body": description,
                     "link": item_url,
-                    "published": item.get("lastUpdatedDate", ""),
+                    "published": created,
                     "source": "Microsoft Q&A",
                 }
                 posts.append(post)
@@ -423,8 +477,18 @@ def is_relevant(post):
     text = f" {post['title']} {post['body']} ".lower()
     title = f" {post['title']} ".lower()
 
-    # Step 1: Tool names → always accept (highest authority)
+    # Step 0: News / noise → always reject (over everything, incl. tools).
+    # Kills "Azure Weekly Update", CVE bulletins, release notes, etc.
+    if any(kw in text for kw in NEWS_NOISE):
+        return False
+
+    has_migration_intent = any(kw in text for kw in MIGRATION_INTENT)
+
+    # Step 1: Tool names → accept, EXCEPT bare usage/error questions that
+    # have no migration intent (e.g. "Terminating azcopy process?").
     if any(tool in text for tool in TOOL_NAMES):
+        if any(t in text for t in TROUBLESHOOTING) and not has_migration_intent:
+            return False
         return True
 
     # Step 2: Hard exclusions → always reject
