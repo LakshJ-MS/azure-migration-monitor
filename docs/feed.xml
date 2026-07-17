@@ -5,7 +5,47 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 17 Jul 2026 04:30:33 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2026 07:01:07 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Stack HCI / Azure Local: Orphaned MOC Storage Container and Gallery Image stuck in DELETE_FAILED, blocking AVD Host Provisioning</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1uyrrpn/azure_stack_hci_azure_local_orphaned_moc_storage/</link>
+      <guid isPermaLink="false">t3_1uyrrpn</guid>
+      <pubDate>Fri, 17 Jul 2026 06:32:37 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Stack HCI / Azure Local: Orphaned MOC Storage Container and Gallery Image stuck in DELETE_FAILED, blocking AVD Host Provisioning
+
+Hi everyone, I&apos;m dealing with a strange Azure Stack HCI / Azure Local MOC issue and would like to know if anyone has seen this before or found a way to recover without Microsoft intervention. Environment Azure Stack HCI (4-node cluster) MOC version: 1.19.9.10516 MOC PowerShell Module: 1.2.37 Azure Virtual Desktop Session Hosts running on Azure Stack HCI HostPool itself works fine Existing VMs run normally Background Several months ago a storage path/volume named: UserStorage2 was removed from the cluster. The physical path: C:\ClusterStorage\UserStorage2 no longer exists. Azure also no longer shows this storage path. All current VM images are stored on another volume: Storage-MIR-03 which works correctly. Problem Provisioning of additional AVD Session Hosts fails during MOC prechecks: moc-operator virtualmachine serviceClient returned an error while reconciling: Precheck failed for vms: Container [UserStorage2-49bd6df63473459980de0e12ee6fb4d6-...] not usable, HealthState critical MocCode PathNotFound The system cannot find the directory: C:\ClusterStorage\UserStorage2 Even though that volume was removed months ago. Current MOC State MOC still contains a storage container: UserStorage2-49bd6df63473459980de0e12ee6fb4d6-... and a gallery image: windows-windows2019-0.5.0.10304 The problem is that both objects are stuck in a circular dependency. Gallery Image { &quot;name&quot;: &quot;windows-windows2019-0.5.0.10304&quot;, &quot;ProvisionState&quot;: &quot;DELETEFAILED&quot;, &quot;HealthState&quot;: &quot;CRITICAL&quot;, &quot;containername&quot;: &quot;UserStorage2-...&quot; } Error: Entity of Type[*storage.Container] with Name [UserStorage2-...] is in Delete Failed state: Degraded Storage Container { &quot;name&quot;: &quot;UserStorage2-...&quot;, &quot;path&quot;: &quot;C:\\ClusterStorage\\UserStorage2&quot;, &quot;ProvisionState&quot;: &quot;DELETEFAILED&quot;, &quot;HealthState&quot;: &quot;CRITICAL&quot; } Error: Failed to delete container due to gallery image: windows-windows2019-0.5.0.10304 migration to container: Storage-MIR-03-... failed GalleryImage is in DELETEFAILED state So the situation is: Container cannot be deleted -&gt; because GalleryImage exists GalleryImage cannot be deleted -&gt; because Container exists What I&apos;ve already verified Physical CSV volume no longer exists Azure no longer knows this Storage Path Cluster no longer contains UserStorage2 All active images are stored on Storage-MIR-03 No VHDs found in MOC No other images referenced from UserStorage2 Remove-MocContainer fails Remove-MocGalleryImage fails mocctl delete fails Reset-MocContainer / Reset-MocGalleryImage are just bulk-delete wrappers and don&apos;t repair object states Question Has anyone successfully recovered from an orphaned MOC metadata state like this? Specifically: Is there any supported way to force-remove a storage.Container stuck in DELETEFAILED ? Is there a way to clear or reconcile stale MOC metadata? Is there an undocumented repair workflow for orphaned Gallery Images? Or is this ultimately a Microsoft Support case requiring internal cleanup tools? Any guidance would be greatly appreciated. Thanks! &amp;#32; submitted by &amp;#32; /u/ThenCartographer294 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It seems like you&apos;re dealing with a circular dependency issue where a deleted storage volume (UserStorage2) still has associated resources in Azure Stack HCI, causing provisioning of Azure Virtual Desktop (AVD) session hosts to fail. This occurs when resources like containers or gallery images are stuck in a DELETE_FAILED state due to lingering references.
+
+Here’s how you can address this issue:
+
+1. Verify Storage Account State
+Check the current state of your storage accounts and ensure redundancy settings are configured correctly, which may help eliminate issues caused by storage path inconsistencies. Refer to the Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for guidance on managing Azure Storage data objects.
+
+2. Investigate and Remove Orphaned Resources
+Since the storage container and gallery image are stuck in DELETE_FAILED state, you&apos;ll need to manually remove them:
+ - Use Azure CLI or Azure PowerShell to inspect these resources and attempt deletion.
+ - If deletion fails due to dependencies, identify all linked resources (such as snapshots, leases, or other dependencies) and delete them first.
+ - Review the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/) for tools and methods to manage and delete Azure Storage resources.
+
+3. Address Circular Dependency
+ - Circular dependencies often result from references that cannot be automatically resolved. You may need to review the configuration of both the gallery image and the storage container to identify the dependency preventing deletion.
+ - Consult the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/) for best practices on resource organization and dependency management.
+
+4. Use MOC PowerShell Module
+Given your environment includes Azure Stack HCI and MOC, leverage the MOC PowerShell Module to forcefully remove stuck resources. Check if there are commands or scripts that can bypass the current state and enable manual cleanup.
+
+5. Contact Microsoft Support
+If the issue persists, it may require intervention from Microsoft support to resolve system-level inconsistencies. You can leverage your support plan or open a support ticket for assistance.
+
+Let me know if you need help with specific PowerShell commands or additional resources!]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: How to migrate an external, static website to Azure?</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/1691827/how-to-migrate-an-external-static-website-to-azure</link>
@@ -1749,46 +1789,6 @@ It seems like you&apos;re encountering issues with using AzCopy to transfer data
 5. Consider Alternative Tools: If the issue persists, you could use the Copy activity in Azure Data Factory to automate the transfer from Azure Blob Storage to your OCI VM. Learn more about the Copy activity in the Azure Data Factory documentation (https://learn.microsoft.com/en-us/azure/data-factory/copy-activity-overview).
 
 By following these steps and verifying the configuration, you should be able to identify and resolve the issue. Let us know if you need further assistance!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Azure azcopy download</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/2122050/azure-azcopy-download</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2122050/azure-azcopy-download</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Azure azcopy download
-
-I am trying to download backup files from azure storage to on-prim VM. ...d (/*)| Hello , Welcome to MS Q&amp;A The issue seems with your AzCopy command is that it is not correctly formatted for copyingRefer to AzCopy Migration Guide for v8 to v10. To view the same information online, see azcopy copy. To help you understand commands, we provide.
-
----
-
-Suggested Response:
-To download backup files from Azure Storage to your on-premises VM using AzCopy, you need to ensure your command is properly formatted and meets the requirements for the azcopy copy operation. Here&apos;s a step-by-step guide:
-
-Steps to Download Files Using AzCopy:
-1. Install AzCopy: If you haven’t already, download and install the latest version of AzCopy. You can do this by visiting the AzCopy documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
-
-2. Authenticate AzCopy: Before running commands, authenticate AzCopy to your Azure Storage account. Use the following command to log in:
- 
- Alternatively, you can use a Shared Access Signature (SAS) token.
-
-3. Construct the AzCopy Command:
- Use the azcopy copy command to download files. For example:
- 
- Replace:
- - : Your Azure Storage account name.
- - : The name of your blob container.
- - : The path to your blob or folder. Use /* for all blobs in the container.
- - : Your Shared Access Signature token.
- - : The destination path on your on-prem VM.
-
-4. Verify the Download: Check the local path to ensure the files were downloaded successfully.
-
-For additional details on using AzCopy, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) to understand storage structures and the Azure Storage documentation hub (https://learn.microsoft.com/en-us/azure/storage/) for related resources.
-
-If you encounter issues, ensure your AzCopy command syntax is correct, and verify your network connectivity and permissions. Let me know if you need further clarification!]]></description>
     </item>
   </channel>
 </rss>
