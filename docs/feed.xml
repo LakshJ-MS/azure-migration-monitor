@@ -5,7 +5,42 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 21 Jul 2026 14:26:26 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 16:05:44 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Blob Storage backup options</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1v2llhj/blob_storage_backup_options/</link>
+      <guid isPermaLink="false">t3_1v2llhj</guid>
+      <pubDate>Tue, 21 Jul 2026 15:23:48 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Blob Storage backup options
+
+Hey all, I&apos;m currently planning a migration of an on-prem application to Azure. A key part of the system stores user documents, and we&apos;re looking at around 50TB of data. We&apos;ve chosen Azure Blob Storage due to cost and scalability, but I&apos;m trying to understand the best way to handle backups for this data. The setup will include RA-GRS, versioning, and soft delete, which should handle accidental deletion and many infrastructure-level risks. My main concern is malicious actions or major misconfiguration, such as a compromised admin account or someone intentionally deleting the storage account. I&apos;ve looked at immutability policies, but we also need to support GDPR deletion request, so full immutability isn&apos;t fully compatible with our use case. Azure Backup for Blob Storage looks promising, but it still seems to be in preview, and I&apos;m unclear on cost implications (possibly doubling storage cost?). Another idea was using a second storage account with replication, possibly using archive tier to reduce cost, and layering immutability + retention logic on top. But building and maintaining a custom backup strategy feels risky at this scale. Has anyone solved this cleanly in production? Would appreciate real-world approaches. &amp;#32; submitted by &amp;#32; /u/DiscrepancyAnalyst [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+When planning a migration of 50TB of data to Azure Blob Storage, it&apos;s great that you&apos;ve already considered features like RA-GRS, versioning, and soft delete for protecting against accidental or infrastructure-level issues. Addressing malicious actions or catastrophic misconfigurations like a compromised admin account requires additional strategies.
+
+1. Leverage Azure Backup for Blob Storage
+Azure Backup for Blob Storage is indeed an option worth exploring. While currently in preview, it simplifies backup and data protection for Blob Storage without requiring custom scripts or infrastructure. It supports data recovery to a specific point in time, which can be invaluable. However, as you noted, it could double your storage costs since it stores a full backup copy. Monitor its general availability status and evaluate its cost implications on your workload.
+
+More details here: Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/)
+
+2. Implement Immutable Blob Storage with Legal Hold
+While full immutability might conflict with GDPR deletion requirements, you can leverage legal hold policies or time-based retention for specific containers. These allow you to protect critical data from deletions or overwrites for a defined period while still accommodating GDPR-compliant deletions by excluding specific documents.
+
+Details: Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+
+3. Use a Secondary Storage Account for Backups
+Creating a second storage account with replication is a practical alternative. You can automate backups using Azure Data Factory, AzCopy, or Azure CLI to replicate blobs to a secondary account. Use the Archive tier to significantly reduce costs for infrequently accessed data. To further secure backups, enable immutability policies and restrict access with Azure RBAC or Azure AD Conditional Access.
+
+4. Consider Storage Redundancy
+For added protection, ensure your storage account has the appropriate redundancy level (e.g., RA-GRS or ZRS). Learn more here: Data redundancy in Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+
+While Azure Backup simplifies management, a secondary account with archive tier and immutability provides more control and flexibility. Test your chosen strategy for compliance with GDPR and operational needs.]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Stack HCI / Azure Local: Orphaned MOC Storage Container and Gallery Image stuck in DELETE_FAILED, blocking AVD Host Provisioning</title>
       <link>https://www.reddit.com/r/AZURE/comments/1uyrrpn/azure_stack_hci_azure_local_orphaned_moc_storage/</link>
@@ -1758,37 +1793,6 @@ For more details on Azure File Shares and mounting, refer to the Azure Storage D
 ---
 
 Both methods are effective, so choose one based on your requirements. For more advanced scenarios (e.g., SFTP for Blob storage), see the SFTP support for Azure Blob Storage documentation (https://learn.microsoft.com/en-us/azure/storage/blobs/secure-file-transfer-protocol-support).]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Azcopy fails when copying data from azure blob storage to a vm on OCI(oracle cloud infrastructure)</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1162863/azcopy-fails-when-copying-data-from-azure-blob-sto</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1162863/azcopy-fails-when-copying-data-from-azure-blob-sto</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Azcopy fails when copying data from azure blob storage to a vm on OCI(oracle cloud infrastructure)
-
-I am using azcopy to copy blob storage content to a VM on OCI( oracle cloud infra) all network settings are in-place but I see below issue, I am using SAS token to copy the content. command: azcopy cp &quot;https://&lt;Sacacount&gt;.blob.core.windows.net/stage-data-lake/xxxx/xxxx/xxxxx?&lt;SAS token&gt;&quot; &quot;/home/opc/xxxx&quot;.
-
----
-
-Suggested Response:
-It seems like you&apos;re encountering issues with using AzCopy to transfer data from Azure Blob Storage to a VM on Oracle Cloud Infrastructure (OCI). Below are some troubleshooting tips and steps to ensure your transfer is successful:
-
-1. Verify SAS Token Permissions: Ensure that the SAS token you’re using has the appropriate permissions (e.g., Read and List) to access the blob storage container or files you&apos;re trying to copy. For more details on SAS tokens, refer to the Storage Account Overview documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-2. Ensure AzCopy Connectivity: Test connectivity between the source (Azure Blob Storage) and destination (OCI VM). Ensure your VM can access Azure Blob Storage endpoints. Confirm that any firewalls or network security groups (NSGs) on the OCI VM or Azure Storage are not blocking traffic.
-
-3. Validate AzCopy Command: Double-check the syntax of your AzCopy command. The correct format for copying files from Azure Blob Storage to a local destination is:
- 
- Ensure you replace , , and with your actual values.
-
-4. Check for AzCopy Errors: If you are seeing specific error messages, refer to AzCopy error handling documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-errors) for troubleshooting guidance.
-
-5. Consider Alternative Tools: If the issue persists, you could use the Copy activity in Azure Data Factory to automate the transfer from Azure Blob Storage to your OCI VM. Learn more about the Copy activity in the Azure Data Factory documentation (https://learn.microsoft.com/en-us/azure/data-factory/copy-activity-overview).
-
-By following these steps and verifying the configuration, you should be able to identify and resolve the issue. Let us know if you need further assistance!]]></description>
     </item>
   </channel>
 </rss>
