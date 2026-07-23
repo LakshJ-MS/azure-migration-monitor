@@ -5,7 +5,43 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 23 Jul 2026 10:02:35 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2026 12:05:06 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: How to order a Databox extract when the blob is bigger than the maximum size of the largest databox</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/5953002/how-to-order-a-databox-extract-when-the-blob-is-bi</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5953002/how-to-order-a-databox-extract-when-the-blob-is-bi</guid>
+      <pubDate>Tue, 21 Jul 2026 10:45:18 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+How to order a Databox extract when the blob is bigger than the maximum size of the largest databox
+
+Hello, I have a large amount of data held in Azure Storage Account Cold tier that I would like to extract to on-premise using a Databox. I&apos;ve been told that the data in the blob is larger than the biggest databox that is available, that a blob cannot b... Many thanks.| What you were told is only partly correct. Data Box does not split one blob.
+
+---
+
+Suggested Response:
+To address your concern about extracting data from Azure Storage using Azure Data Box when a single blob exceeds the size of the largest available Data Box, here’s some guidance:
+
+Azure Data Box does not automatically split large blobs during transfer. However, you can manually prepare your data for extraction by splitting the blob into smaller parts or using alternative strategies. Here’s what I recommend:
+
+Steps:
+1. Verify Storage Account Type: Ensure your storage account is a general-purpose v2 account, as this supports the latest Azure Storage features. If you’re not using a v2 account, upgrade following instructions here (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-upgrade).
+
+2. Split Large Blob: Use Azure tools like AzCopy or Azure Storage SDK to download the blob and split it into smaller chunks. AzCopy is a robust command-line tool for data transfer and manipulation. Learn more about Azure Storage tools here (https://learn.microsoft.com/en-us/azure/storage/).
+
+3. Prepare Data for Transfer: Once split, upload the smaller blobs back to Azure Storage in a format that fits the Data Box size limits.
+
+4. Order Data Box: Once your data is ready, you can order an Azure Data Box suitable for your needs. Azure Data Box documentation will guide you through the ordering process.
+
+5. Redundancy and Recovery: Ensure that your data is appropriately backed up before initiating any transfers. Review Azure Storage redundancy options here (https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy).
+
+If splitting the blob is not feasible or practical, you may need to explore alternative large-scale migration options, such as Azure Import/Export or Data Box Heavy.
+
+For detailed information on Azure Storage and Data Box capabilities, visit the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+Let me know if you need further assistance!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Blob Storage backup options</title>
       <link>https://www.reddit.com/r/AZURE/comments/1v2llhj/blob_storage_backup_options/</link>
@@ -1744,55 +1780,6 @@ Here’s a step-by-step guide:
 For detailed guidance on Azure Files and related options, you can also compare services using this link: Azure Files and Azure NetApp Files Comparison (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-netapp-comparison).
 
 Feel free to ask if you need further clarification!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: what&apos;s the simplest way to copy files from Azure CLI to Azure Windows VMs?</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1857014/whats-the-simplest-way-to-copy-files-from-azure-cl</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1857014/whats-the-simplest-way-to-copy-files-from-azure-cl</guid>
-      <pubDate>Thu, 07 May 2026 17:06:39 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-what&apos;s the simplest way to copy files from Azure CLI to Azure Windows VMs?
-
-Download Files Using AzCopy : Open a command prompt or PowerShell window on your Azure VM. Use AzCopy to copy files from the Cloud Shell storage file share to the VM. Step 3: Mount the Azure File Share Directly (Alternative Method) Mount the Azure File Share on the VM : Instead of using AzCopy, you can directly mount the Azure File Share to the VM.
-
----
-
-Suggested Response:
-To copy files from Azure CLI to an Azure Windows VM, you can use AzCopy or mount an Azure File Share directly to the VM. Here’s a breakdown of both methods:
-
----
-
-Option 1: Use AzCopy
-1. Install AzCopy: If AzCopy is not already installed on your VM, download and install it using this guide (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
- 
-2. Authenticate AzCopy: Use the following command to authenticate:
- 
-
-3. Copy files to VM: 
- - Specify the source (e.g., an Azure Blob or File Share URL) and the destination (a folder on your VM). For example:
- 
-
- You can learn more about AzCopy usage in the Azure Storage documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
-
----
-
-Option 2: Mount Azure File Share Directly
-1. Create an Azure File Share: If you don’t already have one, create a file share in your storage account. Refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for guidance.
-
-2. Mount the File Share:
- - Open PowerShell on your Windows VM and use the following commands to mount the file share as a network drive:
- 
- - Replace and with your storage account and file share names.
-
-3. Access the File Share: The file share will now be accessible as a network drive (e.g., Z:\), allowing you to copy files directly.
-
-For more details on Azure File Shares and mounting, refer to the Azure Storage Documentation (https://learn.microsoft.com/en-us/azure/storage/).
-
----
-
-Both methods are effective, so choose one based on your requirements. For more advanced scenarios (e.g., SFTP for Blob storage), see the SFTP support for Azure Blob Storage documentation (https://learn.microsoft.com/en-us/azure/storage/blobs/secure-file-transfer-protocol-support).]]></description>
     </item>
   </channel>
 </rss>
