@@ -5,7 +5,36 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 24 Jul 2026 11:51:07 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 13:57:36 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/sysadmin: SMBs - What are you doing for disaster recovery in your organization?</title>
+      <link>https://www.reddit.com/r/sysadmin/comments/1v5b2d5/smbs_what_are_you_doing_for_disaster_recovery_in/</link>
+      <guid isPermaLink="false">t3_1v5b2d5</guid>
+      <pubDate>Fri, 24 Jul 2026 13:13:51 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/sysadmin
+
+Question:
+SMBs - What are you doing for disaster recovery in your organization?
+
+I’m curious to hear what other SMBs are doing for DR. We currently use Zerto to replicate our VMware VMs to Azure, and we also use NetBackup MSDP Cloud to duplicate backup copies to cloud storage. Basically we are set up to support a scenario where we have clean copies in the cloud that we would then replicate/restore back on prem once the disaster event is “over” and our site is back up and running. We’re being asked to explore options to take our DR setup further so that our replicated VMs in the cloud could run as production in the event of an extended outage of our main site. Some of the considerations this brings up are obviously cost, employee access to this secondary cold/hot site, IP/DNS config, etc. So I’m just wondering what others are doing for their current DR setup so I can pick some brains. &amp;#32; submitted by &amp;#32; /u/rdcisneros3 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+For SMBs like yours looking to enhance disaster recovery (DR) capabilities, Azure offers robust solutions to address scenarios such as running production workloads in the cloud during extended outages. Based on your use case, here are a few recommendations:
+
+1. Leverage Azure Storage for Disaster Recovery: You can extend your DR strategy by using Azure’s built-in geo-redundancy and failover capabilities for storage. This allows for high availability and consistent access to your data during outages. Start by planning your DR strategy using the Azure storage disaster recovery planning and failover guide (https://learn.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance).
+
+2. Azure NetApp Files for High-Performance File Shares: Since you’re replicating VMs and need reliable file shares, consider Azure NetApp Files. It offers enterprise-grade file storage with built-in disaster recovery options. You can configure failover to a backup region for uninterrupted access. Learn more in the Enterprise file shares with disaster recovery guide (https://learn.microsoft.com/en-us/azure/architecture/example-scenario/file-storage/enterprise-file-shares-disaster-recovery).
+
+3. Azure Storage Mover for Customer-Initiated DR: If you want to perform DR operations with more control, Azure Storage Mover allows for customer-initiated disaster recovery. You can replicate data to another region and restore it as needed. Detailed steps can be found in the Customer-Initiated Disaster Recovery for Azure Storage Mover documentation (https://learn.microsoft.com/en-us/azure/storage-mover/customer-initiated-disaster-recovery).
+
+4. VM Replication and Failover: For running your replicated VMs in Azure during a disaster, consider using Azure Site Recovery (ASR). It enables seamless VM replication, failover, and failback with minimal downtime. While not directly mentioned in the provided links, ASR integrates well with DR strategies like yours.
+
+Each option has cost and configuration considerations, so you’ll want to evaluate based on your recovery time objectives (RTOs) and recovery point objectives (RPOs). For more insights, refer to the Azure Storage Migration Guide (https://learn.microsoft.com/en-us/azure/storage/common/storage-migration-overview) to plan your data movement effectively.
+
+Let me know if you’d like further assistance with any of these!]]></description>
+    </item>
 <item>
       <title>Reddit r/sysadmin: Hella too much data but you know how it is….</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1v51in1/hella_too_much_data_but_you_know_how_it_is/</link>
@@ -1748,43 +1777,6 @@ For reference on creating and managing storage accounts, see: Create an Azure St
 If you&apos;re managing migrations, you might find the Azure Migrate documentation helpful: Azure Migrate Appliance (https://learn.microsoft.com/en-us/azure/migrate/migrate-appliance).
 
 By following these steps, you can safely remove unnecessary storage accounts post-migration. Let me know if you have further questions!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: how to update azure migrate classic storage accounts to Azure Resource Manager</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1920949/how-to-update-azure-migrate-classic-storage-accoun</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1920949/how-to-update-azure-migrate-classic-storage-accoun</guid>
-      <pubDate>Thu, 07 May 2026 20:24:06 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-how to update azure migrate classic storage accounts to Azure Resource Manager
-
-migrate classic storage accounts to Azure Resource Manager| To migrate your storage accounts to Azure Resource Manager, follow the steps here: How to migrate your classic storage accounts to Azure Resource Manager If you also need further info and understand the model, see: Understand storage account migration from the classic deployment model to.
-
----
-
-Suggested Response:
-To migrate your classic Azure Storage accounts to the Azure Resource Manager (ARM) deployment model, you’ll need to follow the steps outlined in the Azure documentation. ARM offers enhanced features and better management capabilities compared to the classic model.
-
-Here’s a high-level overview of the process:
-
-1. Understand the Migration Process: Before you begin, make sure you understand the differences between the classic and ARM deployment models. This will help you better plan the migration. Refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for more details.
-
-2. Prepare for Migration:
- - Review the prerequisites and limitations of the migration.
- - Ensure that none of the resources in your classic storage account depend on features not supported in ARM.
-
-3. Initiate the Migration:
- - Use the Azure portal, PowerShell, or Azure CLI to migrate your storage account.
- - Follow the specific steps provided in the Move Azure Resources to a New Resource Group or Subscription (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription) documentation, which includes detailed instructions for moving resources between deployment models.
-
-4. Validate and Complete the Migration:
- - After moving the storage account, validate that all resources and their functionalities are working as expected.
- - Update your applications or services to reference the new ARM-based storage account, if necessary.
-
-If you haven’t yet created a new storage account in ARM, you can follow the steps in the Create an Azure Storage Account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create) guide to set it up.
-
-For further details on migrating classic storage accounts to ARM, I recommend starting with the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). Let me know if you need more help!]]></description>
     </item>
   </channel>
 </rss>
