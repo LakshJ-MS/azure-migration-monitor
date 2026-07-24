@@ -5,7 +5,47 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 24 Jul 2026 04:37:06 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 07:21:45 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/sysadmin: Hella too much data but you know how it is….</title>
+      <link>https://www.reddit.com/r/sysadmin/comments/1v51in1/hella_too_much_data_but_you_know_how_it_is/</link>
+      <guid isPermaLink="false">t3_1v51in1</guid>
+      <pubDate>Fri, 24 Jul 2026 04:58:20 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/sysadmin
+
+Question:
+Hella too much data but you know how it is….
+
+Anyone running Hierarchical Storage Management (HSM) or transparent file tiering at scale? We’re sitting on loads of data sets ( 69 TB in one share ) data done the dawn of time spattered across more then 20 Windows file servers with countless shares (broke inheritance!) and 10 large Synology NAS devices to make it worst! My thought is to shrink the working dataset since or recovery took a month (not kidding) . The idea would be: Automatically tier cold data to object storage (S3/Glacier, Azure Blob Archive, etc.). Leave stub files/placeholders (reparse points) behind so users still browse the same folder structure. If someone opens an archived file, it’s transparently recalled from the archive. Keep only active data on primary storage to reduce backup size, hardware costs, and disaster recovery time. Is anyone doing this successfully today? What HSM or data management products are you using (Komprise, Data Dynamics, Arcserve, NetApp FabricPool, Azure File Sync, Synology Hybrid Share, etc.)? Any lessons learned or “wish I knew before we started” advice? &amp;#32; submitted by &amp;#32; /u/TopDesigner535 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+It sounds like you&apos;re tackling a massive data management challenge! For your use case, Azure offers robust solutions like Azure Blob Storage and Azure File Sync, which can help implement a hierarchical storage management (HSM) strategy effectively. Here&apos;s how you might approach this:
+
+1. Tier Cold Data to Azure Blob Storage
+Azure supports automatically tiering data across different storage tiers, such as Hot, Cool, and Archive, based on access patterns. You can use tools like Azure Blob Storage Lifecycle Management to automate transitioning cold data to lower-cost tiers like Archive. This reduces costs while keeping data accessible when needed. 
+- Documentation: Learn more about Azure Storage tiers here: Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+
+2. Retain File Structure with Azure File Sync
+To leave stub files (reparse points) behind while transparently recalling files when accessed, Azure File Sync is a great solution. It syncs your on-premises file servers with Azure File shares and enables cloud tiering of cold data. This keeps frequently accessed data local while moving less-used files to Azure. 
+- Documentation: Get started with Azure File Sync: Azure File Sync Overview (https://learn.microsoft.com/en-us/azure/storage/files/storage-sync-files-deployment-guide).
+
+3. Migrate to General-Purpose v2 Storage Accounts
+For the latest features and cost efficiency, ensure you&apos;re using a General-Purpose v2 (GPv2) storage account. If you&apos;re not already on GPv2, you can upgrade your storage account easily. 
+- Documentation: Follow the upgrade steps here: Upgrade to a General-Purpose v2 Storage Account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-upgrade).
+
+4. Data Redundancy and Disaster Recovery
+Azure Storage offers multiple redundancy options (e.g., LRS, GRS, ZRS) to protect against data loss. Ensure your storage account&apos;s redundancy matches your recovery objectives. 
+- Documentation: Review redundancy options here: Azure Storage Redundancy (https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy).
+
+Lessons Learned:
+- Plan Lifecycle Rules: Thoroughly map out lifecycle management rules to avoid unexpected costs when retrieving archived data.
+- Test Recall Speeds: Test the transparent recall functionality to ensure it meets user expectations.
+- Monitor Costs: Continuously monitor storage and egress costs to optimize your solution.
+
+This strategy aligns with what you&apos;re aiming to achieve and leverages Azure’s integrated tools for scalability and efficiency. Let me know if you need further guidance!]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: How to order a Databox extract when the blob is bigger than the maximum size of the largest databox</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/5953002/how-to-order-a-databox-extract-when-the-blob-is-bi</link>
@@ -1745,41 +1785,6 @@ Here’s a high-level overview of the process:
 If you haven’t yet created a new storage account in ARM, you can follow the steps in the Create an Azure Storage Account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create) guide to set it up.
 
 For further details on migrating classic storage accounts to ARM, I recommend starting with the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). Let me know if you need more help!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: How to migrate Aure standard storage to premium storage- Azure Files Service</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/413129/how-to-migrate-aure-standard-storage-to-premium-st</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/413129/how-to-migrate-aure-standard-storage-to-premium-st</guid>
-      <pubDate>Thu, 07 May 2026 20:24:06 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-How to migrate Aure standard storage to premium storage- Azure Files Service
-
-If not please correct me Migrate from standard to premium You can&apos;t convert an existing standard performance storage account to a block blob storage account with premium performance. To migrate to a premium performance storage account, you must create a premium block blob account, and migrate the data to the new account. ... a storage account:.
-
----
-
-Suggested Response:
-To migrate data from a standard storage account to a premium storage account in Azure Files, your understanding is partially correct. As you mentioned, you cannot directly convert a standard-performance storage account to premium. Instead, you need to create a new premium storage account and migrate your data to it.
-
-Here’s a step-by-step guide:
-
-1. Create a Premium Storage Account 
- Start by creating a new premium storage account to host your Azure Files. Premium storage accounts are designed for low-latency and high-performance scenarios. Learn more about storage account types here: Storage Account Overview - Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-2. Plan Your Migration Strategy 
- Before migrating, evaluate the volume of data, downtime tolerance, and dependencies. This will ensure a smooth transition without impacting business continuity. You can refer to this guide for planning: Azure Storage migration strategy (https://learn.microsoft.com/en-us/azure/storage/common/storage-migration-plan-strategy).
-
-3. Use Azure Storage Mover or AzCopy for File Migration 
- Azure Storage Mover is a fully managed service for migrating files and folders from on-premises or other Azure storage accounts. It supports syncing data incrementally and can simplify the migration process. Alternatively, you can use tools like AzCopy for file transfer. Learn more about Azure Storage Mover here: Introduction to Azure Storage Mover (https://learn.microsoft.com/en-us/azure/storage-mover/service-overview).
-
-4. Validate and Update Dependencies 
- After migration, ensure your applications are updated to point to the new premium storage account. Validate that all files are intact and accessible.
-
-For detailed guidance on Azure Files and related options, you can also compare services using this link: Azure Files and Azure NetApp Files Comparison (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-netapp-comparison).
-
-Feel free to ask if you need further clarification!]]></description>
     </item>
   </channel>
 </rss>
