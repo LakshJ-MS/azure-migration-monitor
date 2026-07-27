@@ -5,7 +5,42 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 27 Jul 2026 01:24:14 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2026 05:28:14 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Files - SidHistory ACL translation + Domain\Domain Users group</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1v7r53a/azure_files_sidhistory_acl_translation/</link>
+      <guid isPermaLink="false">t3_1v7r53a</guid>
+      <pubDate>Mon, 27 Jul 2026 05:23:34 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Files - SidHistory ACL translation + Domain\Domain Users group
+
+Hey team, Looking for help to answer and recommend the below please. Scenario: Azure Files with storage account configured with Kerberos identity authentication. File shares are a result of robocopy migration from windows file server shares with NTFS. Using private endpoints. Devices accessing are Entra-joined. Some groups that users are members of show up as an orphaned SID as it has been replaced by new SID (maybe internal migration) and SID for group on-prem is newer. Entra connect sync from on-prem not linking the two in Entra. Does Azure Files with Entra Kerberos support ACL translation using group SIDHistory? or is this honoured by attributes available in user token? can it be enabled and are there any risks to be aware of? What is the best way to handle orphaned groups in Entra that have been granted NTFS permissions on Azure files but not groups that sync to Entra? i.e. Builtin\Administrators, CONTOSO\domain users or CONTOSO\Domain Admins. &amp;#32; submitted by &amp;#32; /u/DearSignature9602 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Azure Files with Kerberos identity authentication does support ACLs based on Active Directory (AD) security identifiers (SIDs). However, there are important considerations for SIDHistory and orphaned groups when migrating NTFS permissions.
+
+SIDHistory and ACL Translation
+Azure Files does not natively support SIDHistory translation for ACLs. The ACLs depend on the current security identifiers present in the user’s authentication token. If the SIDHistory attribute is not properly linked during Azure AD Connect synchronization, permissions tied to older SIDs will not be recognized. This is a common issue during migrations involving changes in domain structure or SID updates.
+
+Resolving Orphaned Groups
+1. Audit Orphaned Groups: Identify groups such as Builtin\Administrators or CONTOSO\Domain Users that are no longer syncing correctly to Entra ID. You can use tools like PowerShell to check group memberships and permissions on Azure File shares.
+
+2. Map Group Permissions: For orphaned groups, manually map permissions to their new counterparts in Entra ID (e.g., replace CONTOSO\Domain Admins with a corresponding Entra group). This ensures users retain access.
+
+3. Update Synchronization: Check your Azure AD Connect configuration to ensure on-premises group objects are syncing correctly to Entra ID. Make sure group attributes, including SIDs, are properly replicated. Refer to Microsoft Entra ID documentation (https://learn.microsoft.com/en-us/entra/identity) for setup guidance.
+
+4. Testing and Validation: Before applying changes broadly, test access using Entra-joined devices to confirm permissions are honored.
+
+Risks and Considerations
+- Security Risks: Ensure that manual permissions mapping does not inadvertently grant excessive access.
+- Performance: Large-scale ACL updates can impact file share access temporarily.
+
+For additional details on understanding security groups and their permissions, see Active Directory Security Groups (https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-groups). For migration best practices, explore the Microsoft 365 admin center help (https://learn.microsoft.com/en-us/microsoft-365/admin/).]]></description>
+    </item>
 <item>
       <title>Reddit r/sysadmin: SMBs - What are you doing for disaster recovery in your organization?</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1v5b2d5/smbs_what_are_you_doing_for_disaster_recovery_in/</link>
@@ -1738,45 +1773,6 @@ If this approach doesn’t meet your needs (e.g., due to account type restrictio
 For step-by-step guidance on creating a storage account, see Create an Azure storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
 
 Let me know if you need help with any specific step!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Azure Migrate Storage account</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1274408/azure-migrate-storage-account</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1274408/azure-migrate-storage-account</guid>
-      <pubDate>Thu, 07 May 2026 20:24:06 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Azure Migrate Storage account
-
-After Migrate Virtual mach... Azure Migrate created ASR disks and Storage account. Can I delete the storage account ?| Yes, you should be able to (if you don&apos;t want to migrate any other VMs)- as the VMs you migrated should be using Managed Disks. You can be certain, by making sure that the Virtual Machine is running and logging into your Storage.
-
----
-
-Suggested Response:
-Yes, you can delete the storage account created by Azure Migrate if it is no longer needed. When you migrate virtual machines (VMs) using Azure Migrate, the process often creates an Azure Site Recovery (ASR) storage account to temporarily store replicated data. Once the migration is complete and your VMs are running on Managed Disks, the ASR storage account may no longer be required.
-
-Steps to Confirm Before Deletion:
-1. Verify VM Disk Type: Ensure that the migrated VMs are using Managed Disks. You can check this in the Azure Portal by navigating to the VM&apos;s disk settings.
- - Documentation for storage account types: Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
-
-2. Confirm VM Functionality: Start the VM and ensure it is running as expected. Log in to verify that all required applications/services are operational.
-
-3. Check Dependencies: Confirm that the ASR storage account is not being used by any other services or migrations. If you plan to migrate more VMs, the account might still be needed.
-
-4. Backup Data (Optional): Before deleting the storage account, ensure that there is no critical data stored in it that you might need later.
-
-Deleting the Storage Account:
-Once you confirm that the ASR storage account is no longer required:
-1. Navigate to the storage account in the Azure Portal.
-2. Verify that no resources are dependent on the storage account.
-3. Delete the storage account.
-
-For reference on creating and managing storage accounts, see: Create an Azure Storage Account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
-
-If you&apos;re managing migrations, you might find the Azure Migrate documentation helpful: Azure Migrate Appliance (https://learn.microsoft.com/en-us/azure/migrate/migrate-appliance).
-
-By following these steps, you can safely remove unnecessary storage accounts post-migration. Let me know if you have further questions!]]></description>
     </item>
   </channel>
 </rss>
