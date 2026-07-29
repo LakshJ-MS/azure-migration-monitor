@@ -5,7 +5,71 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 29 Jul 2026 04:35:03 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 07:34:15 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Migration from Azure Cache for Redis to Azure Managed Redis: Reservation Options</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1v9ndpr/migration_from_azure_cache_for_redis_to_azure/</link>
+      <guid isPermaLink="false">t3_1v9ndpr</guid>
+      <pubDate>Wed, 29 Jul 2026 05:58:51 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Migration from Azure Cache for Redis to Azure Managed Redis: Reservation Options
+
+We use an Azure Cache for Redis instance with this configuration: Service tier: Premium P1 Region: Central India Redis version: 6.0 High availability: Enabled Microsoft does not provide an upgrade from Redis 6.0 for the Basic, Standard, and Premium service tiers. Redis 6.0 no longer receives upstream security updates. Microsoft will also retire these Azure Cache for Redis tiers on September 30, 2028. Redis Enterprise and Enterprise Flash are not suitable long-term alternatives because Microsoft will retire them in March 2027. For this reason, we plan to move to Azure Managed Redis. Our current Azure Cache for Redis instance has a three-year reservation: Reservation type: AzureRedisCachePremiumP1INCentral3Years Quantity: 2 Expiration date: May 21, 2028 We are considering this Azure Managed Redis configuration: Tier: Balanced Memory: 6 GB High availability: Enabled Region: Central India Redis version: 7.4 We need information about the following questions: Can we exchange the current Azure Cache for Redis reservation for an Azure Managed Redis reservation? Can Microsoft apply the unused reservation value to the new Azure Managed Redis reservation? Does Azure Managed Redis qualify as an eligible product under the Azure reservation exchange policy? What steps are necessary to exchange or cancel the current reservation? Are there refund limits, cancellation charges, or contract restrictions? How does the cost of the proposed Azure Managed Redis configuration compare with Premium P1? Is there a supported method to keep the current Redis 6.0 instance secure until the migration is complete? Has anyone completed this migration? Please share information about: Reservation exchange or refund Migration steps Application compatibility Downtime Data transfer High-availability behavior Unexpected costs Thanks in advance! &amp;#32; submitted by &amp;#32; /u/Extreme_DK [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Thank you for your detailed inquiry! Here&apos;s a breakdown of your questions and guidance:
+
+1. Reservation Exchange for Azure Managed Redis 
+Azure reservations for services like Azure Cache for Redis can be exchanged or canceled based on Azure&apos;s reservation policy. Azure Managed Redis qualifies as an eligible reservation product under the exchange policy, as it is a direct replacement service. You can exchange unused reservation credits from Azure Cache for Redis toward Azure Managed Redis. 
+
+Steps to exchange or cancel reservations: 
+- Navigate to the Azure portal (https://portal.azure.com). 
+- Go to Reservations under Cost Management + Billing. 
+- Select the reservation to exchange or cancel. 
+- Follow instructions to apply the unused credits to Azure Managed Redis. 
+
+Refund limits and charges: Refund or exchange policies depend on the reservation&apos;s remaining term. Exchanges for reservations are typically free, but cancellations may incur prorated charges. 
+
+For more details, visit the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/) for cost management strategies.
+
+---
+
+2. Cost Comparison Between Premium P1 and Azure Managed Redis 
+Azure Managed Redis pricing varies based on region, tier, and memory size. You can use the Azure Pricing Calculator (https://azure.microsoft.com/pricing/calculator/) to estimate costs for the Balanced tier with 6 GB memory in Central India.
+
+---
+
+3. Securing Redis 6.0 Until Migration 
+To maintain security on your Redis 6.0 instance: 
+- Restrict access via Azure Virtual Network and firewalls. 
+- Ensure TLS is enabled for secure communication. 
+- Regularly monitor and apply patches from Microsoft (if available). 
+
+Refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for managing secure storage during migration.
+
+---
+
+4. Migration Steps for Azure Managed Redis 
+- Provision your Azure Managed Redis instance with the desired configuration. 
+- Export data from your existing Redis 6.0 instance using tools like redis-cli or Azure Cache for Redis data migration features. 
+- Import the data into your Azure Managed Redis instance. 
+- Update application connection strings to point to the new endpoint. 
+
+For detailed migration guidance, review the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
+
+---
+
+5. High Availability and Downtime 
+Azure Managed Redis offers high availability by default when enabled. Downtime during migration can be minimized by using the Redis replication feature or scheduling the migration during non-peak hours. 
+
+---
+
+If you’re looking for user experiences or additional tips, consider posting in Azure user forums or checking GitHub discussions. Let us know if you need further assistance!]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Files - SidHistory ACL translation + Domain\Domain Users group</title>
       <link>https://www.reddit.com/r/AZURE/comments/1v7r53a/azure_files_sidhistory_acl_translation/</link>
@@ -1737,42 +1801,6 @@ To migrate approximately 1TB of data from SharePoint Online to Azure Blob Storag
  If your objective is to make the data accessible via a SharePoint Online plugin, you can generate a Shared Access Signature (SAS) for secure access to blobs. SAS tokens allow granular, time-limited access to Azure Storage resources. Refer to the Azure Storage documentation hub (https://learn.microsoft.com/en-us/azure/storage/) for more details on configuring access.
 
 This approach minimizes downtime, ensures data security, and allows for seamless integration between Azure Storage and SharePoint Online. Let me know if you need additional guidance!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Large blob storage migration from one Azure AD tenant to another</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1319845/large-blob-storage-migration-from-one-azure-ad-ten</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1319845/large-blob-storage-migration-from-one-azure-ad-ten</guid>
-      <pubDate>Fri, 08 May 2026 01:27:37 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Large blob storage migration from one Azure AD tenant to another
-
-So far we have come up with two options: We switch the subscription ownership of the entire storage account to the new subscription - as resources can only be moved between subscriptions and only subscriptions can change tenants, we will have to create a temporary subscription to hold the resource while we move it (along with the subscription) to.
-
----
-
-Suggested Response:
-To migrate large blob storage between Azure AD tenants, your outlined approach of switching subscription ownership is viable, but it involves multiple steps. Here&apos;s a refined process to achieve this:
-
-1. Create a New Subscription in the Destination Tenant
- - First, create a temporary subscription in the target Azure AD tenant. This will serve as the intermediate step for transferring the storage account. Ensure you have sufficient permissions in both source and destination tenants.
-
-2. Move the Storage Account to the Temporary Subscription
- - In the source tenant, move the storage account to the newly created subscription. Note that only general-purpose v2 storage accounts can be moved between subscriptions. Ensure the account meets all prerequisites for the move, such as no dependencies on other resources. 
- - Refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) for details on supported account types and services.
-
-3. Transfer the Subscription to the Destination Tenant
- - Once the storage account is in the temporary subscription, transfer ownership of the subscription to the destination tenant. This involves reassigning the subscription to the target Azure AD tenant.
-
-4. Verify and Reconfigure Resources
- - After the transfer, verify that all data and configurations are intact. You may need to update access keys, connection strings, and permissions for the new tenant.
-
-If this approach doesn’t meet your needs (e.g., due to account type restrictions), consider alternative methods like Azure Data Factory or tools like AzCopy for manual data transfer. For an overview of Azure storage account types and their use cases, refer to Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
-
-For step-by-step guidance on creating a storage account, see Create an Azure storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create).
-
-Let me know if you need help with any specific step!]]></description>
     </item>
   </channel>
 </rss>
