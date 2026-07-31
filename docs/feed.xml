@@ -5,7 +5,29 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 31 Jul 2026 12:30:23 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 15:05:01 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Migrate OVA from vCenter</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1vbtdyv/azure_migrate_ova_from_vcenter/</link>
+      <guid isPermaLink="false">t3_1vbtdyv</guid>
+      <pubDate>Fri, 31 Jul 2026 15:00:57 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Migrate OVA from vCenter
+
+I&apos;m trying to get the OVA in vCenter up and running. I get to the point that I verify the key and then do the login/appliance registration status. All appliance services are up to date. I&apos;m using the same account that I generated the key with and I am getting an error that I do not have permissions and it states the App Name is Microsoft Azure PowerShell. Has anyone seen this, how do I grant myself and what permissions need to be granted in order to get the login to be successful and move on to the next step? With vCenter being as ubiquitous as it is, this shouldn&apos;t be a huge issue. Any advice? https://preview.redd.it/rywyfit1ykgh1.png?width=1298&amp;format=png&amp;auto=webp&amp;s=332ff60f9f190b11389bf6e52d23ef24e1116490 &amp;#32; submitted by &amp;#32; /u/tk42967 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Migration from Azure Cache for Redis to Azure Managed Redis: Reservation Options</title>
       <link>https://www.reddit.com/r/AZURE/comments/1v9ndpr/migration_from_azure_cache_for_redis_to_azure/</link>
@@ -1768,39 +1790,6 @@ If you need further assistance or have additional constraints, please share more
 Best regards, 
 [Your Name] 
 Azure Storage Migration Expert]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: best way to migrate about 1TB of data from sharepoint online to azure storage</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1375974/best-way-to-migrate-about-1tb-of-data-from-sharepo</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1375974/best-way-to-migrate-about-1tb-of-data-from-sharepo</guid>
-      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-best way to migrate about 1TB of data from sharepoint online to azure storage
-
-Hi, I&apos;m looking for ways to migrate/move about 1TB of data from office SharePoint online to Azure storage blob and just downloading to local system an... If the idea is just to migrate the data to blob so it can be accessed from a plugin in SPO (btw. this is very interesting so if you can share more information on that it would be great) any.
-
----
-
-Suggested Response:
-To migrate approximately 1TB of data from SharePoint Online to Azure Blob Storage, you can use a combination of tools and services to achieve an efficient and secure transfer. Here&apos;s a step-by-step guide:
-
-1. Export Data from SharePoint Online 
- Use the SharePoint Migration Tool (SPMT) (https://learn.microsoft.com/en-us/sharepointmigration/introducing-the-sharepoint-migration-tool) to export your data from SharePoint Online. While the tool is primarily designed for migrating data into SharePoint or OneDrive, it can also assist in exporting data to your local system.
-
-2. Prepare Azure Storage 
- If you haven’t already, create an Azure Storage account to house your blob data. Follow this guide to create an Azure storage account (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create). Ensure you choose the appropriate performance tier (Standard or Premium) and redundancy option for your use case. 
-
-3. Upload Data to Azure Blob Storage 
- After exporting the data to your local system: 
- - Use tools like AzCopy, Azure Storage Explorer, or PowerShell to upload the data to Azure Blob Storage. AzCopy is a command-line utility specifically designed for high-performance data transfers. 
- - Learn more about Azure Storage options in this Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-4. Access Data in Azure from SharePoint Online 
- If your objective is to make the data accessible via a SharePoint Online plugin, you can generate a Shared Access Signature (SAS) for secure access to blobs. SAS tokens allow granular, time-limited access to Azure Storage resources. Refer to the Azure Storage documentation hub (https://learn.microsoft.com/en-us/azure/storage/) for more details on configuring access.
-
-This approach minimizes downtime, ensures data security, and allows for seamless integration between Azure Storage and SharePoint Online. Let me know if you need additional guidance!]]></description>
     </item>
   </channel>
 </rss>
