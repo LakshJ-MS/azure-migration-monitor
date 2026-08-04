@@ -5,7 +5,29 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 04 Aug 2026 09:11:28 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 11:36:06 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Migrate your general-purpose v1 (GPv1) storage account to a general-purpose v2 (GPv2) storage account by 13 October 2026</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/5962683/migrate-your-general-purpose-v1-gpv1-storage-accou</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5962683/migrate-your-general-purpose-v1-gpv1-storage-accou</guid>
+      <pubDate>Fri, 31 Jul 2026 14:54:43 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Migrate your general-purpose v1 (GPv1) storage account to a general-purpose v2 (GPv2) storage account by 13 October 2026
+
+I have identified 4 storage accounts that need to be upgraed to v2 and some of the documentation says the only databricks will be auto updated but the email says - &quot;After 13 October 2026, all existing GPv1 storage accounts will be automatically migrated over to a GPv2 account, which may result in higher billing costs. ...fThe 4 are of kind.
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Migrate OVA from vCenter</title>
       <link>https://www.reddit.com/r/AZURE/comments/1vbtdyv/azure_migrate_ova_from_vcenter/</link>
@@ -1746,50 +1768,6 @@ Please let me know if you need further clarification or assistance!
 Best regards, 
 [Your Name] 
 Microsoft Azure Storage Migration Expert]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Data Box for export not available</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/2180276/data-box-for-export-not-available</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2180276/data-box-for-export-not-available</guid>
-      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Data Box for export not available
-
-Hmm, I want to export somewhere around 50TB of data from one of our StorageV2 blob storage containers to a customer&apos;s on-prem site in Denmark. I thought I could create a Data Box for export but it appers it is not available for my subscription. What are my options?| Hello Ulf Brehmer , Thanks for your question Data Box is only available for.
-
----
-
-Suggested Response:
-Hello Ulf Brehmer,
-
-Thank you for your question. Exporting 50TB of data from an Azure StorageV2 blob container to an on-premises location can indeed be challenging, especially if Azure Data Box is not available for your subscription. Fortunately, there are alternative approaches you can consider:
-
-1. Azure Storage to On-Premises via AzCopy
- - AzCopy is a command-line tool optimized for transferring large amounts of data to and from Azure Storage. You can use AzCopy to download the data from your blob storage to your on-premises environment.
- - Steps:
- 1. Install AzCopy on your local machine or a VM.
- 2. Authenticate AzCopy with your storage account.
- 3. Use the azcopy copy command to download the blob files locally.
- 4. Transfer the downloaded files to your customer&apos;s site using your preferred method.
- - Learn more about AzCopy here (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-blobs).
-
-2. Azure File Sync
- - If the data needs to be accessed as files, you could use Azure File Sync to sync your blobs with an Azure Files share, then map the share to an on-premises server for transfer.
- - This requires setting up an Azure File share and installing the Azure File Sync agent.
- - Detailed instructions are available in the Azure Storage documentation hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-3. Custom Data Transfer Solutions
- - If the above methods are not feasible due to bandwidth or time constraints, you might need to explore custom solutions such as arranging physical media exchange (if allowed) or leveraging third-party transfer services.
-
-For more information about Azure Storage options, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-If you need further assistance or have additional constraints, please share more details, and I’ll be happy to help!
-
-Best regards, 
-[Your Name] 
-Azure Storage Migration Expert]]></description>
     </item>
   </channel>
 </rss>
