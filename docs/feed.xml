@@ -5,7 +5,32 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 05 Aug 2026 16:48:01 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 18:26:56 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Managed Redis - no console</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1vge0a5/azure_managed_redis_no_console/</link>
+      <guid isPermaLink="false">t3_1vge0a5</guid>
+      <pubDate>Wed, 05 Aug 2026 17:30:14 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Managed Redis - no console
+
+We use Azure Cache for Redis and are getting the notices that it will be retired in 2028 so must migrate to Azure Managed Redis. That’s fine but why doesn’t Azure Managed Redis have the console that Azure Cache for Redis does? Being able to open that console directly from the resource in the Azure portal has been very useful. Sure, I can build an external console but it would be nice to not need to for occasional use. &amp;#32; submitted by &amp;#32; /u/westtx28 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Storage Mover - Fully managed migration service with agent-based orchestration.
+Docs: https://learn.microsoft.com/azure/storage-mover/
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: Migrate your general-purpose v1 (GPv1) storage account to a general-purpose v2 (GPv2) storage account by 13 October 2026</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/5962683/migrate-your-general-purpose-v1-gpv1-storage-accou</link>
@@ -1732,42 +1757,6 @@ To transfer 30 TB of data from your data center to an Azure file share using Azu
  If you plan to keep your on-premises and Azure file shares synchronized, you can configure Azure File Sync after the data transfer is complete. Learn more about Azure File Sync in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
 
 By preparing the file shares in advance and following the Data Box process, you can efficiently migrate your 30 TB of data to Azure. Let me know if you have further questions!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Databox reports</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1193889/databox-reports</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1193889/databox-reports</guid>
-      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Databox reports
-
-How many Storage accounts I can use in a one databox? how data box pricing is calculated| @Dhruthi R Welcome to Microsoft Q&amp;A Forum, Thank you for posting your query here. Azure Data Box service nat... Both hot and cool blob are supported Data Box pricing: https://azure.microsoft.com/en-in/pricing/details/databox/ You are billed when the order.
-
----
-
-Suggested Response:
-Hello @Dhruthi R,
-
-Thank you for posting your query on the Microsoft Q&amp;A Forum. I’m happy to assist you with your questions regarding Azure Data Box usage and pricing.
-
-Storage Accounts per Data Box
-You can copy data into multiple storage accounts using a single Azure Data Box device. The Azure Data Box supports Blob Storage (both hot and cool tiers), Azure Files, and other data types. You can find more information about Azure Storage accounts and their types in the Storage Account Overview documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-Data Box Pricing
-As for pricing, the cost of using Azure Data Box depends on multiple factors, including the type of Data Box device (e.g., Data Box Disk, Data Box, Data Box Heavy) and the duration for which the device is rented. You are billed when the order is placed, and additional charges may apply for shipping, customs duties/taxes, and extending the usage period. Detailed pricing information can be found on the official Azure Data Box Pricing page (https://azure.microsoft.com/en-in/pricing/details/databox/).
-
-Next Steps
-1. Review Storage Account Options: Ensure you configure the appropriate storage accounts for your data transfer by referring to the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-2. Estimate Costs: Use the pricing calculator available on the Azure Pricing (https://azure.microsoft.com/en-in/pricing/) page to estimate costs based on your specific requirements.
-3. Compliance Considerations: If you’re transferring sensitive data, make sure to review Microsoft Compliance offerings (https://learn.microsoft.com/en-us/compliance/) to ensure adherence to regulatory requirements.
-
-Please let me know if you need further clarification or assistance!
-
-Best regards, 
-[Your Name] 
-Microsoft Azure Storage Migration Expert]]></description>
     </item>
   </channel>
 </rss>
