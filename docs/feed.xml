@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 07 Aug 2026 12:30:59 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Fri, 07 Aug 2026 13:55:26 +0000</lastBuildDate>
+<item>
       <title>Microsoft Q&amp;A: Fastest way to transfer data from on premise server to Azure Virtual Desktop</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/5967666/fastest-way-to-transfer-data-from-on-premise-serve</link>
       <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5967666/fastest-way-to-transfer-data-from-on-premise-serve</guid>
