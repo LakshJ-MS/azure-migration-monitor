@@ -5,7 +5,41 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 07 Aug 2026 14:59:29 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 16:04:11 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Update 7th August 2026</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1vi3zbv/azure_update_7th_august_2026/</link>
+      <guid isPermaLink="false">t3_1vi3zbv</guid>
+      <pubDate>Fri, 07 Aug 2026 15:36:33 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Update 7th August 2026
+
+This week&apos;s Azure Update is up. 📽️ https://youtu.be/nys8Uj16gbI 📄 https://www.linkedin.com/pulse/azure-weekly-7th-august-2026-john-savill-3qkfc/ VM trusted launch default (00:37) - Trusted launch which leverages the virtual TPM in Gen 2 VMs for attested secure boot from hardware through to the OS providing enhanced security, is now the default for any new Gen2 VM via the portal, cli and PowerShell. This can also be enabled as the default for infrastructure as code deployments, e.g. Bicep, Terraform etc. ccv5 VM retiring (01:11) - The v5 SKUs of the nested confidential VMs are being retired 1st of September. Make sure you move to a newer SKU before then. Azure Virtual Network Routing Appliance (01:28) - Azure Virtual Network Routing Appliance (VNRA) is now GA! With VNRA, customers and service providers can: Simplify complex routing architectures including across multiple regions Enable private IPv6 connectivity over ExpressRoute and supports dual-stack environments. Scale networking infrastructure without relying on fleets of virtual appliances which includes scaling private endpoints beyond current limits Azure Firewall explicit proxy (02:51) - You can now configure Azure Firewall as the explicit HTTP/HTTPS proxy for your browsers and clients. This includes use as the proxy for Azure Arc which has been a key customer ask for its onboarding. Azure Route Server route maps (03:24) - Azure Route Server provides a managed service to handle dynamic routing using BGP, i.e. your vnet sharing address spaces with some SD-WAN for example. Route maps give you control over route advertisements and routing behavior, this includes being able to summarize routes, control specific routes used, path selection and tagging routes with BGP communities to simplify route management. Traffic Manager Azure DNS integration (04:18) - Traffic Manager provides a DNS-based global load balancing solution while Azure DNS provides public DNS record hosting. Today it is very common to host the vanity domain, e.g. www.savilltech.net on Azure DNS as an CNAME which then points to the traffic manager name for the actual balancing of the requests, this means the client gets an extra hop and redirect to trafficmanager.net name. With this new integration in Azure DNS instead of a CNAME you add a new traffic manager linked record that points to the traffic manager profile and when queried is resolved internally to the target removing that client hop. You may hear this called DNS flattening. It not only provides better DNS experience but enables DNSSEC usage, avoids misconfigurations of the CNAME and supports the zone apex, e.g. savilltech.net. Private Link over IPv6 (06:09) - You can now connect to Azure PaaS services using an IPv6 private endpoint enabling IPv6 client connectivity from the vnet or connected networks (including on-premises via ExpressRoute private peering). NSP perimeter link (06:30) - NSPs enables PaaS services to be placed inside the same NSP to enable connectivity to each other and use shared policy to control inbound and outbound communications. Perimeter link provides a bi-directional trust between two NSPs which then enables cross-NSP resource communication provided they authenticate with each other using Managed Identities (which is required). No changes to access rules on either NSP is required. Azure Storage Mover AWS FSx support (07:16) - Azure Storage Mover now supports AWS FSx for Windows File Server, which is AWS’ fully managed cloud storage service of which Windows SMB is one of them. You can now migrate to Azure Storage File Share but must be over private connectivity and SMB 2.x or above. Each migration job supports up to 500 million objects. Azure SQL DB Regex DDM (07:51) - Regex is back and now you can use it to define the pattern masking to hide sensitive data using Regular expressions via the REGEXPREPLACE function. Remember this only masks it being sent to the client, it does not change anything in the database itself but is useful to hide sensitive information like SSNs etc. SQL immutable 7 days of backup (08:24) - For Azure SQL DB and SQL MI the most recent 7 days of backups are now immutable, i.e. cannot be changed or deleted which is very useful to protect against malicious actors or software that will often try to remove any backups. This is by default and there is no additional cost. Azure Databricks Unity AI Gateway (09:05) - Unity AI Gateway is the AI control plane and governance solution for Databricks which is now GA on Azure Databricks. Every inference and MCP request flows through it enabling rate limits, quotas, policies and full observability (including cost). This works both for Azure-Databricks hosted resources and external. Azure Databricks SharePoint Connector (09:35) - This connector enables you to ingest files from SharePoint into Azure Databricks including incremental ingestion, i.e. just the changes to files. It can ingest unstructured files as binary data or for structured formats like CSV, JSON, XML, EXCEL etc it can bring into Delta tables. This makes it even more powerful for overall enterprise data flows including where you want to leverage AI. Azure Databricks Genie One/Agents free use extended (10:12) - The previous end data of July 31 2026 for the free usage has been extended. These Genie solutions provide smart AI co-worker and domain specific assistance. Marketplace simplified purchase experience (10:28) - This is rolling out now for eligible products, i.e. not those using a custom purchase experience but gives you a single page view of all the relevant information so you can purchase with one easy click. &amp;#32; submitted by &amp;#32; /u/JohnSavill [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Data Box - For large offline migrations (tens of TBs+). Microsoft ships a physical device to your site.
+Docs: https://learn.microsoft.com/azure/databox/
+
+Azure File Sync - Sync on-prem file servers with Azure Files, with cloud tiering to free local space.
+Docs: https://learn.microsoft.com/azure/storage/file-sync/
+
+AzCopy - Fast CLI tool for copying data to/from Azure Blob Storage. Supports direct S3-to-Azure copy.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Azure Storage Mover - Fully managed migration service with agent-based orchestration.
+Docs: https://learn.microsoft.com/azure/storage-mover/
+
+Azure Migrate - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: Fastest way to transfer data from on premise server to Azure Virtual Desktop</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/5967666/fastest-way-to-transfer-data-from-on-premise-serve</link>
@@ -1723,34 +1757,6 @@ Feel free to reach out if you have additional questions or need further guidance
 
 Best regards, 
 [Your Name]]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Is the power supply on the azure databox switchable for 110v and 220v power source?</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/105241/is-the-power-supply-on-the-azure-databox-switchabl</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/105241/is-the-power-supply-on-the-azure-databox-switchabl</guid>
-      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Is the power supply on the azure databox switchable for 110v and 220v power source?
-
-we are receiving a databox to install from one of our tenants. The picture on the website shows a 110v ac cord. Is the power supply switchable for 22... It&apos;s support 220V. Please find below link for your reference. &quot;Provide a suitable power source with electrical overload protection to meet the following power specifications: Voltage: 100 V.
-
----
-
-Suggested Response:
-It seems your question refers to the Azure Data Box&apos;s power requirements, specifically whether it supports both 110V and 220V power sources. While the provided documentation links do not directly address the Azure Data Box hardware specifications, I recommend consulting the official Azure Data Box documentation for precise details. However, I can provide some general guidance.
-
-Azure Data Box devices are typically designed to support a wide range of power inputs, including both 110V and 220V, as they are used across various regions globally. The device usually comes with region-specific power cords, so if the power cord included with your unit is for 110V, you may need to obtain a compatible cord for a 220V source if required.
-
-To ensure proper operation:
-1. Refer to the Azure Data Box User Guide: Check the official documentation for power specifications. Look for the section on &quot;Power Requirements&quot; or similar.
-2. Inspect the Device Labeling: The power brick or the device itself may have a label indicating its voltage compatibility.
-3. Contact Microsoft Support: If you&apos;re unsure about the compatibility or need to request additional power cords, reach out to Azure Support.
-
-For additional guidance on Azure Data Box and other Azure storage solutions, refer to the Azure Storage documentation: Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-If you need further assistance, feel free to ask!]]></description>
     </item>
   </channel>
 </rss>
