@@ -5,7 +5,35 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 07 Aug 2026 11:34:31 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 12:30:59 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Fastest way to transfer data from on premise server to Azure Virtual Desktop</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/5967666/fastest-way-to-transfer-data-from-on-premise-serve</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5967666/fastest-way-to-transfer-data-from-on-premise-serve</guid>
+      <pubDate>Wed, 05 Aug 2026 22:18:05 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Fastest way to transfer data from on premise server to Azure Virtual Desktop
+
+I have 120 Gb of data on a physical server that I need to upload to an Azure Virtual Desktop. This is gener... If network bandwidth is limited or unreliable, use an offline transfer option For large datasets where network transfer is too slow, the recommended options are Azure Data Box family or Azure Import/Export. Data Box or Import/Export is.
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Data Box - For large offline migrations (tens of TBs+). Microsoft ships a physical device to your site.
+Docs: https://learn.microsoft.com/azure/databox/
+
+Azure Migrate - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Managed Redis - no console</title>
       <link>https://www.reddit.com/r/AZURE/comments/1vge0a5/azure_managed_redis_no_console/</link>
@@ -1723,40 +1751,6 @@ To ensure proper operation:
 For additional guidance on Azure Data Box and other Azure storage solutions, refer to the Azure Storage documentation: Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
 
 If you need further assistance, feel free to ask!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Data transfer to Azure files using Data box</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/368174/data-transfer-to-azure-files-using-data-box</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/368174/data-transfer-to-azure-files-using-data-box</guid>
-      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Data transfer to Azure files using Data box
-
-Team, We are trying to transfer 30 TB of data from our DC to Azure file share using Data box. My question is: Do we have to create the file share structure on Azure portal before the Data box are dispatched OR do we hav... Here&apos;s how to set up Azure File Sync in a way that&apos;s compatible with bulk migration tools such as Azure Data Box: Copy data to.
-
----
-
-Suggested Response:
-To transfer 30 TB of data from your data center to an Azure file share using Azure Data Box, you’ll need to follow a few steps to ensure a smooth migration. Here’s how you can proceed:
-
-1. Prepare the Azure File Share: 
- Before using Azure Data Box, you must create the file share structure in your Azure storage account. Azure Data Box does not automatically create file shares for you, so you need to set these up in advance. You can do this via the Azure portal, Azure PowerShell, or Azure CLI. For an overview of storage accounts and their capabilities, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-2. Order and Configure the Data Box: 
- Use the Azure portal to order a Data Box and specify the target storage account and file share details. The Data Box will copy your data into the specified file shares during the import process. Details about Azure Data Box and its capabilities can be found in the Microsoft Azure Data Box overview (https://learn.microsoft.com/en-us/azure/databox/data-box-overview).
-
-3. Copy Data to the Data Box: 
- Once the Data Box is delivered, copy your data onto it using the SMB protocol. Ensure the folder structure on the Data Box matches the file share structure you created in Azure.
-
-4. Return and Import Data: 
- After copying the data, return the Data Box to Azure. Microsoft will handle the data upload into the file shares you specified during the Data Box configuration.
-
-5. Set Up Azure File Sync (Optional): 
- If you plan to keep your on-premises and Azure file shares synchronized, you can configure Azure File Sync after the data transfer is complete. Learn more about Azure File Sync in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-By preparing the file shares in advance and following the Data Box process, you can efficiently migrate your 30 TB of data to Azure. Let me know if you have further questions!]]></description>
     </item>
   </channel>
 </rss>
