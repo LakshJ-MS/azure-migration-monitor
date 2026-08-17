@@ -5,7 +5,32 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 17 Aug 2026 16:03:06 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 17 Aug 2026 16:49:07 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Easiest way to migrate from older B and F series to newer, reservable sizes?</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1vqwzmc/easiest_way_to_migrate_from_older_b_and_f_series/</link>
+      <guid isPermaLink="false">t3_1vqwzmc</guid>
+      <pubDate>Mon, 17 Aug 2026 16:28:01 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Easiest way to migrate from older B and F series to newer, reservable sizes?
+
+Trying to find the easiest way to do this. B and F series are retired from being able to set reservations, so costs are about to go up. I have quite a number of VMs on these sizes, and I need to migrate them as-is to a new size. Changing the size doesnt work due to some garbage with temp disks and/or underlying storage technologies. Anyone have a nice easy(ish) way to do this relatively quickly, with minimal work? So far I see my options as restoring with VEEAM to a new size (not ideal some of these are massive) or Making an image in azure and redeploying? Ive never done this though. Appreciate any input &amp;#32; submitted by &amp;#32; /u/sysadminmakesmecry [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Migrate - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Update 7th August 2026</title>
       <link>https://www.reddit.com/r/AZURE/comments/1vi3zbv/azure_update_7th_august_2026/</link>
@@ -1725,38 +1750,6 @@ To address your query about Azure Data Box pricing and technical assistance, her
  - Select a disk type for Azure IaaS VMs (https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types)
 
 If you provide more details about your technical question or migration scenario, I’d be happy to assist further!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: data box daily usage limit extension</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/113763/data-box-daily-usage-limit-extension</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/113763/data-box-daily-usage-limit-extension</guid>
-      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-data box daily usage limit extension
-
-Hi, I need to extend the 45 day limit for keeping the Azure data disk on-premises. Is this possible?| The migration project got delayed, but the 45 days are about to expire. Logistically it does make sense to send back the disk, just to request a new one in a couple of days or weeks. I&apos;m sure there must be a way to extend this at a cost.|.
-
----
-
-Suggested Response:
-Hello,
-
-Azure Data Box devices, by default, have a retention period of 45 days for on-premises usage. Unfortunately, this limit cannot be extended. Once the 45-day period expires, the device must be returned to Microsoft. If the device is not returned on time, additional fees may apply.
-
-Given your situation, it would likely be more efficient to return the current device and request a new one when you&apos;re ready to proceed with the migration. While this may seem inconvenient, it ensures compliance with Azure&apos;s policies and avoids potential penalties.
-
-For your migration project, I recommend exploring Azure Storage options to ensure you&apos;re fully prepared when the new Data Box arrives. You can review the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) to familiarize yourself with your storage options and best practices.
-
-If you&apos;re looking for alternatives to streamline your data transfer process, you can also explore Azure File Sync or Azure Blob Storage, depending on your use case. The Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/) provides comprehensive guidance on these services.
-
-To avoid similar delays in the future, consider planning your storage migration with buffer time or utilizing Azure&apos;s cloud-based services, such as Azure Files or Azure Blob, to minimize reliance on physical devices.
-
-Feel free to reach out if you have additional questions or need further guidance!
-
-Best regards, 
-[Your Name]]]></description>
     </item>
   </channel>
 </rss>
