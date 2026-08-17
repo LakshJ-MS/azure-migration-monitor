@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 17 Aug 2026 16:49:07 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Mon, 17 Aug 2026 17:32:59 +0000</lastBuildDate>
+<item>
       <title>Reddit r/azure: Easiest way to migrate from older B and F series to newer, reservable sizes?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1vqwzmc/easiest_way_to_migrate_from_older_b_and_f_series/</link>
       <guid isPermaLink="false">t3_1vqwzmc</guid>
