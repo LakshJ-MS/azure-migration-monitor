@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 18 Aug 2026 22:01:21 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Tue, 18 Aug 2026 22:36:52 +0000</lastBuildDate>
+<item>
       <title>Reddit r/azure: On-premise to Azure Migrate</title>
       <link>https://www.reddit.com/r/AZURE/comments/1vs3a9w/onpremise_to_azure_migrate/</link>
       <guid isPermaLink="false">t3_1vs3a9w</guid>
