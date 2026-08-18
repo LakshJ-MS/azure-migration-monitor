@@ -5,7 +5,38 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 18 Aug 2026 21:41:55 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 22:01:21 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: On-premise to Azure Migrate</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1vs3a9w/onpremise_to_azure_migrate/</link>
+      <guid isPermaLink="false">t3_1vs3a9w</guid>
+      <pubDate>Tue, 18 Aug 2026 21:54:58 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+On-premise to Azure Migrate
+
+Hi All, We have a 10 file servers and 15 SQL servers, 70 Apps servers We have a production subscription. And planning to put any production servers over there. SQL and Apps are for Dev/Sit so Do we setup dev/test subscription? Planning on lift and shift. We have 50TB Archive files but need to access time to time. What is the solution for that? &amp;#32; submitted by &amp;#32; /u/EducationAlert5209 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Data Box - For large offline migrations (tens of TBs+). Microsoft ships a physical device to your site.
+Docs: https://learn.microsoft.com/azure/databox/
+
+Azure File Sync - Sync on-prem file servers with Azure Files, with cloud tiering to free local space.
+Docs: https://learn.microsoft.com/azure/storage/file-sync/
+
+Azure Migrate - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Easiest way to migrate from older B and F series to newer, reservable sizes?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1vqwzmc/easiest_way_to_migrate_from_older_b_and_f_series/</link>
@@ -1721,35 +1752,6 @@ Here’s how you can proceed:
 For more detailed guidance on migrating storage accounts, refer to the Microsoft Storage Account Overview documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). 
 
 Let me know if you have further questions!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: we need pricing information of Data box and technical assistance</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1334353/we-need-pricing-information-of-data-box-and-techni</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1334353/we-need-pricing-information-of-data-box-and-techni</guid>
-      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-we need pricing information of Data box and technical assistance
-
-need pricing information of Data box and technical assistance.| You can post technical questions in this forum. The data box pricing is listed here , but you can use this link to chat with Microsoft sales. For a more curated experience, if you have a Microsoft account manager, reach out to them. You can also consider finding a local Microsoft.
-
----
-
-Suggested Response:
-To address your query about Azure Data Box pricing and technical assistance, here&apos;s how you can proceed:
-
-1. Pricing Information: Azure Data Box pricing details are not directly linked in the provided documentation, but you can access the Azure Data Box Pricing page (https://azure.microsoft.com/pricing/details/databox/) for accurate and up-to-date information. Pricing can vary based on the Data Box model and your region.
-
-2. Technical Assistance: For technical questions related to Azure Storage or Data Box, this forum is a great place to start. Additionally, the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/) provides comprehensive resources on Azure Storage services. If your question is specific to storage account migration, refer to the Storage Account Overview documentation: Storage Account Overview - Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-3. Sales Support and Account Management: For a tailored experience, you can contact Microsoft Sales directly through the Contact Microsoft Sales page (https://www.microsoft.com/en-us/licensing/expert). If you&apos;re part of the Microsoft AI Cloud Partner Program or a Cloud Solution Provider (CSP), you may also find additional resources in the Partner Center documentation (https://learn.microsoft.com/en-us/partner-center/).
-
-4. Additional Resources: If your query involves migrating storage or understanding Azure storage types for specific workloads (e.g., Azure VMs), check the relevant documentation:
- - Storage Account Overview - Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
- - Select a disk type for Azure IaaS VMs (https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types)
-
-If you provide more details about your technical question or migration scenario, I’d be happy to assist further!]]></description>
     </item>
   </channel>
 </rss>
