@@ -5,7 +5,41 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 19 Aug 2026 21:06:25 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2026 21:44:38 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Files</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1vsz61d/azure_files/</link>
+      <guid isPermaLink="false">t3_1vsz61d</guid>
+      <pubDate>Wed, 19 Aug 2026 21:06:35 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Files
+
+Hello everyone, I am in the process of migrating a windows file share server to azure files, This consists of 1 share drive with about 60 folders inside. This entire share has about 1.5TB of data which is primary files from different departments. This share is also mounted on all the computers in the organization. We will be using storage mover for this. The idea behind this migration is that we decommission the on-prem file server and access will be directly to azure primarily via the mounted drive on the end-users computer. While the cost is minor for this amount of storage I am still on the fence between HDD (Standard) and SDD (Premium). We currently have site-to-site to all of our locations for other azure resources so I was also wondering what the best method here would be? Private-Endpoint or something else? Any other tips would be much appreciated. &amp;#32; submitted by &amp;#32; /u/techfreak11 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Data Box - For large offline migrations (tens of TBs+). Microsoft ships a physical device to your site.
+Docs: https://learn.microsoft.com/azure/databox/
+
+Azure File Sync - Sync on-prem file servers with Azure Files, with cloud tiering to free local space.
+Docs: https://learn.microsoft.com/azure/storage/file-sync/
+
+Azure Storage Mover - Fully managed migration service with agent-based orchestration.
+Docs: https://learn.microsoft.com/azure/storage-mover/
+
+Azure Migrate - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: On-premise to Azure Migrate</title>
       <link>https://www.reddit.com/r/AZURE/comments/1vs3a9w/onpremise_to_azure_migrate/</link>
@@ -1715,43 +1749,6 @@ If you encounter any issues or need further assistance, feel free to ask. Happy 
 Best regards, 
 [Your Name] 
 Microsoft Azure Storage Migration Expert]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Exporting disks to USB drives?</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1220358/exporting-disks-to-usb-drives</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1220358/exporting-disks-to-usb-drives</guid>
-      <pubDate>Fri, 08 May 2026 09:56:30 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Exporting disks to USB drives?
-
-I am looking for a way to get the disks without having to export/download them individually. Thank you.| Yes, Microsoft offers an Azure Data Box service that allows you to transfer large amounts of data to and from Azure using physical storage devices, such as hard drives or Azure Data Box devices. This service can be particularly useful when you.
-
----
-
-Suggested Response:
-To export Azure disks to USB drives or other physical media en masse, you can consider using the Azure Data Box service. Azure Data Box is designed to securely transfer large amounts of data to and from Azure using physical storage devices. This can be more efficient than downloading disks individually, especially when dealing with significant data volumes.
-
-Here’s how you can proceed:
-
-1. Evaluate Azure Data Box: Start by reviewing the Azure Data Box service to ensure it fits your requirements. The Data Box can be ordered directly from the Azure portal and supports large-scale data export scenarios. For more information, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). 
-
-2. Prepare Disks for Transfer:
- - If the disks are managed disks in Azure, you may need to convert them to VHD files for export.
- - For guidance on Azure managed disk types and their configurations, refer to Select a disk type for Azure IaaS VMs (https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types).
-
-3. Use Azure Data Box:
- - Order a Data Box device from the Azure portal.
- - Once the device is delivered, copy the data (e.g., VHDs of your disks) to the Data Box using the provided tools.
- - Return the device to Microsoft, and the data will be uploaded to your Azure storage account.
-
-4. Alternative for Small-Scale Exports:
- - If the dataset is small, you can download individual VHDs from Azure using tools like Azure Storage Explorer or Azure CLI. You can then use utilities like diskpart to prepare and manage the data on USB drives. Learn more about diskpart here (https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/diskpart).
-
-For more detailed guidance on migrating storage accounts, refer to the Microsoft Storage Account Overview documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview). 
-
-Let me know if you have further questions!]]></description>
     </item>
   </channel>
 </rss>
