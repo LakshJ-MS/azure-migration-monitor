@@ -5,7 +5,29 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 26 Aug 2026 22:14:05 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 03:24:01 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: A Tale of Two SOCs: Insights From Two Red Team Assessments</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1vzdlti/a_tale_of_two_socs_insights_from_two_red_team/</link>
+      <guid isPermaLink="false">t3_1vzdlti</guid>
+      <pubDate>Wed, 26 Aug 2026 23:38:45 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+A Tale of Two SOCs: Insights From Two Red Team Assessments
+
+This is a great report from CISA that analyzes two simultaneous red team assessments conducted on organizations to evaluate their threat detection and response capabilities. Both entities suffered full domain compromise and the red team was able to pivot from on-prem to Azure. However organization B successfully isolated initial threats, forcing the red team to adopt an assume breach model while organization A failed to identify the intrusion due to untuned detection tools and organizational silos. Link here: A Tale of Two SOCs: Insights From Two Red Team Assessments &amp;#32; submitted by &amp;#32; /u/Cyber_Tarek [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Files</title>
       <link>https://www.reddit.com/r/AZURE/comments/1vsz61d/azure_files/</link>
@@ -1711,44 +1733,6 @@ To clarify if the hardware encryption modules of Azure Data Box are listed on th
 Additionally, if regulatory compliance is a key concern, review the Azure Policy Regulatory Compliance controls for Azure Data Box (https://learn.microsoft.com/en-us/azure/databox/security-controls-policy) to ensure that your deployment adheres to any required standards.
 
 Let me know if you have further questions!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Using data box disk uploading data</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/547752/using-data-box-disk-uploading-data</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/547752/using-data-box-disk-uploading-data</guid>
-      <pubDate>Fri, 08 May 2026 11:23:40 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Using data box disk uploading data
-
-Hi, I have ordered data box disk to copy data form my local device to azure fileshare. What I want to understand is, whether data box will create a new fileshare or can I have the option to upload it to already created fileshare. Thanks| @Biswajeet Kumar Data Box will not create a new share you will need to manually create this. For more.
-
----
-
-Suggested Response:
-Hi @Biswajeet Kumar,
-
-Great question! When using Azure Data Box Disk to upload data to Azure File Share, the Data Box Disk will not automatically create a new file share for you. You must manually create the file share in your storage account before transferring the data.
-
-Here’s how you can proceed:
-
-1. Prepare Your Azure File Share: 
- If you want to upload data into an existing file share, ensure the file share is already created in your storage account. If you need to create a new file share, follow the steps in this guide: Create an Azure File Share (https://learn.microsoft.com/en-us/azure/storage/files/storage-how-to-create-file-share).
-
-2. Copy Data to the Data Box Disk: 
- Before you ship the Data Box Disk to Azure, copy your data to it as per the instructions provided during the ordering process.
-
-3. Import Data to Your File Share: 
- When the Data Box Disk is received at the Azure datacenter, you can specify the target Azure storage account and file share where the data should be uploaded. Note that you must explicitly assign the destination file share during the data import process. If you select an existing file share, the data will be uploaded into it.
-
-For more details about the Data Box Disk and its functionality, refer to the Microsoft Azure Data Box Overview (https://learn.microsoft.com/en-us/azure/databox/data-box-overview).
-
-If you encounter any issues or need further assistance, feel free to ask. Happy transferring! 😊
-
-Best regards, 
-[Your Name] 
-Microsoft Azure Storage Migration Expert]]></description>
     </item>
   </channel>
 </rss>
