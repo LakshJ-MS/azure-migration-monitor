@@ -5,7 +5,32 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sat, 29 Aug 2026 03:22:02 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 10:23:22 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: on prem to Azure migration problem</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1w1gbmq/on_prem_to_azure_migration_problem/</link>
+      <guid isPermaLink="false">t3_1w1gbmq</guid>
+      <pubDate>Sat, 29 Aug 2026 07:52:39 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+on prem to Azure migration problem
+
+Hey datafam! For anyone who&apos;s done an on-prem-to-ADLS Gen2 migration with a Self-Hosted IR: what&apos;s the earliest signal you watch for that tells you the IR itself is the problem, versus the source data being genuinely bad? How do you tell a CDC watermark lag caused by a VM/network blip apart from one caused by the source database job actually failing? Is there a reliable tell, or do you just wait it out? &amp;#32; submitted by &amp;#32; /u/Personal-Risk-5370 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Migrate - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: A Tale of Two SOCs: Insights From Two Red Team Assessments</title>
       <link>https://www.reddit.com/r/AZURE/comments/1vzdlti/a_tale_of_two_socs_insights_from_two_red_team/</link>
@@ -1702,37 +1727,6 @@ Additional Resources:
 - If you face challenges with unsupported regions during migration, review Azure Migrate in Unsupported Regions (https://learn.microsoft.com/en-us/azure/migrate/azure-migrate-unsupported-regions).
 
 Migrating a storage account requires careful planning, especially if you have applications actively relying on the data in the source account. Be sure to test thoroughly before making the final switch.]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Azure Data Box Device FIPS validated Encryption</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/5880040/azure-data-box-device-fips-validated-encryption</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5880040/azure-data-box-device-fips-validated-encryption</guid>
-      <pubDate>Fri, 08 May 2026 11:23:40 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Azure Data Box Device FIPS validated Encryption
-
-I&apos;m trying to find information to confirm if Azure Data Box uses FIPS validated modules for data encryption. This article says hardware encryption and Bitlocker is used. https://learn.microsoft.com/en-us/azure/databox/data-box-disk-security however, it doesn&apos;t say if the hardware encryption is FIPS validated and listed on the CMVP.
-
----
-
-Suggested Response:
-Azure Data Box uses hardware encryption and BitLocker to secure data at rest, as mentioned in the Azure Data Box security overview (https://learn.microsoft.com/en-us/azure/databox/data-box-security). However, for your specific question about FIPS validation, you need to look at Microsoft&apos;s FIPS 140 compliance documentation.
-
-The Federal Information Processing Standard (FIPS) 140 compliance article (https://learn.microsoft.com/en-us/azure/compliance/offerings/offering-fips-140-2) confirms that Azure implements cryptographic modules validated under FIPS 140-2 or FIPS 140-3 standards, which are certified by the Cryptographic Module Validation Program (CMVP). While this ensures that Azure services, including Azure Data Box, comply with FIPS validation requirements, the specific encryption modules used by Data Box hardware are not explicitly mentioned in the available documentation.
-
-To clarify if the hardware encryption modules of Azure Data Box are listed on the CMVP, I recommend reaching out to Microsoft Support or your account representative for confirmation. Meanwhile, you can refer to the following resources for more details:
-
-1. Azure Data Box Security Overview: Details the security features of Azure Data Box, including encryption mechanisms. 
- Learn more (https://learn.microsoft.com/en-us/azure/databox/data-box-security) 
-
-2. Azure FIPS 140 Compliance: Explains how Azure services adhere to FIPS 140 standards. 
- Learn more (https://learn.microsoft.com/en-us/azure/compliance/offerings/offering-fips-140-2) 
-
-Additionally, if regulatory compliance is a key concern, review the Azure Policy Regulatory Compliance controls for Azure Data Box (https://learn.microsoft.com/en-us/azure/databox/security-controls-policy) to ensure that your deployment adheres to any required standards.
-
-Let me know if you have further questions!]]></description>
     </item>
   </channel>
 </rss>
