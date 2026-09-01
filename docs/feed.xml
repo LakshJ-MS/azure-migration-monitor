@@ -5,7 +5,35 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 01 Sep 2026 00:35:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2026 05:44:02 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: What are we using for DFS Standalone Namespace equivalents in the cloud?</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1w3zfdt/what_are_we_using_for_dfs_standalone_namespace/</link>
+      <guid isPermaLink="false">t3_1w3zfdt</guid>
+      <pubDate>Tue, 01 Sep 2026 02:47:47 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+What are we using for DFS Standalone Namespace equivalents in the cloud?
+
+DFS Namespace with root-consolidation works a treat for on-premises file server migrations moving to Azure Files or similar. DFS Namespace in a failover cluster environment adds the extra level of redundancy and availability. What if we have cloud-native environments or want to move this off traditional on-premises environments to Azure? do we just build the same environment on IaaS or can we trim down and build better? &amp;#32; submitted by &amp;#32; /u/DearSignature9602 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure File Sync - Sync on-prem file servers with Azure Files, with cloud tiering to free local space.
+Docs: https://learn.microsoft.com/azure/storage/file-sync/
+
+Azure Migrate - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: on prem to Azure migration problem</title>
       <link>https://www.reddit.com/r/AZURE/comments/1w1gbmq/on_prem_to_azure_migration_problem/</link>
@@ -1688,45 +1716,6 @@ When using Azure Data Box for large-scale data migration (such as transferring 6
 4. Next Steps: After the data lands in Azure, you can use various tools and services (e.g., Azure Data Factory, Azure Synapse Analytics) to transform, analyze, or distribute the data across your cloud environment.
 
 For more details on Azure Storage and migration best practices, visit the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/). Let me know if you need help with the next steps!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: How to migrate an Azure Storage account which is in southeastasia region to Central US region?</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1534312/how-to-migrate-an-azure-storage-account-which-is-i</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1534312/how-to-migrate-an-azure-storage-account-which-is-i</guid>
-      <pubDate>Fri, 08 May 2026 12:54:48 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-How to migrate an Azure Storage account which is in southeastasia region to Central US region?
-
-Adding on to the previous response, if you wish to change the location of your Azure Storage account, what you need to do is, you will have to create a copy of the storage account in the target location or region, and then you need to transfer or move all the data from the source storage account to the target storage account. You can do this.
-
----
-
-Suggested Response:
-To migrate an Azure Storage account from the Southeast Asia region to the Central US region, you’ll need to create a new storage account in the target region and transfer your data from the source account. Unfortunately, Azure doesn’t support directly relocating a storage account to another region, but you can achieve this by following these steps:
-
-Step-by-Step Process:
-1. Create a Storage Account in the Target Region 
- - Navigate to the Azure portal and create a new storage account in the Central US region. Ensure the configuration matches your requirements (e.g., performance tier, replication type). 
- - For details, refer to Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-2. Transfer Data Using AzCopy 
- - Use AzCopy, a command-line tool, to copy data from the source storage account (Southeast Asia) to the target storage account (Central US). 
- - AzCopy supports high-performance data transfer and is ideal for large-scale migrations. 
- - Follow the guidance in Relocate Azure Storage Account to another region (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/relocation/relocation-storage-account).
-
-3. Update Application Configuration 
- - Once the data has been copied, update your applications to point to the new storage account in the Central US region. Update connection strings and any dependencies to ensure smooth transition.
-
-4. Verify and Cleanup 
- - Verify that all data has been copied accurately and is accessible from the new storage account. 
- - After confirming the migration, you can consider deleting the old storage account to avoid additional costs.
-
-Additional Resources: 
-- If you face challenges with unsupported regions during migration, review Azure Migrate in Unsupported Regions (https://learn.microsoft.com/en-us/azure/migrate/azure-migrate-unsupported-regions).
-
-Migrating a storage account requires careful planning, especially if you have applications actively relying on the data in the source account. Be sure to test thoroughly before making the final switch.]]></description>
     </item>
   </channel>
 </rss>
