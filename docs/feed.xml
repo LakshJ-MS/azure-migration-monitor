@@ -5,7 +5,29 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 01 Sep 2026 23:31:31 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2026 01:21:25 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: How Red Teamers Hijack Primary Refresh Tokens to Pivot to Azure</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1w4vjti/how_red_teamers_hijack_primary_refresh_tokens_to/</link>
+      <guid isPermaLink="false">t3_1w4vjti</guid>
+      <pubDate>Wed, 02 Sep 2026 00:56:33 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+How Red Teamers Hijack Primary Refresh Tokens to Pivot to Azure
+
+Digging a bit deeper into CISA&apos;s recent report, &quot;A Tale of Two SOCs&quot;. Their red teamers pivoted from on-prem to Azure after stealing a PRT from an app owner&apos;s machine. The pattern looks like this: Enumerating the organization’s cloud Identifying applications with elevated permissions to the Microsoft Graph Resource API Identifying the owner of an application with elevated permissions. Moving laterally to the owner’s machine. Obtaining access to the user’s primary refresh token (PRT). Using the PRT to request access and refresh tokens for the targeted application’s owner. Using the access token to add a new client secret to the target application. Using the new client secret to request a new access token for the target application. Impersonating the application by using the access token to retrieve and review target emails via the Microsoft Graph API. I&apos;m familiar with all the steps but I wanted a better understanding of number 4. So I decided to do a bit of research and came up with this: https://astrasec.io/blog/how-red-teamers-hijack-primary-refresh-tokens-to-pivot-to-azure I&apos;m curious to know if anyone else came across similar tools that red teamers or threat actors use to access PRTs. There isn&apos;t a lot of info out there. &amp;#32; submitted by &amp;#32; /u/Cyber_Tarek [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: What are we using for DFS Standalone Namespace equivalents in the cloud?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1w3zfdt/what_are_we_using_for_dfs_standalone_namespace/</link>
@@ -1689,33 +1711,6 @@ While the specific details about Data Box Disk security are outlined in the Data
 For a detailed understanding of Azure Storage’s security and compliance capabilities, you may also refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) and the Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
 
 If you have additional questions about setting up or using the Data Box Disk, let me know!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Data landing zone from databox</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1484090/data-landing-zone-from-databox</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1484090/data-landing-zone-from-databox</guid>
-      <pubDate>Fri, 08 May 2026 14:56:38 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Data landing zone from databox
-
-When our project had 650 TB data in the initial load and if we used Azure data box with the help of Microsoft, where it is stored first, and what was the arriving zone of data, as a junior I do not have access to this information. This article provides an overview of some of the common Azure data transfer solutions. The article also links out to.
-
----
-
-Suggested Response:
-When using Azure Data Box for large-scale data migration (such as transferring 650 TB), the data is initially stored in an Azure Storage account. The arriving zone for your data depends on the configuration set up during the Data Box import process, typically aligning with the storage type chosen (e.g., blobs, files, queues, or tables). Here&apos;s a breakdown of the process:
-
-1. Data Transfer via Azure Data Box: Azure Data Box is shipped to your location, where the data is copied onto the device. Once returned to Microsoft, the data is securely uploaded to your designated Azure Storage account. 
-
-2. Storage Account Configuration: The data lands in the storage account configured during the Data Box setup. A storage account serves as the foundation for all Azure Storage data objects. You can choose from different types of storage (e.g., Blob Storage for unstructured data or Azure Files for file shares). For an overview of Azure Storage accounts, refer to Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-3. Data Landing Zone: In cloud adoption projects, the concept of a &quot;data landing zone&quot; refers to the initial storage location where ingested data resides before further processing or analysis. This can be aligned with your organization&apos;s cloud adoption strategy as outlined in the Cloud Adoption Framework (https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/).
-
-4. Next Steps: After the data lands in Azure, you can use various tools and services (e.g., Azure Data Factory, Azure Synapse Analytics) to transform, analyze, or distribute the data across your cloud environment.
-
-For more details on Azure Storage and migration best practices, visit the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/). Let me know if you need help with the next steps!]]></description>
     </item>
   </channel>
 </rss>
