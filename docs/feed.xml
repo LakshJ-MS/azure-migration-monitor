@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 02 Sep 2026 01:21:25 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Wed, 02 Sep 2026 06:19:31 +0000</lastBuildDate>
+<item>
       <title>Reddit r/azure: How Red Teamers Hijack Primary Refresh Tokens to Pivot to Azure</title>
       <link>https://www.reddit.com/r/AZURE/comments/1w4vjti/how_red_teamers_hijack_primary_refresh_tokens_to/</link>
       <guid isPermaLink="false">t3_1w4vjti</guid>
