@@ -5,7 +5,29 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 08 Sep 2026 06:31:36 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 11:43:30 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Migrating to Storage v2</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1wak960/migrating_to_storage_v2/</link>
+      <guid isPermaLink="false">t3_1wak960</guid>
+      <pubDate>Tue, 08 Sep 2026 10:10:01 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Migrating to Storage v2
+
+Hey everyone, I need to migrate the storage from v1 to v2 since v1 is already deprecated. Can anyone share any tool or best practises that I need to take care of before the execute the az command that is given in the documentation. Also there is a lot of data in those container blobs, documentation says the data won&apos;t be impacted but just wanted to understand from your experience if anyone has done it? &amp;#32; submitted by &amp;#32; /u/abhinavd26 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+AzCopy - Fast CLI tool for copying data to/from Azure Blob Storage. Supports direct S3-to-Azure copy.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: How Red Teamers Hijack Primary Refresh Tokens to Pivot to Azure</title>
       <link>https://www.reddit.com/r/AZURE/comments/1w4vjti/how_red_teamers_hijack_primary_refresh_tokens_to/</link>
@@ -1682,35 +1704,6 @@ Additional Resources:
 - If you are working in a private network, ensure proper DNS configuration for Azure File Sync using Azure Private Endpoint DNS values (https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns).
 
 Let me know if you have further questions or need help with your setup!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Data Box Disk Tamper Protection - FIPS 140-2 Certification Level</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1101846/data-box-disk-tamper-protection-fips-140-2-certifi</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1101846/data-box-disk-tamper-protection-fips-140-2-certifi</guid>
-      <pubDate>Fri, 08 May 2026 17:53:10 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Data Box Disk Tamper Protection - FIPS 140-2 Certification Level
-
-According to the Data Box Security and Data Protection documentation ( https://learn.microsoft.com/en-us/azure/databox/data-box-security ), tamper protection is FIPS 140-2 level 2 certified. The Data Box Disk overview ( https://learn.microsoft.com/en-us/azure/databox/data-box-disk-overview ) states &quot;The disks are tamper-resistant and support.
-
----
-
-Suggested Response:
-The Microsoft Learn documentation you referenced confirms that Azure Data Box Disk is indeed tamper-resistant and complies with FIPS 140-2 Level 2 certification for tamper protection. This certification ensures that the device meets strict security standards for cryptographic modules, making it suitable for secure data transfers.
-
-While the specific details about Data Box Disk security are outlined in the Data Box Security and Data Protection documentation (https://learn.microsoft.com/en-us/azure/databox/data-box-security), let me provide additional context for Azure compliance and security capabilities:
-
-1. FIPS 140-2 Certification: The FIPS 140-2 Level 2 compliance ensures that the Data Box Disk provides physical tamper evidence and role-based authentication. This is critical for maintaining data integrity during transport.
- 
-2. Azure Compliance Offerings: Azure meets several global regulatory standards, including ISO 27001, ISO 27018, SOC 1, SOC 2, and more. You can explore the full list of Azure compliance certifications here (https://learn.microsoft.com/en-us/azure/compliance/).
-
-3. Data Security with Azure Storage: Azure Storage is built with security as a cornerstone, offering features like encryption at rest, secure data transfer, and integration with Azure Active Directory for access management. Learn more in the Azure Storage documentation hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-For a detailed understanding of Azure Storage’s security and compliance capabilities, you may also refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) and the Introduction to Azure Storage (https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction).
-
-If you have additional questions about setting up or using the Data Box Disk, let me know!]]></description>
     </item>
   </channel>
 </rss>
