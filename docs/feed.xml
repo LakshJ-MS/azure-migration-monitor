@@ -5,7 +5,35 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 18 Sep 2026 14:17:37 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 17:46:06 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Blob support shipped in Blober. Looking for feedback</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1wjtbib/azure_blob_support_shipped_in_blober_looking_for/</link>
+      <guid isPermaLink="false">t3_1wjtbib</guid>
+      <pubDate>Fri, 18 Sep 2026 15:27:56 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Blob support shipped in Blober. Looking for feedback
+
+Hello. I&apos;m the developer of Blober ( https://blober.io/ ), a desktop app for moving files between cloud providers through your machine. blober can move files between azure blob and 20+ other providers ( Google Drive, Google Photos, Dropbox, OneDrive, Box, pCloud, Proton Drive, local drives, NAS, S3-compatible storage like Cloudflare R2 / Backblaze B2 / Wasabi, etc ) in any direction What it does: Streams files to and from azure blob in parallel, with per-file progress and automatic retry It supports glob filters (eg: /.{jpg,jpeg,png,webp} ) to easily include and exclude files to process It supports path templates (eg: archive/{filecreateddate}/{filename} ) so you can organize files as you transfer them, so files transfer as media-container/archive/2026-07-18/GX015742.MP4 Beyond just moving files, blober can change azure storage tiers (Hot, Cool, Cold, Archive) and container access levels in bulk, eg changing an entire container blobs from Hot to Archive vs rclone? rclone is excellent and it works. blober supports some proprietary cloud providers such as GoPro Cloud. With Proton Drive, blober is able to generate thumbnails for images, videos and audio files during transfer. With Google Photos, blober can transfer all your google photos, unlike rclone. I would genuinely like to know whether Blober would solve a problem you personally have. &amp;#32; submitted by &amp;#32; /u/mckabue [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Data Box - For large offline migrations (tens of TBs+). Microsoft ships a physical device to your site.
+Docs: https://learn.microsoft.com/azure/databox/
+
+Azure File Sync - Sync on-prem file servers with Azure Files, with cloud tiering to free local space.
+Docs: https://learn.microsoft.com/azure/storage/file-sync/
+
+AzCopy - Fast CLI tool for copying data to/from Azure Blob Storage. Supports direct S3-to-Azure copy.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Contribute to Microsoft Opensource</title>
       <link>https://www.reddit.com/r/AZURE/comments/1wdjzrx/contribute_to_microsoft_opensource/</link>
@@ -1649,47 +1677,6 @@ It sounds like you&apos;re encountering an issue with selecting VMs in the Azure
 For further troubleshooting, refer to the Azure Migrate documentation: Azure Migrate Documentation (https://learn.microsoft.com/en-us/azure/migrate/migrate-appliance).
 
 If the issue persists after these steps, feel free to provide additional details here, and we’ll assist further.]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Azure file sync - 5tb - hybrid cache solution</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/1283331/azure-file-sync-5tb-hybrid-cache-solution</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/1283331/azure-file-sync-5tb-hybrid-cache-solution</guid>
-      <pubDate>Fri, 08 May 2026 19:27:03 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Azure file sync - 5tb - hybrid cache solution
-
-With Azure File Sync, you can create a synchronization relationship between your local file server and an Azure file share. The primary purpose of Azure File Sync is to synchronize files between the local file server and Azure, providing cloud-based redundancy and offloading of less frequently accessed files to the cloud. ...ou to cache several.
-
----
-
-Suggested Response:
-Azure File Sync is an excellent solution for hybrid environments where you need to maintain local file server performance while leveraging cloud storage for redundancy and scalability. Based on your description, it sounds like you&apos;re looking for guidance on setting up Azure File Sync for a 5TB workload with hybrid caching.
-
-Steps to Implement Azure File Sync:
-
-1. Create a Storage Account 
- Begin by creating a storage account in Azure. The storage account will host your Azure file share. To choose the right storage account type, review the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-2. Set Up an Azure File Share 
- Once the storage account is created, set up an Azure file share to store your files. Azure file shares provide cloud-based file storage accessible via SMB or REST APIs. Refer to the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/) for a deeper understanding of file shares.
-
-3. Install Azure File Sync Agent 
- Install the Azure File Sync agent on your on-premises file server. This agent enables the synchronization of files between your server and the Azure file share. Ensure your server meets the system requirements specified in the Azure File Sync documentation.
-
-4. Register the File Server with Azure 
- Use the agent to register your file server with the Azure File Sync service. This step ties your local server to the Azure environment.
-
-5. Create a Sync Group 
- Create a sync group in Azure, which establishes the relationship between the Azure file share and your on-premises file server. This is where you configure caching policies to keep frequently accessed files locally while offloading the rest to Azure.
-
-6. Enable Hybrid Caching 
- To optimize performance, configure the cloud tiering feature. This ensures that only hot (frequently accessed) data resides on your local server, while cold data is tiered to Azure.
-
-For detailed architectural guidance, you can also explore the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/).
-
-By following these steps, you can efficiently sync and cache 5TB of data with Azure File Sync. Let me know if you need clarification on any specific aspect!]]></description>
     </item>
   </channel>
 </rss>
