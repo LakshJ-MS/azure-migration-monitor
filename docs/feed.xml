@@ -5,7 +5,7 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Mon, 21 Sep 2026 07:02:59 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2026 13:59:24 +0000</lastBuildDate>
 <item>
       <title>Reddit r/azure: Azure Blob support shipped in Blober. Looking for feedback</title>
       <link>https://www.reddit.com/r/AZURE/comments/1wjtbib/azure_blob_support_shipped_in_blober_looking_for/</link>
