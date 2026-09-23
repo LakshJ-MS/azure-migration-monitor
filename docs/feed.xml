@@ -5,7 +5,32 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 23 Sep 2026 06:44:55 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 12:19:38 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft Q&amp;A: Migration of DataBricks managed Azure Blob Storage accounts</title>
+      <link>https://learn.microsoft.com/en-us/answers/questions/6011213/migration-of-databricks-managed-azure-blob-storage</link>
+      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/6011213/migration-of-databricks-managed-azure-blob-storage</guid>
+      <pubDate>Tue, 22 Sep 2026 15:36:59 +0000</pubDate>
+      <description><![CDATA[Source: Microsoft Q&amp;A
+
+Question:
+Migration of DataBricks managed Azure Blob Storage accounts
+
+I asked about this a year ago: https://learn.microsoft.com/en-us/answers/questions/5573015/migration-of-azure-blob-storage-accounts-created-b Microsoft Azure is migrating Azure V1 and BlobStorage accounts to V2, with a deadline of Oct 13 2026. The storage accounts mentioned are Databricks-managed Blob Storage ... For Microsoft-managed resources,.
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+AzCopy - Fast CLI tool for copying data to/from Azure Blob Storage. Supports direct S3-to-Azure copy.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Azure Storage Mover - Fully managed migration service with agent-based orchestration.
+Docs: https://learn.microsoft.com/azure/storage-mover/
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Blob support shipped in Blober. Looking for feedback</title>
       <link>https://www.reddit.com/r/AZURE/comments/1wjtbib/azure_blob_support_shipped_in_blober_looking_for/</link>
@@ -1646,37 +1671,6 @@ If you&apos;re migrating databases, the Azure Database Migration Service (https:
 For an end-to-end guide on designing your migration strategy, the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/) is a valuable resource to explore established patterns and best practices.
 
 Let me know if you need further help with any specific migration scenario!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: AZURE MIGRATE</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/2041549/azure-migrate</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2041549/azure-migrate</guid>
-      <pubDate>Sat, 09 May 2026 08:54:24 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-AZURE MIGRATE
-
-| @Maninder Kaur Sorry for the inconvenience caused. Based on the information provided, I understand that you&apos;re experiencing an issue with the Azure Migrate tool where you are unable to select the VMs to migrate. please follow the steps suggested below: Ensure that all required fields are filled out correctly. If none of these steps resolve the.
-
----
-
-Suggested Response:
-It sounds like you&apos;re encountering an issue with selecting VMs in the Azure Migrate tool. To address this, please follow these steps:
-
-1. Verify Appliance Configuration: Ensure that the Azure Migrate appliance is set up correctly and meets all the prerequisites. The appliance is critical for discovering and assessing your on-premises environment. You can review the configuration steps and prerequisites here: Azure Migrate appliance (https://learn.microsoft.com/en-us/azure/migrate/migrate-appliance).
-
-2. Check Discovery Status: After configuring the appliance, check if your VMs have been successfully discovered. If the discovery process is incomplete, the VMs may not appear in the Azure Migrate portal.
-
-3. Assess Project Settings: Confirm that all required fields in your Azure Migrate project are filled out accurately. Ensure that you&apos;ve selected the correct assessment type (e.g., server migration) and that the discovered VMs are properly tagged or grouped for migration.
-
-4. Network and Permissions: Ensure that the appliance has proper network connectivity to both your on-premises VMs and Azure. Additionally, verify that the required permissions are granted for the service principal being used during the migration process.
-
-5. Select VMs for Migration: Once discovery is complete, navigate to your Azure Migrate project in the Azure portal, go to the Servers section, and verify that the VMs are listed. If they aren’t, recheck the discovery process and ensure compatibility with Azure Migrate.
-
-For further troubleshooting, refer to the Azure Migrate documentation: Azure Migrate Documentation (https://learn.microsoft.com/en-us/azure/migrate/migrate-appliance).
-
-If the issue persists after these steps, feel free to provide additional details here, and we’ll assist further.]]></description>
     </item>
   </channel>
 </rss>
