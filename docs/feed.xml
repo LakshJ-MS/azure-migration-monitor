@@ -5,7 +5,32 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 30 Sep 2026 11:24:52 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2026 16:59:09 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Anyone migrated Azure Blob containers from anonymous access to SAS/Entra ID?</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1wu5s9l/anyone_migrated_azure_blob_containers_from/</link>
+      <guid isPermaLink="false">t3_1wu5s9l</guid>
+      <pubDate>Wed, 30 Sep 2026 14:03:02 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Anyone migrated Azure Blob containers from anonymous access to SAS/Entra ID?
+
+We&apos;re reviewing Azure Storage Accounts with publicly accessible Blob containers. For those who have done similar remediation:Did you migrate external consumers to SAS tokens?Did you use Entra ID/Managed Identity for internal applications?How did you identify who was actually using the anonymous endpoints?Any lessons learned before disabling public access?Interested in real-world experiences and best practices. Thanks! and best practices. Thanks &amp;#32; submitted by &amp;#32; /u/SoftReturn6532 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+AzCopy - Fast CLI tool for copying data to/from Azure Blob Storage. Supports direct S3-to-Azure copy.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Azure Storage Mover - Fully managed migration service with agent-based orchestration.
+Docs: https://learn.microsoft.com/azure/storage-mover/
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Microsoft Q&amp;A: Migration of DataBricks managed Azure Blob Storage accounts</title>
       <link>https://learn.microsoft.com/en-us/answers/questions/6011213/migration-of-databricks-managed-azure-blob-storage</link>
@@ -1639,38 +1664,6 @@ Migrating from Rightworks to Azure can be a multi-faceted process, but leveragin
  - If vendor collaboration is limited, focus on exporting data in standard formats and reconfiguring applications in-house. Azure&apos;s flexible ecosystem supports various workloads and formats, which can ease this process.
 
 Feel free to share any specific concerns, and I’d be happy to guide you further!]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Azure Migrate Explore Utility</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/2124359/azure-migrate-explore-utility</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/2124359/azure-migrate-explore-utility</guid>
-      <pubDate>Mon, 11 May 2026 04:17:13 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Azure Migrate Explore Utility
-
-In the Ignite sess... The Azure Migrate: Explore utility isn&apos;t something you can download separately. It’s actually built right into the Azure Migrate service within the Azure Portal. Here’s how you can access it: Go to Azure Portal and log in. Type &quot;Azure Migrate&quot; in the search bar and select it from the results. Inside your project,.
-
----
-
-Suggested Response:
-The Azure Migrate: Explore utility is indeed an integrated feature within the Azure Migrate service, available directly in the Azure portal. It helps assess and plan your migration to Azure for various workloads, including storage, databases, and virtual machines.
-
-To access and use the Azure Migrate: Explore utility:
-
-1. Log in to the Azure Portal at portal.azure.com (https://portal.azure.com).
-2. In the search bar, type &quot;Azure Migrate&quot; and select it from the search results.
-3. Once in the Azure Migrate service, create a new migration project or select an existing one.
-4. Within the project, you&apos;ll find tools for discovery, assessment, and migration. The Explore feature allows you to analyze your current workloads and determine the best migration strategy.
-
-For migrating Azure Storage specifically, you can review the Storage Account Overview documentation (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview) to understand Azure Storage offerings such as blobs, files, queues, and tables. This will help you plan and configure the target storage services appropriately.
-
-If you&apos;re migrating databases, the Azure Database Migration Service (https://learn.microsoft.com/en-us/sql/) can assist. For example, migrating data to Azure Cosmos DB or SQL Server is covered comprehensively in the Azure Cosmos DB documentation (https://learn.microsoft.com/en-us/azure/cosmos-db/) and Microsoft SQL documentation (https://learn.microsoft.com/en-us/sql/).
-
-For an end-to-end guide on designing your migration strategy, the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/) is a valuable resource to explore established patterns and best practices.
-
-Let me know if you need further help with any specific migration scenario!]]></description>
     </item>
   </channel>
 </rss>
