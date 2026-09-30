@@ -5,8 +5,8 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 30 Sep 2026 16:59:09 +0000</lastBuildDate>
-    <item>
+    <lastBuildDate>Wed, 30 Sep 2026 21:24:32 +0000</lastBuildDate>
+<item>
       <title>Reddit r/azure: Anyone migrated Azure Blob containers from anonymous access to SAS/Entra ID?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1wu5s9l/anyone_migrated_azure_blob_containers_from/</link>
       <guid isPermaLink="false">t3_1wu5s9l</guid>
