@@ -5,7 +5,38 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 04 Oct 2026 00:27:05 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2026 06:15:10 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Question regarding possible Azure files migration</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1wx59mr/question_regarding_possible_azure_files_migration/</link>
+      <guid isPermaLink="false">t3_1wx59mr</guid>
+      <pubDate>Sun, 04 Oct 2026 03:11:28 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Question regarding possible Azure files migration
+
+Hi, We’re considering moving a file share for one of our branch offices to Azure Files, and since this would be our first Azure project, I’m looking for some guidance on the best way to approach it. Our current environment looks like this: The branch office file server VM and two domain controller VMs are located at our corporate HQ. The branch office connects to HQ through a site-to-site VPN tunnel. The branch firewall provides DHCP and hands out the IP addresses of our domain controllers for DNS. Users authenticate against our existing AD environment and access the file share over the site-to-site VPN. We currently have a single file share for this branch office. This setup has been working reliably for years. However, we’re looking to free up space on our SAN and would like to retire the existing file server VM entirely, so we’re considering migrating the share to Azure Files. For remote users, we currently use FortiClient VPN, which connects them back to the corporate network so they can access the file share. We would still need a secure way for remote users to access the Azure file share while maintaining our existing AD-based permissions if possible. We also follow the 3-2-1 backup rule. Currently, the file server is backed up locally, and those backups are also copied off-site. I’m interested in how others are handling backup and recovery for Azure Files while maintaining three separate copies of the data. Since this would be our first Azure deployment, I’m mainly trying to understand what the recommended architecture would look like, including authentication, networking/private access, migration, and backup/recovery. Any recommendations or lessons learned would be greatly appreciated. Thank you. BTW we&apos;re a hybrid environment and the share size isn&apos;t very large, maybe 3TB. It is mostly spreadsheets, pdfs and images. I&apos;ve also heard using Sharepoint could also be an alternative for this. &amp;#32; submitted by &amp;#32; /u/Double_Confection340 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Data Box - For large offline migrations (tens of TBs+). Microsoft ships a physical device to your site.
+Docs: https://learn.microsoft.com/azure/databox/
+
+Azure File Sync - Sync on-prem file servers with Azure Files, with cloud tiering to free local space.
+Docs: https://learn.microsoft.com/azure/storage/file-sync/
+
+Azure Migrate - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Anyone migrated Azure Blob containers from anonymous access to SAS/Entra ID?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1wu5s9l/anyone_migrated_azure_blob_containers_from/</link>
@@ -1627,43 +1658,6 @@ For remote users, you’re correct that port 445 is often blocked by ISPs. Azure
 Once everything is working as expected, you can decommission the on-prem server.
 
 Let me know if you need additional guidance!]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Anyone migrated away from Rightworks to Azure? Need guidance</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1tb03de/anyone_migrated_away_from_rightworks_to_azure/</link>
-      <guid isPermaLink="false">t3_1tb03de</guid>
-      <pubDate>Tue, 12 May 2026 12:26:38 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Anyone migrated away from Rightworks to Azure? Need guidance
-
-Hi everyone, We are currently planning a migration away from Rightworks (Right Networks) to an Azure-based environment and are looking for guidance from anyone who has gone through a similar transition. A few challenges we are currently facing and we are trying to understand how others handled: Discovery and documentation of the Rightworks environment Server/application migration to Azure or another cloud/on-prem environment Data transfer approach (hard drive vs direct transfer) Cutover planning and downtime minimization Handling QuickBooks, tax software, databases, shared drives, etc. Working around limited vendor cooperation If anyone has completed a migration from Rightworks to Azure (or another infrastructure) and is willing to share their experience, recommendations, lessons learned, or even provide consulting/help for the migration, please comment or DM me. Would really appreciate any guidance from teams who have already dealt with this situation. Thanks in advance! &amp;#32; submitted by &amp;#32; /u/CompetitiveMap5567 [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-Migrating from Rightworks to Azure can be a multi-faceted process, but leveraging Azure&apos;s ecosystem and best practices can simplify the transition. Here’s a high-level approach to address your challenges:
-
-1. Discovery and Documentation
- - Start with a thorough assessment of your Rightworks environment, including infrastructure, applications, and dependencies. Define your migration strategy using the Cloud Adoption Framework (https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/). The &quot;Strategy&quot; and &quot;Plan&quot; phases will help you document and justify the migration while preparing your team and processes.
-
-2. Server/Application Migration
- - Assess whether your applications are suitable for rehosting (lift-and-shift), refactoring, or rearchitecting. Azure offers multiple migration tools such as Azure Migrate, which supports server and application migration. For shared drives and file systems, Azure Files or Blob Storage may be a good fit. Learn more about Azure Storage options in the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-3. Data Transfer Approach
- - Depending on the volume of data, you can use Azure Import/Export service (physical drives) or direct transfer via Azure Data Box or Azure Storage Explorer. For databases, Azure Database Migration Service supports seamless migrations. Refer to the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/) for storage solutions and data transfer tools.
-
-4. Cutover Planning and Downtime Minimization
- - Plan your cutover during off-peak hours to minimize impact. Use tools like Azure Site Recovery to test failover scenarios and ensure minimal downtime during the transition. The Cloud Adoption Framework (https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/) also provides guidance on managing operational risks.
-
-5. Handling QuickBooks, Tax Software, and Databases
- - For QuickBooks and tax software, consider deploying Azure Virtual Machines to replicate your existing environment. For databases, use Azure SQL or Azure Cosmos DB depending on your requirements. The Azure Cosmos DB documentation (https://learn.microsoft.com/en-us/azure/cosmos-db/) provides details on data migration tools and configurations.
-
-6. Vendor Cooperation and Workarounds
- - If vendor collaboration is limited, focus on exporting data in standard formats and reconfiguring applications in-house. Azure&apos;s flexible ecosystem supports various workloads and formats, which can ease this process.
-
-Feel free to share any specific concerns, and I’d be happy to guide you further!]]></description>
     </item>
   </channel>
 </rss>
