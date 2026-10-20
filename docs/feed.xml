@@ -5,7 +5,35 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 20 Oct 2026 10:21:25 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 15:19:59 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: How do you migrate into a terraform managed Azure envronment?</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1xaoxch/how_do_you_migrate_into_a_terraform_managed_azure/</link>
+      <guid isPermaLink="false">t3_1xaoxch</guid>
+      <pubDate>Tue, 20 Oct 2026 10:51:23 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+How do you migrate into a terraform managed Azure envronment?
+
+I’m curious how others solve this. We manage our Azure environments with Terraform, but Azure Migrate creates an interesting IaC problem. Today, we let Azure Migrate create the target resources and then import them into the Terraform state. Technically, this works. But afterwards we still have to make sure that our Terraform configuration properly reflects the VM and its settings. Ideally, I’d like to turn the process around: Terraform creates the target infrastructure first, Azure Migrate then migrates the workload into it. That would mean the target VM is already part of our normal Terraform lifecycle from day one instead of becoming IaC-managed only after the migration. But as far as I know, there isn’t really a supported Azure Migrate workflow for this. So I’m wondering: How do you handle Azure Migrate when Terraform is your source of truth? Especially interested in experiences from environments where importing resources manually after every migration doesn’t really scale. &amp;#32; submitted by &amp;#32; /u/chris4jahn [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Storage Mover - Fully managed migration service with agent-based orchestration.
+Docs: https://learn.microsoft.com/azure/storage-mover/
+
+Azure Migrate - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Egress cost question</title>
       <link>https://www.reddit.com/r/AZURE/comments/1x72ewl/egress_cost_question/</link>
@@ -1610,42 +1638,6 @@ For more details on using AzCopy, including troubleshooting and best practices, 
 Copy or move data to Azure Storage using AzCopy v10 (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10). 
 
 If you encounter further issues, feel free to share the specific error messages or logs for troubleshooting assistance.]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Windows server 2012 R2 migration to Azure issues (VMware)</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1tfmcur/windows_server_2012_r2_migration_to_azure_issues/</link>
-      <guid isPermaLink="false">t3_1tfmcur</guid>
-      <pubDate>Sun, 17 May 2026 11:01:56 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Windows server 2012 R2 migration to Azure issues (VMware)
-
-Hi all, We had a project regarding migration of the following: 2 x Windows server 2012 R2 2 x Windows server 2016 From Physical Vmware server to Azure. Azure migrate said that all servers was ready to migrate so we tried an test migration of all of them. 3/4 servers came alive but one of the 2012 R2 servers didnt. It ended up in &quot;Choose an option&quot; recovery screen. I found the following article from Microsoft and tried the steps but it didnt help: https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/windows/windows-server-2012r2-boot-failure-platform-update Have anybody hit this issue when migration 2012/2012 R2 servers and what was your fix for this. In-place upgrade is too risky for us on-prem as it is an old SQL server. &amp;#32; submitted by &amp;#32; /u/TechCrow93 [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-It sounds like you&apos;ve run into a common issue during migration. The &quot;Choose an option&quot; recovery screen often indicates a boot issue. Since this involves a Windows Server 2012 R2 VM and in-place upgrades aren&apos;t an option, here are some suggestions to resolve the issue:
-
-1. Validate the Boot Configuration
- - Follow the steps in the Windows Server 2012 R2 boot failure troubleshooting guide (https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/windows/windows-server-2012r2-boot-failure-platform-update) you mentioned. Double-check that you’ve completed all steps, especially around rebuilding the Boot Configuration Data (BCD) store using the bootrec commands.
-
-2. Confirm Azure Compatibility
- - Verify that your Windows Server 2012 R2 VM meets the upgrade prerequisites (https://learn.microsoft.com/en-us/azure/virtual-machines/windows-in-place-upgrade) for Azure. While Azure Migrate checks for compatibility, specific configurations (e.g., disk partitioning) might cause boot issues post-migration.
-
-3. Test with a Clean Installation
- - If the existing server continues to fail, consider setting up a clean Windows Server 2012 R2 installation in Azure, then migrate your applications and data manually. Use the Windows Server upgrade path guide (https://learn.microsoft.com/en-us/windows-server/get-started/install-upgrade-migrate) to ensure you plan this properly.
-
-4. SQL Server-Specific Considerations
- - Since the server in question hosts SQL Server, check the SQL Server migration documentation (https://learn.microsoft.com/en-us/sql/) for guidance on migrating SQL workloads to Azure. If you plan to modernize, Azure SQL Database or Azure SQL Managed Instance could be options.
-
-5. Consider Extended Security Updates
- - If resolving the issue delays your migration timeline, note that Extended Security Updates (ESUs) can help keep your Windows Server 2012 R2 secure while you troubleshoot. More details are available in the Extended Security Updates FAQ (https://learn.microsoft.com/en-us/lifecycle/faq/extended-security-updates).
-
-If none of the above works, consider engaging Microsoft Support for deeper troubleshooting.
-
-Let us know how it goes!]]></description>
     </item>
   </channel>
 </rss>
