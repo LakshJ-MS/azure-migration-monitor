@@ -5,7 +5,38 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Thu, 22 Oct 2026 01:56:56 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 07:23:37 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/sysadmin: Brazil users get slow file access over VPN to our Houston file server.</title>
+      <link>https://www.reddit.com/r/sysadmin/comments/1xbyh5l/brazil_users_get_slow_file_access_over_vpn_to_our/</link>
+      <guid isPermaLink="false">t3_1xbyh5l</guid>
+      <pubDate>Wed, 21 Oct 2026 20:28:51 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/sysadmin
+
+Question:
+Brazil users get slow file access over VPN to our Houston file server.
+
+Current setup: Main site in Houston with on-prem AD and Windows file servers. Users map drives network Drives Azure Hybrid environment with about 100 users. Brazil users connect back to Houston over FortiGate VPN, and file access is slow About 10 TB of data total. ½ of Brazil staff don&apos;t work from one office. They&apos;re spread out or remote. We have about 10 users now and may be expanding soon. Veeam for backup Hope you guys can give me some reocmmendations on how can users from Brazil can access the data on on-prem faster. I looked into Azure Files and Azure FIle Syncs with and without local Brazil server. What do you guys recommend? Thanks. &amp;#32; submitted by &amp;#32; /u/deadlycfx [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Data Box - For large offline migrations (tens of TBs+). Microsoft ships a physical device to your site.
+Docs: https://learn.microsoft.com/azure/databox/
+
+Azure File Sync - Sync on-prem file servers with Azure Files, with cloud tiering to free local space.
+Docs: https://learn.microsoft.com/azure/storage/file-sync/
+
+Azure Migrate - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: How do you migrate into a terraform managed Azure envronment?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1xaoxch/how_do_you_migrate_into_a_terraform_managed_azure/</link>
@@ -1604,40 +1635,6 @@ It sounds like you&apos;re using AzCopy to sync data, but you&apos;re unsure whe
  
 
 For further information on using AzCopy, refer to the Microsoft Learn documentation: Use network upload to import PST files (https://learn.microsoft.com/en-us/purview/pst-import-network-upload) (this guide contains useful AzCopy details, even if it&apos;s PST-specific). If the issue persists, please share additional details or error messages from the log file.]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Terminating azcopy running process?</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1thw0y1/terminating_azcopy_running_process/</link>
-      <guid isPermaLink="false">t3_1thw0y1</guid>
-      <pubDate>Tue, 19 May 2026 18:37:46 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Terminating azcopy running process?
-
-I pasted an azcopy sync command and pressed &lt;Enter&gt;. Nothing happened so I pressed &lt;Ctrl-C&gt; to terminate the current execution. Then I ran it again and I get the error More than one AzCopy process is running. This is a non-blocking warning, AzCopy will continue the operation. But, it is best practice to run a single process per VM. Please terminate other instances. I would prefer cancelling all AzCopy processes, run a new one and wait. How can I do that? If not possible, how do I know the results of the AzCopy being run? I switched from Bash to powershell and ran the same command, so I&apos;m not sure what&apos;s running. &amp;#32; submitted by &amp;#32; /u/EastSentence4245 [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-To terminate all running AzCopy processes and start fresh, you can follow these steps:
-
-1. Identify and Terminate AzCopy Processes: 
- Use your system&apos;s task manager or process management tools to locate and terminate any running AzCopy processes. On Windows, open Task Manager (Ctrl+Shift+Esc), look for AzCopy.exe under the &quot;Processes&quot; tab, and end the task. On Linux or macOS, use the ps command to list processes and kill to terminate the AzCopy processes.
-
-2. Verify Active Processes: 
- After terminating the processes, you can confirm by checking again in the task manager or running ps to ensure no AzCopy instances are active.
-
-3. Re-run AzCopy Command: 
- Once you&apos;ve terminated all prior instances, safely re-run your AzCopy command. Use the --verbose flag when running AzCopy to get detailed output, which can help you track the progress and results of the sync operation.
-
-4. Check Results of Previous AzCopy Runs: 
- AzCopy generates logs that provide information about completed processes. By default, logs are saved in the %USERPROFILE%\.azcopy directory on Windows or $HOME/.azcopy on Linux/macOS. Review these logs to understand the status of previously executed AzCopy commands.
-
-For more details on using AzCopy, including troubleshooting and best practices, refer to the AzCopy documentation: 
-Copy or move data to Azure Storage using AzCopy v10 (https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10). 
-
-If you encounter further issues, feel free to share the specific error messages or logs for troubleshooting assistance.]]></description>
     </item>
   </channel>
 </rss>
