@@ -5,7 +5,35 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Fri, 23 Oct 2026 09:52:31 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 14:50:01 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Cost Updates - 2026-10-23</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1xdfti4/azure_cost_updates_20261023/</link>
+      <guid isPermaLink="false">t3_1xdfti4</guid>
+      <pubDate>Fri, 23 Oct 2026 14:36:36 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Cost Updates - 2026-10-23
+
+Azure list of 5 changes that help you cut costs: Azure Monitor workspaces now show which resources create your metric data . This makes it simple to find and stop unused metrics before they run up your bill. Source Microsoft added more detailed platform metrics for core services. You can catch usage spikes and bad changes faster without paying for extra custom monitoring tools. Source Auto-balance VM scale sets across zones: Virtual Machine Scale Sets now rebalance instances across availability zones on their own. This stops compute drift and saves your team from fixing uneven capacity by hand. Source Copy Azure Files across regions without custom scripts: Storage Mover now syncs Azure Files across regions natively. This cuts out custom backup scripts and saves hours of maintenance work for disaster recovery. Source Link Azure DNS directly to Traffic Manager: You can now connect Azure DNS alias records straight to Traffic Manager endpoints. This cuts down complex DNS routing setups and saves network configuration time. Source Source: FinOps Weekly Cloud Provider Updates &amp;#32; submitted by &amp;#32; /u/MrCashMahon [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+Azure Storage Mover - Fully managed migration service with agent-based orchestration.
+Docs: https://learn.microsoft.com/azure/storage-mover/
+
+Azure Migrate - Discover, assess, and migrate servers and VMs.
+Docs: https://learn.microsoft.com/azure/migrate/
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/sysadmin: Brazil users get slow file access over VPN to our Houston file server.</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1xbyh5l/brazil_users_get_slow_file_access_over_vpn_to_our/</link>
@@ -1602,39 +1630,6 @@ Thank you for sharing the Azure Weekly Update! There&apos;s a lot of great infor
 4. NSG and UDR Limit Updates: With the limit increases for Network Security Groups and User Defined Routes, managing traffic within Azure Virtual Networks becomes more scalable. This is especially beneficial for larger and more complex environments.
 
 For more details on any Azure updates, I recommend keeping an eye on the Partner Center announcements (https://learn.microsoft.com/en-us/partner-center/announcements/), where updates about new features and deprecations are regularly published.]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Where can I see results of this AzCopy command that just executed?</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1thxqs5/where_can_i_see_results_of_this_azcopy_command/</link>
-      <guid isPermaLink="false">t3_1thxqs5</guid>
-      <pubDate>Tue, 19 May 2026 19:34:37 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Where can I see results of this AzCopy command that just executed?
-
-I ran the following azcopy sync command. It supposedly completed in 10 seconds, but there&apos;s no feedback. Nothing&apos;s returned. Am I supposed to see the results somewhere else? Here&apos;s the screenshot. https://preview.redd.it/mwdsypx7c52h1.png?width=1279&amp;format=png&amp;auto=webp&amp;s=634dea08d8150a8ae7e8fa028ff207f3c6a5737a &amp;#32; submitted by &amp;#32; /u/EastSentence4245 [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-It sounds like you&apos;re using AzCopy to sync data, but you&apos;re unsure where to see the results or logs of your operation. AzCopy typically provides feedback directly in the command line, but if nothing is displayed, you can verify the operation in a few ways:
-
-1. Check the AzCopy Log File: 
- AzCopy stores detailed logs by default. You can find these logs in the directory specified by the AZCOPYLOGLOCATION environment variable. If you haven&apos;t set a custom location, the default is typically in your system&apos;s temporary folder. The log file will provide detailed information about the operation, including errors or skipped files.
-
-2. Verify the Destination: 
- If the sync operation completed successfully, you should see the files or changes in the destination storage location. Use a tool like Azure Storage Explorer (https://learn.microsoft.com/en-us/troubleshoot/azure/azure-storage/blobs/alerts/storage-explorer-troubleshooting) to inspect the destination container or directory.
-
-3. Enable Verbose Mode: 
- To get more detailed feedback during execution, you can add the --verbose flag to your AzCopy command. For example: 
- 
-
-4. Verify the Command Syntax: 
- Ensure your command is properly formatted. For example, a typical sync command looks like this: 
- 
-
-For further information on using AzCopy, refer to the Microsoft Learn documentation: Use network upload to import PST files (https://learn.microsoft.com/en-us/purview/pst-import-network-upload) (this guide contains useful AzCopy details, even if it&apos;s PST-specific). If the issue persists, please share additional details or error messages from the log file.]]></description>
     </item>
   </channel>
 </rss>
