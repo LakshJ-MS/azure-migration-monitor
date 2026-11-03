@@ -5,7 +5,29 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 03 Nov 2026 12:00:02 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 19:27:04 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: AKS Azure Linux 2.0 node images are gone. What’s your migration strategy to Azure Linux 3.0? If you&apos;re running Azure Kubernetes Service (AKS), you may</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1xmvgk0/aks_azure_linux_20_node_images_are_gone_whats/</link>
+      <guid isPermaLink="false">t3_1xmvgk0</guid>
+      <pubDate>Tue, 03 Nov 2026 15:09:37 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+AKS Azure Linux 2.0 node images are gone. What’s your migration strategy to Azure Linux 3.0? If you&apos;re running Azure Kubernetes Service (AKS), you may want to review your node pools if they still rely on Azure Linux 2.0. The removal of Azure Linux 2.0 node images means migration to Azure Li
+
+&amp;#x200b; f you&apos;re running Azure Kubernetes Service (AKS), you may want to review your node pools if they still rely on Azure Linux 2.0. The removal of Azure Linux 2.0 node images means migration to Azure Linux 3.0 is something cluster operators need to plan for, rather than leave for the next maintenance window. A few things worth considering before making the switch: - Check which node pools are still using Azure Linux 2.0. - Validate workload compatibility with Azure Linux 3.0. - Test the migration in a non-production cluster first. - Plan node pool upgrades carefully to avoid unnecessary workload disruption. - Review your upgrade and rollback strategy. I put together a practical migration guide covering the node image removal and the steps involved in migrating AKS node pools to Azure Linux 3.0: https://opsbreakfix.com/blog/aks-azure-linux-2-node-image-removal-migrate-azure-linux-3/ For those managing production AKS clusters: are you migrating existing node pools in place, or creating new Azure Linux 3.0 pools and gradually moving workloads over? Interested in hearing how others are approaching this. &amp;#32; submitted by &amp;#32; /u/Commercial_Ad1541 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: Azure Migrate Agent based migrations using PowerShell</title>
       <link>https://www.reddit.com/r/AZURE/comments/1xgzu11/azure_migrate_agent_based_migrations_using/</link>
@@ -1588,46 +1610,6 @@ Here are some steps and considerations to help you resolve the issue:
 5. Review Network Configuration: Ensure that the server and devices at HQ can communicate with the Azure Files endpoint. This might involve checking firewall rules or ensuring proper DNS resolution.
 
 If the issue persists after following these steps, consider revisiting your architecture. The Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/) can offer insights into best practices for designing Azure-based solutions.]]></description>
-    </item>
-<item>
-      <title>Microsoft Q&amp;A: Is Azure Data Box available for new Azure accounts (new customer)?</title>
-      <link>https://learn.microsoft.com/en-us/answers/questions/5901220/is-azure-data-box-available-for-new-azure-accounts</link>
-      <guid isPermaLink="false">msqa:https://learn.microsoft.com/en-us/answers/questions/5901220/is-azure-data-box-available-for-new-azure-accounts</guid>
-      <pubDate>Tue, 26 May 2026 06:50:00 +0000</pubDate>
-      <description><![CDATA[Source: Microsoft Q&amp;A
-
-Question:
-Is Azure Data Box available for new Azure accounts (new customer)?
-
-...India and want to transfer 70 TB via Data Box. i want to transfer form Chennai location. #azure-data-box| Hi Madhavaraja s , Thanks for reaching out in Microsoft Q&amp;A forum, Yes, Azure Data Box is supported for Microsoft Customer Agreement (MCA) subscriptions,To use Azure Data Box with a new Azure account in India to transfer 70 TB from.
-
----
-
-Suggested Response:
-Hi Madhavaraja,
-
-Yes, Azure Data Box is available for new Azure accounts, including customers in India, provided they have an active Microsoft Customer Agreement (MCA) subscription. Azure Data Box is designed for secure data transfer to Azure when dealing with large datasets, such as your 70 TB requirement.
-
-Here’s how you can proceed with Azure Data Box:
-
-1. Verify Subscription Eligibility: Ensure your Azure account is under an MCA subscription, as Azure Data Box requires this. You can confirm subscription details in your Azure portal.
-
-2. Choose a Data Box SKU: Depending on your data transfer size, select the appropriate Data Box device. For 70 TB, the standard Azure Data Box device should suffice.
-
-3. Create and Configure the Order: Navigate to the Azure portal, search for &quot;Data Box,&quot; and create an order. Specify your data transfer details, including the Chennai location as your source. You can find guidance in the Azure Storage Documentation Hub (https://learn.microsoft.com/en-us/azure/storage/).
-
-4. Prepare and Transfer Data: Once the Data Box arrives, copy your data to the device. Follow the instructions provided with the device to ensure proper data preparation.
-
-5. Ship and Upload: Ship the Data Box back to the designated Azure data center. The data will be securely uploaded to your Azure storage account.
-
-For more detailed instructions on storage accounts and Azure Storage services, refer to the Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview).
-
-If you need additional help with designing the optimal architecture for your solution, check the Azure Architecture Center (https://learn.microsoft.com/en-us/azure/architecture/).
-
-Let me know if you need further guidance!
-
-Best regards, 
-[Your Name]]]></description>
     </item>
   </channel>
 </rss>
