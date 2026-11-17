@@ -5,7 +5,29 @@
     <link>https://github.com/LakshJ-MS/azure-migration-monitor</link>
     <description>Azure storage migration queries from Reddit, Stack Overflow, and community forums with suggested responses.</description>
     <atom:link href="https://lakshj-ms.github.io/azure-migration-monitor/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 17 Nov 2026 08:00:40 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 17:35:02 +0000</lastBuildDate>
+    <item>
+      <title>Reddit r/azure: Azure Migrate is now Azure Catalyst?</title>
+      <link>https://www.reddit.com/r/AZURE/comments/1xyfdo4/azure_migrate_is_now_azure_catalyst/</link>
+      <guid isPermaLink="false">t3_1xyfdo4</guid>
+      <pubDate>Tue, 17 Nov 2026 08:43:50 +0000</pubDate>
+      <description><![CDATA[Source: Reddit r/azure
+
+Question:
+Azure Migrate is now Azure Catalyst?
+
+Just noticed today that searching for Azure Migrate in the Azure portal now returns Azure Catalyst , with Azure Migrate listed as a search keyword. I couldn&apos;t find any official announcement from Microsoft regarding this change. Is this just a rebranding, or are there bigger changes coming to Azure Migrate? Anyone else seeing this in their tenant? https://preview.redd.it/aqg33wjzx42i1.png?width=981&amp;format=png&amp;auto=webp&amp;s=29448ba74e07628ad92d81a39251522e81259994 &amp;#32; submitted by &amp;#32; /u/Initial-Chest2888 [link] &amp;#32; [comments]
+
+---
+
+Suggested Response:
+Here are Azure tools that can help with your migration:
+
+AzCopy - Versatile CLI tool for Azure Storage data movement.
+Docs: https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-v10
+
+Full migration guide: https://learn.microsoft.com/azure/storage/common/storage-migration-overview]]></description>
+    </item>
 <item>
       <title>Reddit r/azure: AWS partner adding Azure – how long did Solutions Partner for Infrastructure actually take you?</title>
       <link>https://www.reddit.com/r/AZURE/comments/1xv876h/aws_partner_adding_azure_how_long_did_solutions/</link>
@@ -1561,49 +1583,6 @@ To transition from Airbyte and dbt to Azure, you&apos;ll want to focus on gainin
  - If you’re planning to migrate existing data pipelines or workflows to Azure, learn about Azure’s migration services. The Move Azure Resources guide (https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription) is a good resource for understanding how to manage Azure resources.
 
 Feel free to reach out with specific questions as you dive in!]]></description>
-    </item>
-<item>
-      <title>Reddit r/azure: Azure File Sync and Cloud Kerberos</title>
-      <link>https://www.reddit.com/r/AZURE/comments/1towlxa/azure_file_sync_and_cloud_kerberos/</link>
-      <guid isPermaLink="false">t3_1towlxa</guid>
-      <pubDate>Wed, 27 May 2026 05:57:20 +0000</pubDate>
-      <description><![CDATA[Source: Reddit r/azure
-
-Question:
-Azure File Sync and Cloud Kerberos
-
-&amp;#32; submitted by &amp;#32; /u/stevenm_83 [link] &amp;#32; [comments]
-
----
-
-Suggested Response:
-Hi Steven,
-
-It sounds like you&apos;re exploring Azure File Sync and might be interested in setting up Microsoft Entra Kerberos authentication for your Azure Files. This is a great option, especially when working in hybrid or cloud-only environments, as it allows seamless identity-based authentication for SMB file shares. Here&apos;s how you can approach this:
-
-1. Enable Microsoft Entra Kerberos Authentication
-To enable Microsoft Entra Kerberos authentication for Azure Files, you&apos;ll need to ensure a few prerequisites are met:
-- Configure an Azure Storage account.
-- Use an AD DS or Microsoft Entra ID setup to establish identity-based authentication.
-- Register your storage account in your domain and configure Kerberos.
-
-You can follow the step-by-step guide provided in the Microsoft Learn documentation here: 
-Enable Microsoft Entra Kerberos authentication for Azure Files (https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-auth-hybrid-identities-enable)
-
-2. Configure Azure File Sync
-Azure File Sync allows you to centralize your file shares in Azure while keeping frequently accessed files cached locally. After enabling Kerberos authentication, you can set up Azure File Sync to integrate with your on-premises servers and ensure data consistency.
-
-More details on Azure Storage and its capabilities can be found here: 
-Azure Storage Account Overview (https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview)
-
-3. Troubleshooting Authentication Issues
-If you encounter any issues with identity-based authentication, the troubleshooting guide for Azure Files can be particularly helpful. It covers common problems and their resolutions: 
-Troubleshoot Azure Files identity-based authentication issues (https://learn.microsoft.com/en-us/troubleshoot/azure/azure-storage/files/security/files-troubleshoot-smb-authentication)
-
-Feel free to share additional details about your current setup if you need more specific guidance. Good luck with your configuration!
-
-Best regards, 
-[Your Name]]]></description>
     </item>
   </channel>
 </rss>
